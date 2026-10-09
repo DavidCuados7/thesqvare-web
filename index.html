@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%223%22 y=%223%22 width=%2222%22 height=%2222%22 fill=%22none%22 stroke=%22%232A35F0%22 stroke-width=%224%22/%3E%3Crect x=%2218%22 y=%2218%22 width=%2212%22 height=%2212%22 fill=%22%23FFC83D%22/%3E%3C/svg%3E">
+<title>The Sqvare</title>
+<meta name="description" content="The Sqvare — webs que entran por los ojos para bares, tiendas y locales de barrio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: pantallas a sangre que encajan una a una (scroll-snap), cada una con un color plano; el cuadrado es el motivo de toda la marca */
+:root{
+  --ink:#0C0E1A;        /* fondo principal */
+  --ink-2:#161A2E;      /* superficies */
+  --azul:#2A35F0;       /* ultramar de marca */
+  --sol:#FFC83D;        /* acento cálido */
+  --papel:#F3F4FA;      /* texto claro / pantallas claras */
+  --gris:#9097B8;       /* texto secundario, gris tirando a azul */
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--papel);font-family:var(--body);font-size:17px;line-height:1.55}
+.deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.slide{min-height:100%;scroll-snap-align:start;display:flex;align-items:center;padding-block:88px 56px;padding-inline:max(20px,6vw);position:relative;overflow:hidden}
+.inner{width:100%;max-width:1180px;margin-inline:auto;display:grid;gap:clamp(20px,3vw,36px);position:relative;z-index:1}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,7.4vw,6.4rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4.8vw,4rem);font-weight:800}
+h3{font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:600}
+p{margin:0;max-width:60ch}
+.lead{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--gris)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sol)}
+.hl{color:var(--sol)}
+.box{display:inline-block;background:var(--sol);color:var(--ink);padding:0 .18em}
+
+/* barra superior */
+.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) max(20px,4vw) 14px;pointer-events:none}
+.top>*{pointer-events:auto}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1rem;color:var(--papel);text-decoration:none;letter-spacing:.02em}
+.mark{width:26px;height:26px;border:3px solid currentColor;position:relative}
+.mark::after{content:"";position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;background:var(--sol)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:.92rem;padding:14px 22px;background:var(--sol);color:var(--ink);text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:5px 5px 0 var(--papel)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--papel)}
+.btn.ghost{background:transparent;color:var(--papel);box-shadow:none;outline:2px solid var(--papel);outline-offset:-2px}
+.btn.small{padding:10px 16px;font-size:.8rem;box-shadow:3px 3px 0 var(--papel)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sol);outline-offset:3px}
+
+/* navegación lateral */
+.dots{position:fixed;right:max(12px,2vw);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:12px}
+.dots button{width:12px;height:12px;border:2px solid var(--papel);background:transparent;padding:0;cursor:pointer;transition:background .2s,transform .2s}
+.dots button[aria-current="true"]{background:var(--sol);border-color:var(--sol);transform:scale(1.25)}
+.count{position:fixed;left:max(20px,4vw);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;font-family:var(--mono);font-size:.8rem;color:var(--gris);font-variant-numeric:tabular-nums}
+
+/* 1 · portada */
+.s-hero{background:var(--azul)}
+.s-hero .inner{grid-template-columns:1.25fr .9fr;align-items:center}
+.s-hero .lead{color:#D6D9FF}
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}
+.grid-sq{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;aspect-ratio:1;max-width:100%}
+.grid-sq i{background:rgba(255,255,255,.12);animation:pulse 4.8s ease-in-out infinite}
+.grid-sq i:nth-child(7n+2){background:var(--sol)}
+.grid-sq i:nth-child(5n+4){background:var(--papel)}
+.grid-sq i:nth-child(11n+1){background:var(--ink)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.55) rotate(90deg)}}
+
+/* 2 · problema */
+.s-prob{background:var(--ink)}
+.big-q{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,5vw,4.4rem);line-height:1.05;max-width:20ch;text-wrap:balance}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.vs div{padding:22px;background:var(--ink-2);display:grid;gap:6px}
+.vs div:last-child{background:var(--papel);color:var(--ink)}
+.vs strong{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* 3 · servicios */
+.s-serv{background:var(--papel);color:var(--ink)}
+.s-serv .lead{color:#4A5070}
+.s-serv .eyebrow{color:var(--azul)}
+.serv{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid var(--ink)}
+.serv article{padding:26px 22px 30px;display:grid;gap:10px;align-content:start;border-right:3px solid var(--ink);transition:background .25s,color .25s;min-width:0}
+.serv article:last-child{border-right:0}
+.serv article:hover{background:var(--azul);color:var(--papel)}
+.serv .ico{width:44px;height:44px;background:var(--ink);position:relative}
+.serv article:hover .ico{background:var(--sol)}
+.serv p{font-size:.95rem}
+
+/* 4 · para quién */
+.s-quien{background:var(--sol);color:var(--ink)}
+.s-quien .eyebrow{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chips span{font-family:var(--display);font-weight:600;font-size:clamp(1rem,2.4vw,1.7rem);padding:12px 20px;border:3px solid var(--ink);background:var(--sol);transition:background .2s,color .2s}
+.chips span:hover{background:var(--ink);color:var(--sol)}
+
+/* 5 · muestras */
+.s-demo{background:var(--ink)}
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.browser{background:var(--ink-2);border:2px solid #2A2F4C;transition:transform .3s}
+.browser:hover{transform:translateY(-6px) rotate(-.6deg)}
+.bar{display:flex;gap:6px;align-items:center;padding:9px 12px;border-bottom:2px solid #2A2F4C}
+.bar i{width:9px;height:9px;background:#3A4066}
+.bar span{margin-left:8px;font-family:var(--mono);font-size:.7rem;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site{aspect-ratio:4/3;padding:16px;display:grid;grid-template-rows:auto 1fr auto;gap:10px;font-family:var(--display)}
+.site .nm{font-weight:800;font-size:1.05rem}
+.site .hero-b{display:grid;align-content:end;padding:12px}
+.site .row{display:flex;gap:6px}
+.site .row b{flex:1;height:26px}
+.d1 .site{background:#2B1A12;color:#F8E3C8}
+.d1 .hero-b{background:repeating-linear-gradient(135deg,#C2562B 0 18px,#A9471F 18px 36px)}
+.d1 .row b{background:#F8E3C8}
+.d2 .site{background:#F1E6EE;color:#3A1631}
+.d2 .hero-b{background:radial-gradient(circle at 70% 40%,#E77AB4 0 30%,#B9407F 31% 100%);color:#fff}
+.d2 .row b{background:#3A1631}
+.d3 .site{background:#14181A;color:#E4F0F2}
+.d3 .hero-b{background:linear-gradient(90deg,#1F8A93 0 50%,#E4F0F2 50% 52%,#1F8A93 52%)}
+.d3 .row b{background:#E4F0F2}
+.cap{padding:12px 14px;display:flex;justify-content:space-between;gap:8px;font-size:.88rem;color:var(--gris)}
+.cap strong{color:var(--papel);font-weight:600}
+.note{font-family:var(--mono);font-size:.75rem;color:var(--gris)}
+
+/* 6 · proceso */
+.s-proc{background:var(--azul)}
+.s-proc .lead{color:#D6D9FF}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:p}
+.steps li{list-style:none;padding:22px;background:rgba(12,14,26,.35);display:grid;gap:8px;align-content:start;min-width:0}
+.steps li::before{counter-increment:p;content:"0" counter(p);font-family:var(--mono);color:var(--sol);font-weight:600}
+.steps{padding:0;margin:0}
+.steps p{font-size:.95rem;color:#D6D9FF}
+
+/* 7 · packs */
+.s-pack{background:var(--ink)}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.pack{padding:28px 24px;border:2px solid #2A2F4C;display:grid;gap:14px;align-content:start;min-width:0}
+.pack.top-p{background:var(--papel);color:var(--ink);border-color:var(--papel);box-shadow:8px 8px 0 var(--sol)}
+.pack .price{font-family:var(--display);font-weight:800;font-size:1.8rem}
+.pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
+.pack li{padding-left:20px;position:relative}
+.pack li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;background:var(--sol)}
+.pack.top-p li::before{background:var(--azul)}
+.tag{justify-self:start;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;background:var(--azul);color:var(--papel);padding:4px 8px}
+
+/* 8 · contacto */
+.s-cont{background:var(--sol);color:var(--ink)}
+.s-cont .eyebrow{color:var(--ink)}
+.s-cont .btn{background:var(--ink);color:var(--sol);box-shadow:5px 5px 0 var(--azul)}
+.s-cont .btn.ghost{background:transparent;color:var(--ink);outline-color:var(--ink);box-shadow:none}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact div{border-top:3px solid var(--ink);padding-top:12px;display:grid;gap:4px;min-width:0}
+.contact small{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.contact a,.contact span{font-family:var(--display);font-weight:600;font-size:clamp(.95rem,1.6vw,1.2rem);color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+footer{font-family:var(--mono);font-size:.75rem}
+
+/* entrada animada (parte visible siempre) */
+.in .inner>*{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.in .inner>*:nth-child(2){animation-delay:.08s}.in .inner>*:nth-child(3){animation-delay:.16s}.in .inner>*:nth-child(4){animation-delay:.24s}
+@keyframes rise{from{transform:translateY(24px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.deck{scroll-behavior:auto}}
+
+@media (max-width:900px){
+  .s-hero .inner{grid-template-columns:1fr}
+  .grid-sq{max-width:260px}
+  .serv{grid-template-columns:1fr 1fr}
+  .serv article:nth-child(2){border-right:0}
+  .serv article:nth-child(-n+2){border-bottom:3px solid var(--ink)}
+  .demos,.packs{grid-template-columns:1fr}
+  .demos .browser:nth-child(n+2){display:none}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .deck{scroll-snap-type:y proximity}
+  .slide{padding-block:84px 64px}
+  .serv{grid-template-columns:1fr}
+  .serv article{border-right:0;border-bottom:3px solid var(--ink)}
+  .serv article:last-child{border-bottom:0}
+  .vs,.contact,.steps{grid-template-columns:1fr}
+  .dots{display:none}
+  .top .btn{display:none}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <a class="logo" href="#inicio" aria-label="The Sqvare, inicio"><span class="mark"></span><span>THE SQVARE</span></a>
+  <a class="btn small" href="#contacto">Pide tu web</a>
+</header>
+<nav class="dots" aria-label="Pantallas"></nav>
+<div class="count" aria-hidden="true"><span id="cur">01</span> / <span id="tot">08</span></div>
+
+<main class="deck" id="deck">
+
+  <!-- ===================== PANTALLA 1 · PORTADA ===================== -->
+  <section class="slide s-hero in" id="inicio" data-name="Inicio">
+    <div class="inner">
+      <div style="display:grid;gap:24px;min-width:0">
+        <span class="eyebrow" style="color:var(--papel)">Webs para locales · Santa Coloma y alrededores</span>
+        <h1>Tu local merece una web que <span class="box">se vea.</span></h1>
+        <p class="lead">Diseño webs rápidas, bonitas y fáciles de usar para bares, tiendas y negocios de barrio. Tú abres la persiana, tu web trae a la gente.</p>
+        <div class="ctas">
+          <a class="btn" href="#contacto">Quiero mi web →</a>
+          <a class="btn ghost" href="#muestras">Ver ejemplos</a>
+        </div>
+      </div>
+      <div class="grid-sq" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 2 · EL PROBLEMA ===================== -->
+  <section class="slide s-prob" id="problema" data-name="Por qué">
+    <div class="inner">
+      <span class="eyebrow">Por qué una web</span>
+      <p class="big-q">Si no te encuentran en el móvil, entran en el <span class="hl">local de al lado.</span></p>
+      <div class="vs">
+        <div><strong>Sin web</strong><p>Fotos viejas en Google, horario sin actualizar y clientes que no saben qué ofreces.</p></div>
+        <div><strong>Con The Sqvare</strong><p>Tu carta, tus fotos, tu horario y un botón para reservar o escribirte por WhatsApp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 3 · SERVICIOS ===================== -->
+  <section class="slide s-serv" id="servicios" data-name="Qué hago">
+    <div class="inner">
+      <span class="eyebrow">Qué hago</span>
+      <h2>Todo lo que tu negocio necesita para que lo encuentren.</h2>
+      <div class="serv">
+        <article><span class="ico"></span><h3>Web a medida</h3><p>Una web con la cara de tu local, pensada primero para el móvil.</p></article>
+        <article><span class="ico"></span><h3>Carta con QR</h3><p>Tu menú o catálogo siempre al día, en la mesa y en el escaparate.</p></article>
+        <article><span class="ico"></span><h3>Reservas y WhatsApp</h3><p>Un toque y el cliente te escribe, te llama o reserva.</p></article>
+        <article><span class="ico"></span><h3>Google Maps</h3><p>Ficha de Google cuidada para salir cuando te buscan cerca.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 4 · PARA QUIÉN ===================== -->
+  <section class="slide s-quien" id="para-quien" data-name="Para quién">
+    <div class="inner">
+      <span class="eyebrow">Para quién</span>
+      <h2>Para el negocio de tu calle.</h2>
+      <div class="chips">
+        <span>Bares</span><span>Restaurantes</span><span>Cafeterías</span><span>Peluquerías</span><span>Centros de estética</span><span>Tiendas de ropa</span><span>Talleres</span><span>Gimnasios</span><span>Panaderías</span><span>Floristerías</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 5 · MUESTRAS ===================== -->
+  <section class="slide s-demo" id="muestras" data-name="Ejemplos">
+    <div class="inner">
+      <span class="eyebrow">Ejemplos de estilo</span>
+      <h2>Cada local, <span class="hl">su propia cara.</span></h2>
+      <div class="demos">
+        <figure class="browser d1" style="margin:0">
+          <div class="bar"><i></i><i></i><i></i><span>bar-laplaca.es</span></div>
+          <div class="site"><span class="nm">La Plaça</span><div class="hero-b">Tapas desde 1989</div><div class="row"><b></b><b></b><b></b></div></div>
+          <figcaption class="cap"><strong>Bar de tapas</strong><span>Cálido y con carta</span></figcaption>
+        </figure>
+        <figure class="browser d2" style="margin:0">
+          <div class="bar"><i></i><i></i><i></i><span>nuda-estudio.es</span></div>
+          <div class="site"><span class="nm">Nuda</span><div class="hero-b">Reserva tu cita</div><div class="row"><b></b><b></b></div></div>
+          <figcaption class="cap"><strong>Peluquería</strong><span>Citas en un toque</span></figcaption>
+        </figure>
+        <figure class="browser d3" style="margin:0">
+          <div class="bar"><i></i><i></i><i></i><span>talleres-ruedas.es</span></div>
+          <div class="site"><span class="nm">Ruedas</span><div class="hero-b">Pide presupuesto</div><div class="row"><b></b><b></b><b></b><b></b></div></div>
+          <figcaption class="cap"><strong>Taller</strong><span>Serio y directo</span></figcaption>
+        </figure>
+      </div>
+      <p class="note">Conceptos de muestra. Aquí irán tus proyectos reales en cuanto los tengas.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 6 · PROCESO ===================== -->
+  <section class="slide s-proc" id="proceso" data-name="Cómo trabajo">
+    <div class="inner">
+      <span class="eyebrow">Cómo trabajo</span>
+      <h2>De la charla a tu web online, sin líos.</h2>
+      <ol class="steps">
+        <li><h3>Hablamos</h3><p>Me cuentas tu negocio en un café o por WhatsApp.</p></li>
+        <li><h3>Diseño</h3><p>Te enseño una primera versión con tus fotos y tus colores.</p></li>
+        <li><h3>Ajustamos</h3><p>Cambiamos lo que quieras hasta que te guste.</p></li>
+        <li><h3>¡Online!</h3><p>La publico con tu dominio y te enseño a usarla.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 7 · PACKS (edita precios aquí) ===================== -->
+  <section class="slide s-pack" id="packs" data-name="Packs">
+    <div class="inner">
+      <span class="eyebrow">Packs</span>
+      <h2>Elige cómo empezar.</h2>
+      <div class="packs">
+        <div class="pack">
+          <h3>Escaparate</h3>
+          <span class="price">Consúltame</span>
+          <ul><li>Web de una página</li><li>Horario, mapa y contacto</li><li>Botón de WhatsApp</li></ul>
+        </div>
+        <div class="pack top-p">
+          <span class="tag">El más pedido</span>
+          <h3>Local completo</h3>
+          <span class="price">Consúltame</span>
+          <ul><li>Todo lo del Escaparate</li><li>Carta o catálogo con QR</li><li>Galería de fotos</li><li>Ficha de Google Maps</li></ul>
+        </div>
+        <div class="pack">
+          <h3>Siempre al día</h3>
+          <span class="price">Consúltame</span>
+          <ul><li>Cambios cada mes</li><li>Nuevas fotos y ofertas</li><li>Revisión de que todo funciona</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PANTALLA 8 · CONTACTO (edita tus datos aquí) ===================== -->
+  <section class="slide s-cont" id="contacto" data-name="Contacto">
+    <div class="inner">
+      <span class="eyebrow">Hablemos</span>
+      <h2>¿Tu local, en el móvil de todo el barrio?</h2>
+      <div class="ctas">
+        <a class="btn" href="https://wa.me/34648515835" target="_blank" rel="noopener">Escríbeme por WhatsApp →</a>
+        <a class="btn ghost" href="mailto:thesqvare@gmail.com">Mándame un email</a>
+      </div>
+      <div class="contact">
+        <div><small>WhatsApp</small><span>+34 648 51 58 35</span></div>
+        <div><small>Email</small><span>thesqvare@gmail.com</span></div>
+        <div><small>Instagram</small><a href="https://instagram.com/thesqvare" target="_blank" rel="noopener">@thesqvare</a></div>
+      </div>
+      <footer>© <span id="yr">2026</span> The Sqvare · David Cuadros</footer>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var grid=document.querySelector('.grid-sq');
+  for(var i=0;i<36;i++){var s=document.createElement('i');s.style.animationDelay=(i%6*0.18+Math.floor(i/6)*0.12)+'s';grid.appendChild(s);}
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.querySelector('.dots');
+  var cur=document.getElementById('cur');
+  document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label',s.dataset.name);b.title=s.dataset.name;
+    b.addEventListener('click',function(){s.scrollIntoView({behavior:'smooth'});});
+    dots.appendChild(b);
+  });
+  var buttons=[].slice.call(dots.children);
+  var active=0;
+  function setActive(i){active=i;buttons.forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false');});cur.textContent=String(i+1).padStart(2,'0');}
+  setActive(0);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');setActive(slides.indexOf(e.target));}});},{root:deck,threshold:.55});
+    slides.forEach(function(s){io.observe(s);});
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){var t=document.querySelector(a.getAttribute('href'));if(t){ev.preventDefault();t.scrollIntoView({behavior:'smooth'});}});
+  });
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();slides[Math.min(active+1,slides.length-1)].scrollIntoView({behavior:'smooth'});}
+    if(['ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();slides[Math.max(active-1,0)].scrollIntoView({behavior:'smooth'});}
+  });
+})();
+</script>
+
+</body>
+</html>

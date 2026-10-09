@@ -1,0 +1,72 @@
+name: Vigilancia diaria 5:00
+
+# GitHub usa hora UTC. Se lanza a las 03:00 y 04:00 UTC y solo actúa
+# la que coincide con las 05:00 en Madrid (cubre horario de verano e invierno).
+on:
+  schedule:
+    - cron: "0 3 * * *"
+    - cron: "0 4 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  issues: write
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    env:
+      WEB: https://thesqvare.com
+      TEXTO: "The Sqvare"
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: ¿Son las 5:00 en Madrid?
+        id: hora
+        run: |
+          H=$(TZ=Europe/Madrid date +%H)
+          if [ "$H" = "05" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "ok=1" >> $GITHUB_OUTPUT; fi
+
+      - name: Comprobar la web
+        id: check
+        if: steps.hora.outputs.ok == '1'
+        run: |
+          fallos=""
+          for url in "$WEB" "https://www.thesqvare.com"; do
+            code=$(curl -sL -o pagina.html -w '%{http_code}' --max-time 30 "$url" || echo 000)
+            [ "$code" = "200" ] || fallos="$fallos\n- $url responde $code"
+            grep -q "$TEXTO" pagina.html 2>/dev/null || fallos="$fallos\n- $url no muestra el contenido esperado"
+          done
+          fin=$(echo | openssl s_client -servername thesqvare.com -connect thesqvare.com:443 2>/dev/null | openssl x509 -noout -enddate | cut -d= -f2)
+          if [ -n "$fin" ]; then
+            dias=$(( ( $(date -d "$fin" +%s) - $(date +%s) ) / 86400 ))
+            [ "$dias" -gt 10 ] || fallos="$fallos\n- El certificado HTTPS caduca en $dias días"
+          else
+            fallos="$fallos\n- No se pudo leer el certificado HTTPS"
+          fi
+          printf "%b" "$fallos" > fallos.txt
+          if [ -s fallos.txt ]; then echo "mal=1" >> $GITHUB_OUTPUT; cat fallos.txt; else echo "Todo correcto"; fi
+
+      - name: Intentar arreglarlo (volver a publicar)
+        id: arreglo
+        if: steps.check.outputs.mal == '1'
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+          sleep 120
+          code=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 30 "$WEB" || echo 000)
+          if [ "$code" = "200" ]; then echo "resuelto=1" >> $GITHUB_OUTPUT; fi
+
+      - name: Avisar a David
+        if: steps.check.outputs.mal == '1'
+        run: |
+          if [ "${{ steps.arreglo.outputs.resuelto }}" = "1" ]; then
+            titulo="⚠️ thesqvare.com falló a las 5:00 y se ha arreglado solo"
+          else
+            titulo="🚨 thesqvare.com tiene un problema sin resolver"
+          fi
+          {
+            echo "Revisión de las 5:00 ($(TZ=Europe/Madrid date '+%d/%m/%Y'))"; echo
+            echo "Problemas encontrados:"; cat fallos.txt; echo
+            echo "Acción automática: se ha vuelto a publicar la web."
+          } > cuerpo.md
+          gh issue create --repo "${{ github.repository }}" --title "$titulo" --body-file cuerpo.md
