@@ -17,7 +17,10 @@ jobs:
   revisar:
     runs-on: ubuntu-latest
     env:
-      WEB: https://thesqvare.com
+      # Mientras no haya dominio se vigila la dirección de GitHub.
+      # Al comprar thesqvare.com: cambia WEB a https://thesqvare.com y EXTRA a https://www.thesqvare.com
+      WEB: https://davidcuados7.github.io/thesqvare-web/
+      EXTRA: ""
       TEXTO: "The Sqvare"
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -32,12 +35,13 @@ jobs:
         if: steps.hora.outputs.ok == '1'
         run: |
           fallos=""
-          for url in "$WEB" "https://www.thesqvare.com"; do
+          for url in $WEB $EXTRA; do
             code=$(curl -sL -o pagina.html -w '%{http_code}' --max-time 30 "$url" || echo 000)
             [ "$code" = "200" ] || fallos="$fallos\n- $url responde $code"
             grep -q "$TEXTO" pagina.html 2>/dev/null || fallos="$fallos\n- $url no muestra el contenido esperado"
           done
-          fin=$(echo | openssl s_client -servername thesqvare.com -connect thesqvare.com:443 2>/dev/null | openssl x509 -noout -enddate | cut -d= -f2)
+          HOST=$(echo "$WEB" | cut -d/ -f3)
+          fin=$(echo | openssl s_client -servername "$HOST" -connect "$HOST:443" 2>/dev/null | openssl x509 -noout -enddate | cut -d= -f2)
           if [ -n "$fin" ]; then
             dias=$(( ( $(date -d "$fin" +%s) - $(date +%s) ) / 86400 ))
             [ "$dias" -gt 10 ] || fallos="$fallos\n- El certificado HTTPS caduca en $dias días"

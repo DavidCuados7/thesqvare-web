@@ -23,7 +23,7 @@ Espera entre 10 minutos y unas horas. Después marca **Enforce HTTPS** en Settin
 ## 3. Actualizar la web cuando quieras
 Abre `index.html` en GitHub → icono del lápiz → cambia el texto → "Commit changes". En 1–2 minutos está online.
 Cada pantalla está marcada con un comentario `PANTALLA 1 · PORTADA`, `PANTALLA 7 · PACKS`… para que encuentres rápido qué tocar.
-**Cambia antes de publicar:** tu WhatsApp (`34600000000`), el email y el Instagram de la pantalla 8, y los precios de la pantalla 7 si quieres mostrarlos.
+**Ahora mismo** la web está en https://davidcuados7.github.io/thesqvare-web/ (sin dominio). Cuando compres thesqvare.com, pide a Claude que lo conecte (vuelve a añadir el archivo CNAME y cambia la vigilancia).
 
 ## 4. Vigilancia diaria a las 5:00
 El archivo `.github/workflows/vigilancia.yml` se ejecuta solo cada día a las 5:00 (hora de Madrid):
