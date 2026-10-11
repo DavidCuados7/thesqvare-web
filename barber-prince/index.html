@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber Prince · Barbería</title>
+<meta name="description" content="Barber Prince: cortes, degradados y barba con trato de príncipe. Reserva tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d; --bg2:#131317; --card:#18181d; --line:#2a2a31;
+  --gold:#d4a84b; --gold2:#f0cf7f; --text:#f2efe8; --muted:#a5a19a;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+.gold{color:var(--gold)}
+.eyebrow{font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05}
+h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:.4rem 0 1rem}
+.lead{color:var(--muted);max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border-radius:999px;font-weight:600;font-size:.95rem;transition:.25s;cursor:pointer;border:0;font-family:var(--sans)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#141008;box-shadow:0 10px 30px -10px rgba(212,168,75,.6)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(212,168,75,.8)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+section{padding:110px 0}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:.3s}
+nav.scrolled{background:rgba(11,11,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:.04em}
+.logo svg{width:30px;color:var(--gold)}
+.links{display:flex;gap:2rem;align-items:center;font-size:.9rem;color:var(--muted)}
+.links a:hover{color:var(--gold)}
+.burger{display:none;background:none;border:0;color:var(--text);cursor:pointer}
+@media(max-width:860px){
+  .links{position:fixed;inset:76px 0 auto;flex-direction:column;background:var(--bg2);padding:2rem;gap:1.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:.35s}
+  .links.open{transform:none}
+  .burger{display:block}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:120px 0 80px;
+  background:radial-gradient(ellipse 80% 60% at 70% 30%,rgba(212,168,75,.16),transparent 60%),radial-gradient(ellipse 60% 50% at 10% 90%,rgba(212,168,75,.08),transparent 60%),var(--bg)}
+.hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 22px);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;position:relative}
+.hero h1{font-size:clamp(3.2rem,9vw,6.6rem);margin:1rem 0 1.2rem}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .lead{font-size:1.1rem;margin-bottom:2rem}
+.cta{display:flex;gap:1rem;flex-wrap:wrap}
+.stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}
+.stats b{display:block;font-family:var(--serif);font-size:2.2rem;color:var(--gold2);line-height:1}
+.stats span{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.emblem{aspect-ratio:1;border-radius:50%;border:1px solid rgba(212,168,75,.35);display:grid;place-items:center;position:relative;animation:float 6s ease-in-out infinite}
+.emblem::before{content:"";position:absolute;inset:18px;border-radius:50%;border:1px dashed rgba(212,168,75,.3);animation:spin 40s linear infinite}
+.emblem svg{width:62%;color:var(--gold)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-12px)}}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.emblem{max-width:260px;margin:0 auto;order:-1}}
+
+/* MARQUEE */
+.marquee{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:18px 0}
+.track{display:flex;gap:3rem;width:max-content;animation:scroll 28s linear infinite;font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--muted)}
+.track span::after{content:"♛";color:var(--gold);margin-left:3rem;font-style:normal;font-size:1rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* SERVICES */
+.head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;transition:.3s;position:relative;overflow:hidden}
+.svc:hover{border-color:rgba(212,168,75,.55);transform:translateY(-4px)}
+.svc.featured{background:linear-gradient(160deg,#241d10,var(--card) 60%);border-color:rgba(212,168,75,.5)}
+.svc .tag{position:absolute;top:1.2rem;right:1.2rem;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:#141008;padding:.3rem .7rem;border-radius:99px;font-weight:700}
+.svc svg{width:34px;color:var(--gold);margin-bottom:1.2rem}
+.svc h3{font-size:1.7rem;margin-bottom:.4rem}
+.svc p{color:var(--muted);font-size:.92rem;min-height:3em}
+.price{display:flex;justify-content:space-between;align-items:baseline;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.price b{font-family:var(--serif);font-size:2rem;color:var(--gold2)}
+.price span{font-size:.8rem;color:var(--muted)}
+
+/* ABOUT */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tile{border-radius:18px;aspect-ratio:3/4;display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid var(--line)}
+.tile:nth-child(2){margin-top:3rem}
+.tile svg{width:45%;color:rgba(212,168,75,.85)}
+.t1{background:linear-gradient(160deg,#2a2112,#111)}
+.t2{background:linear-gradient(200deg,#1d1d24,#0d0d10)}
+.tile small{position:absolute;bottom:1rem;left:1rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.feats{display:grid;gap:1.3rem;margin-top:2rem}
+.feat{display:flex;gap:1rem}
+.feat i{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(212,168,75,.12);color:var(--gold);font-style:normal;font-size:1.1rem}
+.feat b{display:block}
+.feat span{color:var(--muted);font-size:.92rem}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* BOOK */
+.book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:start}
+.hours{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;margin-top:2rem}
+.hours div{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.hours div:last-child{border:0}
+.hours .today{color:var(--gold2);font-weight:600}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;margin-top:1rem;color:var(--muted)}
+.status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--dot,#777)}
+form{background:linear-gradient(160deg,#1c1810,var(--card) 55%);border:1px solid rgba(212,168,75,.35);border-radius:22px;padding:2rem;display:grid;gap:1rem}
+form h3{font-size:2rem}
+label{font-size:.8rem;color:var(--muted);letter-spacing:.06em;display:grid;gap:.4rem}
+input,select{background:var(--bg);border:1px solid var(--line);color:var(--text);padding:.85rem 1rem;border-radius:12px;font:inherit;font-size:.95rem;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+form .btn{justify-content:center;margin-top:.4rem}
+form small{color:var(--muted);font-size:.78rem;text-align:center}
+.lbl{font-size:.8rem;color:var(--muted);letter-spacing:.06em;display:block;margin-bottom:.4rem}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:.5rem;min-height:46px}
+.slots button{background:var(--bg);border:1px solid var(--line);color:var(--text);padding:.6rem 0;border-radius:10px;font:inherit;font-size:.9rem;cursor:pointer;transition:.2s}
+.slots button:hover{border-color:var(--gold)}
+.slots button.sel{background:var(--gold);border-color:var(--gold);color:#141008;font-weight:700}
+.slots .hint{grid-column:1/-1;color:var(--muted);font-size:.85rem;padding:.6rem 0}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+#fMsg.err{color:#ff8a8a}
+.done{text-align:center;display:grid;gap:.8rem;justify-items:center}
+.done .ok{width:64px;height:64px;border-radius:50%;background:rgba(61,220,132,.15);color:#3ddc84;display:grid;place-items:center;font-size:2rem}
+.done dl{display:grid;grid-template-columns:auto auto;gap:.3rem 1.2rem;text-align:left;font-size:.95rem;margin:.4rem 0}
+.done dt{color:var(--muted)}
+@media(max-width:860px){.book-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.row{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact{background:var(--bg2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;transition:.3s}
+.cc:hover{border-color:var(--gold)}
+.cc .ic{font-size:1.5rem;margin-bottom:.8rem}
+.cc b{display:block;font-family:var(--serif);font-size:1.5rem}
+.cc span{color:var(--muted);font-size:.92rem}
+.map{margin-top:1.2rem;border-radius:18px;overflow:hidden;border:1px solid var(--line);height:320px;background:var(--card)}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
+
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
+.foot a{color:var(--gold)}
+
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6);transition:.25s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:30px;color:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="crown" viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M6 40 L4 12 L18 24 L32 6 L46 24 L60 12 L58 40 Z" fill="currentColor" fill-opacity=".12"/>
+    <path d="M6 44h52"/><circle cx="4" cy="11" r="3" fill="currentColor"/><circle cx="32" cy="5" r="3" fill="currentColor"/><circle cx="60" cy="11" r="3" fill="currentColor"/>
+  </symbol>
+  <symbol id="scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+  <symbol id="razor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 17 14 6l4 4-11 11H3v-4Z"/><path d="M14 6l3-3 4 4-3 3"/></symbol>
+  <symbol id="comb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="18" height="5" rx="1.5"/><path d="M5 10v8M8 10v6M11 10v8M14 10v6M17 10v8M20 10v6"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z"/></symbol>
+  <symbol id="face" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8M9 9.5h.01M15 9.5h.01"/><path d="M18 3l.6 1.4L20 5l-1.4.6L18 7l-.6-1.4L16 5l1.4-.6Z" fill="currentColor"/></symbol>
+  <symbol id="brow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 9c2-2 5-2.5 8-1M13 8c3-1.5 6-1 8 1"/><path d="M4 14c1.5-1.3 3.5-1.3 5 0-1.5 1.3-3.5 1.3-5 0ZM15 14c1.5-1.3 3.5-1.3 5 0-1.5 1.3-3.5 1.3-5 0Z"/></symbol>
+  <symbol id="drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></symbol>
+</svg>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="logo"><svg><use href="#crown"/></svg><span data-cfg="name">Barber Prince</span></a>
+    <div class="links" id="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#reserva">Horario</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#reserva" class="btn btn-gold" style="padding:.6rem 1.2rem">Reservar</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menú"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">Barbería · <span data-cfg="city">Santa Coloma de Gramenet</span></div>
+      <h1 class="reveal">Sal de aquí<br>como un <em>príncipe.</em></h1>
+      <p class="lead reveal">Cortes clásicos, degradados al detalle y barbas perfiladas a navaja. Sin prisas, con buena música y el trato que te mereces.</p>
+      <div class="cta reveal">
+        <a href="#reserva" class="btn btn-gold">Reservar cita →</a>
+        <a href="#servicios" class="btn btn-ghost">Ver precios</a>
+      </div>
+      <div class="stats reveal">
+        <div><b>10€</b><span>Corte desde</span></div>
+        <div><b>12</b><span>Servicios</span></div>
+        <div><b>7 días</b><span>Abierto toda la semana</span></div>
+      </div>
+    </div>
+    <div class="emblem reveal"><svg viewBox="0 0 64 48"><use href="#crown"/></svg></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Cortes</span><span>Degradado de barba</span><span>Cejas</span><span>Limpieza facial</span><span>Corte diseño</span><span>Color</span>
+    <span>Cortes</span><span>Degradado de barba</span><span>Cejas</span><span>Limpieza facial</span><span>Corte diseño</span><span>Color</span>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Carta de servicios</div><h2>Precios claros,<br>acabado de lujo.</h2></div>
+      <p class="lead">Corte, barba, cejas, color y cuidado facial. Combina servicios y ahorra con los packs.</p>
+    </div>
+    <div class="services" id="services"></div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap about-grid">
+    <div class="collage reveal">
+      <div class="tile t1"><svg><use href="#scissors"/></svg><small>Foto del local</small></div>
+      <div class="tile t2"><svg><use href="#razor"/></svg><small>Foto de un corte</small></div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Nosotros</div>
+      <h2>Una barbería de barrio con estándar de corona.</h2>
+      <p class="lead">En <span data-cfg="name">Barber Prince</span> cada corte empieza con una pregunta: ¿qué quieres transmitir? A partir de ahí trabajamos tu forma de cara, tu tipo de pelo y tu estilo para que salgas igual que entraste… pero mejor.</p>
+      <div class="feats">
+        <div class="feat"><i>✂</i><div><b>Técnica al milímetro</b><span>Degradados limpios, sin escalones, y perfilado a navaja.</span></div></div>
+        <div class="feat"><i>♛</i><div><b>Trato personal</b><span>Te asesoramos sobre el corte que mejor te queda, sin compromiso.</span></div></div>
+        <div class="feat"><i>⏱</i><div><b>Tu hora es tu hora</b><span>Reservas por WhatsApp y te atendemos puntual.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserva">
+  <div class="wrap book-grid">
+    <div class="reveal">
+      <div class="eyebrow">Horario</div>
+      <h2>Pide tu cita en 20 segundos.</h2>
+      <p class="lead">Elige servicio, día y una de las horas libres. Tu cita queda reservada al momento, sin llamadas ni esperas.</p>
+      <div class="hours" id="hours"></div>
+      <div class="status" id="status"></div>
+    </div>
+    <form id="form" class="reveal">
+      <h3>Reserva tu cita</h3>
+      <label>Servicio<select id="fSvc"></select></label>
+      <label>Día<input id="fDay" type="date" required></label>
+      <div><span class="lbl">Hora</span><div class="slots" id="slots"><p class="hint">Elige un día para ver las horas libres.</p></div></div>
+      <div class="row">
+        <label>Nombre<input id="fName" required maxlength="60" placeholder="Tu nombre" autocomplete="name"></label>
+        <label>Teléfono<input id="fTel" type="tel" required placeholder="600 000 000" autocomplete="tel"></label>
+      </div>
+      <button class="btn btn-gold" type="submit" id="fBtn" disabled>Confirmar reserva</button>
+      <small id="fMsg">Tu nombre y teléfono solo los ve la barbería, para gestionar tu cita.</small>
+    </form>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">Contacto</div><h2>Ven a vernos.</h2></div></div>
+    <div class="cards">
+      <a class="cc" id="ccAddr" target="_blank" rel="noopener"><div class="ic">📍</div><b>Dirección</b><span data-cfg="address"></span></a>
+      <a class="cc" id="ccPhone"><div class="ic">📞</div><b>Teléfono</b><span data-cfg="phoneLabel"></span></a>
+      <a class="cc" id="ccIg" target="_blank" rel="noopener"><div class="ic">📸</div><b>Instagram</b><span data-cfg="instagram"></span></a>
+    </div>
+    <div class="map"><iframe id="map" loading="lazy" title="Mapa"></iframe></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> <span data-cfg="name">Barber Prince</span>. Todos los derechos reservados.</span>
+    <span>Web creada por <a href="https://instagram.com/the.sqvare" target="_blank" rel="noopener">The Sqvare</a></span>
+  </div>
+</footer>
+
+<a class="wa" id="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+/* ====== EDITA AQUÍ LOS DATOS DEL NEGOCIO ====== */
+const CONFIG = {
+  name: "Barber Prince",
+  city: "Santa Coloma de Gramenet",
+  address: "C. de Mossèn Camil Rosell, 38, Santa Coloma de Gramenet",
+  whatsapp: "34600000000",          // con prefijo 34, sin espacios
+  phoneLabel: "600 00 00 00",
+  instagram: "@barberiaprince",
+  // URL de la app web de Google Apps Script (sistema de reservas). Vacía = las reservas se piden por WhatsApp.
+  apiUrl: "https://script.google.com/macros/s/AKfycbzoX1kFye9g14DExwPH8qZTKcbLOipJpqnrmyvAzuLdksqpdd6xHNLOWKsLlK1ez8C8/exec",
+  // Horario por día (Lunes..Domingo): lista de turnos [abre, cierra, última cita] o null si cerrado
+  hours: [
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]],
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]],
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]],
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]],
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]],
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]],
+    [["10:00","14:00","13:30"],["15:00","21:00","20:30"]]
+  ],
+  services: [
+    {icon:"scissors", name:"Corte de pelo", desc:"Tijera y máquina, adaptado a tu forma de cara.", price:10, time:"30 min"},
+    {icon:"drop", name:"Corte + lavado", desc:"Tu corte con lavado incluido.", price:12, time:"30 min"},
+    {icon:"comb", name:"Corte diseño", desc:"Rayas, dibujos y detalles a medida.", price:12, time:"30 min"},
+    {icon:"brow", name:"Corte + cejas", desc:"Corte y cejas perfiladas.", price:12, time:"30 min"},
+    {icon:"razor", name:"Corte + barba", desc:"Corte y barba perfilada a juego.", price:16, time:"30 min"},
+    {icon:"star", name:"Corte + barba + cejas", desc:"El arreglo completo de cabeza a barba.", price:18, time:"30 min"},
+    {icon:"razor", name:"Degradado de barba", desc:"Barba degradada y perfilada al detalle.", price:8, time:"30 min"},
+    {icon:"brow", name:"Cejas + bigote", desc:"Retoque rápido de cejas y bigote.", price:6, time:"15 min"},
+    {icon:"face", name:"Limpieza facial", desc:"Piel limpia y renovada.", price:20, time:"30 min"},
+    {icon:"face", name:"Limpieza facial + corte", desc:"Corte y cuidado de la piel en una visita.", price:25, time:"30 min"},
+    {icon:"crown", name:"Limpieza facial + corte + barba", desc:"El servicio completo de la casa. Sales como un príncipe.", price:30, time:"1 h", featured:true, tag:"Pack Prince"},
+    {icon:"drop", name:"Pintar cabello", desc:"Color para darle un cambio a tu look.", price:10, time:"1 h"}
+  ]
+};
+/* =============================================== */
+
+const $=s=>document.querySelector(s);
+document.querySelectorAll("[data-cfg]").forEach(el=>{const v=CONFIG[el.dataset.cfg]; if(v) el.textContent=v;});
+document.title=CONFIG.name+" · Barbería";
+$("#year").textContent=new Date().getFullYear();
+
+// Servicios
+$("#services").innerHTML=CONFIG.services.map(s=>`
+  <article class="svc reveal ${s.featured?'featured':''}">
+    ${s.tag?`<span class="tag">${s.tag}</span>`:''}
+    <svg><use href="#${s.icon}"/></svg>
+    <h3>${s.name}</h3><p>${s.desc}</p>
+    <div class="price"><b>${s.from?'+':''}${s.price}€</b><span>${s.time}</span></div>
+  </article>`).join("");
+$("#fSvc").innerHTML=CONFIG.services.map(s=>`<option value="${s.name}">${s.name} · ${s.price}€ · ${s.time}</option>`).join("");
+
+// Horario + estado abierto/cerrado
+const days=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const now=new Date(), di=(now.getDay()+6)%7;
+$("#hours").innerHTML=CONFIG.hours.map((h,i)=>`<div class="${i===di?'today':''}"><span>${days[i]}</span><span>${h?h.map(t=>t[0]+'–'+t[1]).join(' · '):'Cerrado'}</span></div>`).join("")
+  +`<div style="color:var(--muted);font-size:.82rem;border:0">Última cita: 13:30 por la mañana y 20:30 por la tarde.</div>`;
+const hm=now.toTimeString().slice(0,5), cur=(CONFIG.hours[di]||[]).find(t=>hm>=t[0]&&hm<t[1]);
+const st=$("#status"); st.textContent=cur?`Abierto ahora · cierra a las ${cur[1]}`:"Cerrado ahora";
+st.style.setProperty("--dot",cur?"#3ddc84":"#e05555");
+
+// Contacto
+const wa=`https://wa.me/${CONFIG.whatsapp}`;
+$("#wa").href=wa+"?text="+encodeURIComponent(`Hola ${CONFIG.name}, quería pedir cita.`);
+$("#ccPhone").href="tel:+"+CONFIG.whatsapp;
+$("#ccIg").href="https://instagram.com/"+CONFIG.instagram.replace("@","");
+const q=encodeURIComponent(CONFIG.address);
+$("#ccAddr").href="https://www.google.com/maps/search/?api=1&query="+q;
+$("#map").src="https://maps.google.com/maps?q="+q+"&z=16&output=embed";
+
+// ===== Sistema de reservas =====
+// El servidor (Google Apps Script) es quien decide qué horas están libres y bloquea los solapes.
+const pad=n=>String(n).padStart(2,"0");
+const ymd=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const toMin=h=>{const [a,b]=h.split(":").map(Number);return a*60+b};
+const toH=m=>`${pad(Math.floor(m/60))}:${pad(m%60)}`;
+const durMin=s=>/h/.test(s.time)?parseFloat(s.time)*60:parseInt(s.time);
+const maxDay=new Date(now); maxDay.setDate(maxDay.getDate()+30);
+$("#fDay").min=ymd(now); $("#fDay").max=ymd(maxDay);
+let chosen=null, reqId=0;
+
+// Sin servidor configurado: calcula huecos solo con el horario (la cita se confirma por WhatsApp)
+function localSlots(fecha,svc){
+  const [y,m,d]=fecha.split("-").map(Number), day=CONFIG.hours[(new Date(y,m-1,d).getDay()+6)%7];
+  if(!day) return [];
+  const dur=durMin(svc), min=fecha===ymd(new Date())?toMin(new Date().toTimeString().slice(0,5))+15:-1, out=[];
+  day.forEach(([a,c,u])=>{for(let t=toMin(a);t<=toMin(u);t+=15) if(t+dur<=toMin(c)&&t>=min) out.push(toH(t))});
+  return out;
+}
+
+async function loadSlots(){
+  const fecha=$("#fDay").value, name=$("#fSvc").value, box=$("#slots");
+  chosen=null; updateBtn(); setMsg("");
+  if(!fecha){box.innerHTML='<p class="hint">Elige un día para ver las horas libres.</p>';return}
+  const id=++reqId; box.innerHTML='<p class="hint">Buscando horas libres…</p>';
+  let horas;
+  const ask=async()=>{
+    const r=await fetch(`${CONFIG.apiUrl}?accion=huecos&fecha=${fecha}&servicio=${encodeURIComponent(name)}`,{cache:"no-store"}).then(r=>r.json());
+    if(!r.ok) throw new Error(r.error); return r.huecos;
+  };
+  try{
+    if(CONFIG.apiUrl){
+      try{ horas=await ask() }catch(_){ await new Promise(r=>setTimeout(r,1500)); horas=await ask() } // un reintento automático
+    } else horas=localSlots(fecha,CONFIG.services.find(s=>s.name===name));
+  }catch(err){
+    if(id!==reqId) return;
+    box.innerHTML=`<p class="hint">No hemos podido cargar las horas libres.
+      <a href="#" id="retry" style="color:var(--gold);text-decoration:underline">Reintentar</a> o
+      <a href="${wa}?text=${encodeURIComponent(`Hola ${CONFIG.name}, quería pedir cita para ${name} el ${fecha}.`)}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline">pide cita por WhatsApp</a>.</p>`;
+    $("#retry").onclick=e=>{e.preventDefault();loadSlots()};
+    return;
+  }
+  if(id!==reqId) return;
+  box.innerHTML=horas.length?horas.map(h=>`<button type="button" data-h="${h}">${h}</button>`).join("")
+    :'<p class="hint">No quedan horas libres ese día. Prueba con otro.</p>';
+}
+$("#slots").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-h]"); if(!b) return;
+  document.querySelectorAll("#slots .sel").forEach(x=>x.classList.remove("sel"));
+  b.classList.add("sel"); chosen=b.dataset.h; updateBtn();
+});
+function updateBtn(){ $("#fBtn").disabled=!chosen }
+function setMsg(t,err){ const m=$("#fMsg"); m.textContent=t||"Tu nombre y teléfono solo los ve la barbería, para gestionar tu cita."; m.classList.toggle("err",!!err) }
+$("#fSvc").addEventListener("change",loadSlots);
+$("#fDay").addEventListener("change",loadSlots);
+
+$("#form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!chosen) return;
+  const data={nombre:$("#fName").value.trim(),telefono:$("#fTel").value.trim(),servicio:$("#fSvc").value,fecha:$("#fDay").value,hora:chosen};
+  if(data.telefono.replace(/\D/g,"").length<9) return setMsg("Escribe un teléfono válido.",true);
+  const svc=CONFIG.services.find(s=>s.name===data.servicio);
+  const fechaTxt=new Date(data.fecha+"T12:00").toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+
+  if(!CONFIG.apiUrl){
+    const msg=`Hola ${CONFIG.name} 👑\nSoy ${data.nombre} (${data.telefono}). Me gustaría reservar:\n• ${data.servicio}\n• ${fechaTxt} a las ${data.hora}\n¿Hay hueco?`;
+    window.open(wa+"?text="+encodeURIComponent(msg),"_blank"); return;
+  }
+  const btn=$("#fBtn"); btn.disabled=true; btn.textContent="Reservando…";
+  try{
+    const r=await fetch(CONFIG.apiUrl,{method:"POST",body:JSON.stringify(data)}).then(r=>r.json());
+    if(!r.ok) throw new Error(r.error||"No se ha podido reservar.");
+    $("#form").innerHTML=`<div class="done">
+      <div class="ok">✓</div><h3>¡Cita reservada!</h3>
+      <dl><dt>Servicio</dt><dd>${svc.name}</dd><dt>Día</dt><dd>${fechaTxt}</dd>
+      <dt>Hora</dt><dd>${r.hora} – ${r.fin}</dd><dt>Precio</dt><dd>${r.precio}€</dd><dt>Código</dt><dd>${r.id}</dd></dl>
+      <small>Si no puedes venir, avísanos por WhatsApp para liberar el hueco.</small>
+      <a class="btn btn-ghost" href="${wa}?text=${encodeURIComponent(`Hola, tengo la cita ${r.id} (${fechaTxt} a las ${r.hora}).`)}" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>`;
+  }catch(err){
+    btn.textContent="Confirmar reserva"; loadSlots(); setMsg(err.message,true);
+  }
+});
+
+// Nav + menú móvil + animaciones
+addEventListener("scroll",()=>$("#nav").classList.toggle("scrolled",scrollY>40));
+$("#burger").onclick=()=>$("#links").classList.toggle("open");
+document.querySelectorAll("#links a").forEach(a=>a.onclick=()=>$("#links").classList.remove("open"));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
