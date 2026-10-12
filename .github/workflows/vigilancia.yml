@@ -17,10 +17,8 @@ jobs:
   revisar:
     runs-on: ubuntu-latest
     env:
-      # Mientras no haya dominio se vigila la dirección de GitHub.
-      # Al comprar thesqvare.com: cambia WEB a https://thesqvare.com y EXTRA a https://www.thesqvare.com
-      WEB: https://davidcuados7.github.io/thesqvare-web/
-      EXTRA: ""
+      WEB: https://thesqvare.com
+      EXTRA: https://www.thesqvare.com
       TEXTO: "The Sqvare"
       GH_TOKEN: ${{ github.token }}
     steps:

@@ -16,14 +16,14 @@ Alojamiento **gratis** con GitHub Pages (incluye HTTPS). Lo único que se paga e
 | A | @ | 185.199.109.153 |
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
-| CNAME | www | TU-USUARIO.github.io |
+| CNAME | www | davidcuados7.github.io |
 
 Espera entre 10 minutos y unas horas. Después marca **Enforce HTTPS** en Settings → Pages.
 
 ## 3. Actualizar la web cuando quieras
 Abre `index.html` en GitHub → icono del lápiz → cambia el texto → "Commit changes". En 1–2 minutos está online.
 Cada pantalla está marcada con un comentario `PANTALLA 1 · PORTADA`, `PANTALLA 7 · PACKS`… para que encuentres rápido qué tocar.
-**Ahora mismo** la web está en https://davidcuados7.github.io/thesqvare-web/ (sin dominio). Cuando compres thesqvare.com, pide a Claude que lo conecte (vuelve a añadir el archivo CNAME y cambia la vigilancia).
+**Dominio:** thesqvare.com comprado en IONOS (cuenta thesqvare@gmail.com). DNS apuntando a GitHub Pages.
 
 ## 4. Vigilancia diaria a las 5:00
 El archivo `.github/workflows/vigilancia.yml` se ejecuta solo cada día a las 5:00 (hora de Madrid):
