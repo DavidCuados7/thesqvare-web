@@ -1,0 +1,35 @@
+name: Activar HTTPS
+
+# Comprueba cada 15 minutos si GitHub ya ha creado el certificado de thesqvare.com.
+# Cuando está listo, activa "Enforce HTTPS", avisa a David y deja de ejecutarse.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  push:
+    paths: [".github/workflows/activar-https.yml"]
+  workflow_dispatch: {}
+
+permissions:
+  pages: write
+  issues: write
+  actions: write
+  contents: read
+
+jobs:
+  https:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+    steps:
+      - name: Comprobar certificado y activar HTTPS
+        run: |
+          if curl -sS --max-time 20 -o /dev/null https://thesqvare.com; then
+            echo "Certificado listo"
+            gh api -X PUT "repos/$R/pages" -F https_enforced=true && estado="activado" || estado="no se pudo activar automáticamente: márcalo tú en Settings → Pages → Enforce HTTPS"
+            gh issue create --repo "$R" --title "🔒 thesqvare.com ya tiene candado (HTTPS $estado)" \
+              --body "La web ya carga en https://thesqvare.com con certificado seguro. Enforce HTTPS: $estado. Ya puedes compartir el enlace."
+            gh workflow disable "Activar HTTPS" --repo "$R" || true
+          else
+            echo "Todavía sin certificado; se vuelve a probar en 15 minutos."
+          fi
