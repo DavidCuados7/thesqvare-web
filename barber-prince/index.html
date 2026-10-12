@@ -261,8 +261,9 @@ footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:va
         <label>Nombre<input id="fName" required maxlength="60" placeholder="Tu nombre" autocomplete="name"></label>
         <label>Teléfono<input id="fTel" type="tel" required placeholder="600 000 000" autocomplete="tel"></label>
       </div>
+      <label>Correo electrónico<input id="fMail" type="email" required maxlength="100" placeholder="tu@correo.com" autocomplete="email"></label>
       <button class="btn btn-gold" type="submit" id="fBtn" disabled>Confirmar reserva</button>
-      <small id="fMsg">Tu nombre y teléfono solo los ve la barbería, para gestionar tu cita.</small>
+      <small id="fMsg">Te enviaremos la confirmación al correo. Tus datos solo los ve la barbería.</small>
     </form>
   </div>
 </section>
@@ -413,15 +414,16 @@ $("#slots").addEventListener("click",e=>{
   b.classList.add("sel"); chosen=b.dataset.h; updateBtn();
 });
 function updateBtn(){ $("#fBtn").disabled=!chosen }
-function setMsg(t,err){ const m=$("#fMsg"); m.textContent=t||"Tu nombre y teléfono solo los ve la barbería, para gestionar tu cita."; m.classList.toggle("err",!!err) }
+function setMsg(t,err){ const m=$("#fMsg"); m.textContent=t||"Te enviaremos la confirmación al correo. Tus datos solo los ve la barbería."; m.classList.toggle("err",!!err) }
 $("#fSvc").addEventListener("change",loadSlots);
 $("#fDay").addEventListener("change",loadSlots);
 
 $("#form").addEventListener("submit",async e=>{
   e.preventDefault();
   if(!chosen) return;
-  const data={nombre:$("#fName").value.trim(),telefono:$("#fTel").value.trim(),servicio:$("#fSvc").value,fecha:$("#fDay").value,hora:chosen};
+  const data={nombre:$("#fName").value.trim(),telefono:$("#fTel").value.trim(),email:$("#fMail").value.trim(),servicio:$("#fSvc").value,fecha:$("#fDay").value,hora:chosen};
   if(data.telefono.replace(/\D/g,"").length<9) return setMsg("Escribe un teléfono válido.",true);
+  if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email)) return setMsg("Escribe un correo válido.",true);
   const svc=CONFIG.services.find(s=>s.name===data.servicio);
   const fechaTxt=new Date(data.fecha+"T12:00").toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
 
@@ -437,6 +439,7 @@ $("#form").addEventListener("submit",async e=>{
       <div class="ok">✓</div><h3>¡Cita reservada!</h3>
       <dl><dt>Servicio</dt><dd>${svc.name}</dd><dt>Día</dt><dd>${fechaTxt}</dd>
       <dt>Hora</dt><dd>${r.hora} – ${r.fin}</dd><dt>Precio</dt><dd>${r.precio}€</dd><dt>Código</dt><dd>${r.id}</dd></dl>
+      <small>${[r.email?`📧 Te hemos enviado la confirmación a <b>${data.email.replace(/[<>&"]/g,"")}</b>.`:"",r.whatsapp?"💬 Y también por WhatsApp.":""].filter(Boolean).join("<br>")||"Guarda tu código de reserva."}</small>
       <small>Si no puedes venir, avísanos por WhatsApp para liberar el hueco.</small>
       <a class="btn btn-ghost" href="${wa}?text=${encodeURIComponent(`Hola, tengo la cita ${r.id} (${fechaTxt} a las ${r.hora}).`)}" target="_blank" rel="noopener">Escribir por WhatsApp</a>
     </div>`;
