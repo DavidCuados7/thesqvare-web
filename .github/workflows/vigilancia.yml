@@ -17,8 +17,8 @@ jobs:
   revisar:
     runs-on: ubuntu-latest
     env:
-      WEB: https://davidcuados7.github.io/thesqvare-web/
-      EXTRA: ""
+      WEB: https://thesqvare.com
+      EXTRA: https://www.thesqvare.com
       TEXTO: "The Sqvare"
       GH_TOKEN: ${{ github.token }}
     steps:
