@@ -148,10 +148,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--sol);outline-offset
 .s-cont .eyebrow{color:var(--ink)}
 .s-cont .btn{background:var(--ink);color:var(--sol);box-shadow:5px 5px 0 var(--azul)}
 .s-cont .btn.ghost{background:transparent;color:var(--ink);outline-color:var(--ink);box-shadow:none}
-.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .contact div{border-top:3px solid var(--ink);padding-top:12px;display:grid;gap:4px;min-width:0}
 .contact small{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
 .contact a,.contact span{font-family:var(--display);font-weight:600;font-size:clamp(.95rem,1.6vw,1.2rem);color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+.contact a:hover{text-decoration:underline;text-underline-offset:4px}
 footer{font-family:var(--mono);font-size:.75rem}
 
 /* entrada animada (parte visible siempre) */
@@ -323,7 +324,7 @@ footer{font-family:var(--mono);font-size:.75rem}
       <span class="eyebrow">Cómo trabajo</span>
       <h2>De la charla a tu web online, sin líos.</h2>
       <ol class="steps">
-        <li><h3>Hablamos</h3><p>Me cuentas tu negocio en un café o por WhatsApp.</p></li>
+        <li><h3>Hablamos</h3><p>Me cuentas tu negocio en un café, por email o por Instagram.</p></li>
         <li><h3>Diseño</h3><p>Te enseño una primera versión con tus fotos y tus colores.</p></li>
         <li><h3>Ajustamos</h3><p>Cambiamos lo que quieras hasta que te guste.</p></li>
         <li><h3>¡Online!</h3><p>La publico con tu dominio y te enseño a usarla.</p></li>
@@ -364,12 +365,11 @@ footer{font-family:var(--mono);font-size:.75rem}
       <span class="eyebrow">Hablemos</span>
       <h2>¿Tu local, en el móvil de todo el barrio?</h2>
       <div class="ctas">
-        <a class="btn" href="https://wa.me/34648515835" target="_blank" rel="noopener">Escríbeme por WhatsApp →</a>
-        <a class="btn ghost" href="mailto:thesqvare@gmail.com">Mándame un email</a>
+        <a class="btn" href="mailto:thesqvare@gmail.com?subject=Quiero%20una%20web%20para%20mi%20local">Escríbeme un email →</a>
+        <a class="btn ghost" href="https://instagram.com/the.sqvare" target="_blank" rel="noopener">Escríbeme por Instagram</a>
       </div>
       <div class="contact">
-        <div><small>WhatsApp</small><span>+34 648 51 58 35</span></div>
-        <div><small>Email</small><span>thesqvare@gmail.com</span></div>
+        <div><small>Email</small><a href="mailto:thesqvare@gmail.com?subject=Quiero%20una%20web%20para%20mi%20local">thesqvare@gmail.com</a></div>
         <div><small>Instagram</small><a href="https://instagram.com/the.sqvare" target="_blank" rel="noopener">@the.sqvare</a></div>
       </div>
       <footer>© <span id="yr">2026</span> The Sqvare · David Cuadros</footer>
