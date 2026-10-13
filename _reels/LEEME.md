@@ -43,7 +43,7 @@ Las capas "antes" y "plataforma" están en `overlay.py`. La app de reservas es g
 
 ## Reglas de contenido
 
-- Nunca nombres Santa Coloma ni ninguna ciudad en textos, imágenes o hashtags.
+- Nunca nombres Santa Coloma ni ninguna ciudad en los textos ni en las imágenes o vídeos. En los hashtags del copy sí: añade siempre al final #SantaColoma #SantaColomaDeGramenet #Badalona #SantAndreu #Sarria #SantAdria #Barcelona #NegociosBarcelona.
 - Nunca pongas el teléfono de David. El contacto es "Escríbenos por DM" o thesqvare@gmail.com.
 - No se ve la cara de David ni de nadie: solo la pantalla del móvil.
 - Nunca grabes la web de Barber Prince (`barber-prince/`): es de un cliente potencial y no se enseña.
