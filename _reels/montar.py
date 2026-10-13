@@ -36,8 +36,8 @@ BASE.paste(Image.new('RGB', (W, H), (60, 80, 20)), (0, 0), glow)
 def statusbar(img, t):
     dr = ImageDraw.Draw(img)
     band = int(48 * 2 * SC)
-    dr.rectangle([0, 0, SW, band], fill=img.getpixel((SW // 2, band + 3)) if (t >= 2.0 or not CFG.get('old')) else (255, 255, 255))
-    bgc = img.getpixel((SW // 2, band + 3)) if (t >= 2.0 or not CFG.get('old')) else (255, 255, 255)
+    dr.rectangle([0, 0, SW, band], fill=img.getpixel((SW // 2, band + 3)) if (t >= CFG.get('old_end', 2.0) or not CFG.get('old')) else (255, 255, 255))
+    bgc = img.getpixel((SW // 2, band + 3)) if (t >= CFG.get('old_end', 2.0) or not CFG.get('old')) else (255, 255, 255)
     ink = (20, 20, 20) if sum(bgc) > 380 else (245, 245, 245)
     dr.text((52, 28), '9:41', font=F('Inter-SemiBold.otf', 25), fill=ink)
     x = SW - 160
@@ -156,8 +156,9 @@ def frame(n):
     img.paste((0, 0, 0), (0, 0), sh.filter(ImageFilter.GaussianBlur(40)))
     img.paste(ph, (x, y), ph)
     draw_caption(img, t)
-    if CFG.get('old') and 1.55 <= t < 2.05:  # glitch
-        k = 22 * math.sin((t - 1.55) / 0.5 * math.pi)
+    OE = CFG.get('old_end', 2.0)
+    if CFG.get('old') and OE - .45 <= t < OE + .05:  # glitch
+        k = 22 * math.sin((t - (OE - .45)) / 0.5 * math.pi)
         img = rgb_split(img, k)
         if int(t * 60) % 2 == 0:
             a = np.asarray(img).copy(); yy = int((t * 997) % 1500) + 200

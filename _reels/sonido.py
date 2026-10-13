@@ -25,6 +25,9 @@ for t in cfg.get('whoosh',[]): add(whoosh(.55),t,.45)
 for t in cfg.get('tap',[]): add(tap(),t,.6)
 for t in cfg.get('keys',[]): add(key(),t,.35)
 for t in cfg.get('chime',[]): add(chime(),t,.8)
+for t in cfg.get('glitch',[]):
+  for k in range(9): add(rng.standard_normal(int(.03*SR))*.6,t+k*.045)
+  add(whoosh(.4),t-.05,.4)
 add(whoosh(.5),12.1,.6); add(kick(),12.5,1.2)
 for b in np.arange(13.0,15,0.5): add(kick(),b,.5)
 out=out/np.max(np.abs(out))*0.8
