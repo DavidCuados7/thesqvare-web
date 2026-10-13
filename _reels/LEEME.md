@@ -59,3 +59,6 @@ Desde aquí no se pueden generar voces (los servicios de voz están bloqueados),
 3. `python3 _reels/narrador.py ARCHIVO 2026-10-13 2026-10-14 ...` (fechas en el orden de los guiones) crea `ig/FECHA/reel-voz.mp4`. Comprueba los finales que imprime: tienen que estar repartidos a lo largo del audio.
 4. Commit, push y cambia el media del post en Metricool a `.../ig/FECHA/reel-voz.mp4` (nombre nuevo, así Metricool no coge una versión en caché).
 Si David pasa dos voces, se pueden alternar: la más rápida y expresiva para los reels de gancho (app vs. web, antes/después).
+
+### Guiones de cada semana
+La tarea de marketing de los lunes escribe los guiones del narrador en `_reels/guiones/AAAA-MM-DD.json` (fecha del lunes): `[{"fecha","formato","guion"}]`, uno por reel, en orden y acabando con "Escríbenos por DM.". La tarea de Drive genera el documento semanal con `python3 _reels/doc_semana.py posts.json _reels/guiones/LUNES.json "Título" "Subtítulo" salida.b64`, que incluye la sección "Guiones para el narrador".
