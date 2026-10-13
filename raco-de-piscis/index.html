@@ -247,7 +247,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
   <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></g></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></g></symbol>
-  <symbol id="i-canal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></g></symbol>
+  <symbol id="i-canal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
 </svg>
 
 <div class="propuesta" id="propuesta" role="region" aria-label="Aviso de propuesta">
@@ -405,7 +405,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
             <a id="lnkMapa" target="_blank" rel="noopener" href="#"><svg><use href="#i-pin"/></svg><span><span id="direccion"></span><small id="direccionNota"></small></span></a>
             <a id="lnkWa" target="_blank" rel="noopener" href="#"><svg><use href="#i-wa"/></svg><span>Escríbeme por WhatsApp<small id="telVisible"></small></span></a>
             <a id="lnkIg" target="_blank" rel="noopener" href="#"><svg><use href="#i-ig"/></svg><span>Instagram<small id="igVisible"></small></span></a>
-            <a id="lnkCanal" target="_blank" rel="noopener" href="#"><svg><use href="#i-canal"/></svg><span>Canal de WhatsApp<small>Promos y novedades antes que nadie</small></span></a>
+            <a id="lnkMail" href="#"><svg><use href="#i-canal"/></svg><span>Correo<small id="mailVisible"></small></span></a>
           </div>
         </div>
         <div class="mapa"><iframe id="mapa" title="Mapa de situación" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
@@ -447,10 +447,11 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
 /* ================== EDITA AQUÍ LOS DATOS DEL CENTRO ================== */
 const IMG = "https://d375139ucebi94.cloudfront.net/region2/es/172482/";
 const CONFIG = {
-  whatsapp: "34663480245",
-  telefonoVisible: "663 48 02 45",
-  instagram: "el_racodepiscis",
-  canal: "https://whatsapp.com/channel/0029VbDrWMHHrDZcmXMTXa3k",
+  // MODO PRUEBAS: contacto de The Sqvare. Al entregar, poner aquí el WhatsApp e Instagram de Andrea.
+  whatsapp: "34648515835",
+  telefonoVisible: "648 51 58 35",
+  instagram: "the.sqvare",
+  email: "thesqvare@gmail.com",
   direccion: "Carrer de la Cultura, 44 · Santa Coloma de Gramenet",
   direccionNota: "La cabina está dentro de Mimat",
   mapa: "Carrer de la Cultura 44, 08922 Santa Coloma de Gramenet",
@@ -559,7 +560,7 @@ $("#lnkMapa").href=$("#barraMapa").href=mapsUrl;
 $("#mapa").src="https://maps.google.com/maps?q="+encodeURIComponent(CONFIG.mapa)+"&z=16&output=embed";
 $("#lnkWa").href=$("#barraWa").href=wa+"?text="+encodeURIComponent("Hola Andrea, te escribo desde tu web.");
 $("#lnkIg").href="https://instagram.com/"+CONFIG.instagram;
-$("#lnkCanal").href=CONFIG.canal;
+$("#lnkMail").href="mailto:"+CONFIG.email; $("#mailVisible").textContent=CONFIG.email;
 
 if(store.get("rp2-sinAviso",false)) $("#propuesta").hidden=true;
 $("#cerrarPropuesta").onclick=()=>{$("#propuesta").hidden=true;store.set("rp2-sinAviso",true)};
