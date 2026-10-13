@@ -190,7 +190,7 @@ function montarHoy(ss) {
     ["B5:B6", "Citas hoy", `=SUMPRODUCT((Agenda!J2:J=${hoy})*${activa})`, "0"],
     ["C5:C6", "Esta semana", `=SUMPRODUCT((Agenda!J2:J>=${ini})*(Agenda!J2:J<=${fin})*${activa})`, "0"],
     ["D5:E6", "Previsto esta semana", `=SUMPRODUCT((Agenda!J2:J>=${ini})*(Agenda!J2:J<=${fin})*${activa}*Agenda!G2:G)`, '#,##0 "€"'],
-    ["F5:K6", "Próxima cita", `=IFERROR(JOIN("  ·  ",QUERY(Agenda!A2:P,"select A,K,C,D where (J > '"&${hoy}&"' or (J = '"&${hoy}&"' and K >= '"&TEXT(HOUR(NOW()),"00")&":"&TEXT(MINUTE(NOW()),"00")&"')) and not H starts with 'Cancelada' order by J,K limit 1",0)),"Sin citas próximas")`, "@"]
+    ["F5:K6", "Próxima cita", `=IFERROR(LET(q,QUERY(Agenda!A2:P,"select A,K,C,D where (J > '"&${hoy}&"' or (J = '"&${hoy}&"' and K >= '"&TEXT(HOUR(NOW()),"00")&":"&TEXT(MINUTE(NOW()),"00")&"')) and not H starts with 'Cancelada' order by J,K limit 1",0),PROPER(TEXT(INDEX(q,1,1),"ddd d mmm"))&"  ·  "&INDEX(q,1,2)&"  ·  "&INDEX(q,1,3)&"  ·  "&INDEX(q,1,4)),"Sin citas próximas")`, "@"]
   ];
   tarjetas.forEach(([a1, titulo, f, fmt]) => {
     const [arriba, abajo] = a1.split(":").map(x => x.replace(/\d+/, m => m));
@@ -217,6 +217,7 @@ function montarHoy(ss) {
   h.getRange("H10:K49").setBackground(COL.blanco).setWrap(true).setBorder(null, null, true, null, null, true, COL.arena, SpreadsheetApp.BorderStyle.SOLID);
   h.getRange("B10:B49").setFontWeight("bold").setFontColor(COL.oliva);
   h.getRange("H10:I49").setFontWeight("bold").setFontColor(COL.oliva);
+  h.getRange("H10:H49").setNumberFormat("ddd d mmm");
   h.setFrozenRows(0);
   h.setTabColor(COL.rosa);
 }
