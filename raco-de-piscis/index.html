@@ -193,6 +193,24 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--salvia);
 .resumen .aviso{color:#C9D1BE}
 .resumen .aviso.err{color:#F3C2BA}
 @media(max-width:960px){.reserva{grid-template-columns:minmax(0,1fr)}.resumen{position:static}}
+/* Cambiar / cancelar desde el correo */
+#gestionar{background:var(--oliva);color:var(--lino);padding:56px 0 64px}
+.gest{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.gest .chip{display:inline-block;background:var(--rosa);color:#fff;border-radius:999px;padding:.25rem .8rem;font-size:.85rem}
+.gest h2{color:var(--lino);margin:.7rem 0 .6rem}
+.gest > div > p{color:#D6DCCD;max-width:46ch}
+.gest .msg{background:rgba(244,239,230,.12);border-left:3px solid var(--rosa);padding:.8rem 1rem;border-radius:8px;color:var(--lino);margin-top:1rem}
+.tarjeta{background:var(--blanco);color:var(--tinta);border-radius:20px;padding:26px}
+.tarjeta dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1rem}
+.tarjeta dt{color:var(--gris)}
+.tarjeta dd{text-align:right;font-weight:500}
+.tarjeta .acc{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.confirmar{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--linea)}
+.confirmar p{font-weight:500}
+.estado-chip{display:inline-block;border-radius:999px;padding:.1rem .6rem;font-size:.85rem}
+@media(max-width:900px){.gest{grid-template-columns:minmax(0,1fr);gap:24px}}
+.modo-cambio{background:var(--oliva);color:var(--lino);border-radius:14px;padding:14px 18px;margin-top:1.6rem;display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.modo-cambio button{background:none;border:1px solid var(--lino);color:var(--lino);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
 .hecho{text-align:center;padding:16px 4px}
 .hecho .ok{width:60px;height:60px;border-radius:50%;background:var(--salvia);color:#fff;display:grid;place-items:center;font-size:1.6rem;margin:0 auto 14px}
 .hecho h3{font-size:2rem;margin-bottom:.5rem}
@@ -272,6 +290,8 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
 </header>
 
 <main id="inicio">
+  <!-- GESTIONAR CITA: solo aparece al abrir un enlace del correo -->
+  <section id="gestionar" hidden aria-live="polite"><div class="wrap gest" id="gestCaja"></div></section>
   <!-- PORTADA -->
   <section class="hero">
     <div class="wrap hero-grid">
@@ -355,7 +375,8 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   <section id="reservar">
     <div class="wrap">
       <h2>Reserva <em>tu cita</em></h2>
-      <p class="intro">Elige tratamiento, día y hora. Te confirmo la cita por WhatsApp en cuanto la vea.</p>
+      <p class="intro">Elige tratamiento, día y hora. Recibes la confirmación al momento en tu correo, con botones para cambiarla o cancelarla.</p>
+      <div class="modo-cambio" id="modoCambio" hidden><span id="modoCambioTxt"></span><button type="button" id="salirCambio">Volver sin cambiar</button></div>
       <div class="reserva">
         <form class="pasos" id="fReserva" novalidate>
           <div class="paso">
@@ -368,12 +389,14 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
             <div class="dias" id="rDias" role="group" aria-label="Día"></div>
             <div class="horas" id="rHoras" role="group" aria-label="Hora"></div>
           </div>
-          <div class="paso">
+          <div class="paso" id="pasoDatos">
             <h3>Tus datos</h3>
             <div class="dos">
               <div><label for="rNombre">Nombre</label><input id="rNombre" autocomplete="name"></div>
               <div><label for="rTel">Teléfono</label><input id="rTel" type="tel" inputmode="tel" autocomplete="tel"></div>
             </div>
+            <label for="rEmail">Correo electrónico <span style="color:var(--gris)">(aquí te llega la confirmación)</span></label>
+            <input id="rEmail" type="email" inputmode="email" autocomplete="email">
             <label for="rNota">¿Algo que deba saber? <span style="color:var(--gris)">(opcional)</span></label>
             <textarea id="rNota" placeholder="Primera vez, zona a trabajar, embarazo, alguna molestia…"></textarea>
           </div>
@@ -387,7 +410,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
             <dt>Hora</dt><dd id="sHora">—</dd>
           </dl>
           <div class="total"><span>Precio</span><b id="sPrecio">—</b></div>
-          <button class="btn" id="rEnviar" type="button"><svg><use href="#i-wa"/></svg>Pedir la cita por WhatsApp</button>
+          <button class="btn" id="rEnviar" type="button"><svg><use href="#i-cal"/></svg><span>Confirmar cita</span></button>
           <p class="aviso" id="rAviso">Pagas el día de la cita, en la cabina.</p>
         </aside>
       </div>
@@ -432,7 +455,9 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
     <h3 id="diT">Tu web, <em>tu rincón</em></h3>
     <p class="intro" style="margin-top:.4rem">Lo que esta web hace por El Racó de Piscis:</p>
     <ul class="incluido">
-      <li><div><b>Reservas en tu propia web</b><span>La clienta elige tratamiento, día y hora libres según tu horario, y la petición te llega por WhatsApp con todos los datos.</span></div></li>
+      <li><div><b>Reservas reales, sin solapes</b><span>Solo se ofrecen las horas libres de verdad. La clienta recibe la confirmación por correo al momento y a ti te llega el aviso.</span></div></li>
+      <li><div><b>Tu agenda en Google Drive</b><span>Todas las citas en una hoja ordenada por fecha, con la pestaña "Hoy" (citas del día, semana y lo previsto) y colores por estado.</span></div></li>
+      <li><div><b>Cambiar y cancelar, sin llamadas</b><span>La clienta lo hace desde su correo y a ti te avisa; si lo haces tú, ella recibe el aviso automáticamente.</span></div></li>
       <li><div><b>Sin otros centros al lado</b><span>En tu ficha de Booksy, debajo de tus servicios, se anuncian otros centros cercanos. Aquí solo estás tú.</span></div></li>
       <li><div><b>Tu marca de verdad</b><span>Tus colores, tus fotos, tus colecciones "Volver a ti" y "Ritual facial", contadas a tu manera.</span></div></li>
       <li><div><b>Promos que se quitan solas</b><span>El bono de octubre aparece en portada y desaparece solo cuando termina el mes.</span></div></li>
@@ -459,6 +484,8 @@ const CONFIG = {
   valoracion: { nota: "5,0", reseñas: 16 },
   // Horario Lunes..Domingo: [abre, cierra] o null si cerrado
   horario: [null, ["10:00","20:00"], ["10:00","20:00"], ["10:00","20:00"], ["17:00","20:00"], null, null],
+  // URL del sistema de reservas (Google Apps Script). Vacía = la cita se pide por WhatsApp.
+  apiUrl: "",
   pasoMinutos: 30,
   diasReserva: 21,
   fotos: {
@@ -614,31 +641,56 @@ pintarCats();
 $("#resenas").innerHTML=CONFIG.resenas.map(r=>`<figure class="resena"><p>“${esc(r.texto)}”</p><footer><b>${esc(r.quien)}</b> · ${esc(r.serv)} · Booksy</footer></figure>`).join("");
 
 /* ===== Reserva ===== */
+const API=CONFIG.apiUrl;
 const sel={servicio:null,dia:null,hora:null};
+let disp=null, cambio=null, gest=null, nDisp=0;
 $("#rServicio").innerHTML=`<option value="">Elige un tratamiento…</option>`+
   CONFIG.categorias.map(c=>`<optgroup label="${esc(c.nombre)}">${c.servicios.flatMap(s=>s.v.map(([id])=>{const v=VAR[id];return `<option value="${id}">${esc(v.nombre)} · ${dur(v.min)} · ${euro(v.precio)}</option>`})).join("")}</optgroup>`).join("")+
   `<optgroup label="Promociones">${CONFIG.extra.map(([id])=>`<option value="${id}">${esc(VAR[id].nombre)} · ${euro(VAR[id].precio)}</option>`).join("")}</optgroup>`;
+const aFecha=f=>{const[y,m,d]=f.split("-").map(Number);return new Date(y,m-1,d)};
+const fLarga=f=>fechaLarga(aFecha(f));
 
-function horasLibres(d,minutos){
+function horasLocales(d,minutos){
   const h=CONFIG.horario[idx(d)]; if(!h) return [];
   const {min}=ahoraMadrid(), esHoy=ymd(d)===ymd(HOY.fecha), out=[];
   for(let t=aMin(h[0]);t+minutos<=aMin(h[1]);t+=CONFIG.pasoMinutos) if(!esHoy||t>=min+60) out.push(aHora(t));
   return out;
 }
+async function cargarDisp(){
+  const n=++nDisp;
+  disp=null;
+  if(!API||!sel.servicio){pintarDias();return}
+  $("#rDias").innerHTML=""; $("#rHoras").innerHTML=`<p class="vacio">Buscando huecos libres…</p>`;
+  try{
+    const r=await fetch(`${API}?accion=disponibilidad&servicio=${encodeURIComponent(sel.servicio)}${cambio?`&excluir=${encodeURIComponent(cambio.id)}`:""}`,{cache:"no-store"}).then(r=>r.json());
+    if(n!==nDisp) return;
+    if(!r.ok) throw new Error(r.error);
+    disp=r.dias; pintarDias();
+  }catch(_){
+    if(n!==nDisp) return;
+    $("#rHoras").innerHTML=`<p class="vacio">No hemos podido cargar los huecos libres. <a href="#" id="reintentar" style="color:var(--oliva)">Reintentar</a></p>`;
+    $("#reintentar").onclick=e=>{e.preventDefault();cargarDisp()};
+  }
+}
+function diasDisponibles(){
+  if(disp) return Object.keys(disp).sort();
+  const m=sel.servicio?VAR[sel.servicio].min:30, out=[];
+  for(let n=0;n<CONFIG.diasReserva;n++){const d=masDias(HOY.fecha,n); if(horasLocales(d,m).length) out.push(ymd(d))}
+  return out;
+}
+function horasDe(f){ return disp?(disp[f]||[]):horasLocales(aFecha(f),sel.servicio?VAR[sel.servicio].min:30) }
 function pintarDias(){
-  const m=sel.servicio?VAR[sel.servicio].min:30, dias=[];
-  for(let n=0;n<CONFIG.diasReserva;n++){const d=masDias(HOY.fecha,n); if(horasLibres(d,m).length) dias.push(d)}
-  if(sel.dia&&!dias.some(d=>ymd(d)===sel.dia)) sel.dia=null;
-  if(!sel.dia&&dias.length) sel.dia=ymd(dias[0]);
-  $("#rDias").innerHTML=dias.map(d=>`<button type="button" data-d="${ymd(d)}" aria-pressed="${ymd(d)===sel.dia}" aria-label="${fechaLarga(d)}"><small>${DCORTO[idx(d)]}</small><b>${d.getDate()}</b><small>${d.toLocaleDateString("es-ES",{month:"short"}).replace(".","")}</small></button>`).join("");
+  const dias=diasDisponibles();
+  if(sel.dia&&!dias.includes(sel.dia)) sel.dia=null;
+  if(!sel.dia&&dias.length) sel.dia=dias[0];
+  $("#rDias").innerHTML=dias.map(f=>{const d=aFecha(f);return `<button type="button" data-d="${f}" aria-pressed="${f===sel.dia}" aria-label="${fechaLarga(d)}"><small>${DCORTO[idx(d)]}</small><b>${d.getDate()}</b><small>${d.toLocaleDateString("es-ES",{month:"short"}).replace(".","")}</small></button>`}).join("");
   pintarHoras();
 }
-const diaSel=()=>{const[y,m,d]=sel.dia.split("-").map(Number);return new Date(y,m-1,d)};
 function pintarHoras(){
-  if(!sel.servicio){$("#rHoras").innerHTML=`<p class="vacio">Elige primero un tratamiento para ver las horas en que cabe.</p>`;resumen();return}
-  const hs=sel.dia?horasLibres(diaSel(),VAR[sel.servicio].min):[];
+  if(!sel.servicio){$("#rHoras").innerHTML=`<p class="vacio">Elige primero un tratamiento para ver las horas libres.</p>`;resumen();return}
+  const hs=sel.dia?horasDe(sel.dia):[];
   if(!hs.includes(sel.hora)) sel.hora=null;
-  $("#rHoras").innerHTML=hs.length?hs.map(h=>`<button type="button" aria-pressed="${h===sel.hora}">${h}</button>`).join(""):`<p class="vacio">No quedan horas este día. Prueba con otro.</p>`;
+  $("#rHoras").innerHTML=hs.length?hs.map(h=>`<button type="button" aria-pressed="${h===sel.hora}">${h}</button>`).join(""):`<p class="vacio">${sel.dia?"No quedan horas este día. Prueba con otro.":"No quedan huecos libres para este tratamiento en las próximas semanas. Escríbeme y lo buscamos."}</p>`;
   resumen();
 }
 function resumen(){
@@ -646,33 +698,138 @@ function resumen(){
   $("#sServ").textContent=v?v.nombre:"—"; $("#sDur").textContent=v?dur(v.min):"—";
   $("#sPrecio").textContent=v?euro(v.precio):"—";
   $("#rDuracion").textContent=v?"· "+dur(v.min):"";
-  $("#sDia").textContent=sel.dia?fechaLarga(diaSel()):"—"; $("#sHora").textContent=sel.hora||"—";
-  const av=$("#rAviso"); av.classList.remove("err"); av.textContent="Pagas el día de la cita, en la cabina.";
+  $("#sDia").textContent=sel.dia?fLarga(sel.dia):"—"; $("#sHora").textContent=sel.hora||"—";
+  const av=$("#rAviso"); av.classList.remove("err");
+  av.textContent=cambio?(cambio.rol==="centro"?`Al guardar, ${cambio.cita.nombre} recibirá un correo con el nuevo horario.`:`Al guardar, ${CONFIG.nombreProfesional||"Andrea"} recibirá el aviso del cambio.`):"Pagas el día de la cita, en la cabina.";
 }
 function elegir(id){
-  sel.servicio=id; $("#rServicio").value=id; pintarDias();
+  sel.servicio=id; $("#rServicio").value=id; cargarDisp();
   $("#reservar").scrollIntoView({behavior:"smooth",block:"start"});
 }
-$("#rServicio").addEventListener("change",e=>{sel.servicio=e.target.value||null;pintarDias()});
+$("#rServicio").addEventListener("change",e=>{sel.servicio=e.target.value||null;cargarDisp()});
 $("#rDias").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;sel.dia=b.dataset.d;pintarDias()});
 $("#rHoras").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;sel.hora=b.textContent;pintarHoras()});
 pintarDias();
 
-$("#rEnviar").addEventListener("click",()=>{
+const enviar=(d)=>fetch(API,{method:"POST",body:JSON.stringify(d)}).then(r=>r.json());
+function boton(texto,ocupado){const b=$("#rEnviar");b.disabled=!!ocupado;b.querySelector("span").textContent=texto}
+
+$("#rEnviar").addEventListener("click",async()=>{
   const av=$("#rAviso"), err=(t,f)=>{av.textContent=t;av.classList.add("err");if(f)$(f).focus()};
-  const nombre=$("#rNombre").value.trim(), tel=$("#rTel").value.trim(), nota=$("#rNota").value.trim();
   if(!sel.servicio) return err("Elige un tratamiento.","#rServicio");
   if(!sel.hora) return err("Elige una hora para tu cita.");
+  if(cambio) return guardarCambio(err);
+  const nombre=$("#rNombre").value.trim(), tel=$("#rTel").value.trim(), email=$("#rEmail").value.trim(), nota=$("#rNota").value.trim();
   if(!nombre) return err("Escribe tu nombre.","#rNombre");
   if(tel.replace(/\D/g,"").length<9) return err("Escribe un teléfono de 9 cifras.","#rTel");
-  const v=VAR[sel.servicio], fl=fechaLarga(diaSel());
-  const texto=`Hola Andrea, quiero pedir cita desde tu web 🌿\n\n• ${v.nombre} (${dur(v.min)}, ${euro(v.precio)})\n• ${fl.charAt(0).toUpperCase()+fl.slice(1)} a las ${sel.hora}\n\nNombre: ${nombre}\nTeléfono: ${tel}${nota?`\nNota: ${nota}`:""}`;
-  window.open(wa+"?text="+encodeURIComponent(texto),"_blank","noopener");
-  $("#fReserva").innerHTML=`<div class="hecho"><div class="ok" aria-hidden="true">✓</div><h3>Ya casi está</h3>
-    <p>Envía el mensaje de WhatsApp que se ha abierto y te confirmo la cita del ${esc(fl)} a las ${sel.hora}.</p>
-    <p style="margin-top:1rem"><a class="btn btn-linea" href="${wa}?text=${encodeURIComponent(texto)}" target="_blank" rel="noopener">Volver a abrir WhatsApp</a></p></div>`;
-  $("#rEnviar").disabled=true; $("#rEnviar").textContent="Solicitud preparada";
+  if(API&&!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) return err("Escribe tu correo para enviarte la confirmación.","#rEmail");
+  const v=VAR[sel.servicio], fl=fLarga(sel.dia);
+  if(!API){ // Sin sistema conectado: por WhatsApp
+    const texto=`Hola, quiero pedir cita desde la web 🌿\n\n• ${v.nombre} (${dur(v.min)}, ${euro(v.precio)})\n• ${fl.charAt(0).toUpperCase()+fl.slice(1)} a las ${sel.hora}\n\nNombre: ${nombre}\nTeléfono: ${tel}${nota?`\nNota: ${nota}`:""}`;
+    window.open(wa+"?text="+encodeURIComponent(texto),"_blank","noopener");
+    $("#fReserva").innerHTML=`<div class="hecho"><div class="ok" aria-hidden="true">✓</div><h3>Ya casi está</h3><p>Envía el mensaje de WhatsApp que se ha abierto y te confirmamos la cita.</p></div>`;
+    return boton("Solicitud preparada",true);
+  }
+  boton("Reservando…",true);
+  try{
+    const r=await enviar({servicio:sel.servicio,fecha:sel.dia,hora:sel.hora,nombre,telefono:tel,email,notas:nota});
+    if(!r.ok){ boton("Confirmar cita"); err(r.error||"No se ha podido reservar. Inténtalo de nuevo."); if(/ocupa/i.test(r.error||"")) cargarDisp(); return; }
+    $("#fReserva").innerHTML=`<div class="hecho"><div class="ok" aria-hidden="true">✓</div><h3>¡Cita reservada!</h3>
+      <p>${esc(v.nombre)}, ${esc(fl)} a las ${sel.hora}.</p>
+      <p style="margin-top:.8rem">${r.emailEnviado?`Te hemos enviado la confirmación a <b>${esc(email)}</b>. Desde ese correo puedes cambiarla o cancelarla cuando quieras.`:`Apunta tu código por si necesitas cambiarla.`}</p>
+      <p style="margin-top:.8rem;color:var(--gris);font-size:.9rem">Código: ${esc(r.id)}</p></div>`;
+    boton("Reservada ✓",true); $("#rAviso").textContent="¡Nos vemos pronto! 🌿";
+  }catch(_){ boton("Confirmar cita"); err("No hay conexión con el sistema de reservas. Inténtalo de nuevo en un momento."); }
 });
+
+/* ===== Cambiar o cancelar desde el enlace del correo ===== */
+const qs=new URLSearchParams(location.search);
+if(qs.get("cita")&&qs.get("t")) abrirGestion(qs.get("cita"),qs.get("t"),qs.get("modo"));
+
+async function abrirGestion(id,t,modo){
+  const sec=$("#gestionar"); sec.hidden=false;
+  $("#gestCaja").innerHTML=`<div><span class="chip">Tu cita</span><h2>Buscando tu cita…</h2></div>`;
+  setTimeout(()=>sec.scrollIntoView({block:"start"}),50);
+  if(!API){ $("#gestCaja").innerHTML=`<div><h2>Sistema de reservas no conectado</h2><p>Escríbenos por WhatsApp para cambiar o cancelar tu cita.</p></div>`; return; }
+  try{
+    const r=await fetch(`${API}?accion=ver&id=${encodeURIComponent(id)}&t=${encodeURIComponent(t)}`,{cache:"no-store"}).then(r=>r.json());
+    if(!r.ok) throw new Error(r.error);
+    gest={id,t,rol:r.rol,cita:r.cita};
+    pintarGestion(modo==="cancelar"&&r.cita.activa&&!r.cita.pasada?"confirmar":"", "");
+    if(modo==="cambiar"&&r.cita.activa&&!r.cita.pasada) entrarCambio();
+  }catch(e){
+    $("#gestCaja").innerHTML=`<div><span class="chip">Tu cita</span><h2>No encontramos esta cita</h2><p>${esc(e.message||"El enlace no es válido.")} Si necesitas ayuda, <a href="${wa}" style="color:var(--lino)">escríbenos por WhatsApp</a>.</p></div>`;
+  }
+}
+function pintarGestion(vista,mensaje){
+  const {rol,cita}=gest, centro=rol==="centro", nombre=esc(cita.nombre);
+  const colorEstado=cita.activa?(cita.estado==="Cambiada"?"#F6E3B4":"#D4E6C8"):"#F7E7E3";
+  let acciones="";
+  if(!cita.activa) acciones=centro?`<p style="margin-top:1rem;color:var(--gris)">Esta cita está cancelada.</p>`:`<div class="acc"><a class="btn btn-oliva" href="#reservar" id="gNueva">Reservar otra cita</a></div>`;
+  else if(cita.pasada) acciones=`<p style="margin-top:1rem;color:var(--gris)">Esta cita ya ha pasado.</p>`;
+  else if(vista==="confirmar") acciones=`<div class="confirmar">
+      <p>${centro?`¿Cancelar la cita de ${nombre}? Le llegará un correo avisándola.`:"¿Seguro que quieres cancelar tu cita?"}</p>
+      ${centro?`<label for="gMotivo">Motivo <span style="color:var(--gris)">(opcional, lo verá en el correo)</span></label><textarea id="gMotivo" placeholder="Por ejemplo: me ha surgido un imprevisto"></textarea>`:""}
+      <div class="acc"><button type="button" class="btn btn-rosa" id="gSiCancelar">Sí, cancelar la cita</button><button type="button" class="btn btn-linea" id="gNoCancelar">No, mantenerla</button></div>
+      <p class="aviso" id="gAviso"></p></div>`;
+  else acciones=`<div class="acc"><button type="button" class="btn btn-oliva" id="gCambiar">Cambiar día u hora</button><button type="button" class="btn btn-linea" id="gCancelar">Cancelar cita</button></div>`;
+  $("#gestCaja").innerHTML=`<div>
+      <span class="chip">${centro?"Vista del centro":"Tu cita"}</span>
+      <h2>${centro?`Cita de <em>${nombre}</em>`:`Hola, <em>${nombre}</em>`}</h2>
+      <p>${centro?`Cualquier cambio que hagas aquí se guarda en la agenda y se avisa a ${nombre} por correo.`:"Aquí puedes cambiar o cancelar tu cita. Andrea recibe el aviso al momento."}</p>
+      ${mensaje?`<p class="msg">${mensaje}</p>`:""}
+    </div>
+    <div class="tarjeta"><dl>
+      <dt>Tratamiento</dt><dd>${esc(cita.tratamiento)}</dd>
+      <dt>Día</dt><dd>${esc(fLarga(cita.fecha))}</dd>
+      <dt>Hora</dt><dd>${cita.hora} – ${cita.fin}</dd>
+      <dt>Precio</dt><dd>${euro(cita.precio)}</dd>
+      <dt>Estado</dt><dd><span class="estado-chip" style="background:${colorEstado}">${esc(cita.estado)}</span></dd>
+      <dt>Código</dt><dd>${esc(cita.id)}</dd>
+    </dl>${acciones}</div>`;
+  const on=(s,f)=>{const el=$(s); if(el) el.onclick=f};
+  on("#gCambiar",entrarCambio);
+  on("#gCancelar",()=>pintarGestion("confirmar"));
+  on("#gNoCancelar",()=>pintarGestion(""));
+  on("#gSiCancelar",cancelarCita);
+}
+async function cancelarCita(){
+  const b=$("#gSiCancelar"), av=$("#gAviso"); b.disabled=true; b.textContent="Cancelando…";
+  try{
+    const r=await enviar({accion:"cancelar",id:gest.id,t:gest.t,motivo:($("#gMotivo")||{}).value||""});
+    if(!r.ok) throw new Error(r.error);
+    gest.cita=r.cita;
+    pintarGestion("", gest.rol==="centro"?`Cita cancelada. Hemos avisado a ${esc(r.cita.nombre)} por correo y el hueco vuelve a estar libre.`:"Tu cita se ha cancelado. Te hemos enviado un correo de confirmación y Andrea ya está avisada.");
+  }catch(e){ b.disabled=false; b.textContent="Sí, cancelar la cita"; av.textContent=e.message||"No se ha podido cancelar. Inténtalo de nuevo."; av.classList.add("err"); }
+}
+function entrarCambio(){
+  cambio=gest;
+  $("#pasoDatos").hidden=true;
+  $("#modoCambio").hidden=false;
+  $("#modoCambioTxt").textContent=`${cambio.rol==="centro"?"Cambiando la cita de "+cambio.cita.nombre:"Estás cambiando tu cita"}: ${cambio.cita.tratamiento} · ${fLarga(cambio.cita.fecha)} a las ${cambio.cita.hora}`;
+  boton("Guardar el cambio");
+  sel.servicio=cambio.cita.servicio; sel.dia=null; sel.hora=null;
+  $("#rServicio").value=sel.servicio;
+  cargarDisp();
+  $("#reservar").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function salirCambio(){
+  cambio=null; $("#pasoDatos").hidden=false; $("#modoCambio").hidden=true; boton("Confirmar cita");
+  sel.servicio=null; sel.dia=null; sel.hora=null; $("#rServicio").value=""; cargarDisp();
+}
+$("#salirCambio").onclick=()=>{salirCambio(); $("#gestionar").scrollIntoView({behavior:"smooth"})};
+async function guardarCambio(err){
+  boton("Guardando…",true);
+  try{
+    const r=await enviar({accion:"cambiar",id:cambio.id,t:cambio.t,servicio:sel.servicio,fecha:sel.dia,hora:sel.hora});
+    if(!r.ok){ boton("Guardar el cambio"); err(r.error||"No se ha podido cambiar."); if(/libre|ocupa/i.test(r.error||"")) cargarDisp(); return; }
+    gest.cita=r.cita;
+    const centro=cambio.rol==="centro";
+    salirCambio();
+    pintarGestion("", centro?`Cita cambiada a ${esc(fLarga(r.cita.fecha))} a las ${r.cita.hora}. Hemos avisado a ${esc(r.cita.nombre)} por correo.`:`¡Hecho! Tu cita ahora es el ${esc(fLarga(r.cita.fecha))} a las ${r.cita.hora}. Te hemos enviado la nueva confirmación por correo.`);
+    $("#gestionar").scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(_){ boton("Guardar el cambio"); err("No hay conexión con el sistema de reservas. Inténtalo de nuevo."); }
+}
 </script>
 </body>
 </html>
