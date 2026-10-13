@@ -85,15 +85,29 @@ nav.scrolled{background:rgba(12,14,26,.88);backdrop-filter:blur(12px);border-bot
 .svc{background:var(--card);border:1px solid var(--line);border-radius:0;padding:1.8rem;transition:.3s;position:relative;overflow:hidden}
 .svc:hover{border-color:var(--gold);transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--azul)}
 .svc.featured{background:var(--azul);border-color:var(--azul)}
-.svc.featured p,.svc.featured .price span{color:rgba(243,244,250,.8)}
+.svc.featured p,.svc.featured .svc{display:flex;flex-direction:column}
+.svc .price{margin-top:auto}
+.svc-btn{justify-content:center;margin-top:1.2rem;width:100%;padding:.8rem 1rem;font-size:.82rem;box-shadow:4px 4px 0 var(--azul)}
+.svc.featured .svc-btn{box-shadow:4px 4px 0 var(--text)}
+.svc.featured .svc-btn:hover{box-shadow:6px 6px 0 var(--text)}
+#form.flash{animation:flash 1.2s ease}
+@keyframes flash{0%,60%{box-shadow:10px 10px 0 var(--gold)}100%{box-shadow:10px 10px 0 var(--azul)}}
+.price span{color:rgba(243,244,250,.8)}
 .svc.featured svg,.svc.featured .price b{color:var(--gold)}
 .svc.featured .price{border-color:rgba(243,244,250,.25)}
 .svc .tag{position:absolute;top:1.2rem;right:1.2rem;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--bg);padding:.3rem .7rem;border-radius:0;font-weight:700;font-family:var(--mono)}
-.svc svg{width:34px;color:var(--gold);margin-bottom:1.2rem}
+.svc svg{width:34px;height:34px;flex:none;color:var(--gold);margin-bottom:1.2rem}
 .svc h3{font-size:1.12rem;margin-bottom:.5rem}
 .svc p{color:var(--muted);font-size:.92rem;min-height:3em}
 .price{display:flex;justify-content:space-between;align-items:baseline;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line)}
 .price b{font-family:var(--serif);font-size:1.6rem;color:var(--gold2)}
+.svc{display:flex;flex-direction:column}
+.svc .price{margin-top:auto}
+.svc-btn{justify-content:center;margin-top:1.2rem;width:100%;padding:.8rem 1rem;font-size:.82rem;box-shadow:4px 4px 0 var(--azul)}
+.svc.featured .svc-btn{box-shadow:4px 4px 0 var(--text)}
+.svc.featured .svc-btn:hover{box-shadow:6px 6px 0 var(--text)}
+#form.flash{animation:flash 1.2s ease}
+@keyframes flash{0%,60%{box-shadow:10px 10px 0 var(--gold)}100%{box-shadow:10px 10px 0 var(--azul)}}
 .price span{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
 
 /* ABOUT */
@@ -208,7 +222,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:va
       </div>
       <div class="stats reveal">
         <div><b>10€</b><span>Corte desde</span></div>
-        <div><b>12</b><span>Servicios</span></div>
+        <div><b>8</b><span>Servicios</span></div>
         <div><b>7 días</b><span>Abierto toda la semana</span></div>
       </div>
     </div>
@@ -327,15 +341,11 @@ const CONFIG = {
     {icon:"scissors", name:"Corte de pelo", desc:"Tijera y máquina, adaptado a tu forma de cara.", price:10, time:"30 min"},
     {icon:"drop", name:"Corte + lavado", desc:"Tu corte con lavado incluido.", price:12, time:"30 min"},
     {icon:"comb", name:"Corte diseño", desc:"Rayas, dibujos y detalles a medida.", price:12, time:"30 min"},
-    {icon:"brow", name:"Corte + cejas", desc:"Corte y cejas perfiladas.", price:12, time:"30 min"},
     {icon:"razor", name:"Corte + barba", desc:"Corte y barba perfilada a juego.", price:16, time:"30 min"},
-    {icon:"star", name:"Corte + barba + cejas", desc:"El arreglo completo de cabeza a barba.", price:18, time:"30 min"},
     {icon:"razor", name:"Degradado de barba", desc:"Barba degradada y perfilada al detalle.", price:8, time:"30 min"},
-    {icon:"brow", name:"Cejas + bigote", desc:"Retoque rápido de cejas y bigote.", price:6, time:"15 min"},
+    {icon:"star", name:"Corte + barba + cejas", desc:"El arreglo completo de cabeza a barba.", price:18, time:"30 min"},
     {icon:"face", name:"Limpieza facial", desc:"Piel limpia y renovada.", price:20, time:"30 min"},
-    {icon:"face", name:"Limpieza facial + corte", desc:"Corte y cuidado de la piel en una visita.", price:25, time:"30 min"},
-    {icon:"sqvare", name:"Limpieza facial + corte + barba", desc:"El servicio completo de la casa, cuadrado al milímetro.", price:30, time:"1 h", featured:true, tag:"Pack Sqvare"},
-    {icon:"drop", name:"Pintar cabello", desc:"Color para darle un cambio a tu look.", price:10, time:"1 h"}
+    {icon:"sqvare", name:"Limpieza facial + corte + barba", desc:"El servicio completo de la casa, cuadrado al milímetro.", price:30, time:"1 h", featured:true, tag:"Pack Sqvare"}
   ]
 };
 /* =============================================== */
@@ -352,6 +362,7 @@ $("#services").innerHTML=CONFIG.services.map(s=>`
     <svg><use href="#${s.icon}"/></svg>
     <h3>${s.name}</h3><p>${s.desc}</p>
     <div class="price"><b>${s.from?'+':''}${s.price}€</b><span>${s.time}</span></div>
+    <button type="button" class="btn btn-gold svc-btn" data-svc="${s.name}">Reservar →</button>
   </article>`).join("");
 $("#fSvc").innerHTML=CONFIG.services.map(s=>`<option value="${s.name}">${s.name} · ${s.price}€ · ${s.time}</option>`).join("");
 
@@ -427,6 +438,15 @@ $("#slots").addEventListener("click",e=>{
 function updateBtn(){ $("#fBtn").disabled=!chosen }
 function setMsg(t,err){ const m=$("#fMsg"); m.textContent=t||"Te enviaremos la confirmación al correo. Tus datos solo los ve la barbería."; m.classList.toggle("err",!!err) }
 $("#fSvc").addEventListener("change",loadSlots);
+// Botón "Reservar" de cada servicio: baja al formulario con ese servicio ya elegido
+$("#services").addEventListener("click",e=>{
+  const b=e.target.closest(".svc-btn"); if(!b) return;
+  const sel=$("#fSvc"); if(!sel) return;
+  sel.value=b.dataset.svc; loadSlots();
+  $("#reserva").scrollIntoView({behavior:"smooth",block:"start"});
+  const f=$("#form"); f.classList.remove("flash"); void f.offsetWidth; f.classList.add("flash");
+  setTimeout(()=>{ const d=$("#fDay"); if(d){ d.focus({preventScroll:true}); try{ if(!d.value) d.showPicker() }catch(_){} } },700);
+});
 $("#fDay").addEventListener("change",loadSlots);
 
 $("#form").addEventListener("submit",async e=>{
