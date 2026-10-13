@@ -194,6 +194,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--salvia);
 .resumen .aviso{color:#C9D1BE}
 .resumen .aviso.err{color:#F3C2BA}
 @media(max-width:960px){.reserva{grid-template-columns:minmax(0,1fr)}.resumen{position:static}}
+/* Galería */
+#galeria{padding-bottom:40px}
+.galeria{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;width:min(1140px,100% - 32px);margin:2rem auto 0}
+.galeria figure{position:relative;border-radius:16px;overflow:hidden;background:var(--arena);aspect-ratio:3/4}
+.galeria img{width:100%;height:100%;object-fit:cover}
+.galeria figcaption{position:absolute;inset:auto 0 0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(30,34,26,.75));color:#fff;font-size:.85rem}
+/* Chips de categoría con foto */
+.cats button{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem 1rem .3rem .3rem}
+.cats img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--arena)}
 /* Cambiar / cancelar desde el correo */
 #gestionar{background:var(--oliva);color:var(--lino);padding:56px 0 64px}
 .gest{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start}
@@ -257,6 +266,110 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
 .dlg .fila{display:flex;justify-content:flex-end;margin-top:1.6rem}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* ================= MÓVIL ================= */
+@media(max-width:900px){
+  body{font-size:16px}
+  section{padding:60px 0}
+  h2{font-size:2.15rem}
+  .intro{font-size:1rem;margin-top:.4rem}
+  .solo-pc{display:none}
+  .propuesta .wrap{min-height:38px;font-size:.82rem}
+  .nav{height:62px}
+  .marca img{width:40px;height:40px}
+  .marca span{font-size:1.3rem}
+  .marca small{display:none}
+
+  /* Portada: foto a pantalla completa con el texto encima */
+  .hero{position:relative;padding:0;min-height:calc(100svh - 62px - 70px);display:flex;align-items:flex-end;overflow:hidden;background:var(--oliva)}
+  .hero .hero-grid{display:block;position:static;padding-bottom:26px}
+  .hero .hero-grid > div:first-child{position:relative;z-index:2}
+  .retrato{position:absolute;inset:0;width:100%;max-width:none;aspect-ratio:auto;z-index:1}
+  .retrato .foto{inset:0;border-radius:0}
+  .retrato .foto img{object-position:50% 18%}
+  .retrato::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,32,24,0) 30%,rgba(28,32,24,.55) 58%,rgba(28,32,24,.9) 100%)}
+  .retrato svg.orbita{display:none}
+  .retrato .firma{top:16px;right:16px;bottom:auto;z-index:3;padding:.4rem .9rem;font-size:.85rem}
+  .hero h1{color:#fff;font-size:3.2rem;margin:.7rem 0 0}
+  .hero h1 em{color:#DCE6CF}
+  .hero .sub{display:none}
+  .estado{background:rgba(255,255,255,.16);backdrop-filter:blur(6px);color:#fff;padding:.35rem .8rem;border-radius:999px;font-size:.85rem}
+  .hero .acciones{margin-top:1.3rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+  .hero .acciones .btn{padding:.7rem .6rem;font-size:.92rem}
+  .hero .btn-oliva{background:var(--lino);color:var(--oliva)}
+  .hero .btn-linea{border-color:#fff;color:#fff}
+  .hero .btn-linea{font-size:0}
+  .hero .btn-linea::after{content:"Precios";font-size:.92rem}
+  .valoracion{margin-top:1rem;color:#E9EDE3}
+  .valoracion b{color:#fff;font-size:1.8rem}
+
+  /* Promo compacta */
+  .promo .wrap{grid-template-columns:auto 1fr;gap:6px 16px;padding:18px 0}
+  .promo .precio{font-size:2.2rem;grid-row:span 2}
+  .promo h2{font-size:1.35rem}
+  .promo p{display:none}
+  .promo .btn{grid-column:2;justify-self:start;min-height:40px;padding:.4rem 1rem;font-size:.9rem}
+
+  /* Tratamientos: tarjetas con foto que se deslizan */
+  .cats{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;margin:1.4rem -16px 1.2rem;padding:0 16px 6px;gap:10px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cats button{flex:none;scroll-snap-align:start;flex-direction:column;align-items:stretch;gap:0;width:118px;padding:0;border-radius:16px;overflow:hidden;background:var(--blanco);text-align:left}
+  .cats img{width:100%;height:108px;border-radius:0}
+  .cats span{padding:.5rem .7rem;font-size:.88rem;line-height:1.2;min-height:2.6em;display:flex;align-items:center}
+  .cats button[aria-pressed="true"]{outline:2px solid var(--oliva);outline-offset:0}
+  .cats button[aria-pressed="true"] span{background:var(--oliva);color:var(--lino)}
+  .trat-foto{display:none}
+  .trat-grid{display:block}
+  .servicio{background:var(--blanco);border:1px solid var(--linea);border-radius:16px;padding:16px 16px 6px;margin-bottom:12px}
+  .servicio:first-child{padding-top:16px}
+  .servicio h3{font-size:1.45rem}
+  .servicio > p.desc{font-size:.92rem;margin:.3rem 0 .4rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+  .servicio > p.desc.abierta{display:block}
+  .variante{grid-template-columns:1fr auto auto;gap:.6rem;padding:.6rem 0}
+  .variante span{font-size:.95rem}
+  .variante button{grid-column:auto;justify-self:end;padding:.35rem .8rem;font-size:.85rem;background:var(--oliva);color:var(--lino)}
+
+  /* Sobre Andrea más corto */
+  .andrea{gap:24px}
+  .andrea .fotos img:first-child{aspect-ratio:16/11;border-radius:18px}
+  .andrea blockquote{font-size:1.5rem;margin:.8rem 0}
+  .datos{gap:1.4rem;margin-top:1rem}
+  .datos b{font-size:2rem}
+  .datos span{font-size:.82rem}
+
+  /* Galería deslizable */
+  #galeria{padding:10px 0 20px}
+  .galeria{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;width:auto;margin:1.2rem 0 0;padding:0 16px 6px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria figure{flex:none;width:68%;scroll-snap-align:center}
+
+  /* Opiniones en carrusel */
+  .resenas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:1.4rem -16px 0;padding:0 16px 6px;gap:12px;scrollbar-width:none}
+  .resenas::-webkit-scrollbar{display:none}
+  .resena,.resena:first-child{flex:none;width:80%;scroll-snap-align:center;padding:20px}
+  .resena p,.resena:first-child p{font-size:1.3rem}
+
+  /* Reserva */
+  .reserva{margin-top:1.4rem;gap:16px}
+  .pasos{padding:18px;border-radius:18px}
+  .paso + .paso{margin-top:18px;padding-top:18px}
+  .paso h3{font-size:1.3rem;margin-bottom:.6rem}
+  .resumen{padding:20px;border-radius:18px}
+  .resumen h3{display:none}
+  .resumen dl{gap:.35rem .8rem;font-size:.92rem}
+  .resumen .total{margin-top:.8rem;padding-top:.7rem}
+  .resumen .total b{font-size:1.8rem}
+
+  /* Dónde */
+  .donde{gap:22px;margin-top:1.2rem}
+  .horario td{padding:.45rem 0;font-size:.92rem}
+  .contacto{grid-template-columns:1fr 1fr;gap:10px;margin-top:1.2rem}
+  .contacto a{flex-direction:column;align-items:flex-start;gap:.4rem;background:var(--blanco);border:1px solid var(--linea);border-radius:14px;padding:12px;font-size:.9rem}
+  .contacto small{font-size:.78rem;word-break:break-word}
+  .mapa,.mapa iframe{min-height:230px}
+
+  #gestionar{padding:36px 0 40px}
+}
+
 </style>
 </head>
 <body>
@@ -271,7 +384,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
 
 <div class="propuesta" id="propuesta" role="region" aria-label="Aviso de propuesta">
   <div class="wrap">
-    <span><b>Propuesta de The Sqvare</b> para El Racó de Piscis. Todo lo que ves ya funciona.</span>
+    <span><b>Propuesta de The Sqvare</b><span class="solo-pc"> para El Racó de Piscis. Todo lo que ves ya funciona.</span></span>
     <button type="button" data-abrir="dlgIncluye">Ver qué incluye</button>
     <button type="button" class="x" aria-label="Cerrar aviso" id="cerrarPropuesta">×</button>
   </div>
@@ -333,7 +446,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   <section id="tratamientos">
     <div class="wrap">
       <h2>Tratamientos <em>y precios</em></h2>
-      <p class="intro">Cada sesión se adapta a lo que tu piel y tu cuerpo necesitan ese día. Si no sabes cuál elegir, escríbeme y te oriento.</p>
+      <p class="intro">Cada sesión, adaptada a lo que necesitas ese día.</p>
       <div class="cats" id="cats" role="group" aria-label="Tipo de tratamiento"></div>
       <div class="trat-grid">
         <figure class="trat-foto"><img id="catFoto" alt="" loading="lazy" width="640" height="800"><p id="catFrase"></p></figure>
@@ -352,8 +465,8 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
       <div>
         <h2>Hola, soy <em>Andrea</em></h2>
         <blockquote>Cada cita es un momento para detenerte, respirar y dedicarte el cuidado que mereces.</blockquote>
-        <p>Llevo 12 años como terapeuta esteticista, especializada en tratamientos faciales y corporales. Combino técnicas que buscan resultados visibles con el cuidado de tu cuerpo desde el equilibrio y el bienestar.</p>
-        <p>Por eso no trabajo con protocolos cerrados: escucho, observo y adapto cada sesión. Porque sentirse bien por dentro también se refleja por fuera.</p>
+        <p class="solo-pc">Llevo 12 años como terapeuta esteticista, especializada en tratamientos faciales y corporales. Combino técnicas que buscan resultados visibles con el cuidado de tu cuerpo desde el equilibrio y el bienestar.</p>
+        <p class="solo-pc">Por eso no trabajo con protocolos cerrados: escucho, observo y adapto cada sesión. Porque sentirse bien por dentro también se refleja por fuera.</p>
         <div class="datos">
           <div><b>12</b><span>años de experiencia</span></div>
           <div><b id="dNota"></b><span>de valoración media</span></div>
@@ -363,11 +476,17 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
     </div>
   </section>
 
+  <!-- GALERÍA -->
+  <section id="galeria" aria-label="Fotos del Racó">
+    <div class="wrap"><h2>El <em>rincón</em></h2></div>
+    <div class="galeria" id="galeriaFotos"></div>
+  </section>
+
   <!-- OPINIONES -->
   <section id="opiniones">
     <div class="wrap">
       <h2>Lo que dicen <em>mis clientas</em></h2>
-      <p class="intro">Opiniones reales de clientas verificadas en Booksy.</p>
+      <p class="intro">Clientas verificadas en Booksy.</p>
       <div class="resenas" id="resenas"></div>
     </div>
   </section>
@@ -376,7 +495,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   <section id="reservar">
     <div class="wrap">
       <h2>Reserva <em>tu cita</em></h2>
-      <p class="intro">Elige tratamiento, día y hora. Recibes la confirmación al momento en tu correo, con botones para cambiarla o cancelarla.</p>
+      <p class="intro">Elige, reserva y recibe la confirmación en tu correo.</p>
       <div class="modo-cambio" id="modoCambio" hidden><span id="modoCambioTxt"></span><button type="button" id="salirCambio">Volver sin cambiar</button></div>
       <div class="reserva">
         <form class="pasos" id="fReserva" novalidate>
@@ -493,7 +612,15 @@ const CONFIG = {
     logo:   IMG+"logo/4f9c7fdbdedd45b2b5b49875bb4e29-andrea-el-raco-de-piscis-logo-b48ede71bf154ed0805d7a12c2f982-booksy.jpeg?size=360x360",
     hero:   IMG+"biz_photo/7823c4e5b986437794ec2e4ef4e1f9-andrea-el-raco-de-piscis-biz-photo-7ca4f1898b5d42c1881105f51c8c03-booksy.jpeg",
     andrea1:IMG+"service_photos/2ee62c9847994d5287210311b03ecb00.jpeg",
-    andrea2:IMG+"service_photos/57e6eb5100e34ebea5d2aa04d9ced35c.jpeg"
+    andrea2:IMG+"service_photos/57e6eb5100e34ebea5d2aa04d9ced35c.jpeg",
+    galeria:[
+      [IMG+"service_photos/57c1206acf844b0cba215b8139914916.jpeg?size=640x427","La cabina"],
+      [IMG+"service_photos/d3a72093cdf444ae8ce4f263b0cb758f.jpeg","Piedras calientes"],
+      [IMG+"service_photos/01ed0bc967344f1e93bb1d696e524f88.jpeg","Maderoterapia"],
+      [IMG+"service_photos/4170d69fe19546cb9a3976443016f824.jpeg","Ritual facial"],
+      [IMG+"service_photos/f88b210abaf347219e30259947d624bb.jpeg","Aromas y calma"],
+      [IMG+"service_photos/7572ccfd19cb469d81db2ccbda8b51ad.jpeg","Kobido"]
+    ]
   },
   // Promo: se muestra solo entre "desde" y "hasta" (incluidos)
   promo: {
@@ -627,14 +754,18 @@ CONFIG.extra.forEach(([id,n,m,p])=>VAR[id]={id,nombre:n,min:m,precio:p});
 
 /* Tratamientos */
 let catSel=CONFIG.categorias[0].id;
+$("#cats").innerHTML=CONFIG.categorias.map(c=>`<button type="button" data-c="${c.id}"><img src="${c.foto}" alt="" loading="lazy"><span>${esc(c.nombre)}</span></button>`).join("");
 function pintarCats(){
-  $("#cats").innerHTML=CONFIG.categorias.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${c.id===catSel}">${esc(c.nombre)}</button>`).join("");
+  $$("#cats button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===catSel));
   const c=CONFIG.categorias.find(x=>x.id===catSel);
   $("#catFoto").src=c.foto; $("#catFoto").alt=c.nombre; $("#catFrase").textContent=c.frase;
-  $("#listaServicios").innerHTML=c.servicios.map(s=>`<article class="servicio"><h3>${esc(s.nombre)}</h3><p>${esc(s.desc)}</p>
-    ${s.v.map(([id,n,m,p,a])=>`<div class="variante"><span>${esc(n)}<small>${dur(m)}</small></span><span class="pr">${a?`<s>${euro(a)}</s>`:""}${euro(p)}</span><button type="button" data-reservar="${id}">Reservar</button></div>`).join("")}</article>`).join("");
+  $("#listaServicios").innerHTML=c.servicios.map(s=>`<article class="servicio"><h3>${esc(s.nombre)}</h3><p class="desc" title="Toca para leer más">${esc(s.desc)}</p>
+    ${s.v.map(([id,n,m,p,a])=>`<div class="variante"><span>${s.v.length>1?esc(n):""}<small>${dur(m)}</small></span><span class="pr">${a?`<s>${euro(a)}</s>`:""}${euro(p)}</span><button type="button" data-reservar="${id}">Reservar</button></div>`).join("")}</article>`).join("");
 }
-$("#cats").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;catSel=b.dataset.c;pintarCats()});
+$("#cats").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;catSel=b.dataset.c;pintarCats();
+  if(innerWidth<=900) $("#listaServicios").scrollIntoView({behavior:"smooth",block:"start"});});
+$("#listaServicios").addEventListener("click",e=>{const p=e.target.closest(".desc");if(p)p.classList.toggle("abierta")});
+$("#galeriaFotos").innerHTML=CONFIG.fotos.galeria.map(([u,t])=>`<figure><img src="${u}" alt="${esc(t)}" loading="lazy"><figcaption>${esc(t)}</figcaption></figure>`).join("");
 document.addEventListener("click",e=>{const b=e.target.closest("[data-reservar]");if(b)elegir(b.dataset.reservar)});
 pintarCats();
 
