@@ -439,7 +439,7 @@ $("#form").addEventListener("submit",async e=>{
   const fechaTxt=new Date(data.fecha+"T12:00").toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
 
   if(!CONFIG.apiUrl){
-    const msg=`Hola ${CONFIG.name} ✂️\nSoy ${data.nombre} (${data.telefono}). Me gustaría reservar:\n• ${data.servicio}\n• ${fechaTxt} a las ${data.hora}\n¿Hay hueco?`;
+    const msg=`Hola ${CONFIG.name}.\nSoy ${data.nombre} (${data.telefono}). Me gustaría reservar:\n• ${data.servicio}\n• ${fechaTxt} a las ${data.hora}\n¿Hay hueco?`;
     window.open(wa+"?text="+encodeURIComponent(msg),"_blank"); return;
   }
   const btn=$("#fBtn"); btn.disabled=true; btn.textContent="Reservando…";
