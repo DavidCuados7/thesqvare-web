@@ -374,7 +374,7 @@ $("#year").textContent=new Date().getFullYear();
 $("#services").innerHTML=CONFIG.menu.map(s=>`
   <article class="svc reveal ${s.featured?'featured':''}">
     ${s.tag?`<span class="tag">${s.tag}</span>`:''}
-    ${s.img?`<figure class="svc-img"><img src="${s.img}" alt="${s.name}" loading="lazy" width="720" height="540"></figure>`:''}
+    ${s.img?`<figure class="svc-img"><img src="${s.img}?v=2" alt="${s.name}" loading="lazy" width="720" height="540"></figure>`:''}
     <svg><use href="#${s.icon}"/></svg>
     <h3>${s.name}</h3><p>${s.desc}</p>
     <div class="price"><b>${euro(s.price)}</b><span>${s.time}</span></div>
