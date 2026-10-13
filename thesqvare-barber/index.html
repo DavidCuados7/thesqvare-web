@@ -282,7 +282,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:va
     <div class="head"><div><div class="eyebrow">Contacto</div><h2>Ven a vernos.</h2></div></div>
     <div class="cards">
       <a class="cc" id="ccAddr" target="_blank" rel="noopener"><div class="ic">📍</div><b>Dirección</b><span data-cfg="address"></span></a>
-      <a class="cc" id="ccPhone"><div class="ic">📞</div><b>Teléfono</b><span data-cfg="phoneLabel"></span></a>
+      <a class="cc" id="ccMail"><div class="ic">✉️</div><b>Contacto</b><span data-cfg="email"></span></a>
       <a class="cc" id="ccIg" target="_blank" rel="noopener"><div class="ic">📸</div><b>Instagram</b><span data-cfg="instagram"></span></a>
     </div>
     <div class="map"><iframe id="map" loading="lazy" title="Mapa"></iframe></div>
@@ -308,6 +308,7 @@ const CONFIG = {
   address: "Barcelona",              // pon aquí la dirección real del local
   whatsapp: "34648515835",          // con prefijo 34, sin espacios
   phoneLabel: "648 51 58 35",
+  email: "thesqvare@gmail.com",
   instagram: "@the.sqvare",
   // URL de la app web de Google Apps Script (sistema de reservas). Vacía = las reservas se piden por WhatsApp.
   // Necesita su propia hoja/script: NO reutilizar el de Barber Prince o las citas caerían en su agenda.
@@ -366,7 +367,7 @@ st.style.setProperty("--dot",cur?"#3ddc84":"#e05555");
 // Contacto
 const wa=`https://wa.me/${CONFIG.whatsapp}`;
 $("#wa").href=wa+"?text="+encodeURIComponent(`Hola ${CONFIG.name}, quería pedir cita.`);
-$("#ccPhone").href="tel:+"+CONFIG.whatsapp;
+$("#ccMail").href="mailto:"+CONFIG.email;
 $("#ccIg").href="https://instagram.com/"+CONFIG.instagram.replace("@","");
 const q=encodeURIComponent(CONFIG.address);
 $("#ccAddr").href="https://www.google.com/maps/search/?api=1&query="+q;
