@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Racó de Piscis · Bar de barrio y cocina casera</title>
+<meta name="description" content="Racó de Piscis: desayunos desde las 6:00, menú del día casero y comida para llevar. Encarga o reserva desde el móvil.">
+<!-- Propuesta en revisión: que Google no la indexe hasta que esté contratada -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E4D3F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E4D3F'/%3E%3Cpath d='M14 24c8-9 22-9 30 0-8 9-22 9-30 0zm30 0l7-5v10zM20 42c8-9 22-9 30 0-8 9-22 9-30 0zm0 0l-7-5v10z' fill='%23F4C542'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#0E4D3F;      /* toldo / fachada */
+  --pizarra:#1C3A33;    /* pizarra del menú */
+  --tomate:#D9412B;     /* bravas, sello */
+  --sol:#F4C542;        /* azulejo amarillo */
+  --azulejo:#E9F0EC;    /* fondo frío, azulejo blanco */
+  --tinta:#16241F;
+  --gris:#5B6B65;
+  --linea:#CFDAD4;
+  --blanco:#FFFFFF;
+  --display:"Young Serif",Georgia,serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --tiza:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--azulejo);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sol);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(2rem,4.6vw,3.1rem);color:var(--verde)}
+.intro{color:var(--gris);max-width:58ch;margin-top:.7rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:.8rem 1.4rem;border-radius:999px;border:2px solid transparent;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;transition:background .15s,transform .15s}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-tomate{background:var(--tomate);color:#fff}
+.btn-tomate:hover{background:#BF3421}
+.btn-verde{background:var(--verde);color:#fff}
+.btn-verde:hover{background:#0A3B30}
+.btn-linea{border-color:currentColor;background:transparent}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+section{padding:96px 0}
+
+/* Cinta de propuesta */
+.propuesta{background:var(--tinta);color:#E7EEEA;font-size:.88rem}
+.propuesta .wrap{display:flex;align-items:center;gap:.8rem;min-height:44px;flex-wrap:wrap;padding:.4rem 0}
+.propuesta b{color:var(--sol);font-weight:600}
+.propuesta button{background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;color:#fff;font-weight:600}
+.propuesta .x{margin-left:auto;text-decoration:none;font-size:1.3rem;line-height:1;opacity:.7}
+
+/* Navegación */
+header{position:sticky;top:0;z-index:40;background:rgba(233,240,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.sombra{border-color:var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:1rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-size:1.3rem;color:var(--verde)}
+.marca svg{width:38px;height:38px}
+.nav ul{display:flex;list-style:none;gap:1.6rem;font-weight:600;font-size:.95rem}
+.nav ul a{text-decoration:none;color:var(--tinta)}
+.nav ul a:hover{color:var(--tomate)}
+.nav .btn{min-height:42px;padding:.5rem 1.1rem;font-size:.92rem}
+@media(max-width:900px){.nav ul{display:none}}
+
+/* Portada */
+.hero{padding:56px 0 80px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.estado{display:inline-flex;align-items:center;gap:.55rem;background:var(--blanco);border:1px solid var(--linea);border-radius:999px;padding:.4rem .9rem .4rem .7rem;font-weight:600;font-size:.92rem}
+.estado i{width:10px;height:10px;border-radius:50%;background:var(--dot,#9aa);box-shadow:0 0 0 4px color-mix(in srgb,var(--dot,#9aa) 25%,transparent)}
+.hero h1{font-size:clamp(3.1rem,8.4vw,6.4rem);color:var(--verde);margin:1.1rem 0 1rem;letter-spacing:-.01em}
+.hero h1 span{display:block;font-size:.42em;color:var(--tinta);margin-bottom:.2em}
+.hero p.sub{font-size:1.18rem;max-width:34ch;color:#2D3D37}
+.hero .acciones{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.google{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.6rem;color:var(--gris);font-size:.95rem;text-decoration:none}
+.google b{color:var(--tinta)}
+.google .estrellas{color:#E8A317;letter-spacing:1px}
+.google:hover b{text-decoration:underline}
+
+/* La pizarra */
+.pizarra{background:var(--pizarra);color:#F1F4EF;border-radius:10px;padding:34px 34px 30px;position:relative;
+  border:12px solid #8A5A34;box-shadow:inset 0 0 60px rgba(0,0,0,.35),0 24px 50px -20px rgba(14,77,63,.55);
+  background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.06),transparent 55%),radial-gradient(ellipse at 80% 90%,rgba(255,255,255,.04),transparent 50%);
+  font-family:var(--tiza);transform:rotate(1.2deg)}
+.pizarra::before{content:"";position:absolute;left:50%;top:-34px;width:2px;height:26px;background:#5f4a36;transform:translateX(-50%)}
+.pizarra h3{font-family:var(--tiza);font-weight:700;font-size:2.6rem;line-height:1;text-align:center}
+.pizarra .fecha{text-align:center;font-size:1.45rem;color:var(--sol);margin:.2rem 0 1rem}
+.pizarra h4{font-weight:700;font-size:1.55rem;color:#BFE3D2;margin-top:.7rem;line-height:1.1}
+.pizarra ul{list-style:none;font-size:1.5rem;line-height:1.2}
+.pizarra li::before{content:"– ";opacity:.6}
+.pizarra .precio{display:flex;justify-content:space-between;align-items:flex-end;border-top:2px dashed rgba(241,244,239,.35);margin-top:1rem;padding-top:.8rem;font-size:1.4rem}
+.pizarra .precio b{font-size:2.6rem;color:var(--sol);line-height:.9}
+.pizarra .cerrado{text-align:center;font-size:1.6rem;padding:1.5rem 0}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px}.pizarra{transform:rotate(.6deg);max-width:520px;width:100%;justify-self:center}}
+@media(max-width:480px){.pizarra{padding:26px 20px 22px;border-width:9px}.pizarra ul{font-size:1.35rem}}
+
+/* Azulejos: franja de datos clave */
+.azulejos{background:var(--verde);color:#fff;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.08' stroke-width='2'%3E%3Ccircle cx='28' cy='28' r='12'/%3E%3Cpath d='M0 0l56 56M56 0L0 56'/%3E%3Ccircle cx='0' cy='0' r='12'/%3E%3Ccircle cx='56' cy='0' r='12'/%3E%3Ccircle cx='0' cy='56' r='12'/%3E%3Ccircle cx='56' cy='56' r='12'/%3E%3C/g%3E%3C/svg%3E")}
+.azulejos ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
+.azulejos li{padding:30px 22px;border-left:1px solid rgba(255,255,255,.15)}
+.azulejos li:first-child{border-left:0}
+.azulejos b{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--sol)}
+.azulejos span{font-size:.95rem;opacity:.85}
+@media(max-width:800px){.azulejos ul{grid-template-columns:1fr 1fr}.azulejos li:nth-child(3){border-left:0}.azulejos li{border-top:1px solid rgba(255,255,255,.15)}.azulejos li:nth-child(-n+2){border-top:0}}
+
+/* Menú de la semana */
+.semana{display:flex;gap:.5rem;flex-wrap:wrap;margin:2rem 0 1.4rem}
+.semana button{border:1.5px solid var(--linea);background:var(--blanco);border-radius:999px;padding:.5rem 1rem;font-weight:600;cursor:pointer;min-height:44px}
+.semana button[aria-pressed="true"]{background:var(--verde);border-color:var(--verde);color:#fff}
+.semana button .hoy{font-size:.75rem;background:var(--sol);color:var(--tinta);border-radius:999px;padding:.05rem .45rem;margin-left:.35rem}
+.menu-dia{display:grid;grid-template-columns:1fr 1fr 1fr 300px;gap:0;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);overflow:hidden}
+.menu-dia .col{padding:26px 24px;border-right:1px solid var(--linea)}
+.menu-dia h3{font-size:1.35rem;color:var(--verde);margin-bottom:.7rem}
+.menu-dia ul{list-style:none}
+.menu-dia li{padding:.45rem 0;border-bottom:1px dashed var(--linea)}
+.menu-dia li:last-child{border:0}
+.menu-dia figure{position:relative}
+.menu-dia figure img{width:100%;height:100%;object-fit:cover}
+.menu-dia figcaption{position:absolute;inset:auto 0 0;padding:20px;background:linear-gradient(transparent,rgba(14,36,30,.92));color:#fff}
+.menu-dia figcaption b{font-family:var(--display);font-weight:400;font-size:2.2rem;display:block;line-height:1;color:var(--sol)}
+.incluye{color:var(--gris);font-size:.95rem;margin-top:1rem}
+@media(max-width:960px){.menu-dia{grid-template-columns:1fr}.menu-dia .col{border-right:0;border-bottom:1px solid var(--linea)}.menu-dia figure{height:220px;order:-1}}
+
+/* Carta */
+#carta{background:var(--blanco)}
+.carta{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:2.4rem}
+.carta h3{font-size:1.5rem;color:var(--verde);padding-bottom:.6rem;border-bottom:2px solid var(--verde);margin-bottom:.4rem}
+.carta .nota{color:var(--gris);font-size:.9rem;margin-bottom:.4rem}
+.plato{display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;padding:.9rem 0;border-bottom:1px solid var(--linea)}
+.plato strong{font-weight:600}
+.plato .p{font-variant-numeric:tabular-nums;font-weight:700;color:var(--verde)}
+.plato small{grid-column:1/-1;color:var(--gris);font-size:.92rem;line-height:1.4}
+.plato .anadir{grid-column:1/-1;justify-self:start;margin-top:.3rem;background:none;border:0;color:var(--tomate);font-weight:700;cursor:pointer;padding:.25rem 0;font-size:.92rem}
+.plato .anadir:hover{text-decoration:underline}
+.fotos{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-top:3rem}
+.fotos img{width:100%;height:240px;object-fit:cover;border-radius:var(--r)}
+@media(max-width:900px){.carta{grid-template-columns:1fr;gap:36px}.fotos{grid-template-columns:1fr 1fr}.fotos img:first-child{grid-column:1/-1}.fotos img{height:180px}}
+
+/* Encargo para llevar */
+.encargo{display:grid;grid-template-columns:1fr 400px;gap:40px;margin-top:2.4rem;align-items:start}
+.rapidos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rapido{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--blanco);border:1.5px solid var(--linea);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;min-height:64px;transition:border-color .15s}
+.rapido:hover{border-color:var(--verde)}
+.rapido span{font-weight:600;line-height:1.25}
+.rapido em{font-style:normal;color:var(--gris);font-size:.9rem;white-space:nowrap}
+.rapido.menu{grid-column:1/-1;background:var(--verde);color:#fff;border-color:var(--verde)}
+.rapido.menu em{color:var(--sol)}
+.ticket{background:var(--blanco);border-radius:var(--r);border:1px solid var(--linea);position:sticky;top:90px;overflow:hidden}
+.ticket header{position:static;background:var(--tinta);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:baseline;backdrop-filter:none}
+.ticket header h3{font-size:1.35rem}
+.ticket .cuerpo{padding:18px 22px 22px}
+.lineas{list-style:none;margin-bottom:1rem}
+.lineas li{display:grid;grid-template-columns:1fr auto;gap:.3rem .8rem;padding:.6rem 0;border-bottom:1px dashed var(--linea)}
+.lineas .det{grid-column:1;color:var(--gris);font-size:.88rem;line-height:1.35}
+.lineas .ctl{grid-column:1/-1;display:flex;align-items:center;gap:.4rem}
+.lineas .ctl button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--linea);background:var(--blanco);cursor:pointer;font-weight:700}
+.lineas .ctl output{min-width:1.6rem;text-align:center;font-weight:700}
+.vacio{color:var(--gris);padding:.6rem 0 1rem}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem;padding:.6rem 0 1rem;border-top:2px solid var(--tinta)}
+label{display:block;font-weight:600;font-size:.92rem;margin:.7rem 0 .3rem}
+input,select,textarea{width:100%;min-height:48px;border:1.5px solid var(--linea);border-radius:10px;padding:.6rem .8rem;background:#fff}
+textarea{min-height:70px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--verde);outline:none;box-shadow:0 0 0 3px rgba(14,77,63,.15)}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.aviso{font-size:.88rem;color:var(--gris);margin-top:.7rem}
+.aviso.err{color:var(--tomate);font-weight:600}
+.enviar{width:100%;margin-top:1rem}
+@media(max-width:960px){.encargo{grid-template-columns:1fr}.ticket{position:static}}
+@media(max-width:520px){.rapidos{grid-template-columns:1fr}}
+
+/* Hecho */
+.hecho{text-align:center;padding:10px 0}
+.hecho .ok{width:58px;height:58px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:1.7rem;margin:0 auto 12px}
+.hecho h3{color:var(--verde);font-size:1.6rem;margin-bottom:.4rem}
+.hecho pre{white-space:pre-wrap;text-align:left;font-family:var(--sans);background:var(--azulejo);border-radius:10px;padding:14px;font-size:.92rem;margin:12px 0}
+
+/* Reservas */
+#reservar{background:var(--verde);color:#fff}
+#reservar h2{color:#fff}
+#reservar .intro{color:#CFE3DA}
+.reserva{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:2rem}
+.form-reserva{background:var(--blanco);color:var(--tinta);border-radius:var(--r);padding:26px}
+.horas{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.3rem}
+.horas button{min-height:44px;padding:.4rem .9rem;border-radius:999px;border:1.5px solid var(--linea);background:#fff;cursor:pointer;font-weight:600;font-variant-numeric:tabular-nums}
+.horas button[aria-pressed="true"]{background:var(--tomate);border-color:var(--tomate);color:#fff}
+.horas p{color:var(--gris);font-size:.92rem}
+.puntos{list-style:none;display:grid;gap:22px}
+.puntos li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.puntos svg{width:44px;height:44px;padding:10px;border-radius:50%;background:rgba(255,255,255,.1);color:var(--sol)}
+.puntos b{display:block;font-size:1.1rem}
+.puntos span{color:#CFE3DA}
+@media(max-width:900px){.reserva{grid-template-columns:1fr}}
+
+/* Opiniones (temas, no citas) */
+.temas{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:2.4rem}
+.temas div{border-top:3px solid var(--tomate);padding-top:1rem}
+.temas h3{font-size:1.3rem;color:var(--verde);margin-bottom:.4rem}
+.temas p{color:var(--gris);font-size:.97rem}
+@media(max-width:900px){.temas{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.temas{grid-template-columns:1fr}}
+
+/* Visítanos */
+#visitanos{background:var(--blanco)}
+.visita{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;margin-top:2rem}
+.horario{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.horario td{padding:.7rem 0;border-bottom:1px solid var(--linea)}
+.horario td:last-child{text-align:right}
+.horario tr.hoy td{font-weight:700;color:var(--verde)}
+.horario tr.hoy td:first-child::after{content:" · hoy";color:var(--tomate);font-weight:600}
+.contacto{display:grid;gap:.6rem;margin-top:1.6rem}
+.contacto a{display:flex;gap:.7rem;align-items:center;text-decoration:none;font-weight:600}
+.contacto svg{width:22px;height:22px;color:var(--tomate);flex:none}
+.mapa{border-radius:var(--r);overflow:hidden;border:1px solid var(--linea);min-height:360px;background:var(--azulejo)}
+.mapa iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+@media(max-width:900px){.visita{grid-template-columns:1fr}}
+
+footer{background:var(--tinta);color:#B9C6C0;padding:40px 0 120px;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer a{color:#fff}
+@media(min-width:901px){footer{padding-bottom:40px}}
+
+/* Barra fija en móvil */
+.barra{position:fixed;inset:auto 0 0;z-index:45;display:none;grid-template-columns:repeat(3,1fr);background:var(--blanco);border-top:1px solid var(--linea);padding:8px 8px calc(8px + env(safe-area-inset-bottom));gap:6px}
+.barra a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:.8rem;font-weight:600;padding:6px;border-radius:10px;position:relative}
+.barra a svg{width:22px;height:22px;color:var(--verde)}
+.barra a.principal{background:var(--tomate);color:#fff}
+.barra a.principal svg{color:#fff}
+.barra .cuenta{position:absolute;top:2px;right:18%;background:var(--sol);color:var(--tinta);border-radius:999px;font-size:.7rem;padding:0 .4rem;min-width:18px;text-align:center}
+@media(max-width:900px){.barra{display:grid}}
+
+/* Diálogos */
+dialog{border:0;border-radius:18px;padding:0;max-width:min(520px,calc(100% - 32px));width:100%;color:var(--tinta);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(22,36,31,.6)}
+.dlg{padding:26px}
+.dlg h3{font-size:1.6rem;color:var(--verde);margin-bottom:.3rem}
+.dlg .fila{display:flex;gap:.7rem;margin-top:1.3rem;justify-content:flex-end;flex-wrap:wrap}
+.incluido{list-style:none;margin-top:1rem;display:grid;gap:.75rem}
+.incluido li{display:grid;grid-template-columns:26px 1fr;gap:.6rem}
+.incluido li::before{content:"✓";width:26px;height:26px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700}
+.incluido b{display:block}
+.incluido span{color:var(--gris);font-size:.94rem}
+
+.toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);background:var(--tinta);color:#fff;padding:.7rem 1.1rem;border-radius:999px;font-weight:600;font-size:.92rem;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.toast.ver{opacity:1;transform:translate(-50%,0)}
+@media(min-width:901px){.toast{bottom:32px}}
+
+/* Entrada de la portada: único movimiento automático */
+@media(prefers-reduced-motion:no-preference){
+  .pizarra{animation:colgar .9s cubic-bezier(.2,.9,.3,1.3) both .15s}
+  @keyframes colgar{from{opacity:0;transform:translateY(-28px) rotate(-3deg)}to{opacity:1;transform:rotate(1.2deg)}}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-bolsa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+  <symbol id="i-mesa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 9h18M5 9v11M19 9v11M8 9V5M16 9V5M9 14h6"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="peces" viewBox="0 0 64 64"><path d="M10 24c8-10 24-10 32 0-8 10-24 10-32 0zm32 0 8-6v12z" fill="#0E4D3F"/><circle cx="18" cy="23" r="1.8" fill="#E9F0EC"/><path d="M22 42c8-10 24-10 32 0-8 10-24 10-32 0zm0 0-8-6v12z" fill="#D9412B"/><circle cx="46" cy="41" r="1.8" fill="#E9F0EC"/></symbol>
+</svg>
+
+<div class="propuesta" id="propuesta" role="region" aria-label="Aviso de propuesta">
+  <div class="wrap">
+    <span><b>Propuesta de The Sqvare</b> para Racó de Piscis. Todo lo que ves ya funciona.</span>
+    <button type="button" data-abrir="dlgIncluye">Ver qué incluye</button>
+    <button type="button" class="x" aria-label="Cerrar aviso" id="cerrarPropuesta">×</button>
+  </div>
+</div>
+
+<header id="cabecera">
+  <nav class="wrap nav" aria-label="Principal">
+    <a class="marca" href="#inicio"><svg aria-hidden="true"><use href="#peces"/></svg><span data-cfg="nombre">Racó de Piscis</span></a>
+    <ul>
+      <li><a href="#menu">Menú de hoy</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#llevar">Para llevar</a></li>
+      <li><a href="#reservar">Reservar</a></li>
+      <li><a href="#visitanos">Dónde estamos</a></li>
+    </ul>
+    <a class="btn btn-verde" data-tel href="#"><svg><use href="#i-tel"/></svg><span data-cfg="telefonoVisible"></span></a>
+  </nav>
+</header>
+
+<main id="inicio">
+  <!-- PORTADA -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="estado" id="estado"><i></i><span>Comprobando horario…</span></span>
+        <h1><span>Bar de barrio, cocina de casa</span><span data-cfg="nombre" style="display:inline;font-size:1em;color:inherit;margin:0">Racó de Piscis</span></h1>
+        <p class="sub">Desayunos desde las 6 de la mañana, menú del día hecho aquí cada mañana y raciones para llevar.</p>
+        <div class="acciones">
+          <a class="btn btn-tomate" href="#llevar"><svg><use href="#i-bolsa"/></svg>Encargar para llevar</a>
+          <a class="btn btn-linea" href="#reservar"><svg><use href="#i-mesa"/></svg>Reservar mesa</a>
+        </div>
+        <a class="google" id="google" target="_blank" rel="noopener" href="#">
+          <span class="estrellas" aria-hidden="true">★★★★★</span>
+          <span><b id="gNota"></b> en Google, <span id="gNum"></span> opiniones</span>
+        </a>
+      </div>
+      <aside class="pizarra" id="menu-pizarra" aria-live="polite" aria-label="Menú del día de hoy"></aside>
+    </div>
+  </section>
+
+  <div class="azulejos">
+    <ul class="wrap">
+      <li><b id="kDesayuno">6:00</b><span>abrimos para desayunar</span></li>
+      <li><b id="kMenu"></b><span>menú del día completo</span></li>
+      <li><b>Para llevar</b><span>encárgalo y pasa a recogerlo</span></li>
+      <li><b>Terraza</b><span>en la calle, al sol</span></li>
+    </ul>
+  </div>
+
+  <!-- MENÚ DE LA SEMANA -->
+  <section id="menu">
+    <div class="wrap">
+      <h2>El menú de esta semana</h2>
+      <p class="intro">Cocinamos cada día lo que hay en el mercado. Mira qué toca hoy o adelántate a lo que viene.</p>
+      <div class="semana" id="semana" role="group" aria-label="Elige día"></div>
+      <div class="menu-dia" id="menuDia"></div>
+      <p class="incluye" id="incluye"></p>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta">
+    <div class="wrap">
+      <h2>Carta</h2>
+      <p class="intro">Bocadillos con pan del día, tortilla hecha aquí y raciones de toda la vida. Todo se puede pedir para llevar.</p>
+      <div class="carta" id="cartaGrid"></div>
+      <div class="fotos">
+        <img src="img/menu-del-dia.webp" alt="Mesa con platos de menú del día" loading="lazy" width="720" height="540">
+        <img src="img/bravas.webp" alt="Patatas bravas" loading="lazy" width="720" height="540">
+        <img src="img/tarta.webp" alt="Tarta de queso casera" loading="lazy" width="720" height="540">
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA LLEVAR -->
+  <section id="llevar">
+    <div class="wrap">
+      <h2>Encarga y pasa a recoger</h2>
+      <p class="intro">Elige lo que quieras, dinos a qué hora vienes y te lo tenemos listo. Sin apps de reparto ni comisiones.</p>
+      <div class="encargo">
+        <div>
+          <div class="rapidos" id="rapidos"></div>
+          <p class="aviso">¿Buscas algo que no está aquí? Añádelo en las notas del pedido.</p>
+        </div>
+        <div class="ticket" aria-labelledby="tTitulo">
+          <header><h3 id="tTitulo">Tu pedido</h3><span id="tCuenta">0 productos</span></header>
+          <div class="cuerpo" id="ticketCuerpo">
+            <ul class="lineas" id="lineas"></ul>
+            <div class="total"><span>Total</span><span id="total">0,00 €</span></div>
+            <form id="fPedido" novalidate>
+              <div class="dos">
+                <div><label for="pDia">Día</label><select id="pDia" required></select></div>
+                <div><label for="pHora">Hora de recogida</label><select id="pHora" required></select></div>
+              </div>
+              <div class="dos">
+                <div><label for="pNombre">Nombre</label><input id="pNombre" autocomplete="given-name" required></div>
+                <div><label for="pTel">Teléfono</label><input id="pTel" type="tel" inputmode="tel" autocomplete="tel" required></div>
+              </div>
+              <label for="pNotas">Notas <span style="font-weight:400;color:var(--gris)">(opcional)</span></label>
+              <textarea id="pNotas" placeholder="Sin cebolla, bien hecho, cubiertos…"></textarea>
+              <button class="btn btn-tomate enviar" id="pEnviar" type="submit"></button>
+              <p class="aviso" id="pAviso">Pagas al recoger, en efectivo o con tarjeta.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section id="reservar">
+    <div class="wrap">
+      <h2>Reserva tu mesa para comer</h2>
+      <p class="intro">Somos un sitio pequeño y a mediodía se llena. Guarda tu mesa en un minuto.</p>
+      <div class="reserva">
+        <form class="form-reserva" id="fReserva" novalidate>
+          <div class="dos">
+            <div><label for="rDia">Día</label><select id="rDia"></select></div>
+            <div><label for="rPax">Personas</label><select id="rPax"></select></div>
+          </div>
+          <label id="rHorasL">Hora</label>
+          <div class="horas" id="rHoras" role="group" aria-labelledby="rHorasL"></div>
+          <div class="dos">
+            <div><label for="rNombre">Nombre</label><input id="rNombre" autocomplete="name"></div>
+            <div><label for="rTel">Teléfono</label><input id="rTel" type="tel" inputmode="tel" autocomplete="tel"></div>
+          </div>
+          <button class="btn btn-tomate enviar" id="rEnviar" type="submit" disabled></button>
+          <p class="aviso" id="rAviso">Elige día y hora para continuar.</p>
+        </form>
+        <ul class="puntos">
+          <li><svg><use href="#i-reloj"/></svg><div><b>Servimos el menú de 13:00 a 16:00</b><span>Las mesas se reservan cada media hora, hasta las 15:30.</span></div></li>
+          <li><svg><use href="#i-mesa"/></svg><div><b>Grupos de más de 8</b><span>Llámanos y os preparamos el espacio.</span></div></li>
+          <li><svg><use href="#i-sol"/></svg><div><b>Terraza</b><span>Si prefieres fuera, dínoslo en la reserva y te guardamos sitio si hace buen día.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ VUELVEN -->
+  <section id="opiniones">
+    <div class="wrap">
+      <h2>Lo que más se repite en las opiniones</h2>
+      <p class="intro">Resumen de lo que destacan quienes nos han valorado en Google.</p>
+      <div class="temas">
+        <div><h3>Comida casera</h3><p>Platos hechos aquí, como la tortilla del bocadillo o los guisos del menú.</p></div>
+        <div><h3>Raciones generosas</h3><p>Nadie se queda con hambre, ni en el desayuno ni a mediodía.</p></div>
+        <div><h3>Buen precio</h3><p>Un menú del día completo a un precio de barrio.</p></div>
+        <div><h3>Trato cercano</h3><p>Un bar familiar donde te atienden rápido y con una sonrisa.</p></div>
+      </div>
+      <p style="margin-top:2rem"><a class="btn btn-linea" id="google2" target="_blank" rel="noopener" href="#" style="color:var(--verde)">Leer las opiniones en Google</a></p>
+    </div>
+  </section>
+
+  <!-- DÓNDE ESTAMOS -->
+  <section id="visitanos">
+    <div class="wrap">
+      <h2>Ven a vernos</h2>
+      <div class="visita">
+        <div>
+          <table class="horario" id="horario"><caption class="sr">Horario</caption></table>
+          <div class="contacto">
+            <a data-tel href="#"><svg><use href="#i-tel"/></svg><span data-cfg="telefonoVisible"></span></a>
+            <a id="lnkMapa" target="_blank" rel="noopener" href="#"><svg><use href="#i-pin"/></svg><span data-cfg="direccion"></span></a>
+            <a id="lnkWa" target="_blank" rel="noopener" href="#" hidden><svg><use href="#i-wa"/></svg><span>Escríbenos por WhatsApp</span></a>
+          </div>
+          <p style="margin-top:1.6rem"><a class="btn btn-verde" id="comoLlegar" target="_blank" rel="noopener" href="#"><svg><use href="#i-pin"/></svg>Cómo llegar</a></p>
+        </div>
+        <div class="mapa"><iframe id="mapa" title="Mapa de situación" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="anio"></span> <span data-cfg="nombre"></span>. <span data-cfg="direccion"></span></span>
+    <span>Web hecha por <a href="https://thesqvare.com" target="_blank" rel="noopener">The Sqvare</a></span>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Acciones rápidas">
+  <a data-tel href="#"><svg><use href="#i-tel"/></svg>Llamar</a>
+  <a class="principal" href="#llevar"><svg><use href="#i-bolsa"/></svg>Encargar<span class="cuenta" id="barraCuenta" hidden>0</span></a>
+  <a id="barraMapa" target="_blank" rel="noopener" href="#"><svg><use href="#i-pin"/></svg>Cómo llegar</a>
+</nav>
+
+<!-- Elegir el menú para llevar -->
+<dialog id="dlgMenu" aria-labelledby="dmT">
+  <form class="dlg" method="dialog" id="fMenu">
+    <h3 id="dmT">Menú del día para llevar</h3>
+    <p class="intro" id="dmSub" style="margin-top:.2rem"></p>
+    <label for="mPrimero">Primero</label><select id="mPrimero"></select>
+    <label for="mSegundo">Segundo</label><select id="mSegundo"></select>
+    <label for="mPostre">Postre</label><select id="mPostre"></select>
+    <div class="fila">
+      <button class="btn btn-linea" value="cancel" formnovalidate style="color:var(--verde)">Cancelar</button>
+      <button class="btn btn-tomate" value="ok" id="dmAnadir">Añadir al pedido</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Qué incluye la web (para la dueña) -->
+<dialog id="dlgIncluye" aria-labelledby="diT">
+  <div class="dlg">
+    <h3 id="diT">Tu web, lista para usar</h3>
+    <p class="intro" style="margin-top:.2rem">Así trabaja esta web para el Racó de Piscis cada día:</p>
+    <ul class="incluido">
+      <li><div><b>Encargos para llevar sin comisiones</b><span>El cliente elige, pone la hora y te llega el pedido completo. Nada de pagar un porcentaje a apps de reparto.</span></div></li>
+      <li><div><b>Reservas para el menú</b><span>Solo deja elegir horas en las que estás abierto y nunca días cerrados.</span></div></li>
+      <li><div><b>Menú del día siempre al día</b><span>La pizarra muestra sola el menú que toca hoy, y la semana entera para quien quiera adelantarse.</span></div></li>
+      <li><div><b>"Abierto ahora" automático</b><span>Con tu horario real: nadie viene a la puerta cerrada.</span></div></li>
+      <li><div><b>Pensada para el móvil</b><span>Llamar, encargar y cómo llegar, a un toque desde la barra de abajo.</span></div></li>
+      <li><div><b>Cambios cuando los necesites</b><span>Platos, precios u horarios nuevos: nos lo dices y se actualiza.</span></div></li>
+    </ul>
+    <div class="fila"><button class="btn btn-verde" data-cerrar>Ver la web</button></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================== EDITA AQUÍ LOS DATOS DEL BAR ================== */
+const CONFIG = {
+  nombre: "Racó de Piscis",
+  telefono: "934680022",              // fijo del bar, sin espacios
+  telefonoVisible: "934 68 00 22",
+  whatsapp: "",                       // móvil con WhatsApp, p. ej. "34600000000". Vacío = los pedidos y reservas se hacen llamando
+  direccion: "C/ Dr. Ferran, 10 · Santa Coloma de Gramenet",
+  mapaBusqueda: "Bar Piscis, Carrer Dr. Ferran 10, 08921 Santa Coloma de Gramenet",
+  google: { nota: "4,4", opiniones: "469" },
+  // Horario Lunes..Domingo: [abre, cierra] o null si cerrado
+  horario: [
+    ["06:00","18:00"], ["06:00","18:00"], ["06:00","18:00"], ["06:00","18:00"], ["06:00","18:00"],
+    ["07:10","17:30"],
+    null
+  ],
+  menu: {
+    precio: 13.50,                    // PON AQUÍ EL PRECIO REAL
+    servicio: ["13:00","16:00"],      // horas en que se sirve el menú
+    ultimaReserva: "15:30",
+    incluye: "Primero, segundo, postre o café, pan y bebida.",
+    maxPersonas: 8,
+    // Menú por día (1 = lunes … 6 = sábado). Cámbialo cada semana.
+    dias: {
+      1: { primeros:["Fideuà con alioli","Ensalada de queso de cabra","Crema de calabaza"], segundos:["Pollo al ajillo con patatas","Merluza a la romana","Lomo a la plancha"], postres:["Tarta de queso","Flan casero","Fruta del tiempo"] },
+      2: { primeros:["Macarrones a la boloñesa","Ensalada mixta","Sopa de pescado"], segundos:["Albóndigas con sepia","Bacalao con samfaina","Pechuga empanada"], postres:["Tarta de Santiago","Yogur con miel","Fruta del tiempo"] },
+      3: { primeros:["Lentejas estofadas","Ensalada de queso de cabra","Espárragos con mayonesa"], segundos:["Rabo de toro guisado","Calamares a la andaluza","Butifarra con mongetes"], postres:["Crema catalana","Tarta de queso","Fruta del tiempo"] },
+      4: { primeros:["Paella de marisco","Ensaladilla rusa","Crema de verduras"], segundos:["Entrecot a la brasa","Dorada al horno","Escalopa milanesa"], postres:["Flan casero","Tarta de Santiago","Fruta del tiempo"] },
+      5: { primeros:["Fideuà con alioli","Garbanzos con espinacas","Ensalada mixta"], segundos:["Rabo de toro guisado","Sepia a la plancha","Pollo asado"], postres:["Tarta de queso","Crema catalana","Fruta del tiempo"] },
+      6: { primeros:["Canelones caseros","Ensalada de queso de cabra","Mejillones a la marinera"], segundos:["Entrecot a la brasa","Merluza en salsa verde","Costillas al horno"], postres:["Tarta de Santiago","Tarta de queso","Fruta del tiempo"] }
+    }
+  },
+  // Carta. llevar:true = aparece en "Para llevar"
+  carta: [
+    { seccion:"Desayunos y bocadillos", nota:"Hasta las 12:00", platos:[
+      { id:"b-tortilla", nombre:"Bocadillo de tortilla de patatas", desc:"Tortilla hecha aquí, con o sin cebolla.", precio:4.50, llevar:true },
+      { id:"b-bikini", nombre:"Bikini", desc:"Jamón dulce y queso fundido, pan tostado.", precio:3.50, llevar:true },
+      { id:"b-lomo", nombre:"Bocadillo de lomo con queso", desc:"Lomo a la plancha y queso.", precio:5.00, llevar:true },
+      { id:"b-butifarra", nombre:"Bocadillo de butifarra", desc:"Butifarra a la plancha con pan con tomate.", precio:5.00, llevar:true },
+      { id:"d-cafe", nombre:"Café con leche y cruasán", desc:"El desayuno rápido de siempre.", precio:2.80, llevar:true }
+    ]},
+    { seccion:"Raciones", nota:"Para compartir o para picar", platos:[
+      { id:"r-bravas", nombre:"Patatas bravas", desc:"Con salsa brava de la casa.", precio:5.50, llevar:true },
+      { id:"r-croquetas", nombre:"Croquetas caseras", desc:"De jamón o de pollo. 6 unidades.", precio:6.50, llevar:true },
+      { id:"r-calamares", nombre:"Calamares a la andaluza", desc:"Con limón.", precio:8.50, llevar:true },
+      { id:"r-ensalada", nombre:"Ensalada de queso de cabra", desc:"Con nueces y vinagreta de miel.", precio:8.00, llevar:true },
+      { id:"r-tortilla", nombre:"Tortilla de patatas entera", desc:"Para llevar a casa. Encárgala con tiempo.", precio:12.00, llevar:true }
+    ]},
+    { seccion:"Postres caseros", nota:"Hechos en el bar", platos:[
+      { id:"p-queso", nombre:"Tarta de queso", desc:"Cremosa, como la de casa.", precio:4.00, llevar:true },
+      { id:"p-santiago", nombre:"Tarta de Santiago", desc:"De almendra.", precio:4.00, llevar:true },
+      { id:"p-crema", nombre:"Crema catalana", desc:"Quemada al momento.", precio:4.00, llevar:false }
+    ]}
+  ],
+  // Productos destacados en "Para llevar" (ids de la carta)
+  rapidos: ["b-tortilla","b-bikini","r-bravas","r-croquetas","r-tortilla","r-calamares","p-queso","p-santiago"],
+  minutosPreparacion: 30
+};
+/* ================================================================== */
+
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const euro=n=>n.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const aMin=h=>{const[a,b]=h.split(":").map(Number);return a*60+b};
+const aHora=m=>`${pad(Math.floor(m/60))}:${pad(m%60)}`;
+const DIAS=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(_){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
+
+/* Hora de Madrid, sea cual sea la zona del móvil */
+function ahoraMadrid(){
+  const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+  const fecha=new Date(+p.year,+p.month-1,+p.day);
+  return {fecha,min:+p.hour*60+ +p.minute};
+}
+const idxDia=d=>(d.getDay()+6)%7;                    // 0=lunes
+const ymd=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const sumarDias=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const fechaLarga=d=>d.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+const hoyM=ahoraMadrid();
+
+/* Datos fijos */
+$$("[data-cfg]").forEach(el=>{const v=CONFIG[el.dataset.cfg];if(v)el.textContent=v});
+$$("[data-tel]").forEach(a=>a.href="tel:+34"+CONFIG.telefono);
+const mapsUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(CONFIG.mapaBusqueda);
+["#google","#google2","#lnkMapa","#comoLlegar","#barraMapa"].forEach(s=>$(s).href=mapsUrl);
+$("#mapa").src="https://maps.google.com/maps?q="+encodeURIComponent(CONFIG.mapaBusqueda)+"&z=17&output=embed";
+$("#gNota").textContent=CONFIG.google.nota; $("#gNum").textContent=CONFIG.google.opiniones;
+$("#anio").textContent=hoyM.fecha.getFullYear();
+$("#kMenu").textContent=euro(CONFIG.menu.precio).replace(",00","");
+$("#kDesayuno").textContent=CONFIG.horario[0]?CONFIG.horario[0][0].replace(/^0/,""):"";
+$("#incluye").textContent="Incluye: "+CONFIG.menu.incluye.charAt(0).toLowerCase()+CONFIG.menu.incluye.slice(1)+" De lunes a sábado.";
+const wa=CONFIG.whatsapp?`https://wa.me/${CONFIG.whatsapp}`:"";
+if(wa){$("#lnkWa").hidden=false;$("#lnkWa").href=wa}
+
+/* Aviso de propuesta */
+if(store.get("rp-sinAviso",false)) $("#propuesta").hidden=true;
+$("#cerrarPropuesta").onclick=()=>{$("#propuesta").hidden=true;store.set("rp-sinAviso",true)};
+$$("[data-abrir]").forEach(b=>b.onclick=()=>$("#"+b.dataset.abrir).showModal());
+$$("[data-cerrar]").forEach(b=>b.onclick=()=>b.closest("dialog").close());
+$$("dialog").forEach(d=>d.addEventListener("click",e=>{if(e.target===d)d.close()}));
+addEventListener("scroll",()=>$("#cabecera").classList.toggle("sombra",scrollY>10),{passive:true});
+
+/* Abierto / cerrado */
+function estado(){
+  const {fecha,min}=ahoraMadrid(), h=CONFIG.horario[idxDia(fecha)], st=$("#estado");
+  let txt,color;
+  if(h&&min>=aMin(h[0])&&min<aMin(h[1])){
+    const queda=aMin(h[1])-min;
+    txt=queda<=60?`Abierto · cerramos en ${queda} min`:`Abierto ahora · hasta las ${h[1]}`; color="#1FA971";
+  }else{
+    let n=0,d=fecha,hh=h;
+    if(!(h&&min<aMin(h[0]))){do{n++;d=sumarDias(fecha,n);hh=CONFIG.horario[idxDia(d)]}while(!hh&&n<7)}
+    const cuando=n===0?"hoy":n===1?"mañana":DIAS[idxDia(d)].toLowerCase();
+    txt=`Cerrado · abrimos ${cuando} a las ${hh[0]}`; color="#D9412B";
+  }
+  st.style.setProperty("--dot",color); st.querySelector("span").textContent=txt;
+}
+estado(); setInterval(estado,60000);
+
+/* Horario */
+$("#horario").insertAdjacentHTML("beforeend",CONFIG.horario.map((h,i)=>`<tr class="${i===idxDia(hoyM.fecha)?"hoy":""}"><td>${DIAS[i]}</td><td>${h?h[0]+" – "+h[1]:"Cerrado"}</td></tr>`).join(""));
+
+/* Pizarra + menú de la semana */
+const menuDe=d=>CONFIG.menu.dias[idxDia(d)+1]||null;
+(function pizarra(){
+  const m=menuDe(hoyM.fecha), el=$("#menu-pizarra");
+  let html=`<h3>Menú del día</h3><p class="fecha">${fechaLarga(hoyM.fecha)}</p>`;
+  if(!m){
+    let n=1;while(!menuDe(sumarDias(hoyM.fecha,n))&&n<7)n++;
+    html+=`<p class="cerrado">Hoy descansamos.<br>Volvemos ${n===1?"mañana":"el "+DIAS[idxDia(sumarDias(hoyM.fecha,n))].toLowerCase()} con menú nuevo.</p>`;
+  }else{
+    html+=`<h4>Primeros</h4><ul>${m.primeros.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      <h4>Segundos</h4><ul>${m.segundos.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      <h4>Postres</h4><ul>${m.postres.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="precio"><span>Pan, bebida<br>y postre o café</span><b>${euro(CONFIG.menu.precio)}</b></div>`;
+  }
+  el.innerHTML=html;
+})();
+
+let diaSel=menuDe(hoyM.fecha)?idxDia(hoyM.fecha):0;
+function pintarSemana(){
+  $("#semana").innerHTML=DIAS.slice(0,6).map((d,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===diaSel}">${d}${i===idxDia(hoyM.fecha)?'<span class="hoy">hoy</span>':""}</button>`).join("");
+  const m=CONFIG.menu.dias[diaSel+1];
+  const col=(t,a)=>`<div class="col"><h3>${t}</h3><ul>${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+  $("#menuDia").innerHTML=col("Primeros",m.primeros)+col("Segundos",m.segundos)+col("Postres",m.postres)
+    +`<figure><img src="img/menu-del-dia.webp" alt="Platos del menú del día" loading="lazy" width="720" height="540"><figcaption><b>${euro(CONFIG.menu.precio)}</b>Menú completo · ${DIAS[diaSel].toLowerCase()}</figcaption></figure>`;
+}
+$("#semana").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;diaSel=+b.dataset.i;pintarSemana()});
+pintarSemana();
+
+/* Carta */
+const PLATOS={}; CONFIG.carta.forEach(s=>s.platos.forEach(p=>PLATOS[p.id]=p));
+$("#cartaGrid").innerHTML=CONFIG.carta.map(s=>`<div><h3>${esc(s.seccion)}</h3>${s.nota?`<p class="nota">${esc(s.nota)}</p>`:""}
+  ${s.platos.map(p=>`<div class="plato"><strong>${esc(p.nombre)}</strong><span class="p">${euro(p.precio)}</span><small>${esc(p.desc)}</small>
+  ${p.llevar?`<button type="button" class="anadir" data-add="${p.id}">+ Añadir al pedido para llevar</button>`:""}</div>`).join("")}</div>`).join("");
+
+/* ===== Pedido para llevar ===== */
+let pedido=store.get("rp-pedido",[]).filter(l=>l.tipo==="menu"||PLATOS[l.id]);
+const toast=t=>{const el=$("#toast");el.textContent=t;el.classList.add("ver");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("ver"),2200)};
+$("#rapidos").innerHTML=`<button type="button" class="rapido menu" id="btnMenu"><span>Menú del día para llevar<br><small style="font-weight:400;opacity:.85">Eliges primero, segundo y postre</small></span><em>${euro(CONFIG.menu.precio)}</em></button>`
+  +CONFIG.rapidos.map(id=>PLATOS[id]).filter(Boolean).map(p=>`<button type="button" class="rapido" data-add="${p.id}"><span>${esc(p.nombre)}</span><em>+ ${euro(p.precio)}</em></button>`).join("");
+
+function anadir(id){
+  const l=pedido.find(x=>x.id===id&&x.tipo!=="menu");
+  l?l.cant++:pedido.push({id,cant:1});
+  guardar(); toast(`Añadido: ${PLATOS[id].nombre}`);
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)anadir(b.dataset.add)});
+function guardar(){store.set("rp-pedido",pedido);pintarPedido();const h=$("#pHora").value;rellenarHorasPedido();if([...$("#pHora").options].some(o=>o.value===h))$("#pHora").value=h}
+const precioLinea=l=>(l.tipo==="menu"?CONFIG.menu.precio:PLATOS[l.id].precio)*l.cant;
+const nombreLinea=l=>l.tipo==="menu"?"Menú del día":PLATOS[l.id].nombre;
+function pintarPedido(){
+  const n=pedido.reduce((a,l)=>a+l.cant,0), t=pedido.reduce((a,l)=>a+precioLinea(l),0);
+  $("#lineas").innerHTML=pedido.length?pedido.map((l,i)=>`<li><span>${l.cant} × ${esc(nombreLinea(l))}</span><b>${euro(precioLinea(l))}</b>
+    ${l.tipo==="menu"?`<span class="det">${esc(l.platos.join(" · "))}</span>`:""}
+    <span class="ctl"><button type="button" data-q="${i}" data-d="-1" aria-label="Quitar uno de ${esc(nombreLinea(l))}">−</button><output>${l.cant}</output><button type="button" data-q="${i}" data-d="1" aria-label="Añadir otro ${esc(nombreLinea(l))}">+</button></span></li>`).join("")
+    :`<li class="vacio" style="display:block;border:0">Tu pedido está vacío. Toca un plato para añadirlo.</li>`;
+  $("#total").textContent=euro(t);
+  $("#tCuenta").textContent=n+(n===1?" producto":" productos");
+  const bc=$("#barraCuenta"); bc.hidden=!n; bc.textContent=n;
+}
+$("#lineas").addEventListener("click",e=>{
+  const b=e.target.closest("[data-q]");if(!b)return;
+  const l=pedido[+b.dataset.q]; l.cant+=+b.dataset.d; if(l.cant<1) pedido.splice(+b.dataset.q,1); guardar();
+});
+
+/* Menú para llevar */
+const dlgMenu=$("#dlgMenu");
+$("#btnMenu").onclick=()=>{
+  const d=diaPedido(), m=menuDe(d);
+  if(!m){toast("Ese día no hay menú. Elige otro día de recogida.");return}
+  $("#dmSub").textContent="Menú del "+fechaLarga(d)+".";
+  const op=a=>a.map(x=>`<option>${esc(x)}</option>`).join("");
+  $("#mPrimero").innerHTML=op(m.primeros); $("#mSegundo").innerHTML=op(m.segundos); $("#mPostre").innerHTML=op(m.postres);
+  dlgMenu.showModal();
+};
+dlgMenu.addEventListener("close",()=>{
+  if(dlgMenu.returnValue!=="ok")return;
+  const platos=[$("#mPrimero").value,$("#mSegundo").value,$("#mPostre").value];
+  const l=pedido.find(x=>x.tipo==="menu"&&x.platos.join()===platos.join());
+  l?l.cant++:pedido.push({tipo:"menu",id:"menu",platos,cant:1});
+  guardar(); toast("Menú añadido al pedido");
+});
+
+/* Días y horas de recogida */
+function diasAbiertos(cuantos,filtro){
+  const out=[];
+  for(let n=0;out.length<cuantos&&n<14;n++){
+    const d=sumarDias(hoyM.fecha,n); if(filtro(d,n)) out.push(d);
+  }
+  return out;
+}
+function horasRecogida(d){
+  const h=CONFIG.horario[idxDia(d)]; if(!h) return [];
+  const {min}=ahoraMadrid(), esHoy=ymd(d)===ymd(hoyM.fecha), out=[];
+  const desde=Math.max(aMin(h[0])+15, esHoy?Math.ceil((min+CONFIG.minutosPreparacion)/15)*15:0);
+  const conMenu=pedido.some(l=>l.tipo==="menu");   // el menú solo se recoge en horario de comidas
+  const ini=conMenu?Math.max(desde,aMin(CONFIG.menu.servicio[0])):desde, fin=conMenu?Math.min(aMin(h[1])-15,aMin(CONFIG.menu.servicio[1])):aMin(h[1])-15;
+  for(let t=ini;t<=fin;t+=15) out.push(aHora(t));
+  return out;
+}
+const etiquetaDia=(d,n)=>n===0?"Hoy":n===1?"Mañana":fechaLarga(d).replace(/^./,c=>c.toUpperCase());
+function rellenarDiasPedido(){
+  const dias=diasAbiertos(4,d=>horasRecogida(d).length>0);
+  $("#pDia").innerHTML=dias.map(d=>{const n=Math.round((d-hoyM.fecha)/864e5);return `<option value="${ymd(d)}">${etiquetaDia(d,n)}</option>`}).join("");
+  rellenarHorasPedido();
+}
+function diaPedido(){const v=$("#pDia").value;if(!v)return hoyM.fecha;const[y,m,d]=v.split("-").map(Number);return new Date(y,m-1,d)}
+function rellenarHorasPedido(){
+  const hs=horasRecogida(diaPedido());
+  $("#pHora").innerHTML=hs.map(h=>`<option>${h}</option>`).join("");
+}
+$("#pDia").addEventListener("change",rellenarHorasPedido);
+rellenarDiasPedido();
+$("#pEnviar").innerHTML=wa?`<svg><use href="#i-wa"/></svg>Enviar pedido por WhatsApp`:`<svg><use href="#i-bolsa"/></svg>Hacer el pedido`;
+
+const telOk=t=>t.replace(/\D/g,"").length>=9;
+$("#fPedido").addEventListener("submit",e=>{
+  e.preventDefault();
+  const av=$("#pAviso"), nombre=$("#pNombre").value.trim(), tel=$("#pTel").value.trim();
+  const err=t=>{av.textContent=t;av.classList.add("err")};
+  if(!pedido.length) return err("Añade al menos un producto al pedido.");
+  if(!$("#pHora").value) return err("Ese día ya no quedan horas de recogida. Elige otro día.");
+  if(!nombre){$("#pNombre").focus();return err("Escribe tu nombre para saber de quién es el pedido.")}
+  if(!telOk(tel)){$("#pTel").focus();return err("Escribe un teléfono de 9 cifras para avisarte si hace falta.")}
+  const d=diaPedido(), n=Math.round((d-hoyM.fecha)/864e5);
+  const lineas=pedido.map(l=>`• ${l.cant} × ${nombreLinea(l)}${l.tipo==="menu"?` (${l.platos.join(", ")})`:""} — ${euro(precioLinea(l))}`).join("\n");
+  const total=euro(pedido.reduce((a,l)=>a+precioLinea(l),0));
+  const notas=$("#pNotas").value.trim();
+  const texto=`Pedido para llevar · ${CONFIG.nombre}\n${lineas}\nTotal: ${total}\n\nRecogida: ${etiquetaDia(d,n).toLowerCase()} a las ${$("#pHora").value}\nNombre: ${nombre}\nTeléfono: ${tel}${notas?`\nNotas: ${notas}`:""}`;
+  if(wa) window.open(wa+"?text="+encodeURIComponent(texto),"_blank","noopener");
+  $("#ticketCuerpo").innerHTML=`<div class="hecho"><div class="ok" aria-hidden="true">✓</div>
+    <h3>${wa?"Pedido listo para enviar":"Pedido preparado"}</h3>
+    <p>${wa?"Envía el mensaje de WhatsApp que se ha abierto y te lo confirmamos.":"Llámanos y léenos este resumen; te lo tendremos listo a la hora."}</p>
+    <pre>${esc(texto)}</pre>
+    <a class="btn ${wa?"btn-linea":"btn-tomate"}" style="width:100%;${wa?"color:var(--verde)":""}" href="tel:+34${CONFIG.telefono}"><svg><use href="#i-tel"/></svg>Llamar al ${CONFIG.telefonoVisible}</a>
+    <button type="button" class="btn btn-linea" id="nuevoPedido" style="width:100%;margin-top:.6rem;color:var(--verde)">Hacer otro pedido</button></div>`;
+  pedido=[]; store.set("rp-pedido",[]); $("#barraCuenta").hidden=true; $("#tCuenta").textContent="Enviado";
+  $("#nuevoPedido").onclick=()=>location.reload();
+});
+pintarPedido();
+
+/* ===== Reservas ===== */
+let horaRes=null;
+function horasReserva(d){
+  if(!menuDe(d)||!CONFIG.horario[idxDia(d)]) return [];
+  const {min}=ahoraMadrid(), esHoy=ymd(d)===ymd(hoyM.fecha), out=[];
+  for(let t=aMin(CONFIG.menu.servicio[0]);t<=aMin(CONFIG.menu.ultimaReserva);t+=30) if(!esHoy||t>=min+30) out.push(aHora(t));
+  return out;
+}
+const diasRes=diasAbiertos(10,d=>horasReserva(d).length>0);
+$("#rDia").innerHTML=diasRes.map(d=>{const n=Math.round((d-hoyM.fecha)/864e5);return `<option value="${ymd(d)}">${etiquetaDia(d,n)}</option>`}).join("");
+$("#rPax").innerHTML=Array.from({length:CONFIG.menu.maxPersonas},(_,i)=>`<option value="${i+1}" ${i===1?"selected":""}>${i+1} ${i?"personas":"persona"}</option>`).join("")+`<option value="mas">Más de ${CONFIG.menu.maxPersonas}</option>`;
+const diaRes=()=>{const[y,m,d]=$("#rDia").value.split("-").map(Number);return new Date(y,m-1,d)};
+function pintarHoras(){
+  horaRes=null;
+  if($("#rPax").value==="mas"){
+    $("#rHoras").innerHTML=`<p>Para grupos grandes, <a href="tel:+34${CONFIG.telefono}" style="color:var(--tomate);font-weight:700">llámanos al ${CONFIG.telefonoVisible}</a> y os preparamos el espacio.</p>`;
+  }else{
+    $("#rHoras").innerHTML=horasReserva(diaRes()).map(h=>`<button type="button" aria-pressed="false">${h}</button>`).join("");
+  }
+  actualizarRes();
+}
+function actualizarRes(){
+  $("#rEnviar").disabled=!horaRes;
+  const av=$("#rAviso"); av.classList.remove("err");
+  av.textContent=horaRes?`Mesa para ${$("#rPax").value} el ${fechaLarga(diaRes())} a las ${horaRes}.`:"Elige día y hora para continuar.";
+}
+$("#rHoras").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  $$("#rHoras button").forEach(x=>x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true"); horaRes=b.textContent; actualizarRes();
+});
+$("#rDia").addEventListener("change",pintarHoras); $("#rPax").addEventListener("change",pintarHoras);
+$("#rEnviar").innerHTML=wa?`<svg><use href="#i-wa"/></svg>Enviar reserva por WhatsApp`:`<svg><use href="#i-mesa"/></svg>Reservar mesa`;
+pintarHoras();
+
+$("#fReserva").addEventListener("submit",e=>{
+  e.preventDefault();
+  const av=$("#rAviso"), nombre=$("#rNombre").value.trim(), tel=$("#rTel").value.trim();
+  const err=t=>{av.textContent=t;av.classList.add("err")};
+  if(!horaRes) return err("Elige una hora.");
+  if(!nombre){$("#rNombre").focus();return err("Escribe tu nombre para apuntar la reserva.")}
+  if(!telOk(tel)){$("#rTel").focus();return err("Escribe un teléfono de 9 cifras por si hay que avisarte.")}
+  const pax=$("#rPax").value, fl=fechaLarga(diaRes());
+  const texto=`Reserva · ${CONFIG.nombre}\nMesa para ${pax} ${pax==="1"?"persona":"personas"}\n${fl.replace(/^./,c=>c.toUpperCase())} a las ${horaRes}\nNombre: ${nombre}\nTeléfono: ${tel}`;
+  if(wa) window.open(wa+"?text="+encodeURIComponent(texto),"_blank","noopener");
+  $("#fReserva").innerHTML=`<div class="hecho"><div class="ok" aria-hidden="true">✓</div>
+    <h3>${wa?"Reserva lista para enviar":"Reserva preparada"}</h3>
+    <p>${wa?"Envía el mensaje de WhatsApp y te confirmamos la mesa.":"Llámanos para confirmarla con estos datos:"}</p>
+    <pre>${esc(texto)}</pre>
+    <a class="btn btn-tomate" style="width:100%" href="tel:+34${CONFIG.telefono}"><svg><use href="#i-tel"/></svg>Llamar al ${CONFIG.telefonoVisible}</a></div>`;
+});
+</script>
+</body>
+</html>
