@@ -50,3 +50,12 @@ Las capas "antes" y "plataforma" están en `overlay.py`. La app de reservas es g
 - Cada semana usa textos nuevos y apúntalos en `historial.md` para no repetirlos.
 - Graba SOLO las webs que aparecen en thesqvare.com: la propia web (`index.html`), TheSqvare Bar (`thesqvare-bar/`) y TheSqvare Barber (`thesqvare-barber/`). Nunca inventes negocios ni páginas demo nuevas. Si en el futuro se añaden más ejemplos a la sección Ejemplos de thesqvare.com, se puede crear un `spec_` para ellos.
 - La variedad viene de los textos: cada día un gancho distinto aunque se repita el formato.
+
+## Narrador (voz de IA)
+
+Desde aquí no se pueden generar voces (los servicios de voz están bloqueados), así que David las genera gratis en CapCut:
+1. Escribe un guion por reel de la semana (máx. ~35 palabras, que coincida con los textos de pantalla) y que **todos acaben con "Escríbenos por DM."**. Pásaselos a David listos para copiar, uno por bloque y en orden.
+2. David crea en CapCut un texto por guion, aplica "Texto a voz" y exporta un único audio o vídeo con todos seguidos.
+3. `python3 _reels/narrador.py ARCHIVO 2026-10-13 2026-10-14 ...` (fechas en el orden de los guiones) crea `ig/FECHA/reel-voz.mp4`. Comprueba los finales que imprime: tienen que estar repartidos a lo largo del audio.
+4. Commit, push y cambia el media del post en Metricool a `.../ig/FECHA/reel-voz.mp4` (nombre nuevo, así Metricool no coge una versión en caché).
+Si David pasa dos voces, se pueden alternar: la más rápida y expresiva para los reels de gancho (app vs. web, antes/después).
