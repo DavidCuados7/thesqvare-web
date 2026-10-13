@@ -194,6 +194,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--salvia);
 .resumen .aviso{color:#C9D1BE}
 .resumen .aviso.err{color:#F3C2BA}
 @media(max-width:960px){.reserva{grid-template-columns:minmax(0,1fr)}.resumen{position:static}}
+/* Horario compacto (móvil) */
+.horario-movil{display:none;list-style:none;gap:8px}
+.horario-movil li{display:flex;justify-content:space-between;align-items:center;background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:.7rem .9rem;font-size:.95rem}
+.horario-movil li.hoy{border-color:var(--oliva);box-shadow:inset 3px 0 0 var(--oliva)}
+.horario-movil b{font-weight:600}
+.horario-movil .cerrado{color:var(--gris)}
 /* Galería */
 #galeria{padding-bottom:40px}
 .galeria{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;width:min(1140px,100% - 32px);margin:2rem auto 0}
@@ -280,7 +286,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   .marca small{display:none}
 
   /* Portada: foto a pantalla completa con el texto encima */
-  .hero{position:relative;padding:0;min-height:calc(100svh - 62px - 70px);display:flex;align-items:flex-end;overflow:hidden;background:var(--oliva)}
+  .hero{position:relative;padding:0;min-height:calc(100svh - 62px - 38px - 74px);display:flex;align-items:flex-end;overflow:hidden;background:var(--oliva)}
   .hero .hero-grid{display:block;position:static;padding-bottom:26px}
   .hero .hero-grid > div:first-child{position:relative;z-index:2}
   .retrato{position:absolute;inset:0;width:100%;max-width:none;aspect-ratio:auto;z-index:1}
@@ -297,8 +303,6 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   .hero .acciones .btn{padding:.7rem .6rem;font-size:.92rem}
   .hero .btn-oliva{background:var(--lino);color:var(--oliva)}
   .hero .btn-linea{border-color:#fff;color:#fff}
-  .hero .btn-linea{font-size:0}
-  .hero .btn-linea::after{content:"Precios";font-size:.92rem}
   .valoracion{margin-top:1rem;color:#E9EDE3}
   .valoracion b{color:#fff;font-size:1.8rem}
 
@@ -332,9 +336,13 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   .andrea{gap:24px}
   .andrea .fotos img:first-child{aspect-ratio:16/11;border-radius:18px}
   .andrea blockquote{font-size:1.5rem;margin:.8rem 0}
-  .datos{gap:1.4rem;margin-top:1rem}
+  .datos{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+  .andrea .fotos img{height:auto}
+  .dos{grid-template-columns:1fr 1fr}
+  .solo-pc-t{display:none}
+  .horario-movil{display:grid!important}
   .datos b{font-size:2rem}
-  .datos span{font-size:.82rem}
+  .datos span{font-size:.8rem;line-height:1.3;display:block;margin-top:.2rem}
 
   /* Galería deslizable */
   #galeria{padding:10px 0 20px}
@@ -415,7 +423,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
         <p class="sub">Soy Andrea, terapeuta esteticista. Kobido, maderoterapia, masajes y rituales faciales hechos a medida, sin prisas, en Santa Coloma de Gramenet.</p>
         <div class="acciones">
           <a class="btn btn-oliva" href="#reservar"><svg><use href="#i-cal"/></svg>Reservar cita</a>
-          <a class="btn btn-linea" href="#tratamientos">Ver tratamientos y precios</a>
+          <a class="btn btn-linea" href="#tratamientos">Ver <span class="solo-pc">tratamientos y </span>precios</a>
         </div>
         <div class="valoracion"><b id="vNota"></b><span><span class="est" aria-hidden="true">★★★★★</span><br><span id="vNum"></span> reseñas de clientas verificadas</span></div>
       </div>
@@ -515,7 +523,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
               <div><label for="rNombre">Nombre</label><input id="rNombre" autocomplete="name"></div>
               <div><label for="rTel">Teléfono</label><input id="rTel" type="tel" inputmode="tel" autocomplete="tel"></div>
             </div>
-            <label for="rEmail">Correo electrónico <span style="color:var(--gris)">(aquí te llega la confirmación)</span></label>
+            <label for="rEmail">Correo <span style="color:var(--gris)">(para la confirmación)</span></label>
             <input id="rEmail" type="email" inputmode="email" autocomplete="email">
             <label for="rNota">¿Algo que deba saber? <span style="color:var(--gris)">(opcional)</span></label>
             <textarea id="rNota" placeholder="Primera vez, zona a trabajar, embarazo, alguna molestia…"></textarea>
@@ -543,7 +551,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
       <h2>Dónde <em>estoy</em></h2>
       <div class="donde">
         <div>
-          <table class="horario" id="horario"><caption class="sr">Horario</caption></table>
+          <table class="horario solo-pc-t" id="horario"><caption class="sr">Horario</caption></table><ul class="horario-movil" id="horarioMovil"></ul>
           <div class="contacto">
             <a id="lnkMapa" target="_blank" rel="noopener" href="#"><svg><use href="#i-pin"/></svg><span><span id="direccion"></span><small id="direccionNota"></small></span></a>
             <a id="lnkWa" target="_blank" rel="noopener" href="#"><svg><use href="#i-wa"/></svg><span>Escríbeme por WhatsApp<small id="telVisible"></small></span></a>
@@ -738,6 +746,11 @@ function estado(){
   $("#estado").style.setProperty("--dot",color); $("#estado span").textContent=txt;
 }
 estado(); setInterval(estado,60000);
+(()=>{ // agrupa días seguidos con el mismo horario
+  const g=[]; CONFIG.horario.forEach((h,i)=>{const k=h?h.join("–"):"x"; const u=g[g.length-1]; if(u&&u.k===k) u.f=i; else g.push({k,i,f:i,h})});
+  const hoyI=idx(HOY.fecha), corto=["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+  $("#horarioMovil").innerHTML=g.map(x=>`<li class="${hoyI>=x.i&&hoyI<=x.f?"hoy":""}"><b>${corto[x.i]}${x.f>x.i?" – "+corto[x.f]:""}</b><span class="${x.h?"":"cerrado"}">${x.h?x.h[0]+" – "+x.h[1]:"Cerrado"}</span></li>`).join("");
+})();
 $("#horario").insertAdjacentHTML("beforeend",CONFIG.horario.map((h,i)=>`<tr class="${i===idx(HOY.fecha)?"hoy":""}"><td>${DIAS[i]}${i===idx(HOY.fecha)?" · hoy":""}</td><td>${h?h[0]+" – "+h[1]:"Cerrado"}</td></tr>`).join(""));
 
 /* Promo con fecha de caducidad */
