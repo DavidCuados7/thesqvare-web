@@ -1,0 +1,20 @@
+name: Descargar fotos (temporal)
+on:
+  push:
+    branches: [fotos-tmp]
+    paths: [ids.txt]
+permissions:
+  contents: write
+jobs:
+  get:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p fotos
+          while read n id; do
+            curl -sSL -o "fotos/$n.jpg" "https://images.unsplash.com/photo-$id?w=900&q=80&fm=jpg&fit=max" || echo "fallo $n"
+          done < ids.txt
+          ls -la fotos
+          git config user.name "fotos-bot"; git config user.email "bot@users.noreply.github.com"
+          git add fotos && git commit -m "fotos" && git push
