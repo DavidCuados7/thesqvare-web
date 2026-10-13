@@ -130,6 +130,7 @@ function montarAgenda(sh) {
   todo.setFontFamily("Lato").setFontSize(11).setVerticalAlignment("middle").setFontColor(COL.tinta).setBackground(COL.blanco);
   sh.getRange(1, 1, max, COLS.length).setNumberFormat("@");
   sh.getRange(2, C.precio, max - 1, 1).setNumberFormat('#,##0.00 "€"');
+  sh.getRange(2, C.dia, max - 1, 1).setNumberFormat("ddd d mmm");
   sh.getRange(1, 1, 1, COLS.length).setValues([COLS]).setFontWeight("bold").setBackground(COL.oliva)
     .setFontColor(COL.lino).setFontSize(11).setVerticalAlignment("middle");
   sh.setRowHeight(1, 38);
@@ -150,7 +151,7 @@ function montarAgenda(sh) {
   sh.setHiddenGridlines(true);
   sh.getRange(1, 1, max, COLS.length).setBorder(null, null, true, null, null, true, "#E8DDCB", SpreadsheetApp.BorderStyle.SOLID);
 
-  const r = sh.getRange("A2:P"), est = sh.getRange("H2:H"), hoy = 'TEXT(TODAY(),"yyyy-mm-dd")';
+  const r = sh.getRange("A2:P"), est = sh.getRange("H2:H"), hoy = iso("TODAY()");
   const reglas = [
     SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(F('=LEFT($H2,9)="Cancelada"')).setFontColor("#A64B3F").setStrikethrough(true).setBackground("#F7E7E3").setRanges([r]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Confirmada").setBackground("#D4E6C8").setFontColor("#2F4A26").setRanges([est]).build(),
@@ -172,12 +173,12 @@ function montarHoy(ss) {
   h.setHiddenGridlines(true);
   h.getRange("A1:L80").setBackground(COL.lino).setFontFamily("Lato").setFontColor(COL.tinta).setVerticalAlignment("middle");
   [24, 150, 240, 170, 130, 200, 30, 120, 100, 230, 170, 24].forEach((w, i) => h.setColumnWidth(i + 1, w));
-  const hoy = 'TEXT(TODAY(),"yyyy-mm-dd")';
+  const hoy = iso("TODAY()");
   const activa = '(LEFT(Agenda!H2:H,9)<>"Cancelada")*(Agenda!J2:J<>"")';
-  const ini = 'TEXT(TODAY()-WEEKDAY(TODAY(),3),"yyyy-mm-dd")', fin = 'TEXT(TODAY()-WEEKDAY(TODAY(),3)+6,"yyyy-mm-dd")';
+  const ini = iso("(TODAY()-WEEKDAY(TODAY(),3))"), fin = iso("(TODAY()-WEEKDAY(TODAY(),3)+6)");
 
   h.setRowHeight(1, 18);
-  h.getRange("B2:K2").merge().setFormula(F('="El Racó de Piscis  ·  "&PROPER(TEXT(TODAY(),"dddd d ""de"" mmmm"))'))
+  h.getRange("B2:K2").merge().setFormula(F('="El Racó de Piscis  ·  "&PROPER(TEXT(TODAY(),"dddd"))&" "&DAY(TODAY())&" de "&TEXT(TODAY(),"mmmm")'))
     .setFontFamily("Cormorant Garamond").setFontSize(30).setFontColor(COL.oliva);
   h.setRowHeight(2, 58);
   h.getRange("B3:K3").merge().setValue("Este resumen se actualiza solo. Para cambiar o cancelar una cita: pestaña Agenda → selecciona la fila → menú 📅 Citas.")
@@ -189,7 +190,7 @@ function montarHoy(ss) {
     ["B5:B6", "Citas hoy", `=SUMPRODUCT((Agenda!J2:J=${hoy})*${activa})`, "0"],
     ["C5:C6", "Esta semana", `=SUMPRODUCT((Agenda!J2:J>=${ini})*(Agenda!J2:J<=${fin})*${activa})`, "0"],
     ["D5:E6", "Previsto esta semana", `=SUMPRODUCT((Agenda!J2:J>=${ini})*(Agenda!J2:J<=${fin})*${activa}*Agenda!G2:G)`, '#,##0 "€"'],
-    ["F5:K6", "Próxima cita", `=IFERROR(JOIN("  ·  ",QUERY(Agenda!A2:P,"select A,K,C,D where (J > '"&${hoy}&"' or (J = '"&${hoy}&"' and K >= '"&TEXT(NOW(),"HH:mm")&"')) and not H starts with 'Cancelada' order by J,K limit 1",0)),"Sin citas próximas")`, "@"]
+    ["F5:K6", "Próxima cita", `=IFERROR(JOIN("  ·  ",QUERY(Agenda!A2:P,"select A,K,C,D where (J > '"&${hoy}&"' or (J = '"&${hoy}&"' and K >= '"&TEXT(HOUR(NOW()),"00")&":"&TEXT(MINUTE(NOW()),"00")&"')) and not H starts with 'Cancelada' order by J,K limit 1",0)),"Sin citas próximas")`, "@"]
   ];
   tarjetas.forEach(([a1, titulo, f, fmt]) => {
     const [arriba, abajo] = a1.split(":").map(x => x.replace(/\d+/, m => m));
@@ -208,7 +209,7 @@ function montarHoy(ss) {
   // Próximos 7 días
   h.getRange("H8:K8").merge().setValue("Próximos 7 días").setFontFamily("Cormorant Garamond").setFontSize(20).setFontColor(COL.oliva);
   h.getRange("H9:K9").setValues([["Día","Hora","Tratamiento","Clienta"]]);
-  h.getRange("H10").setFormula(F(`=IFERROR(QUERY(Agenda!A2:P,"select A,B,C,D where J > '"&${hoy}&"' and J <= '"&TEXT(TODAY()+7,"yyyy-mm-dd")&"' and not H starts with 'Cancelada' order by J,K",0),"Nada en los próximos días")`));
+  h.getRange("H10").setFormula(F(`=IFERROR(QUERY(Agenda!A2:P,"select A,B,C,D where J > '"&${hoy}&"' and J <= '"&${iso("(TODAY()+7)")}&"' and not H starts with 'Cancelada' order by J,K",0),"Nada en los próximos días")`));
   [h.getRange("B9:F9"), h.getRange("H9:K9")].forEach(x => x.setBackground(COL.oliva).setFontColor(COL.lino).setFontWeight("bold"));
   h.setRowHeight(8, 40); h.setRowHeight(9, 30);
   h.setRowHeights(10, 40, 32);
@@ -329,7 +330,7 @@ function reservar(d) {
   if (huecos(d.fecha, d.servicio, "").indexOf(d.hora) < 0) throw new Error("Esa hora se acaba de ocupar. Elige otra.");
   const fin = aH(aMin(d.hora) + s[1]);
   const id = CFG.prefijo + "-" + Utilities.formatDate(new Date(), CFG.tz, "yyMMdd") + "-" + Math.random().toString(36).slice(2, 6).toUpperCase();
-  const fila = [diaCorto(d.fecha), `${d.hora} – ${fin}`, s[0], nombre, tel, email, s[2], "Confirmada", notas, d.fecha, d.hora, fin, String(s[1]), id, d.servicio, `${ahora()} · Reservada en la web`];
+  const fila = [diaFecha(d.fecha), `${d.hora} – ${fin}`, s[0], nombre, tel, email, s[2], "Confirmada", notas, d.fecha, d.hora, fin, String(s[1]), id, d.servicio, `${ahora()} · Reservada en la web`];
   hoja().appendRow(fila);
   ordenar();
   const c = buscar(id);
@@ -351,7 +352,7 @@ function cambiar(d) {
   const fin = aH(aMin(d.hora) + s[1]);
   const sh = hoja();
   const v = sh.getRange(c.fila, 1, 1, COLS.length).getValues()[0];
-  v[C.dia - 1] = diaCorto(d.fecha); v[C.hora - 1] = `${d.hora} – ${fin}`; v[C.trat - 1] = s[0]; v[C.precio - 1] = s[2];
+  v[C.dia - 1] = diaFecha(d.fecha); v[C.hora - 1] = `${d.hora} – ${fin}`; v[C.trat - 1] = s[0]; v[C.precio - 1] = s[2];
   v[C.estado - 1] = "Cambiada"; v[C.fecha - 1] = d.fecha; v[C.ini - 1] = d.hora; v[C.fin - 1] = fin; v[C.min - 1] = String(s[1]); v[C.svc - 1] = svcId;
   v[C.hist - 1] = (v[C.hist - 1] ? v[C.hist - 1] + "\n" : "") + `${ahora()} · Cambiada por ${rol === "centro" ? "el centro" : "la clienta"} (antes: ${antes})`;
   sh.getRange(c.fila, 1, 1, COLS.length).setValues([v]);
@@ -421,7 +422,7 @@ function citas() {
   const t = sh.getRange(2, 1, n - 1, COLS.length).getDisplayValues(), v = sh.getRange(2, C.precio, n - 1, 1).getValues();
   return t.map((r, i) => ({
     fila: i + 2, dia: r[0], trat: r[2], nombre: r[3], tel: r[4], email: r[5], precio: Number(v[i][0]) || 0, estado: r[7], notas: r[8],
-    fecha: r[9], ini: r[10], fin: r[11], min: Number(r[12]) || 0, id: r[13], svc: r[14]
+    fecha: normFecha(r[9]), ini: String(r[10]).slice(0, 5), fin: String(r[11]).slice(0, 5), min: Number(r[12]) || 0, id: r[13], svc: r[14]
   })).filter(c => c.id);
 }
 function buscar(id) { return citas().find(c => c.id === String(id || "")); }
@@ -518,6 +519,9 @@ function plantilla(etiqueta, titulo, texto, filas, botones, tono, pie) {
 
 /* =================== UTILIDADES =================== */
 // La hoja está en español: las fórmulas usan ";" como separador (las comas dentro de textos no se tocan)
+function iso(d) { return `(YEAR(${d})&"-"&TEXT(MONTH(${d}),"00")&"-"&TEXT(DAY(${d}),"00"))`; }
+function diaFecha(f) { const [y, m, d] = f.split("-").map(Number); return new Date(y, m - 1, d, 12); }
+function normFecha(v) { const t = String(v), m = t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m ? `${m[3]}-${("0" + m[2]).slice(-2)}-${("0" + m[1]).slice(-2)}` : t; }
 function F(f) { let q = false, out = ""; for (const ch of f) { if (ch === '"') q = !q; out += (!q && ch === ",") ? ";" : ch; } return out; }
 function enlace(id, rol, modo) { return `${CFG.web}?cita=${encodeURIComponent(id)}&t=${token(id, rol)}&modo=${modo}#gestionar`; }
 function token(id, rol) {
