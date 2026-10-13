@@ -1,0 +1,102 @@
+{
+ "frames": "trabajo/frames_web",
+ "out": "trabajo/reel_web.mp4",
+ "sfx": "trabajo/sonido_web.wav",
+ "shift": true,
+ "caps": [
+  [
+   0.15,
+   2.3,
+   [
+    [
+     [
+      "Así es una web",
+      0
+     ]
+    ],
+    [
+     [
+      "que ",
+      0
+     ],
+     [
+      "se ve.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   2.3,
+   4.9,
+   [
+    [
+     [
+      "Carta, reservas",
+      0
+     ]
+    ],
+    [
+     [
+      "y Google Maps.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   4.9,
+   7.8,
+   [
+    [
+     [
+      "Cada negocio,",
+      0
+     ]
+    ],
+    [
+     [
+      "su propia cara.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   7.8,
+   10.2,
+   [
+    [
+     [
+      "Packs claros.",
+      0
+     ]
+    ],
+    [
+     [
+      "Precio cerrado.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   10.2,
+   12.5,
+   [
+    [
+     [
+      "Te enseño el boceto",
+      0
+     ]
+    ],
+    [
+     [
+      "antes de pagar.",
+      1
+     ]
+    ]
+   ]
+  ]
+ ]
+}

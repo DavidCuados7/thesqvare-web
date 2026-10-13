@@ -1,0 +1,109 @@
+{
+ "frames": "trabajo/frames_bar",
+ "out": "trabajo/reel_bar.mp4",
+ "sfx": "trabajo/sonido_bar.wav",
+ "shift": true,
+ "notif": {
+  "t0": 10.45,
+  "t1": 12.25,
+  "title": "TheSqvare Bar",
+  "l1": "¡Mesa reservada! Vie 16 oct · 21:00",
+  "l2": "4 personas · Código SQ-3907"
+ },
+ "caps": [
+  [
+   0.15,
+   2.3,
+   [
+    [
+     [
+      "La web de tu bar",
+      0
+     ]
+    ],
+    [
+     [
+      "abre ",
+      0
+     ],
+     [
+      "24 horas.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   2.3,
+   4.9,
+   [
+    [
+     [
+      "Tu carta, con fotos",
+      0
+     ]
+    ],
+    [
+     [
+      "que dan hambre.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   4.9,
+   7.5,
+   [
+    [
+     [
+      "Eligen mesa",
+      0
+     ]
+    ],
+    [
+     [
+      "en segundos.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   7.5,
+   9.9,
+   [
+    [
+     [
+      "Sin llamadas",
+      0
+     ]
+    ],
+    [
+     [
+      "en plena hora punta.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   9.9,
+   12.5,
+   [
+    [
+     [
+      "Mesa reservada",
+      0
+     ]
+    ],
+    [
+     [
+      "y confirmada.",
+      1
+     ]
+    ]
+   ]
+  ]
+ ]
+}

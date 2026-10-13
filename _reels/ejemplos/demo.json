@@ -1,0 +1,130 @@
+{
+ "frames": "trabajo/frames_demo",
+ "out": "trabajo/reel_demo.mp4",
+ "sfx": "trabajo/sonido_demo.wav",
+ "old": true,
+ "caps": [
+  [
+   0.15,
+   1.6,
+   [
+    [
+     [
+      "¿La web de tu",
+      0
+     ]
+    ],
+    [
+     [
+      "negocio sigue ",
+      0
+     ],
+     [
+      "así?",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   1.6,
+   2.4,
+   [
+    [
+     [
+      "Vale. ",
+      0
+     ],
+     [
+      "Mira esto.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   2.4,
+   4.9,
+   [
+    [
+     [
+      "Tu marca,",
+      0
+     ]
+    ],
+    [
+     [
+      "a lo ",
+      0
+     ],
+     [
+      "grande.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   4.9,
+   6.9,
+   [
+    [
+     [
+      "Tu carta y precios,",
+      0
+     ]
+    ],
+    [
+     [
+      "siempre ",
+      0
+     ],
+     [
+      "a mano.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   6.9,
+   9.0,
+   [
+    [
+     [
+      "Horario y ubicación",
+      0
+     ]
+    ],
+    [
+     [
+      "sin llamadas.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   9.0,
+   12.5,
+   [
+    [
+     [
+      "Y tus clientes",
+      0
+     ]
+    ],
+    [
+     [
+      "encargan ",
+      0
+     ],
+     [
+      "solos.",
+      1
+     ]
+    ]
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "frames": "trabajo/frames_barber",
+ "out": "trabajo/reel_barber.mp4",
+ "sfx": "trabajo/sonido_barber.wav",
+ "shift": true,
+ "notif": {
+  "t0": 10.45,
+  "t1": 12.25,
+  "title": "TheSqvare Barber",
+  "l1": "¡Cita confirmada! Vie 16 oct · 17:30",
+  "l2": "Corte + barba · Código SQ-4821"
+ },
+ "caps": [
+  [
+   0.15,
+   2.3,
+   [
+    [
+     [
+      "Tu barbería,",
+      0
+     ]
+    ],
+    [
+     [
+      "en su ",
+      0
+     ],
+     [
+      "bolsillo.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   2.3,
+   4.6,
+   [
+    [
+     [
+      "Servicios y precios,",
+      0
+     ]
+    ],
+    [
+     [
+      "a la vista.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   4.6,
+   7.5,
+   [
+    [
+     [
+      "Elige día y hora…",
+      0
+     ]
+    ],
+    [
+     [
+      "en segundos.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   7.5,
+   9.9,
+   [
+    [
+     [
+      "Sin llamadas.",
+      0
+     ]
+    ],
+    [
+     [
+      "Sin esperas.",
+      1
+     ]
+    ]
+   ]
+  ],
+  [
+   9.9,
+   12.5,
+   [
+    [
+     [
+      "Y la confirmación",
+      0
+     ]
+    ],
+    [
+     [
+      "le llega al momento.",
+      1
+     ]
+    ]
+   ]
+  ]
+ ]
+}
