@@ -92,6 +92,12 @@ nav.scrolled{background:rgba(12,14,26,.88);backdrop-filter:blur(12px);border-bot
 .svc.featured .svc-btn:hover{box-shadow:6px 6px 0 var(--text)}
 #form.flash{animation:flash 1.2s ease}
 @keyframes flash{0%,60%{box-shadow:10px 10px 0 var(--gold)}100%{box-shadow:10px 10px 0 var(--azul)}}
+.svc-img{margin:-1.8rem -1.8rem 1.2rem;aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--line);background:var(--bg)}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc.featured .svc-img{border-color:rgba(243,244,250,.25)}
+.svc .tag{z-index:2;top:0;right:0}
+.svc-img + svg{display:none}
 .price span{color:rgba(243,244,250,.8)}
 .svc.featured svg,.svc.featured .price b{color:var(--gold)}
 .svc.featured .price{border-color:rgba(243,244,250,.25)}
@@ -108,6 +114,12 @@ nav.scrolled{background:rgba(12,14,26,.88);backdrop-filter:blur(12px);border-bot
 .svc.featured .svc-btn:hover{box-shadow:6px 6px 0 var(--text)}
 #form.flash{animation:flash 1.2s ease}
 @keyframes flash{0%,60%{box-shadow:10px 10px 0 var(--gold)}100%{box-shadow:10px 10px 0 var(--azul)}}
+.svc-img{margin:-1.8rem -1.8rem 1.2rem;aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--line);background:var(--bg)}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc.featured .svc-img{border-color:rgba(243,244,250,.25)}
+.svc .tag{z-index:2;top:0;right:0}
+.svc-img + svg{display:none}
 .price span{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
 
 /* ABOUT */
@@ -339,14 +351,14 @@ const CONFIG = {
     [["13:00","16:30","15:30"]]
   ],
   menu: [
-    {icon:"cheese", name:"Patatas bravas Sqvare", desc:"Cortadas en dados, con alioli y nuestra salsa brava.", price:6.5, time:"Para compartir"},
-    {icon:"bowl", name:"Croquetas de jamón", desc:"Caseras, cremosas por dentro. 6 unidades.", price:8, time:"Para compartir"},
-    {icon:"leaf", name:"Ensalada de tomate de temporada", desc:"Tomate, ventresca, cebolla tierna y aceite de arbequina.", price:9.5, time:"Entrante"},
-    {icon:"fish", name:"Calamares a la andaluza", desc:"Fritura ligera con limón y mayonesa de lima.", price:11, time:"Para compartir"},
-    {icon:"flame", name:"Secreto ibérico a la brasa", desc:"Con patatas panaderas y pimientos de Padrón.", price:16.5, time:"Principal"},
-    {icon:"fish", name:"Bacalao confitado", desc:"Sobre samfaina y alioli suave gratinado.", price:17, time:"Principal"},
-    {icon:"cake", name:"Tarta de queso", desc:"Horneada al momento, cremosa en el centro.", price:6, time:"Postre"},
-    {icon:"sqvare", name:"Menú del día", desc:"Primero, segundo, postre, pan y bebida. De martes a viernes al mediodía.", price:13.5, time:"Mar–Vie", featured:true, tag:"Menú Sqvare"}
+    {icon:"cheese", img:"img/bravas.webp", name:"Patatas bravas Sqvare", desc:"Cortadas en dados, con alioli y nuestra salsa brava.", price:6.5, time:"Para compartir"},
+    {icon:"bowl", img:"img/croquetas.webp", name:"Croquetas de jamón", desc:"Caseras, cremosas por dentro. 6 unidades.", price:8, time:"Para compartir"},
+    {icon:"leaf", img:"img/ensalada.webp", name:"Ensalada de tomate de temporada", desc:"Tomate, ventresca, cebolla tierna y aceite de arbequina.", price:9.5, time:"Entrante"},
+    {icon:"fish", img:"img/calamares.webp", name:"Calamares a la andaluza", desc:"Fritura ligera con limón y mayonesa de lima.", price:11, time:"Para compartir"},
+    {icon:"flame", img:"img/secreto.webp", name:"Secreto ibérico a la brasa", desc:"Con patatas panaderas y pimientos de Padrón.", price:16.5, time:"Principal"},
+    {icon:"fish", img:"img/bacalao.webp", name:"Bacalao confitado", desc:"Sobre samfaina y alioli suave gratinado.", price:17, time:"Principal"},
+    {icon:"cake", img:"img/tarta.webp", name:"Tarta de queso", desc:"Horneada al momento, cremosa en el centro.", price:6, time:"Postre"},
+    {icon:"sqvare", img:"img/menu-del-dia.webp", name:"Menú del día", desc:"Primero, segundo, postre, pan y bebida. De martes a viernes al mediodía.", price:13.5, time:"Mar–Vie", featured:true, tag:"Menú Sqvare"}
   ]
 };
 /* =============================================== */
@@ -361,6 +373,7 @@ $("#year").textContent=new Date().getFullYear();
 $("#services").innerHTML=CONFIG.menu.map(s=>`
   <article class="svc reveal ${s.featured?'featured':''}">
     ${s.tag?`<span class="tag">${s.tag}</span>`:''}
+    ${s.img?`<figure class="svc-img"><img src="${s.img}" alt="${s.name}" loading="lazy" width="720" height="540"></figure>`:''}
     <svg><use href="#${s.icon}"/></svg>
     <h3>${s.name}</h3><p>${s.desc}</p>
     <div class="price"><b>${euro(s.price)}</b><span>${s.time}</span></div>
