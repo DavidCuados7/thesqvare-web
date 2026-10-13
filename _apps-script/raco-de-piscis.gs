@@ -152,14 +152,14 @@ function montarAgenda(sh) {
 
   const r = sh.getRange("A2:P"), est = sh.getRange("H2:H"), hoy = 'TEXT(TODAY(),"yyyy-mm-dd")';
   const reglas = [
-    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=LEFT($H2,9)="Cancelada"').setFontColor("#A64B3F").setStrikethrough(true).setBackground("#F7E7E3").setRanges([r]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(F('=LEFT($H2,9)="Cancelada"')).setFontColor("#A64B3F").setStrikethrough(true).setBackground("#F7E7E3").setRanges([r]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Confirmada").setBackground("#D4E6C8").setFontColor("#2F4A26").setRanges([est]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Cambiada").setBackground("#F6E3B4").setFontColor("#6B4E12").setRanges([est]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Completada").setBackground("#D8E3EF").setFontColor("#24405E").setRanges([est]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("No vino").setBackground("#E6E2DA").setFontColor("#5A564D").setRanges([est]).build(),
-    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(`=$J2=${hoy}`).setBackground("#E3EBD9").setFontColor(COL.oliva).setRanges([r]).build(),
-    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(`=AND($J2<>"",$J2<${hoy})`).setFontColor("#A9A396").setRanges([r]).build(),
-    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=AND($J2<>"",ISODD(DATEVALUE($J2)))').setBackground("#F7F2E9").setRanges([r]).build()
+    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(F(`=$J2=${hoy}`)).setBackground("#E3EBD9").setFontColor(COL.oliva).setRanges([r]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(F(`=AND($J2<>"",$J2<${hoy})`)).setFontColor("#A9A396").setRanges([r]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(F('=AND($J2<>"",ISODD(DATEVALUE($J2)))')).setBackground("#F7F2E9").setRanges([r]).build()
   ];
   sh.setConditionalFormatRules(reglas);
   sh.setTabColor(COL.salvia);
@@ -177,7 +177,7 @@ function montarHoy(ss) {
   const ini = 'TEXT(TODAY()-WEEKDAY(TODAY(),3),"yyyy-mm-dd")', fin = 'TEXT(TODAY()-WEEKDAY(TODAY(),3)+6,"yyyy-mm-dd")';
 
   h.setRowHeight(1, 18);
-  h.getRange("B2:K2").merge().setFormula('="El Racó de Piscis  ·  "&PROPER(TEXT(TODAY(),"dddd d ""de"" mmmm"))')
+  h.getRange("B2:K2").merge().setFormula(F('="El Racó de Piscis  ·  "&PROPER(TEXT(TODAY(),"dddd d ""de"" mmmm"))'))
     .setFontFamily("Cormorant Garamond").setFontSize(30).setFontColor(COL.oliva);
   h.setRowHeight(2, 58);
   h.getRange("B3:K3").merge().setValue("Este resumen se actualiza solo. Para cambiar o cancelar una cita: pestaña Agenda → selecciona la fila → menú 📅 Citas.")
@@ -195,7 +195,7 @@ function montarHoy(ss) {
     const [arriba, abajo] = a1.split(":").map(x => x.replace(/\d+/, m => m));
     const col1 = arriba.replace(/\d/g, ""), col2 = abajo.replace(/\d/g, "");
     h.getRange(`${col1}5:${col2}5`).merge().setValue(titulo).setFontSize(10).setFontColor(COL.gris).setBackground(COL.blanco).setVerticalAlignment("bottom");
-    h.getRange(`${col1}6:${col2}6`).merge().setFormula(f).setNumberFormat(fmt).setFontSize(col1 === "F" ? 15 : 26)
+    h.getRange(`${col1}6:${col2}6`).merge().setFormula(F(f)).setNumberFormat(fmt).setFontSize(col1 === "F" ? 15 : 26)
       .setFontWeight("bold").setFontColor(COL.oliva).setBackground(COL.blanco).setHorizontalAlignment("left").setVerticalAlignment("top");
     h.getRange(`${col1}5:${col2}6`).setBorder(true, true, true, true, null, null, COL.arena, SpreadsheetApp.BorderStyle.SOLID);
   });
@@ -204,11 +204,11 @@ function montarHoy(ss) {
   // Hoy
   h.getRange("B8:F8").merge().setValue("Agenda de hoy").setFontFamily("Cormorant Garamond").setFontSize(20).setFontColor(COL.oliva);
   h.getRange("B9:F9").setValues([["Hora","Tratamiento","Clienta","Teléfono","Notas"]]);
-  h.getRange("B10").setFormula(`=IFERROR(QUERY(Agenda!A2:P,"select B,C,D,E,I where J = '"&${hoy}&"' and not H starts with 'Cancelada' order by K",0),"Hoy no hay citas 🌿")`);
+  h.getRange("B10").setFormula(F(`=IFERROR(QUERY(Agenda!A2:P,"select B,C,D,E,I where J = '"&${hoy}&"' and not H starts with 'Cancelada' order by K",0),"Hoy no hay citas 🌿")`));
   // Próximos 7 días
   h.getRange("H8:K8").merge().setValue("Próximos 7 días").setFontFamily("Cormorant Garamond").setFontSize(20).setFontColor(COL.oliva);
   h.getRange("H9:K9").setValues([["Día","Hora","Tratamiento","Clienta"]]);
-  h.getRange("H10").setFormula(`=IFERROR(QUERY(Agenda!A2:P,"select A,B,C,D where J > '"&${hoy}&"' and J <= '"&TEXT(TODAY()+7,"yyyy-mm-dd")&"' and not H starts with 'Cancelada' order by J,K",0),"Nada en los próximos días")`);
+  h.getRange("H10").setFormula(F(`=IFERROR(QUERY(Agenda!A2:P,"select A,B,C,D where J > '"&${hoy}&"' and J <= '"&TEXT(TODAY()+7,"yyyy-mm-dd")&"' and not H starts with 'Cancelada' order by J,K",0),"Nada en los próximos días")`));
   [h.getRange("B9:F9"), h.getRange("H9:K9")].forEach(x => x.setBackground(COL.oliva).setFontColor(COL.lino).setFontWeight("bold"));
   h.setRowHeight(8, 40); h.setRowHeight(9, 30);
   h.setRowHeights(10, 40, 32);
@@ -517,6 +517,8 @@ function plantilla(etiqueta, titulo, texto, filas, botones, tono, pie) {
 }
 
 /* =================== UTILIDADES =================== */
+// La hoja está en español: las fórmulas usan ";" como separador (las comas dentro de textos no se tocan)
+function F(f) { let q = false, out = ""; for (const ch of f) { if (ch === '"') q = !q; out += (!q && ch === ",") ? ";" : ch; } return out; }
 function enlace(id, rol, modo) { return `${CFG.web}?cita=${encodeURIComponent(id)}&t=${token(id, rol)}&modo=${modo}#gestionar`; }
 function token(id, rol) {
   const s = PropertiesService.getScriptProperties().getProperty("SECRETO") || "rdp";
