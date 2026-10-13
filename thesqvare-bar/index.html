@@ -337,8 +337,9 @@ const CONFIG = {
   whatsapp: "34648515835",          // con prefijo 34, sin espacios
   email: "thesqvare@gmail.com",
   instagram: "@the.sqvare",
-  // URL de Google Apps Script para reservas automáticas. Vacía = la reserva se envía por WhatsApp.
-  apiUrl: "",
+  // URL de Google Apps Script (hoja "Reservas TheSqvare Bar"). Vacía = la reserva se envía por WhatsApp.
+  apiUrl: "https://script.google.com/macros/s/AKfycbwCO7oGAp8eJflHzNYQ7a0bV9X5NtB_PHNZUIPskg5jS2VXeKZIybmrRDGdkT2KRkv-/exec",
+  aforo: 32,                        // debe coincidir con el script
   maxPersonas: 8,                   // grupos más grandes: por WhatsApp
   paso: 30,                         // minutos entre horas de reserva
   // Horario por día (Lunes..Domingo): lista de turnos [abre, cierra, última reserva] o null si cerrado
