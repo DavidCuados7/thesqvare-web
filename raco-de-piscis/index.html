@@ -378,6 +378,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   #gestionar{padding:36px 0 40px}
 }
 
+.consent{display:flex!important;gap:.6rem;align-items:flex-start;font-size:.78rem;letter-spacing:0;text-transform:none;line-height:1.4}.consent input{width:auto!important;height:auto!important;min-height:0!important;margin:.2rem 0 0!important;padding:0!important;accent-color:currentColor;flex:none}.consent a{color:inherit;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -527,6 +528,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
             <input id="rEmail" type="email" inputmode="email" autocomplete="email">
             <label for="rNota">¿Algo que deba saber? <span style="color:var(--gris)">(opcional)</span></label>
             <textarea id="rNota" placeholder="Primera vez, zona a trabajar, embarazo, alguna molestia…"></textarea>
+            <label class="consent"><input type="checkbox" id="rOk"> <span>He leído la <a href="legal/" target="_blank" rel="noopener">política de privacidad</a> y acepto que El Racó de Piscis use mis datos para gestionar esta cita.</span></label>
           </div>
         </form>
         <aside class="resumen" id="resumen" aria-live="polite">
@@ -567,7 +569,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
 
 <footer class="pie">
   <div class="wrap">
-    <span>© <span id="anio"></span> El Racó de Piscis · Andrea Castro</span>
+    <span>© <span id="anio"></span> El Racó de Piscis · Andrea Castro · <a href="legal/">Aviso legal y privacidad</a></span>
     <span>Web hecha por <a href="https://thesqvare.com" target="_blank" rel="noopener">The Sqvare</a></span>
   </div>
 </footer>
@@ -868,6 +870,7 @@ $("#rEnviar").addEventListener("click",async()=>{
   if(!nombre) return err("Escribe tu nombre.","#rNombre");
   if(tel.replace(/\D/g,"").length<9) return err("Escribe un teléfono de 9 cifras.","#rTel");
   if(API&&!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) return err("Escribe tu correo para enviarte la confirmación.","#rEmail");
+  if(!$("#rOk").checked) return err("Marca la casilla de privacidad para reservar.","#rOk");
   const v=VAR[sel.servicio], fl=fLarga(sel.dia);
   if(!API){ // Sin sistema conectado: por WhatsApp
     const texto=`Hola, quiero pedir cita desde la web 🌿\n\n• ${v.nombre} (${dur(v.min)}, ${euro(v.precio)})\n• ${fl.charAt(0).toUpperCase()+fl.slice(1)} a las ${sel.hora}\n\nNombre: ${nombre}\nTeléfono: ${tel}${nota?`\nNota: ${nota}`:""}`;

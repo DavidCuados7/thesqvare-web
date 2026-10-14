@@ -193,6 +193,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:va
 .reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.consent{display:flex!important;gap:.6rem;align-items:flex-start;font-size:.78rem;letter-spacing:0;text-transform:none;line-height:1.4}.consent input{width:auto!important;height:auto!important;min-height:0!important;margin:.2rem 0 0!important;padding:0!important;accent-color:currentColor;flex:none}.consent a{color:inherit;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -298,8 +299,9 @@ footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:va
         <label>Teléfono<input id="fTel" type="tel" required placeholder="600 000 000" autocomplete="tel"></label>
       </div>
       <label>Correo electrónico<input id="fMail" type="email" required maxlength="100" placeholder="tu@correo.com" autocomplete="email"></label>
+      <label class="consent"><input type="checkbox" id="fOk"> <span>He leído la <a href="/legal/#webs-de-ejemplo" target="_blank" rel="noopener">política de privacidad</a> y acepto que se usen mis datos para gestionar esta reserva.</span></label>
       <button class="btn btn-gold" type="submit" id="fBtn" disabled>Confirmar reserva</button>
-      <small id="fMsg">Te confirmamos la reserva al momento. Tus datos solo los ve el restaurante.</small>
+      <small id="fMsg">Te confirmamos la reserva al momento. Tus datos solo se usan para tu reserva.</small>
     </form>
   </div>
 </section>
@@ -318,7 +320,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);font-size:.85rem;color:va
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="year"></span> <span data-cfg="name"></span>. Todos los derechos reservados.</span>
+    <span>© <span id="year"></span> <span data-cfg="name"></span>. Todos los derechos reservados. · <a href="/legal/#webs-de-ejemplo">Aviso legal y privacidad</a></span>
     <span>Web creada por <a href="https://thesqvare.com" target="_blank" rel="noopener">The Sqvare</a></span>
   </div>
 </footer>
@@ -450,8 +452,9 @@ $("#slots").addEventListener("click",e=>{
   document.querySelectorAll("#slots .sel").forEach(x=>x.classList.remove("sel"));
   b.classList.add("sel"); chosen=b.dataset.h; updateBtn();
 });
-function updateBtn(){ $("#fBtn").disabled=!chosen }
-function setMsg(t,err){ const m=$("#fMsg"); m.textContent=t||"Te confirmamos la reserva al momento. Tus datos solo los ve el restaurante."; m.classList.toggle("err",!!err) }
+function updateBtn(){ $("#fBtn").disabled=!chosen||!$("#fOk").checked }
+$("#fOk").addEventListener("change",updateBtn);
+function setMsg(t,err){ const m=$("#fMsg"); m.textContent=t||"Te confirmamos la reserva al momento. Tus datos solo se usan para tu reserva."; m.classList.toggle("err",!!err) }
 $("#fSvc").addEventListener("change",loadSlots);
 $("#fDay").addEventListener("change",loadSlots);
 
