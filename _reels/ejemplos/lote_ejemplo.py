@@ -15,7 +15,7 @@ R={
  '2026-10-20':('antes','bar',[L('¿La web de tu bar','sigue así?'),[[['Vale. ',0],['Mira esto.',1]]],L('Tu carta, con','fotos de verdad.'),L('Reserva de mesa','en segundos.'),L('Ni apps,','ni registros.'),L('Mesa reservada','y confirmada.')]),
  '2026-10-21':('barber',None,[L('Citas mientras','cortas el pelo.'),L('Tus precios,','siempre claros.'),L('El cliente elige…','y listo.'),L('Sin coger','el teléfono.'),L('Confirmación','en su correo.')]),
  '2026-10-22':('plataforma','bar',[L('En la app, tu bar','compite con todos.'),L('Y para reservar…','crea una cuenta.'),L('En tu web,','tu bar es el único.'),L('Personas, día','y hora. Listo.'),L('Sin depender de','ninguna plataforma.'),L('Mesa confirmada','al instante.')]),
- '2026-10-23':('web',None,[L('Tu escaparate','en internet.'),L('Pensada primero','para el móvil.'),L('Cada web, con','su propio estilo.'),L('Elige tu pack.','Sin cuotas.'),L('Escríbeme y','lo vemos juntos.')]),
+ '2026-10-23':('web',None,[L('Tu escaparate','en internet.'),L('Pensada primero','para el móvil.'),L('Cada web, con','su propio estilo.'),L('Elige tu pack.','Con o sin reservas.'),L('Escríbeme y','lo vemos juntos.')]),
  '2026-10-24':('antes','barber',[L('¿La web de tu','barbería es así?'),[[['Vale. ',0],['Mira esto.',1]]],L('Tu barbería,','a otro nivel.'),L('Cita en','20 segundos.'),L('Sin descargar','ninguna app.'),L('Y la confirmación,','al momento.')]),
  '2026-10-25':('bar',None,[L('Que reserven mesa','mientras duermes.'),L('Platos que entran','por los ojos.'),L('Personas, día','y hora.'),L('Ni una llamada','en hora punta.'),L('Reserva hecha','y confirmada.')]),
 }

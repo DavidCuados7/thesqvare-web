@@ -130,7 +130,7 @@ def end_card(t):
     txt((W / 2, 610), 'THE SQVARE', F('Inter-ExtraBold.otf', 64), CREAM, fade(0.1))
     txt((W / 2, 800), 'Tu web, lista', F('InterDisplay-ExtraBold.otf', 104), CREAM, fade(0.35))
     txt((W / 2, 915), 'para vender.', F('InterDisplay-ExtraBold.otf', 104), LIME, fade(0.45))
-    txt((W / 2, 1060), 'Boceto gratis antes de pagar. Sin cuotas.', F('Inter-Medium.otf', 40), (200, 196, 188), fade(0.8))
+    txt((W / 2, 1060), 'Boceto gratis antes de pagar.', F('Inter-Medium.otf', 40), (200, 196, 188), fade(0.8))
     p = fade(1.1)
     if p > 0:
         layer = Image.new('RGBA', (W, H), (0, 0, 0, 0)); dl = ImageDraw.Draw(layer)
