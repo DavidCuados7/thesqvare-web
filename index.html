@@ -137,10 +137,11 @@ a.browser{display:block;color:inherit;text-decoration:none}
 
 /* 7 · packs */
 .s-pack{background:var(--ink)}
-.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.packs{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:stretch;max-width:860px}
 .pack{padding:28px 24px;border:2px solid #2A2F4C;display:grid;gap:14px;align-content:start;min-width:0}
 .pack.top-p{background:var(--papel);color:var(--ink);border-color:var(--papel);box-shadow:8px 8px 0 var(--sol)}
 .pack .price{font-family:var(--display);font-weight:800;font-size:1.8rem}
+.pack .pnote{font-size:.85rem;opacity:.8;margin-top:-8px;line-height:1.4}
 .pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
 .pack li{padding-left:20px;position:relative}
 .pack li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;background:var(--sol)}
@@ -342,25 +343,23 @@ footer{font-family:var(--mono);font-size:.75rem}
     <div class="inner">
       <span class="eyebrow">Packs</span>
       <h2>Elige cómo empezar.</h2>
-      <span class="swipe">Desliza para ver los 3 packs →</span>
+      <span class="swipe">Desliza para ver los 2 packs →</span>
       <div class="packs">
         <div class="pack">
           <h3>Escaparate</h3>
-          <span class="price">Consúltame</span>
-          <ul><li>Web de una página</li><li>Horario, mapa y contacto</li><li>Botón de WhatsApp</li></ul>
+          <span class="price">190 €</span>
+          <span class="pnote">Precio de lanzamiento para los 5 primeros (después 290 €)<br>+ 10 €/mes</span>
+          <ul><li>Web de una página adaptada al móvil</li><li>Servicios y precios</li><li>Horarios y ubicación con mapa</li><li>Reseñas de Google Maps, Booksy…</li><li>Botón de WhatsApp</li></ul>
         </div>
         <div class="pack top-p">
-          <span class="tag">El más pedido</span>
-          <h3>Local completo</h3>
-          <span class="price">Consúltame</span>
-          <ul><li>Todo lo del Escaparate</li><li>Carta o catálogo con QR</li><li>Galería de fotos</li><li>Ficha de Google Maps</li></ul>
-        </div>
-        <div class="pack">
-          <h3>Siempre al día</h3>
-          <span class="price">Consúltame</span>
-          <ul><li>Cambios cada mes</li><li>Nuevas fotos y ofertas</li><li>Revisión de que todo funciona</li></ul>
+          <span class="tag">El más completo</span>
+          <h3>Completo</h3>
+          <span class="price">390 €</span>
+          <span class="pnote">Precio de lanzamiento para los 5 primeros (después 490 €)<br>+ 15 €/mes</span>
+          <ul><li>Todo lo del Escaparate</li><li>Sistema de reservas propio, sin apps ni registros</li><li>Confirmación al momento al cliente</li><li>Aviso de cada reserva nueva</li><li>Agenda de reservas desde el móvil</li></ul>
         </div>
       </div>
+      <p class="note">Boceto gratis antes de pagar.</p>
     </div>
   </section>
 
