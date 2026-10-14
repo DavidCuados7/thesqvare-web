@@ -7,7 +7,8 @@ no enlaces la página hasta rellenarlos todos (comprueba con: grep -n "\\[" <car
 import json, sys, html, pathlib
 
 c = json.load(open(sys.argv[1]))
-e = lambda k: html.escape(c.get(k) or f"[{k.upper()}]")
+ETIQ = {"titular":"Nombre o razón social del titular","nif":"NIF del titular","domicilio":"Dirección del negocio","email":"Email del negocio","negocio":"Nombre del negocio"}
+e = lambda k: html.escape(c.get(k) or f"[{ETIQ.get(k,k)}]")
 reservas = c.get("reservas", True)
 
 privacidad = f"""
