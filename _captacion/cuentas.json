@@ -485,6 +485,171 @@
    "fuente_antiguedad": null,
    "estado": "Seguida",
    "nota": "Estudio inicial (doc 'Instagram de negocios de Santa Coloma')"
+  },
+  {
+   "instagram": "code.pilatesstudio",
+   "negocio": "Code Pilates Studio",
+   "sector": "Pilates",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público (se anuncia como estudio nuevo)",
+   "fuente_antiguedad": "https://classpass.com/studios/code-pilates-studio-badalona",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://classpass.com/studios/code-pilates-studio-badalona. Web actual: Solo Instagram + ClassPass."
+  },
+  {
+   "instagram": "alma.salondebellezabadalona",
+   "negocio": "ALMA Salón de Belleza",
+   "sector": "Uñas y estética",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Más de 1 año",
+   "fuente_antiguedad": "https://www.treatwell.es/establecimiento/alma-salon-de-belleza-badalona/reviews/pagina-6/",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://booksy.com/es-es/138263_alma-salon-de-belleza_salon-de-unas_48852_badalona. Web actual: Solo Booksy + Treatwell."
+  },
+  {
+   "instagram": "dasbarberstudio",
+   "negocio": "DAS Barber Studio",
+   "sector": "Barbería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público (se presenta como «tu nuevo punto de referencia»)",
+   "fuente_antiguedad": "https://booksy.com/es-es/152384_das-barber-studio_barberia_48863_barcelona",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://booksy.com/es-es/152384_das-barber-studio_barberia_48863_barcelona. Web actual: Solo Booksy."
+  },
+  {
+   "instagram": "restaurantlandreuenc",
+   "negocio": "L'Andreuenc – Casa de Menjars",
+   "sector": "Restaurante",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-10-19",
+   "abierto_desde": "Desde 2022-2023 (3-4 años; las fuentes no coinciden)",
+   "fuente_antiguedad": "https://www.totbarcelona.cat/es/sociedad/el-restaurante-de-barcelona-que-ofrece-los-mejores-desayunos-de-cuchara-de-cataluna-659807/",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://www.timeout.cat/barcelona/ca/restaurants/landreuenc. Web actual: Solo Instagram (Time Out enlaza su IG como web)."
+  },
+  {
+   "instagram": "sukha.beautysalon",
+   "negocio": "Sukha Beauty Salon",
+   "sector": "Estética",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-10-19",
+   "abierto_desde": "Más de 3 años",
+   "fuente_antiguedad": "https://www.treatwell.es/establecimiento/sukha-beauty-salon/reviews/pagina-49/",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://www.treatwell.es/establecimiento/sukha-beauty-salon/. Web actual: Solo Treatwell + Fresha."
+  },
+  {
+   "instagram": "oaxaca.brunch",
+   "negocio": "Oaxaca Café y Brunch",
+   "sector": "Cafetería",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público",
+   "fuente_antiguedad": null,
+   "estado": "Pendiente",
+   "nota": "Ficha: https://www.casicinco.com/restaurante/barcelona/oaxaca-cafe-y-brunch-badalona. Web actual: Solo Instagram."
+  },
+  {
+   "instagram": "latapaderadesantandreu",
+   "negocio": "La Tapadera de Sant Andreu",
+   "sector": "Bar de menú y tapas",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-10-19",
+   "abierto_desde": "Más de 4 años (primera reseña, marzo 2022)",
+   "fuente_antiguedad": "https://pidemesa.es/restaurantes/barcelona/barcelona/la-tapadera-de-sant-andreu",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://pidemesa.es/restaurantes/barcelona/barcelona/la-tapadera-de-sant-andreu. Web actual: Solo Instagram + plataformas de reserva."
+  },
+  {
+   "instagram": "apex.salon_",
+   "negocio": "Apex Salon",
+   "sector": "Uñas, cejas y pestañas",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público (reseña: «llevo muchos años yendo»)",
+   "fuente_antiguedad": "https://booksy.com/es-es/19734_apex-salon_salon-de-unas_48863_barcelona",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://booksy.com/es-es/19734_apex-salon_salon-de-unas_48863_barcelona. Web actual: Solo Booksy (apexsalon.es hoy es spam)."
+  },
+  {
+   "instagram": "florscassi",
+   "negocio": "Flors Cassi",
+   "sector": "Floristería",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público",
+   "fuente_antiguedad": null,
+   "estado": "Pendiente",
+   "nota": "Ficha: https://buscafloristeria.com/cataluna/barcelona/badalona/cassi-flores-y-plantas/. Web actual: Solo Instagram."
+  },
+  {
+   "instagram": "thegallery_tattoo",
+   "negocio": "The Gallery Tattoo",
+   "sector": "Tatuajes",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Desde 2013 (13 años)",
+   "fuente_antiguedad": "https://www.axesor.es/Informes-Empresas/n/9084254/THE_GALLERY_TATTOO_BDN_SCP.html",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://www.paginasamarillas.es/f/badalona/the-gallery-tattoo-badalona-_233417138_000000001.html. Web actual: Solo Instagram + Facebook."
+  },
+  {
+   "instagram": "plantazero_barbers",
+   "negocio": "Planta Zero Barbers",
+   "sector": "Barbería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público (dicen «3 generaciones»)",
+   "fuente_antiguedad": "https://booksy.com/es-es/131943_planta-zero-barbers_barberia_48863_barcelona",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://booksy.com/es-es/131943_planta-zero-barbers_barberia_48863_barcelona. Web actual: Solo Booksy + Facebook."
+  },
+  {
+   "instagram": "latrobada_bdn",
+   "negocio": "Bar La Trobada",
+   "sector": "Bar",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato público",
+   "fuente_antiguedad": null,
+   "estado": "Pendiente",
+   "nota": "Ficha: https://gastroranking.es/r/bar-la-trobada_274730/. Web actual: Solo Instagram + Facebook."
+  },
+  {
+   "instagram": "7starbarberbcn",
+   "negocio": "7star Barbershop",
+   "sector": "Barbería",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Sin dato del local (el barbero, desde 1998)",
+   "fuente_antiguedad": "https://www.tumblr.com/7starbarberbcn",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://booksy.com/es-es/612_peluqueria-7star-barbershop_barberia_48852_badalona. Web actual: Solo Booksy (su «web» es YouTube)."
+  },
+  {
+   "instagram": "ungleriadelcentre",
+   "negocio": "L'Ungleria del Centre",
+   "sector": "Uñas",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Más de 10 años",
+   "fuente_antiguedad": "https://www.bodas.net/belleza-novias/la-ungleria-del-centre--e152023",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://www.bodas.net/belleza-novias/la-ungleria-del-centre--e152023. Web actual: Solo Instagram + Facebook."
+  },
+  {
+   "instagram": "eire_fisio",
+   "negocio": "Eire Esport i Rehabilitació",
+   "sector": "Fisioterapia",
+   "zona": "Badalona",
+   "semana": "2026-10-19",
+   "abierto_desde": "Desde al menos 2008 (más de 18 años)",
+   "fuente_antiguedad": "https://www.efisioterapia.net/clinicas/3179-eire-esport-i-rehabilitacio",
+   "estado": "Pendiente",
+   "nota": "Ficha: https://www.efisioterapia.net/clinicas/3179-eire-esport-i-rehabilitacio. Web actual: Solo Instagram + Facebook."
   }
  ]
 }
