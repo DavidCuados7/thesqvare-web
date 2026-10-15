@@ -193,7 +193,7 @@ function montarHoy(ss) {
     ["B5:B6", "Citas hoy", `=SUMPRODUCT((${D}=TODAY())*${activa})`, "0"],
     ["C5:C6", "Esta semana", `=SUMPRODUCT((${D}>=${ini})*(${D}<=${fin})*${activa})`, "0"],
     ["D5:E6", "Previsto esta semana", `=SUMPRODUCT((${D}>=${ini})*(${D}<=${fin})*${activa}*N(+Agenda!G2:G))`, '#,##0 "€"'],
-    ["F5:K6", "Próxima cita", `=IFERROR(LET(d,${D},t,${T},k,ARRAYFORMULA(IFERROR(d+t,0)),c,(k>=NOW())*${activa},s,SORT(FILTER(Agenda!A2:K,c),FILTER(k,c),TRUE),PROPER(TEXT(INT(MIN(FILTER(k,c))),"ddd d mmm"))&"  ·  "&LEFT(INDEX(s,1,2),5)&"  ·  "&INDEX(s,1,3)&"  ·  "&INDEX(s,1,4)),"Sin citas próximas")`, "@"]
+    ["F5:K6", "Próxima cita", `=ARRAYFORMULA(IFERROR(LET(d,${D},t,${T},k,ARRAYFORMULA(IFERROR(d+t,0)),c,(k>=NOW())*${activa},s,SORT(FILTER(Agenda!A2:K,c),FILTER(k,c),TRUE),PROPER(TEXT(INT(MIN(FILTER(k,c))),"ddd d mmm"))&"  ·  "&LEFT(INDEX(s,1,2),5)&"  ·  "&INDEX(s,1,3)&"  ·  "&INDEX(s,1,4)),"Sin citas próximas"))`, "@"]
   ];
   tarjetas.forEach(([a1, titulo, f, fmt]) => {
     const [arriba, abajo] = a1.split(":").map(x => x.replace(/\d+/, m => m));
@@ -208,11 +208,11 @@ function montarHoy(ss) {
   // Hoy
   h.getRange("B8:F8").merge().setValue("Agenda de hoy").setFontFamily("Cormorant Garamond").setFontSize(20).setFontColor(COL.oliva);
   h.getRange("B9:F9").setValues([["Hora","Tratamiento","Clienta","Teléfono","Notas"]]);
-  h.getRange("B10").setFormula(F(`=IFERROR(LET(d,${D},t,${T},c,(d=TODAY())*${activa},CHOOSECOLS(SORT(FILTER(Agenda!A2:K,c),FILTER(t,c),TRUE),2,3,4,5,9)),"Hoy no hay citas 🌿")`));
+  h.getRange("B10").setFormula(F(`=ARRAYFORMULA(IFERROR(LET(d,${D},t,${T},c,(d=TODAY())*${activa},CHOOSECOLS(SORT(FILTER(Agenda!A2:K,c),FILTER(t,c),TRUE),2,3,4,5,9)),"Hoy no hay citas 🌿"))`));
   // Próximos 7 días
   h.getRange("H8:K8").merge().setValue("Próximos 7 días").setFontFamily("Cormorant Garamond").setFontSize(20).setFontColor(COL.oliva);
   h.getRange("H9:K9").setValues([["Día","Hora","Tratamiento","Clienta"]]);
-  h.getRange("H10").setFormula(F(`=IFERROR(LET(d,${D},t,${T},c,(d>TODAY())*(d<=TODAY()+7)*${activa},CHOOSECOLS(SORT(FILTER(Agenda!A2:K,c),FILTER(d,c),TRUE,FILTER(t,c),TRUE),1,2,3,4)),"Nada en los próximos días")`));
+  h.getRange("H10").setFormula(F(`=ARRAYFORMULA(IFERROR(LET(d,${D},t,${T},c,(d>TODAY())*(d<=TODAY()+7)*${activa},CHOOSECOLS(SORT(FILTER(Agenda!A2:K,c),FILTER(d,c),TRUE,FILTER(t,c),TRUE),1,2,3,4)),"Nada en los próximos días"))`));
   [h.getRange("B9:F9"), h.getRange("H9:K9")].forEach(x => x.setBackground(COL.oliva).setFontColor(COL.lino).setFontWeight("bold"));
   h.setRowHeight(8, 40); h.setRowHeight(9, 30);
   h.setRowHeights(10, 40, 32);
