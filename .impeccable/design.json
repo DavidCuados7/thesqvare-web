@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T07:51:39.265128Z",
+  "title": "Design System: The Sqvare",
+  "extensions": {
+    "colorMeta": {
+      "ultramar-cuadrado": {
+        "role": "primary",
+        "displayName": "Azul cuadrado",
+        "canonical": "#2A35F0",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#151957",
+          "#1D2494",
+          "#262FD1",
+          "#4750F1",
+          "#8087F4",
+          "#BABDF7",
+          "#F3F4FA"
+        ]
+      },
+      "sol-acento": {
+        "role": "tertiary",
+        "displayName": "Sol acento",
+        "canonical": "#FFC83D",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#514324",
+          "#97782E",
+          "#DCAD38",
+          "#FDCE58",
+          "#FADB8E",
+          "#F6E7C4",
+          "#F3F4FA"
+        ]
+      },
+      "papel-claro": {
+        "role": "neutral",
+        "displayName": "Papel claro",
+        "canonical": "#F3F4FA",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#4E505A",
+          "#90919A",
+          "#D2D3DA",
+          "#F3F4FA",
+          "#F3F4FA",
+          "#F3F4FA",
+          "#F3F4FA"
+        ]
+      },
+      "noche-fondo": {
+        "role": "neutral",
+        "displayName": "Noche fondo",
+        "canonical": "#0C0E1A",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#0C0E1A",
+          "#0C0E1A",
+          "#0C0E1A",
+          "#2D2F3A",
+          "#6F717A",
+          "#B1B2BA",
+          "#F3F4FA"
+        ]
+      },
+      "superficie-noche": {
+        "role": "neutral",
+        "displayName": "Superficie noche",
+        "canonical": "#161A2E",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#0F1120",
+          "#121525",
+          "#15182B",
+          "#36394B",
+          "#757785",
+          "#B4B6C0",
+          "#F3F4FA"
+        ]
+      },
+      "gris-secundario": {
+        "role": "neutral",
+        "displayName": "Gris secundario",
+        "canonical": "#9097B8",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#323547",
+          "#575C74",
+          "#7D83A1",
+          "#9EA4C1",
+          "#BABFD4",
+          "#D7D9E7",
+          "#F3F4FA"
+        ]
+      },
+      "trazo-noche": {
+        "role": "neutral",
+        "displayName": "Trazo noche",
+        "canonical": "#2A2F4C",
+        "tonalRamp": [
+          "#0C0E1A",
+          "#151728",
+          "#1D2137",
+          "#262A45",
+          "#474B65",
+          "#808397",
+          "#BABCC8",
+          "#F3F4FA"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titulares de portada; una o dos líneas."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titular de cada pantalla."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Subtítulos y textos de botón."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Párrafos, máximo 60ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas y pie, en mayúsculas."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hard-papel-3",
+        "value": "3px 3px 0 #F3F4FA",
+        "purpose": "Botón pequeño en reposo."
+      },
+      {
+        "name": "hard-papel-7",
+        "value": "7px 7px 0 #F3F4FA",
+        "purpose": "Botón principal en hover."
+      },
+      {
+        "name": "hard-sol-8",
+        "value": "8px 8px 0 #FFC83D",
+        "purpose": "Pack destacado."
+      },
+      {
+        "name": "hard-azul-6",
+        "value": "6px 6px 0 #2A35F0",
+        "purpose": "Tarjeta de cliente real."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-soft",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Entrada de bloques al cargar la pantalla."
+      },
+      {
+        "name": "ease-progress",
+        "value": "cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Barra de progreso."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "600px"
+      },
+      {
+        "name": "md",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal de la página.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Quiero mi web →</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:Unbounded,Arial Black,system-ui,sans-serif;font-weight:600;font-size:.92rem;padding:14px 22px;background:#FFC83D;color:#0C0E1A;text-decoration:none;border:0;border-radius:0;transition:transform .2s,box-shadow .2s}.ds-btn-primary:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #F3F4FA}.ds-btn-primary:focus-visible{outline:3px solid #FFC83D;outline-offset:3px}"
+    },
+    {
+      "name": "Botón ghost",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Acción secundaria sobre fondo oscuro.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Ver ejemplos</a>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;font-family:Unbounded,Arial Black,system-ui,sans-serif;font-weight:600;font-size:.92rem;padding:14px 22px;background:transparent;color:#F3F4FA;text-decoration:none;outline:2px solid #F3F4FA;outline-offset:-2px;border-radius:0}.ds-btn-ghost:focus-visible{outline:3px solid #FFC83D;outline-offset:3px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chips",
+      "description": "Etiqueta de tipo de negocio, invertible al pasar el ratón.",
+      "html": "<span class=\"ds-chip\">Bares</span>",
+      "css": ".ds-chip{font-family:Unbounded,Arial Black,system-ui,sans-serif;font-weight:600;font-size:1.1rem;padding:12px 20px;border:3px solid #0C0E1A;background:#FFC83D;color:#0C0E1A;transition:background .2s,color .2s}.ds-chip:hover{background:#0C0E1A;color:#FFC83D}"
+    },
+    {
+      "name": "Tarjeta de muestra",
+      "kind": "card",
+      "refersTo": "card-browser",
+      "description": "Muestra de web con borde de 2px y pie de texto.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-cap\"><strong>Muestra</strong><span>ficticia</span></div></div>",
+      "css": ".ds-card{background:#161A2E;border:2px solid #2A2F4C;border-radius:0;transition:transform .3s}.ds-card:hover{transform:translateY(-6px) rotate(-.6deg)}.ds-card-cap{padding:12px 14px;display:flex;justify-content:space-between;gap:8px;font-size:.88rem;color:#9097B8}.ds-card-cap strong{color:#F3F4FA;font-weight:600}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El cuadrado editorial",
+    "overview": "The Sqvare se ve como una revista de barrio bien hecha: bloques de color planos, tipografía gruesa en Unbounded y un ritmo de pantallas completas que se suceden como páginas. Nada es redondo. El cuadrado es la forma de la marca.",
+    "keyCharacteristics": [
+      "Formas rectas y bloques de color, sin esquinas redondeadas.",
+      "Titulares gruesos en Unbounded con una palabra destacada en dorado.",
+      "Sombras duras de color, sin difuminar.",
+      "Una pantalla por bloque de color de fondo."
+    ],
+    "rules": [
+      {
+        "name": "The Un-Shade Rule",
+        "body": "Los colores son planos. No hay degradados de marca.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Gold Rule",
+        "body": "El dorado aparece en el botón principal y en una palabra por pantalla.",
+        "section": "colors"
+      },
+      {
+        "name": "The Highlight Box Rule",
+        "body": "Una palabra del titular puede ir en un recuadro dorado con texto noche. Solo una por titular.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hard Shadow Rule",
+        "body": "Las sombras son sólidas y sin difuminar. Nunca usar blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar un solo fondo de color por pantalla.",
+      "Do usar Unbounded 800 para titulares.",
+      "Do usar sombras sólidas de 3 a 8 px.",
+      "Do mantener las esquinas rectas."
+    ],
+    "donts": [
+      "Don't usar border-radius en botones, tarjetas o bloques.",
+      "Don't usar sombras difuminadas ni degradados de marca.",
+      "Don't poner más de una palabra dorada por titular.",
+      "Don't recolorear ni modificar el logo.",
+      "Don't usar colores de apps de reservas reales."
+    ]
+  }
+}
