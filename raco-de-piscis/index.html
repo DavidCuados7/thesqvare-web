@@ -380,6 +380,412 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
 
 .consent{display:flex!important;gap:.6rem;align-items:flex-start;font-size:.78rem;letter-spacing:0;text-transform:none;line-height:1.4}.consent input{width:auto!important;height:auto!important;min-height:0!important;margin:.2rem 0 0!important;padding:0!important;accent-color:currentColor;flex:none}.consent a{color:inherit;text-decoration:underline}
 </style>
+<style id="sq-kit">
+html{scroll-behavior:smooth}
+html.sq-js .sq-rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+html.sq-js .sq-rv.sq-in{opacity:1;transform:none}
+html.sq-js .sq-hero{animation:sqUp .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sqUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+html.sq-js body.sq-fade{animation:sqFade .5s ease both}
+@keyframes sqFade{from{opacity:0}to{opacity:1}}
+a,button,input[type=submit],.sq-fab,.sq-panel button,.sq-panel a{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease,opacity .2s ease}
+a[class*="btn"]:hover,a[class*="cta"]:hover,button[class*="btn"]:hover,button[class*="cta"]:hover,.sq-cta-btn:hover{transform:translateY(-2px)}
+a[class*="btn"]:active,a[class*="cta"]:active,button[class*="btn"]:active,button[class*="cta"]:active,.sq-cta-btn:active{transform:translateY(1px) scale(.98)}
+a:hover{opacity:.85}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.sq-rv{opacity:1!important;transform:none!important}}
+.sq-fab{position:fixed;left:10px;bottom:14px;z-index:9999;width:48px;height:48px;border:2px solid #F3F4FA;background:#0C0E1A;color:#F3F4FA;box-shadow:3px 3px 0 #2A35F0;font:800 20px/1 system-ui,sans-serif;cursor:pointer;display:grid;place-items:center}
+.sq-panel{position:fixed;left:10px;bottom:72px;z-index:9999;display:none;flex-direction:column;gap:8px;align-items:stretch;background:#0C0E1A;padding:10px;border:2px solid #F3F4FA;box-shadow:4px 4px 0 #2A35F0;font:700 13px/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;min-width:150px}
+.sq-panel.on{display:flex}
+.sq-panel button,.sq-panel select,.sq-panel a{background:#F3F4FA;color:#0C0E1A;border:2px solid #F3F4FA;padding:10px 10px;cursor:pointer;font:inherit;text-decoration:none;text-align:left}
+.sq-panel select{padding:9px 8px}
+.sq-cta-strip{padding:56px 22px;text-align:center;background:#FFC83D;color:#0C0E1A;border-top:4px solid #0C0E1A}
+.sq-cta-strip p{font:800 clamp(22px,4vw,34px)/1.1 Unbounded,system-ui,sans-serif;margin:0 0 18px}
+.sq-cta-btn{display:inline-block;background:#0C0E1A;color:#FFC83D;padding:16px 26px;font:800 16px/1 system-ui,sans-serif;text-decoration:none;box-shadow:6px 6px 0 #2A35F0;border:3px solid #0C0E1A}
+.sq-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10000;display:none;align-items:center;justify-content:center;padding:18px}
+.sq-modal.on{display:flex}
+.sq-box{background:#F3F4FA;color:#0C0E1A;width:min(480px,100%);max-height:92vh;overflow:auto;padding:26px 24px;border:4px solid #0C0E1A;box-shadow:10px 10px 0 #2A35F0;position:relative;font:400 16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+.sq-box h2{font:800 26px/1.05 Unbounded,system-ui,sans-serif;margin:0 0 8px}
+.sq-box p{margin:0 0 14px}
+.sq-x{position:absolute;right:10px;top:8px;background:none;border:0;font:800 28px/1 system-ui;cursor:pointer;color:#0C0E1A}
+.sq-form label{display:block;margin:0 0 12px;font-weight:600;font-size:14px}
+.sq-form label span.t{display:block;margin-bottom:6px}
+.sq-form input,.sq-form textarea{width:100%;padding:12px;border:2px solid #0C0E1A;background:#fff;color:#0C0E1A;font:400 16px system-ui,sans-serif;border-radius:0}
+.sq-form .sq-chk{display:block!important;font-weight:400;font-size:14px;padding-left:0}
+.sq-form .sq-chk input{width:auto;display:inline-block;vertical-align:top;margin:3px 10px 0 0}
+.sq-form .sq-chk .sq-err{margin-top:6px}
+.sq-form input.sq-bad,.sq-form textarea.sq-bad{outline:3px solid #D92D20;outline-offset:0}
+.sq-err{display:block;color:#D92D20;font-size:13px;min-height:16px;margin-top:4px;font-weight:600}
+.sq-send{width:100%;background:#2A35F0;color:#fff;border:3px solid #0C0E1A;padding:15px;font:800 16px/1 system-ui,sans-serif;cursor:pointer;box-shadow:5px 5px 0 #0C0E1A}
+.sq-ok{font-weight:700;color:#0B6B3A;min-height:20px}
+.sq-hp{position:absolute;left:-9999px}
+</style><style id="sq-alt">
+:root{
+  /* Colores de la marca El Racó de Piscis */
+  --lino:#19140B;     /* fondo crema de sus diseños */
+  --arena:#E8DDCB;
+  --salvia:#717F63;
+  --oliva:#B9C5B4;    /* texto y botones */
+  --rosa:#C4877D;     /* acento 🩷 */
+  --tinta:#D9D6D1;
+  --gris:#9E9C93;
+  --linea:#D9CFBE;
+  --blanco:#060400;
+  --serif:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --sans:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--lino);color:var(--tinta);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--rosa);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;text-wrap:balance;color:var(--oliva)}
+h2{font-size:clamp(2.3rem,5vw,3.6rem)}
+h2 em,h1 em{font-style:italic;font-weight:400}
+.intro{color:var(--gris);max-width:56ch;margin-top:.8rem;font-size:1.05rem}
+section{padding:104px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:.75rem 1.6rem;border-radius:999px;border:1.5px solid transparent;font-weight:500;font-size:1rem;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-oliva{background:var(--oliva);color:var(--lino)}
+.btn-oliva:hover{background:#C9D4C5}
+.btn-linea{border-color:var(--oliva);color:var(--oliva);background:transparent}
+.btn-linea:hover{background:var(--oliva);color:var(--lino)}
+.btn-rosa{background:var(--rosa);color:#000000}
+.btn-rosa:hover{background:#AE7168}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* Cinta de propuesta */
+.propuesta{background:var(--oliva);color:#181C12;font-size:.88rem}
+.propuesta .wrap{display:flex;align-items:center;gap:.8rem;min-height:42px;flex-wrap:wrap;padding:.35rem 0}
+.propuesta b{font-weight:600;color:#000000}
+.propuesta button{background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;color:#000000;font-weight:500}
+.propuesta .x{margin-left:auto;text-decoration:none;font-size:1.3rem;line-height:1;opacity:.7}
+
+/* Cabecera */
+header.top{position:sticky;top:0;z-index:40;background:rgba(25,20,11,.93);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.top.sombra{border-color:var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+.marca{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.marca img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid var(--linea);background:var(--blanco)}
+.marca span{font-family:var(--serif);font-size:1.45rem;font-weight:500;color:var(--oliva);line-height:1}
+.marca small{display:block;font-family:var(--sans);font-size:.78rem;color:var(--gris);margin-top:3px}
+.nav ul{display:flex;list-style:none;gap:1.8rem;font-size:.95rem}
+.nav ul a{text-decoration:none;color:var(--tinta)}
+.nav ul a:hover{color:var(--rosa)}
+.nav .btn{min-height:44px;padding:.5rem 1.2rem;font-size:.95rem}
+@media(max-width:920px){.nav ul{display:none}.nav .btn{display:none}}
+@media(max-width:420px){.marca small{display:none}}
+
+/* Portada */
+.hero{padding:48px 0 88px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:center}
+.estado{display:inline-flex;align-items:center;gap:.55rem;font-size:.95rem;color:var(--gris)}
+.estado i{width:9px;height:9px;border-radius:50%;background:var(--dot,#555555)}
+.hero h1{font-size:clamp(3.2rem,8vw,6.2rem);margin:1rem 0 1.4rem;letter-spacing:-.01em}
+.hero h1 em{display:block;color:var(--salvia)}
+.hero .sub{font-size:1.15rem;max-width:40ch;color:#BFBCB5}
+.hero .acciones{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.valoracion{display:flex;align-items:center;gap:.8rem;margin-top:2.2rem;color:var(--gris);font-size:.95rem}
+.valoracion b{font-family:var(--serif);font-size:2.2rem;font-weight:500;color:var(--oliva);line-height:1}
+.valoracion .est{color:#C9A14A;letter-spacing:2px}
+
+/* El óvalo con los dos peces: el elemento con carácter */
+.retrato{position:relative;justify-self:center;width:min(430px,100%);aspect-ratio:4/5}
+.retrato .foto{position:absolute;inset:7%;border-radius:50%;overflow:hidden;background:var(--arena)}
+.retrato .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.retrato svg.orbita{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.retrato .firma{position:absolute;right:-6%;bottom:9%;background:var(--blanco);border:1px solid var(--linea);border-radius:999px;padding:.55rem 1.1rem;font-size:.92rem;box-shadow:0 10px 30px -18px rgba(185,197,180,.6)}
+.retrato .firma b{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--oliva);font-style:italic}
+@media(prefers-reduced-motion:no-preference){
+  .orbita .peces{transform-origin:50% 50%;animation:nadar 1.6s cubic-bezier(.3,.7,.2,1) both .3s}
+  @keyframes nadar{from{transform:rotate(-70deg);opacity:0}to{transform:none;opacity:1}}
+}
+@media(max-width:900px){.hero{padding-top:28px}.hero-grid{grid-template-columns:minmax(0,1fr);gap:44px}.retrato{width:min(300px,80%)}.retrato .firma{right:-4%}}
+
+/* Promo */
+.promo{background:var(--oliva);color:var(--lino)}
+.promo .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:30px 0}
+.promo h2{color:var(--lino);font-size:clamp(1.8rem,3.4vw,2.4rem)}
+.promo p{color:#2C3223;max-width:60ch}
+.promo .precio{font-family:var(--serif);font-size:3rem;line-height:1;color:#000000}
+.promo .precio small{display:block;font-family:var(--sans);font-size:.85rem;color:#2C3223;margin-top:.3rem}
+.promo .btn{background:var(--lino);color:var(--oliva)}
+.promo .btn:hover{background:#000000}
+@media(max-width:860px){.promo .wrap{grid-template-columns:1fr;gap:14px}}
+
+/* Tratamientos */
+.cats{display:flex;gap:.5rem;flex-wrap:wrap;margin:2.4rem 0 1.6rem}
+.cats button{border:1px solid var(--linea);background:transparent;border-radius:999px;padding:.5rem 1.1rem;min-height:44px;cursor:pointer;font-size:.95rem}
+.cats button[aria-pressed="true"]{background:var(--oliva);border-color:var(--oliva);color:var(--lino)}
+.trat-grid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;align-items:start}
+.trat-foto{position:sticky;top:96px}
+.trat-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:200px 200px 16px 16px;background:var(--arena)}
+.trat-foto p{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--oliva);margin-top:1rem;line-height:1.3}
+.servicio{padding:26px 0;border-bottom:1px solid var(--linea)}
+.servicio:first-child{padding-top:0}
+.servicio h3{font-size:1.75rem}
+.servicio > p{color:var(--gris);margin:.4rem 0 .9rem;max-width:62ch}
+.variante{display:grid;grid-template-columns:1fr auto auto;gap:1rem;align-items:center;padding:.65rem 0;border-top:1px dashed var(--linea)}
+.variante span{line-height:1.35}
+.variante small{display:block;color:var(--gris);font-size:.88rem}
+.variante .pr{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
+.variante .pr s{color:var(--gris);font-weight:400;margin-right:.35rem;font-size:.9rem}
+.variante button{border:1px solid var(--oliva);background:transparent;color:var(--oliva);border-radius:999px;padding:.35rem .95rem;cursor:pointer;font-size:.9rem;min-height:38px}
+.variante button:hover{background:var(--oliva);color:var(--lino)}
+@media(max-width:900px){.trat-grid{grid-template-columns:minmax(0,1fr);gap:28px}.trat-foto{position:static}.trat-foto img{aspect-ratio:16/10;border-radius:16px}}
+@media(max-width:520px){.variante{grid-template-columns:1fr auto}.variante button{grid-column:1/-1;justify-self:start}}
+
+/* Sobre Andrea */
+#andrea{background:var(--blanco)}
+.andrea{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.andrea .fotos{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:14px;align-items:end}
+.andrea .fotos img{width:100%;object-fit:cover;border-radius:14px;background:var(--arena)}
+.andrea .fotos img:first-child{aspect-ratio:3/4;object-position:70% 50%}
+.andrea .fotos img:last-child{aspect-ratio:3/4;margin-bottom:48px}
+.andrea blockquote{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;color:var(--oliva);font-style:italic;margin:1.4rem 0}
+.andrea p{color:#BFBCB5;margin-top:.9rem;max-width:56ch}
+.datos{display:flex;gap:2.4rem;margin-top:1.8rem;flex-wrap:wrap}
+.datos b{display:block;font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--oliva);line-height:1}
+.datos span{color:var(--gris);font-size:.92rem}
+@media(max-width:900px){.andrea{grid-template-columns:minmax(0,1fr);gap:40px}.andrea .fotos{grid-template-columns:minmax(0,1fr)}.andrea .fotos img:first-child{aspect-ratio:4/3}.andrea .fotos img:last-child{display:none}}
+
+/* Reseñas */
+.resenas{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:2.4rem}
+.resena{background:var(--blanco);border-radius:16px;padding:26px;border:1px solid var(--linea)}
+.resena p{font-family:var(--serif);font-size:1.35rem;line-height:1.3;color:var(--oliva)}
+.resena footer{margin-top:1rem;color:var(--gris);font-size:.9rem}
+.resena footer b{color:var(--tinta);font-weight:500}
+.resena:first-child{grid-row:span 2;background:var(--arena);border-color:var(--arena);display:flex;flex-direction:column;justify-content:space-between}
+.resena:first-child p{font-size:2rem}
+@media(max-width:900px){.resenas{grid-template-columns:1fr}.resena:first-child{grid-row:auto}}
+
+/* Reserva */
+#reservar{background:var(--arena)}
+.reserva{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:40px;margin-top:2.4rem;align-items:start}
+.pasos{background:var(--blanco);border-radius:20px;padding:30px;border:1px solid var(--linea)}
+.paso + .paso{margin-top:28px;padding-top:28px;border-top:1px solid var(--linea)}
+.paso h3{font-size:1.55rem;margin-bottom:.8rem;display:flex;gap:.6rem;align-items:baseline}
+.paso h3 small{font-family:var(--sans);font-size:.85rem;color:var(--gris);font-weight:400}
+label{display:block;font-size:.92rem;margin:.6rem 0 .3rem;color:#BFBCB5}
+input,select,textarea{width:100%;min-height:50px;border:1px solid var(--linea);border-radius:12px;padding:.65rem .9rem;background:#000000}
+textarea{min-height:76px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--salvia);box-shadow:0 0 0 3px rgba(113,127,99,.25)}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:520px){.dos{grid-template-columns:1fr}}
+.dias{display:flex;gap:.5rem;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin}
+.dias button{flex:none;width:68px;border:1px solid var(--linea);border-radius:14px;background:#000000;padding:.5rem 0;cursor:pointer;text-align:center;line-height:1.15}
+.dias button small{display:block;font-size:.78rem;color:var(--gris)}
+.dias button b{font-family:var(--serif);font-size:1.6rem;font-weight:500}
+.dias button[aria-pressed="true"]{background:var(--oliva);border-color:var(--oliva);color:var(--lino)}
+.dias button[aria-pressed="true"] small{color:#2C3223}
+.horas{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+.horas button{min-height:44px;padding:.35rem 1rem;border-radius:999px;border:1px solid var(--linea);background:#000000;cursor:pointer;font-variant-numeric:tabular-nums}
+.horas button[aria-pressed="true"]{background:var(--rosa);border-color:var(--rosa);color:#000000}
+.vacio{color:var(--gris);font-size:.95rem}
+.aviso{font-size:.9rem;color:var(--gris);margin-top:.7rem}
+.aviso.err{color:#A64B3F;font-weight:500}
+.resumen{position:sticky;top:96px;background:var(--oliva);color:var(--lino);border-radius:20px;padding:28px}
+.resumen h3{color:var(--lino);font-size:1.6rem;margin-bottom:1rem}
+.resumen dl{display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem}
+.resumen dt{color:#434C37;font-size:.9rem}
+.resumen dd{text-align:right}
+.resumen .total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(25,20,11,.25);margin-top:1.2rem;padding-top:1rem}
+.resumen .total b{font-family:var(--serif);font-size:2.2rem;font-weight:500}
+.resumen .btn{width:100%;margin-top:1.2rem;background:var(--lino);color:var(--oliva)}
+.resumen .btn:hover{background:#000000}
+.resumen .aviso{color:#39412E}
+.resumen .aviso.err{color:#F3C2BA}
+@media(max-width:960px){.reserva{grid-template-columns:minmax(0,1fr)}.resumen{position:static}}
+/* Horario compacto (móvil) */
+.horario-movil{display:none;list-style:none;gap:8px}
+.horario-movil li{display:flex;justify-content:space-between;align-items:center;background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:.7rem .9rem;font-size:.95rem}
+.horario-movil li.hoy{border-color:var(--oliva);box-shadow:inset 3px 0 0 var(--oliva)}
+.horario-movil b{font-weight:600}
+.horario-movil .cerrado{color:var(--gris)}
+/* Galería */
+#galeria{padding-bottom:40px}
+.galeria{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;width:min(1140px,100% - 32px);margin:2rem auto 0}
+.galeria figure{position:relative;border-radius:16px;overflow:hidden;background:var(--arena);aspect-ratio:3/4}
+.galeria img{width:100%;height:100%;object-fit:cover}
+.galeria figcaption{position:absolute;inset:auto 0 0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(225,229,221,.75));color:#000000;font-size:.85rem}
+/* Chips de categoría con foto */
+.cats button{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem 1rem .3rem .3rem}
+.cats img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--arena)}
+/* Cambiar / cancelar desde el correo */
+#gestionar{background:var(--oliva);color:var(--lino);padding:56px 0 64px}
+.gest{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.gest .chip{display:inline-block;background:var(--rosa);color:#000000;border-radius:999px;padding:.25rem .8rem;font-size:.85rem}
+.gest h2{color:var(--lino);margin:.7rem 0 .6rem}
+.gest > div > p{color:#2C3223;max-width:46ch}
+.gest .msg{background:rgba(25,20,11,.12);border-left:3px solid var(--rosa);padding:.8rem 1rem;border-radius:8px;color:var(--lino);margin-top:1rem}
+.tarjeta{background:var(--blanco);color:var(--tinta);border-radius:20px;padding:26px}
+.tarjeta dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1rem}
+.tarjeta dt{color:var(--gris)}
+.tarjeta dd{text-align:right;font-weight:500}
+.tarjeta .acc{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.confirmar{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--linea)}
+.confirmar p{font-weight:500}
+.estado-chip{display:inline-block;border-radius:999px;padding:.1rem .6rem;font-size:.85rem}
+@media(max-width:900px){.gest{grid-template-columns:minmax(0,1fr);gap:24px}}
+.modo-cambio{background:var(--oliva);color:var(--lino);border-radius:14px;padding:14px 18px;margin-top:1.6rem;display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.modo-cambio button{background:none;border:1px solid var(--lino);color:var(--lino);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.hecho{text-align:center;padding:16px 4px}
+.hecho .ok{width:60px;height:60px;border-radius:50%;background:var(--salvia);color:#000000;display:grid;place-items:center;font-size:1.6rem;margin:0 auto 14px}
+.hecho h3{font-size:2rem;margin-bottom:.5rem}
+.hecho p{color:var(--gris);max-width:44ch;margin:0 auto}
+
+/* Dónde */
+.donde{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;margin-top:2.2rem}
+.horario{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.horario td{padding:.65rem 0;border-bottom:1px solid var(--linea)}
+.horario td:last-child{text-align:right;color:#BFBCB5}
+.horario tr.hoy td{color:var(--oliva);font-weight:600}
+.contacto{display:grid;gap:.8rem;margin-top:1.8rem}
+.contacto a{display:flex;gap:.75rem;align-items:flex-start;text-decoration:none}
+.contacto a:hover span{text-decoration:underline}
+.contacto svg{width:22px;height:22px;color:var(--rosa);flex:none;margin-top:2px}
+.contacto small{display:block;color:var(--gris)}
+.mapa{border-radius:18px;overflow:hidden;border:1px solid var(--linea);min-height:380px;background:var(--arena)}
+.mapa iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:saturate(.75)}
+@media(max-width:900px){.donde{grid-template-columns:minmax(0,1fr)}}
+
+footer.pie{background:var(--tinta);color:#524D42;padding:40px 0 120px;font-size:.92rem}
+footer.pie .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer.pie a{color:#000000}
+@media(min-width:921px){footer.pie{padding-bottom:40px}}
+
+/* Barra fija en móvil */
+.barra{position:fixed;inset:auto 0 0;z-index:45;display:none;grid-template-columns:1fr 1.3fr 1fr;background:var(--blanco);border-top:1px solid var(--linea);padding:8px 8px calc(8px + env(safe-area-inset-bottom));gap:6px}
+.barra a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:.8rem;padding:6px;border-radius:12px}
+.barra a svg{width:22px;height:22px;color:var(--oliva)}
+.barra a.principal{background:var(--oliva);color:var(--lino)}
+.barra a.principal svg{color:var(--lino)}
+@media(max-width:920px){.barra{display:grid}}
+
+dialog{border:0;border-radius:20px;padding:0;max-width:min(540px,calc(100% - 32px));width:100%;color:var(--tinta);background:var(--blanco);box-shadow:0 30px 80px -20px rgba(255,255,255,.45)}
+dialog::backdrop{background:rgba(217,214,209,.55)}
+.dlg{padding:30px}
+.dlg h3{font-size:2rem}
+.incluido{list-style:none;margin-top:1.2rem;display:grid;gap:.85rem}
+.incluido li{display:grid;grid-template-columns:24px 1fr;gap:.7rem}
+.incluido li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--rosa);margin:.55rem 0 0 7px}
+.incluido b{display:block;font-weight:500}
+.incluido span{color:var(--gris);font-size:.95rem}
+.dlg .fila{display:flex;justify-content:flex-end;margin-top:1.6rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* ================= MÓVIL ================= */
+@media(max-width:900px){
+  body{font-size:16px}
+  section{padding:60px 0}
+  h2{font-size:2.15rem}
+  .intro{font-size:1rem;margin-top:.4rem}
+  .solo-pc{display:none}
+  .propuesta .wrap{min-height:38px;font-size:.82rem}
+  .nav{height:62px}
+  .marca img{width:40px;height:40px}
+  .marca span{font-size:1.3rem}
+  .marca small{display:none}
+
+  /* Portada: foto a pantalla completa con el texto encima */
+  .hero{position:relative;padding:0;min-height:calc(100svh - 62px - 38px - 74px);display:flex;align-items:flex-end;overflow:hidden;background:var(--oliva)}
+  .hero .hero-grid{display:block;position:static;padding-bottom:26px}
+  .hero .hero-grid > div:first-child{position:relative;z-index:2}
+  .retrato{position:absolute;inset:0;width:100%;max-width:none;aspect-ratio:auto;z-index:1}
+  .retrato .foto{inset:0;border-radius:0}
+  .retrato .foto img{object-position:50% 18%}
+  .retrato::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(227,231,223,0) 30%,rgba(227,231,223,.55) 58%,rgba(227,231,223,.9) 100%)}
+  .retrato svg.orbita{display:none}
+  .retrato .firma{top:16px;right:16px;bottom:auto;z-index:3;padding:.4rem .9rem;font-size:.85rem}
+  .hero h1{color:#000000;font-size:3.2rem;margin:.7rem 0 0}
+  .hero h1 em{color:#DCE6CF}
+  .hero .sub{display:none}
+  .estado{background:rgba(0,0,0,.16);backdrop-filter:blur(6px);color:#000000;padding:.35rem .8rem;border-radius:999px;font-size:.85rem}
+  .hero .acciones{margin-top:1.3rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+  .hero .acciones .btn{padding:.7rem .6rem;font-size:.92rem}
+  .hero .btn-oliva{background:var(--lino);color:var(--oliva)}
+  .hero .btn-linea{border-color:#000000;color:#000000}
+  .valoracion{margin-top:1rem;color:#181C12}
+  .valoracion b{color:#000000;font-size:1.8rem}
+
+  /* Promo compacta */
+  .promo .wrap{grid-template-columns:auto 1fr;gap:6px 16px;padding:18px 0}
+  .promo .precio{font-size:2.2rem;grid-row:span 2}
+  .promo h2{font-size:1.35rem}
+  .promo p{display:none}
+  .promo .btn{grid-column:2;justify-self:start;min-height:40px;padding:.4rem 1rem;font-size:.9rem}
+
+  /* Tratamientos: tarjetas con foto que se deslizan */
+  .cats{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;margin:1.4rem -16px 1.2rem;padding:0 16px 6px;gap:10px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cats button{flex:none;scroll-snap-align:start;flex-direction:column;align-items:stretch;gap:0;width:118px;padding:0;border-radius:16px;overflow:hidden;background:var(--blanco);text-align:left}
+  .cats img{width:100%;height:108px;border-radius:0}
+  .cats span{padding:.5rem .7rem;font-size:.88rem;line-height:1.2;min-height:2.6em;display:flex;align-items:center}
+  .cats button[aria-pressed="true"]{outline:2px solid var(--oliva);outline-offset:0}
+  .cats button[aria-pressed="true"] span{background:var(--oliva);color:var(--lino)}
+  .trat-foto{display:none}
+  .trat-grid{display:block}
+  .servicio{background:var(--blanco);border:1px solid var(--linea);border-radius:16px;padding:16px 16px 6px;margin-bottom:12px}
+  .servicio:first-child{padding-top:16px}
+  .servicio h3{font-size:1.45rem}
+  .servicio > p.desc{font-size:.92rem;margin:.3rem 0 .4rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+  .servicio > p.desc.abierta{display:block}
+  .variante{grid-template-columns:1fr auto auto;gap:.6rem;padding:.6rem 0}
+  .variante span{font-size:.95rem}
+  .variante button{grid-column:auto;justify-self:end;padding:.35rem .8rem;font-size:.85rem;background:var(--oliva);color:var(--lino)}
+
+  /* Sobre Andrea más corto */
+  .andrea{gap:24px}
+  .andrea .fotos img:first-child{aspect-ratio:16/11;border-radius:18px}
+  .andrea blockquote{font-size:1.5rem;margin:.8rem 0}
+  .datos{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+  .andrea .fotos img{height:auto}
+  .dos{grid-template-columns:1fr 1fr}
+  .solo-pc-t{display:none}
+  .horario-movil{display:grid!important}
+  .datos b{font-size:2rem}
+  .datos span{font-size:.8rem;line-height:1.3;display:block;margin-top:.2rem}
+
+  /* Galería deslizable */
+  #galeria{padding:10px 0 20px}
+  .galeria{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;width:auto;margin:1.2rem 0 0;padding:0 16px 6px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria figure{flex:none;width:68%;scroll-snap-align:center}
+
+  /* Opiniones en carrusel */
+  .resenas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:1.4rem -16px 0;padding:0 16px 6px;gap:12px;scrollbar-width:none}
+  .resenas::-webkit-scrollbar{display:none}
+  .resena,.resena:first-child{flex:none;width:80%;scroll-snap-align:center;padding:20px}
+  .resena p,.resena:first-child p{font-size:1.3rem}
+
+  /* Reserva */
+  .reserva{margin-top:1.4rem;gap:16px}
+  .pasos{padding:18px;border-radius:18px}
+  .paso + .paso{margin-top:18px;padding-top:18px}
+  .paso h3{font-size:1.3rem;margin-bottom:.6rem}
+  .resumen{padding:20px;border-radius:18px}
+  .resumen h3{display:none}
+  .resumen dl{gap:.35rem .8rem;font-size:.92rem}
+  .resumen .total{margin-top:.8rem;padding-top:.7rem}
+  .resumen .total b{font-size:1.8rem}
+
+  /* Dónde */
+  .donde{gap:22px;margin-top:1.2rem}
+  .horario td{padding:.45rem 0;font-size:.92rem}
+  .contacto{grid-template-columns:1fr 1fr;gap:10px;margin-top:1.2rem}
+  .contacto a{flex-direction:column;align-items:flex-start;gap:.4rem;background:var(--blanco);border:1px solid var(--linea);border-radius:14px;padding:12px;font-size:.9rem}
+  .contacto small{font-size:.78rem;word-break:break-word}
+  .mapa,.mapa iframe{min-height:230px}
+
+  #gestionar{padding:36px 0 40px}
+}
+
+.consent{display:flex!important;gap:.6rem;align-items:flex-start;font-size:.78rem;letter-spacing:0;text-transform:none;line-height:1.4}.consent input{width:auto!important;height:auto!important;min-height:0!important;margin:.2rem 0 0!important;padding:0!important;accent-color:currentColor;flex:none}.consent a{color:inherit;text-decoration:underline}
+
+:root{--arena:#2A261E}</style>
 </head>
 <body>
 
@@ -567,6 +973,7 @@ dialog::backdrop{background:rgba(46,43,38,.55)}
   </section>
 </main>
 
+<div class="sq-cta-strip sq-rv" id="sq-cta-strip"><p data-kt="cf_t">Pide tu boceto gratis</p><a class="sq-cta-btn" href="#reservar">Reservar ↗</a></div>
 <footer class="pie">
   <div class="wrap">
     <span>© <span id="anio"></span> El Racó de Piscis · Andrea Castro · <a href="legal/">Aviso legal y privacidad</a></span>
@@ -978,6 +1385,106 @@ async function guardarCambio(err){
     $("#gestionar").scrollIntoView({behavior:"smooth",block:"start"});
   }catch(_){ boton("Guardar el cambio"); err("No hay conexión con el sistema de reservas. Inténtalo de nuevo."); }
 }
+</script>
+<script id="sq-js">
+(function(){
+ var D={"The Sqvare · Estudio de webs": {"ca": "The Sqvare · Estudi de webs", "en": "The Sqvare · Web studio"}, "Tu negocio": {"ca": "El teu negoci", "en": "Your business"}, "4,9 · 384 reseñas · Abierto ahora": {"ca": "4,9 · 384 ressenyes · Obert ara", "en": "4.9 · 384 reviews · Open now"}, "Reservar": {"ca": "Reservar", "en": "Book"}, "Primero": {"ca": "Primer", "en": "First"}, "en tu zona": {"ca": "a la teva zona", "en": "in your area"}, "posts": {"ca": "publicacions", "en": "posts"}, "seguidores": {"ca": "seguidors", "en": "followers"}, "siguiendo": {"ca": "seguint", "en": "following"}, "Cocina de temporada · Reservas online": {"ca": "Cuina de temporada · Reserves online", "en": "Seasonal cooking · Online bookings"}, "Abierto de martes a domingo": {"ca": "Obert de dimarts a diumenge", "en": "Open Tuesday to Sunday"}, "Ver web ↗": {"ca": "Veure web ↗", "en": "View site ↗"}, "Reservar ↗": {"ca": "Reservar ↗", "en": "Book ↗"}, "Más visitas": {"ca": "Més visites", "en": "More visits"}, "desde el enlace de la bio": {"ca": "des de l'enllaç de la bio", "en": "from the bio link"}, "Reserva tu mesa": {"ca": "Reserva la teva taula", "en": "Book your table"}, "Confirmación al momento · sin registros": {"ca": "Confirmació a l'instant · sense registres", "en": "Instant confirmation · no sign-up"}, "Hora": {"ca": "Hora", "en": "Time"}, "Personas": {"ca": "Persones", "en": "Guests"}, "2 personas": {"ca": "2 persones", "en": "2 guests"}, "Confirmar reserva": {"ca": "Confirmar reserva", "en": "Confirm booking"}, "Reserva confirmada": {"ca": "Reserva confirmada", "en": "Booking confirmed"}, "Nueva reserva": {"ca": "Nova reserva", "en": "New booking"}, "Aviso al negocio al instante": {"ca": "Avís al negoci a l'instant", "en": "Instant alert to the business"}, "reseñas": {"ca": "ressenyes", "en": "reviews"}, "Servicio": {"ca": "Servei", "en": "Service"}, "Ambiente": {"ca": "Ambient", "en": "Atmosphere"}, "Calidad": {"ca": "Qualitat", "en": "Quality"}, "Precio": {"ca": "Preu", "en": "Price"}, "Cocina de": {"ca": "Cuina de", "en": "Seasonal"}, "temporada.": {"ca": "temporada.", "en": "cooking."}, "Producto de mercado, cocina abierta y una mesa esperándote esta noche.": {"ca": "Producte de mercat, cuina oberta i una taula esperant-te aquesta nit.", "en": "Market produce, open kitchen and a table waiting for you tonight."}, "Reservar mesa": {"ca": "Reservar taula", "en": "Book a table"}, "Ver carta": {"ca": "Veure la carta", "en": "See the menu"}, "Boceto gratis": {"ca": "Esbós gratis", "en": "Free mockup"}, "Tu negocio,": {"ca": "El teu negoci,", "en": "Your business,"}, "a otro nivel.": {"ca": "a un altre nivell.", "en": "to the next level."}, "Webs a medida que se encuentran, enamoran y reservan solas.": {"ca": "Webs a mida que es troben, enamoren i reserven soles.", "en": "Custom websites people find, love and book on their own."}, "Primero en Google.": {"ca": "Primer a Google.", "en": "First on Google."}, "Primero en la calle.": {"ca": "Primer al carrer.", "en": "First on the street."}, "Tu web, tu ficha y tus reseñas trabajando juntas para que te elijan a ti.": {"ca": "La teva web, la teva fitxa i les teves ressenyes treballant juntes perquè et triïn a tu.", "en": "Your website, listing and reviews working together so people choose you."}, "De Instagram a tu web,": {"ca": "D'Instagram a la teva web,", "en": "From Instagram to your website,"}, "en un toque.": {"ca": "en un toc.", "en": "in one tap."}, "El enlace de tu bio lleva a una web que convierte cada visita en cliente.": {"ca": "L'enllaç de la teva bio porta a una web que converteix cada visita en client.", "en": "Your bio link leads to a site that turns every visit into a customer."}, "Reservan solos.": {"ca": "Reserven sols.", "en": "They book by themselves."}, "Mientras tú trabajas.": {"ca": "Mentre tu treballes.", "en": "While you work."}, "Eligen día y hora en segundos, sin apps ni registros. Confirmación al momento.": {"ca": "Trien dia i hora en segons, sense apps ni registres. Confirmació a l'instant.", "en": "They pick a day and time in seconds, no apps or sign-up. Instant confirmation."}, "Tus reseñas,": {"ca": "Les teves ressenyes,", "en": "Your reviews,"}, "en primera fila.": {"ca": "en primera fila.", "en": "front and centre."}, "Así se verían tus reseñas, a la vista de quien aún no te conoce.": {"ca": "Així es veurien les teves ressenyes, a la vista de qui encara no et coneix.", "en": "This is how your reviews would look to someone who doesn't know you yet."}, "Diseñada para ti.": {"ca": "Dissenyada per a tu.", "en": "Designed for you."}, "Lista en días.": {"ca": "Llesta en dies.", "en": "Ready in days."}, "Escaparate": {"ca": "Aparador", "en": "Showcase"}, "Web, reseñas, horarios, mapa y WhatsApp": {"ca": "Web, ressenyes, horaris, mapa i WhatsApp", "en": "Website, reviews, hours, map and WhatsApp"}, "Completo": {"ca": "Complet", "en": "Complete"}, "Todo lo anterior + reservas propias": {"ca": "Tot l'anterior + reserves pròpies", "en": "Everything above + your own bookings"}, "Te enseñamos un boceto de tu web antes de decidir nada.": {"ca": "Et mostrem un esbós de la teva web abans de decidir res.", "en": "We show you a mockup of your website before you decide anything."}, "Pide tu boceto gratis": {"ca": "Demana el teu esbós gratis", "en": "Get your free mockup"}, "Ejemplos ficticios": {"ca": "Exemples fictici", "en": "Fictional examples"}, "Aviso legal y privacidad": {"ca": "Avís legal i privacitat", "en": "Legal notice and privacy"}, "Capítulo I": {"ca": "Capítol I", "en": "Chapter I"}, "Capítulo II": {"ca": "Capítol II", "en": "Chapter II"}, "Capítulo III": {"ca": "Capítol III", "en": "Chapter III"}, "Capítulo IV": {"ca": "Capítol IV", "en": "Chapter IV"}, "Capítulo V": {"ca": "Capítol V", "en": "Chapter V"}, "TheSqvare Bar · Bar y restaurante": {"ca": "TheSqvare Bar · Bar i restaurant", "en": "TheSqvare Bar · Bar & restaurant"}, "Bar": {"ca": "Bar", "en": "Bar"}, "La carta": {"ca": "La carta", "en": "Menu"}, "Nosotros": {"ca": "Nosaltres", "en": "About"}, "Horario": {"ca": "Horari", "en": "Hours"}, "Contacto": {"ca": "Contacte", "en": "Contact"}, "Bar · Restaurante ·": {"ca": "Bar · Restaurant ·", "en": "Bar · Restaurant ·"}, "Cocina de barrio,": {"ca": "Cuina de barri,", "en": "Neighbourhood cooking,"}, "servida en": {"ca": "servida a", "en": "served on"}, "cuadrado.": {"ca": "quadrat.", "en": "a square plate."}, "Tapas de siempre, brasa y menú del día con producto de mercado. Para picar en la barra o para quedarse toda la sobremesa.": {"ca": "Tapes de sempre, brasa i menú del dia amb producte de mercat. Per picar a la barra o per quedar-se tota la sobretaula.", "en": "Classic tapas, charcoal grill and a daily menu with market produce. Perfect at the bar or for a long lunch."}, "Reservar mesa →": {"ca": "Reservar taula →", "en": "Book a table →"}, "Ver la carta": {"ca": "Veure la carta", "en": "See the menu"}, "Menú del día": {"ca": "Menú del dia", "en": "Daily menu"}, "Plazas + terraza": {"ca": "Places + terrassa", "en": "Seats + terrace"}, "Mar–Dom": {"ca": "Dm–Dg", "en": "Tue–Sun"}, "Mediodía y noche": {"ca": "Migdia i nit", "en": "Lunch and dinner"}, "Tapas": {"ca": "Tapes", "en": "Tapas"}, "Brasa": {"ca": "Brasa", "en": "Grill"}, "Vermut": {"ca": "Vermut", "en": "Vermouth"}, "Postres caseros": {"ca": "Postres casolans", "en": "Homemade desserts"}, "Terraza": {"ca": "Terrassa", "en": "Terrace"}, "Para picar,": {"ca": "Per picar,", "en": "To share,"}, "para compartir.": {"ca": "per compartir.", "en": "to share."}, "Una carta corta que cambia con la temporada. Pide varias cosas al centro y deja sitio para el postre.": {"ca": "Una carta curta que canvia amb la temporada. Demana diverses coses al centre i deixa lloc per al postres.", "en": "A short menu that changes with the seasons. Order a few dishes to share and save room for dessert."}, "Foto de la barra": {"ca": "Foto de la barra", "en": "Photo of the bar"}, "Foto de un plato": {"ca": "Foto d'un plat", "en": "Photo of a dish"}, "El bar de la esquina, con la cocina bien cuadrada.": {"ca": "El bar de la cantonada, amb la cuina ben quadrada.", "en": "The corner bar, with a solid kitchen."}, "En": {"ca": "A", "en": "At"}, "cocinamos lo que nos gusta comer: recetas de siempre, producto del mercado del barrio y una brasa que no descansa. Sin manteles, sin prisas y con la cerveza bien fría.": {"ca": "cuinem el que ens agrada menjar: receptes de sempre, producte del mercat del barri i una brasa que no descansa. Sense estovalles, sense presses i amb la cervesa ben freda.", "en": "we cook what we like to eat: old-school recipes, produce from the neighbourhood market and a grill that never rests. No fuss, no rush, and the beer is ice cold."}, "Producto de mercado": {"ca": "Producte de mercat", "en": "Market produce"}, "Compramos cada mañana; lo que no está fresco, no sale.": {"ca": "Comprem cada matí; el que no és fresc, no surt.", "en": "We buy every morning; if it's not fresh, it doesn't leave the kitchen."}, "Brasa de carbón": {"ca": "Brasa de carbó", "en": "Charcoal grill"}, "Carnes, verduras y pescado con el punto justo de humo.": {"ca": "Carns, verdures i peix amb el punt just de fum.", "en": "Meat, vegetables and fish with just the right smoky touch."}, "Tu mesa, sin esperas": {"ca": "La teva taula, sense esperes", "en": "Your table, no waiting"}, "Reserva online en segundos y te la tenemos preparada.": {"ca": "Reserva online en segons i te la tenim preparada.", "en": "Book online in seconds and we'll have it ready for you."}, "Reserva tu mesa en 20 segundos.": {"ca": "Reserva la teva taula en 20 segons.", "en": "Book your table in 20 seconds."}, "Elige cuántos sois, el día y una de las horas libres. Te confirmamos la mesa al momento, sin llamadas.": {"ca": "Tria quants sou, el dia i una de les hores lliures. Et confirmem la taula a l'instant, sense trucades.", "en": "Choose how many you are, the day and a free time. We confirm your table instantly, no calls needed."}, "Día": {"ca": "Dia", "en": "Day"}, "Elige un día para ver las horas libres.": {"ca": "Tria un dia per veure les hores lliures.", "en": "Choose a day to see free times."}, "Nombre": {"ca": "Nom", "en": "Name"}, "Teléfono": {"ca": "Telèfon", "en": "Phone"}, "Correo electrónico": {"ca": "Correu electrònic", "en": "Email"}, "He leído la": {"ca": "He llegit la", "en": "I have read the"}, "política de privacidad": {"ca": "política de privacitat", "en": "privacy policy"}, "y acepto que se usen mis datos para gestionar esta reserva.": {"ca": "i accepto que s'usin les meves dades per gestionar aquesta reserva.", "en": "and agree that my data can be used to manage this booking."}, "Te confirmamos la reserva al momento. Tus datos solo se usan para tu reserva.": {"ca": "Et confirmem la reserva a l'instant. Les teves dades només s'usen per a la teva reserva.", "en": "We confirm your booking instantly. Your data is only used for your booking."}, "Ven a vernos.": {"ca": "Vine a visitar-nos.", "en": "Come and see us."}, "Dirección": {"ca": "Adreça", "en": "Address"}, "Instagram": {"ca": "Instagram", "en": "Instagram"}, "Todos los derechos reservados.": {"ca": "Tots els drets reservats.", "en": "All rights reserved."}, "Web creada por": {"ca": "Web creada per", "en": "Website by"}, "TheSqvare Bar, inicio": {"ca": "TheSqvare Bar, inici", "en": "TheSqvare Bar, home"}, "Menú": {"ca": "Menú", "en": "Menu"}, "Tu nombre": {"ca": "El teu nom", "en": "Your name"}, "Mapa": {"ca": "Mapa", "en": "Map"}, "WhatsApp": {"ca": "WhatsApp", "en": "WhatsApp"}, "TheSqvare Barber · Barbería": {"ca": "TheSqvare Barber · Barberia", "en": "TheSqvare Barber · Barbershop"}, "Barber": {"ca": "Barber", "en": "Barber"}, "Servicios": {"ca": "Serveis", "en": "Services"}, "Barbería ·": {"ca": "Barberia ·", "en": "Barbershop ·"}, "Cortes con": {"ca": "Talls amb", "en": "Cuts with"}, "ángulos": {"ca": "angles", "en": "sharp angles"}, "perfectos.": {"ca": "perfectes.", "en": "perfect."}, "Cortes clásicos, degradados al detalle y barbas perfiladas a navaja. Líneas limpias, sin prisas y con el trato que te mereces.": {"ca": "Talls clàssics, degradats al detall i barbes perfilades a navalla. Línies netes, sense presses i amb el tracte que et mereixes.", "en": "Classic cuts, detailed fades and beards lined with a razor. Clean lines, no rush and the treatment you deserve."}, "Reservar cita →": {"ca": "Reservar cita →", "en": "Book an appointment →"}, "Ver precios": {"ca": "Veure preus", "en": "See prices"}, "Corte desde": {"ca": "Tall des de", "en": "Haircut from"}, "Abierto toda la semana": {"ca": "Obert tota la setmana", "en": "Open all week"}, "Cortes": {"ca": "Talls", "en": "Cuts"}, "Degradado de barba": {"ca": "Degradat de barba", "en": "Beard fade"}, "Cejas": {"ca": "Celles", "en": "Eyebrows"}, "Limpieza facial": {"ca": "Neteja facial", "en": "Facial cleansing"}, "Corte diseño": {"ca": "Tall de disseny", "en": "Design cut"}, "Color": {"ca": "Color", "en": "Colour"}, "Carta de servicios": {"ca": "Carta de serveis", "en": "Service menu"}, "Precios claros,": {"ca": "Preus clars,", "en": "Clear prices,"}, "acabado de lujo.": {"ca": "acabat de luxe.", "en": "a luxury finish."}, "Corte, barba, cejas, color y cuidado facial. Combina servicios y ahorra con los packs.": {"ca": "Tall, barba, celles, color i cura facial. Combina serveis i estalvia amb els packs.", "en": "Cut, beard, eyebrows, colour and facial care. Combine services and save with packs."}, "Foto del local": {"ca": "Foto del local", "en": "Photo of the shop"}, "Foto de un corte": {"ca": "Foto d'un tall", "en": "Photo of a cut"}, "Una barbería de barrio con precisión de escuadra.": {"ca": "Una barberia de barri amb precisió d'escaire.", "en": "A neighbourhood barbershop with square-edge precision."}, "cada corte empieza con una pregunta: ¿qué quieres transmitir? A partir de ahí trabajamos tu forma de cara, tu tipo de pelo y tu estilo para que salgas igual que entraste… pero mejor.": {"ca": "cada tall comença amb una pregunta: què vols transmetre? A partir d'aquí treballem la forma de la teva cara, el teu tipus de cabell i el teu estil perquè surtis igual que vas entrar… però millor.", "en": "every cut starts with one question: what do you want to say? From there we work with your face shape, hair type and style so you leave looking like yourself… only better."}, "Técnica al milímetro": {"ca": "Tècnica al mil·límetre", "en": "Precision technique"}, "Degradados limpios, sin escalones, y perfilado a navaja.": {"ca": "Degradats nets, sense escalons, i perfilat a navalla.", "en": "Clean fades with no steps, and razor-lined edges."}, "Trato personal": {"ca": "Tracte personal", "en": "Personal service"}, "Te asesoramos sobre el corte que mejor te queda, sin compromiso.": {"ca": "T'aconsellem sobre el tall que millor et queda, sense compromís.", "en": "We advise you on the cut that suits you best, no strings attached."}, "Tu hora es tu hora": {"ca": "La teva hora és la teva hora", "en": "Your time is your time"}, "Reservas online en segundos y te atendemos puntual.": {"ca": "Reserves online en segons i t'atenem puntual.", "en": "Book online in seconds and we'll see you on time."}, "Pide tu cita en 20 segundos.": {"ca": "Demana la teva cita en 20 segons.", "en": "Book your appointment in 20 seconds."}, "Elige servicio, día y una de las horas libres. Tu cita queda reservada al momento, sin llamadas ni esperas.": {"ca": "Tria servei, dia i una de les hores lliures. La teva cita queda reservada a l'instant, sense trucades ni esperes.", "en": "Choose a service, a day and a free time. Your appointment is booked instantly, with no calls or waiting."}, "Reserva tu cita": {"ca": "Reserva la teva cita", "en": "Book your appointment"}, "Te enviaremos la confirmación al correo. Tus datos solo se usan para tu reserva.": {"ca": "T'enviarem la confirmació al correu. Les teves dades només s'usen per a la teva reserva.", "en": "We'll send the confirmation to your email. Your data is only used for your booking."}, "Barber Prince · Barbería": {"ca": "Barber Prince · Barberia", "en": "Barber Prince · Barbershop"}, "Barber Prince": {"ca": "Barber Prince", "en": "Barber Prince"}, "Santa Coloma de Gramenet": {"ca": "Santa Coloma de Gramenet", "en": "Santa Coloma de Gramenet"}, "Sal de aquí": {"ca": "Surt d'aquí", "en": "Walk out"}, "como un": {"ca": "com un", "en": "like a"}, "príncipe.": {"ca": "príncep.", "en": "prince."}, "Cortes clásicos, degradados al detalle y barbas perfiladas a navaja. Sin prisas, con buena música y el trato que te mereces.": {"ca": "Talls clàssics, degradats al detall i barbes perfilades a navalla. Sense presses, amb bona música i el tracte que et mereixes.", "en": "Classic cuts, detailed fades and beards lined with a razor. No rush, good music and the treatment you deserve."}, "Una barbería de barrio con estándar de corona.": {"ca": "Una barberia de barri amb estàndard de corona.", "en": "A neighbourhood barbershop with crown-level standards."}, "Barber Prince, inicio": {"ca": "Barber Prince, inici", "en": "Barber Prince, home"}, "El Racó de Piscis · Andrea, estética y bienestar en Santa Coloma": {"ca": "El Racó de Piscis · Andrea, estètica i benestar a Santa Coloma", "en": "El Racó de Piscis · Andrea, beauty & wellbeing in Santa Coloma"}, "Propuesta de The Sqvare": {"ca": "Proposta de The Sqvare", "en": "A proposal by The Sqvare"}, "para El Racó de Piscis. Todo lo que ves ya funciona.": {"ca": "per a El Racó de Piscis. Tot el que veus ja funciona.", "en": "for El Racó de Piscis. Everything you see already works."}, "Ver qué incluye": {"ca": "Veure què inclou", "en": "See what's included"}, "Tratamientos": {"ca": "Tractaments", "en": "Treatments"}, "Sobre Andrea": {"ca": "Sobre Andrea", "en": "About Andrea"}, "Opiniones": {"ca": "Opinions", "en": "Reviews"}, "Dónde estoy": {"ca": "On sóc", "en": "Where I am"}, "Reservar cita": {"ca": "Reservar cita", "en": "Book appointment"}, "Pedir cita": {"ca": "Demanar cita", "en": "Request appointment"}, "Comprobando horario…": {"ca": "Comprovant horari…", "en": "Checking availability…"}, "Un rincón para": {"ca": "Un racó per", "en": "A corner to"}, "volver a ti": {"ca": "tornar a tu", "en": "come back to yourself"}, "Soy Andrea, terapeuta esteticista. Kobido, maderoterapia, masajes y rituales faciales hechos a medida, sin prisas, en Santa Coloma de Gramenet.": {"ca": "Sóc Andrea, terapeuta esteticista. Kobido, maderoteràpia, massatges i rituals facials fets a mida, sense presses, a Santa Coloma de Gramenet.", "en": "I'm Andrea, a beauty therapist. Kobido, wood therapy, massages and facial rituals made to measure, unhurried, in Santa Coloma de Gramenet."}, "Ver": {"ca": "Veure", "en": "See"}, "tratamientos y": {"ca": "tractaments i", "en": "treatments and"}, "precios": {"ca": "preus", "en": "prices"}, "reseñas de clientas verificadas": {"ca": "ressenyes de clientes verificades", "en": "verified client reviews"}, "de experiencia": {"ca": "d'experiència", "en": "of experience"}, "Reservar el bono": {"ca": "Reservar el bo", "en": "Book the package"}, "y precios": {"ca": "i preus", "en": "and prices"}, "Cada sesión, adaptada a lo que necesitas ese día.": {"ca": "Cada sessió, adaptada al que necessites aquell dia.", "en": "Every session, adapted to what you need that day."}, "Hola, soy": {"ca": "Hola, sóc", "en": "Hi, I'm"}, "Andrea": {"ca": "Andrea", "en": "Andrea"}, "Cada cita es un momento para detenerte, respirar y dedicarte el cuidado que mereces.": {"ca": "Cada cita és un moment per aturar-te, respirar i dedicar-te la cura que mereixes.", "en": "Every appointment is a moment to pause, breathe and give yourself the care you deserve."}, "Llevo 12 años como terapeuta esteticista, especializada en tratamientos faciales y corporales. Combino técnicas que buscan resultados visibles con el cuidado de tu cuerpo desde el equilibrio y el bienestar.": {"ca": "Fa 12 anys que sóc terapeuta esteticista, especialitzada en tractaments facials i corporals. Combino tècniques que busquen resultats visibles amb la cura del cos des de l'equilibri i el benestar.", "en": "I've been a beauty therapist for 12 years, specialising in facial and body treatments. I combine techniques for visible results with caring for your body through balance and wellbeing."}, "Por eso no trabajo con protocolos cerrados: escucho, observo y adapto cada sesión. Porque sentirse bien por dentro también se refleja por fuera.": {"ca": "Per això no treballo amb protocols tancats: escolto, observo i adapto cada sessió. Perquè sentir-se bé per dins també es reflecteix per fora.", "en": "That's why I don't work with fixed protocols: I listen, I observe and I adapt every session. Feeling good inside shows on the outside too."}, "años de experiencia": {"ca": "anys d'experiència", "en": "years of experience"}, "de valoración media": {"ca": "de valoració mitjana", "en": "average rating"}, "tratamientos distintos": {"ca": "tractaments diferents", "en": "different treatments"}, "El": {"ca": "El", "en": "The"}, "rincón": {"ca": "racó", "en": "corner"}, "Lo que dicen": {"ca": "El que diuen", "en": "What"}, "mis clientas": {"ca": "les meves clientes", "en": "my clients say"}, "Clientas verificadas en Booksy.": {"ca": "Clientes verificades a Booksy.", "en": "Verified Booksy clients."}, "Pide": {"ca": "Demana", "en": "Request"}, "tu cita": {"ca": "la teva cita", "en": "your appointment"}, "Elige, reserva y recibe la confirmación en tu correo.": {"ca": "Tria, reserva i rep la confirmació al teu correu.", "en": "Choose, book and get the confirmation in your inbox."}, "Volver sin cambiar": {"ca": "Tornar sense canviar", "en": "Back without changing"}, "Tratamiento": {"ca": "Tractament", "en": "Treatment"}, "Día y hora": {"ca": "Dia i hora", "en": "Day & time"}, "Tus datos": {"ca": "Les teves dades", "en": "Your details"}, "Correo": {"ca": "Correu", "en": "Email"}, "(para la confirmación)": {"ca": "(per a la confirmació)", "en": "(for confirmation)"}, "¿Algo que deba saber?": {"ca": "Quelcom que hauria de saber?", "en": "Anything I should know?"}, "(opcional)": {"ca": "(opcional)", "en": "(optional)"}, "y acepto que El Racó de Piscis use mis datos para gestionar esta cita.": {"ca": "i accepto que El Racó de Piscis usi les meves dades per gestionar aquesta cita.", "en": "and agree that El Racó de Piscis may use my data to manage this appointment."}, "Tu cita": {"ca": "La teva cita", "en": "Your appointment"}, "Duración": {"ca": "Durada", "en": "Duration"}, "Confirmar cita": {"ca": "Confirmar cita", "en": "Confirm appointment"}, "Pagas el día de la cita, en la cabina.": {"ca": "Pagues el dia de la cita, a la cabina.", "en": "You pay on the day, at the treatment room."}, "Escríbeme por WhatsApp": {"ca": "Escriu-me per WhatsApp", "en": "Message me on WhatsApp"}, "Cómo llegar": {"ca": "Com arribar", "en": "Get directions"}, "El Racó de Piscis · Andrea Castro ·": {"ca": "El Racó de Piscis · Andrea Castro ·", "en": "El Racó de Piscis · Andrea Castro ·"}, "Tu web,": {"ca": "La teva web,", "en": "Your website,"}, "tu rincón": {"ca": "el teu racó", "en": "your corner"}, "Lo que esta web hace por El Racó de Piscis:": {"ca": "El que fa aquesta web per El Racó de Piscis:", "en": "What this website does for El Racó de Piscis:"}, "Reservas reales, sin solapes": {"ca": "Reserves reals, sense solapaments", "en": "Real bookings, no overlaps"}, "Solo se ofrecen las horas libres de verdad. La clienta recibe la confirmación por correo al momento y a ti te llega el aviso.": {"ca": "Només s'ofereixen les hores lliures de veritat. La clienta rep la confirmació per correu a l'instant i a tu t'arriba l'avís.", "en": "Only genuinely free slots are offered. The client gets an instant email confirmation and you get the alert."}, "Tu agenda en Google Drive": {"ca": "La teva agenda a Google Drive", "en": "Your schedule in Google Drive"}, "Todas las citas en una hoja ordenada por fecha, con la pestaña \"Hoy\" (citas del día, semana y lo previsto) y colores por estado.": {"ca": "Totes les cites en un full ordenat per data, amb la pestanya \"Avui\" (cites del dia, la setmana i el previst) i colors per estat.", "en": "All appointments in a sheet sorted by date, with a \"Today\" tab (the day, the week and what's coming) and colours by status."}, "Cambiar y cancelar, sin llamadas": {"ca": "Canviar i cancel·lar, sense trucades", "en": "Change or cancel, no calls"}, "La clienta lo hace desde su correo y a ti te avisa; si lo haces tú, ella recibe el aviso automáticamente.": {"ca": "La clienta ho fa des del seu correu i a tu t'avisa; si ho fas tu, ella rep l'avís automàticament.", "en": "The client does it from their email and you get notified; if you do it, they're notified automatically."}, "Sin otros centros al lado": {"ca": "Sense altres centres al costat", "en": "No other centres next door"}, "En tu ficha de Booksy, debajo de tus servicios, se anuncian otros centros cercanos. Aquí solo estás tú.": {"ca": "A la teva fitxa de Booksy, sota dels teus serveis, s'anuncien altres centres propers. Aquí només hi ets tu.", "en": "On your Booksy listing, under your services, nearby centres are advertised. Here, it's only you."}, "Tu marca de verdad": {"ca": "La teva marca de veritat", "en": "Your real brand"}, "Tus colores, tus fotos, tus colecciones \"Volver a ti\" y \"Ritual facial\", contadas a tu manera.": {"ca": "Els teus colors, les teves fotos, les teves col·leccions \"Tornar a tu\" i \"Ritual facial\", explicades a la teva manera.", "en": "Your colours, your photos, your \"Back to yourself\" and \"Facial ritual\" collections, told your way."}, "Promos que se quitan solas": {"ca": "Promocions que es lleven soles", "en": "Promos that switch off by themselves"}, "El bono de octubre aparece en portada y desaparece solo cuando termina el mes.": {"ca": "El bo d'octubre apareix a la portada i desapareix sol quan acaba el mes.", "en": "The October package appears on the homepage and disappears on its own when the month ends."}, "Un enlace para tu bio de Instagram": {"ca": "Un enllaç per a la teva bio d'Instagram", "en": "One link for your Instagram bio"}, "Tratamientos, precios, opiniones y reserva en una sola página que se ve perfecta en el móvil.": {"ca": "Tractaments, preus, opinions i reserva en una sola pàgina que es veu perfecta al mòbil.", "en": "Treatments, prices, reviews and booking on one page that looks perfect on mobile."}, "Puede convivir con Booksy": {"ca": "Pot conviure amb Booksy", "en": "It can live alongside Booksy"}, "Si quieres, empiezas con las dos y decides tú cuándo dar el paso.": {"ca": "Si vols, comences amb totes dues i decideixes tu quan fer el pas.", "en": "If you like, start with both and decide when to make the switch."}, "Ver la web": {"ca": "Veure la web", "en": "View the website"}, "Aviso de propuesta": {"ca": "Avís de proposta", "en": "Proposal notice"}, "Cerrar aviso": {"ca": "Tancar avís", "en": "Close notice"}, "Principal": {"ca": "Principal", "en": "Main"}, "Andrea en su cabina del Racó de Piscis": {"ca": "Andrea a la seva cabina del Racó de Piscis", "en": "Andrea in her treatment room at El Racó de Piscis"}, "Tipo de tratamiento": {"ca": "Tipus de tractament", "en": "Treatment type"}, "Andrea durante un masaje": {"ca": "Andrea durant un massatge", "en": "Andrea giving a massage"}, "La cabina del Racó de Piscis": {"ca": "La cabina del Racó de Piscis", "en": "The treatment room at El Racó de Piscis"}, "Fotos del Racó": {"ca": "Fotos del Racó", "en": "Photos of the Racó"}, "Primera vez, zona a trabajar, embarazo, alguna molestia…": {"ca": "Primera vegada, zona a treballar, embaràs, alguna molèstia…", "en": "First time, area to work on, pregnancy, any discomfort…"}, "Mapa de situación": {"ca": "Mapa de situació", "en": "Location map"}, "Acciones rápidas": {"ca": "Accions ràpides", "en": "Quick actions"}, "Pedir el bono": {"ca": "Demanar el bo", "en": "Request the package"}, "Pedir cita por WhatsApp": {"ca": "Demanar cita per WhatsApp", "en": "Request an appointment on WhatsApp"}, "Citas directas a tu WhatsApp": {"ca": "Cites directes al teu WhatsApp", "en": "Direct bookings to your WhatsApp"}, "Cada botón abre WhatsApp con el mensaje ya escrito: tratamiento, duración y precio. Tú solo contestas con la hora.": {"ca": "Cada botó obre WhatsApp amb el missatge ja escrit: tractament, durada i preu. Tu només contestes amb l'hora.", "en": "Each button opens WhatsApp with the message already written: treatment, duration and price. You just reply with the time."}, "Escríbeme por WhatsApp y te digo los huecos libres. Así de fácil.": {"ca": "Escriu-me per WhatsApp i et dic els forats lliures. Així de fàcil.", "en": "Message me on WhatsApp and I'll tell you the free slots. It's that easy."}, "Elige tu tratamiento": {"ca": "Tria el teu tractament", "en": "Choose your treatment"}, "Te confirmo día y hora": {"ca": "Et confirmo dia i hora", "en": "I confirm the day and time"}, "¿Qué te apetece?": {"ca": "Què t'apeteix?", "en": "What would you like?"}, "Dónde": {"ca": "On", "en": "Where"}, "estoy": {"ca": "sóc", "en": "to find me"}, "Propuesta": {"ca": "Proposta", "en": "Proposal"}, "Cada sesión": {"ca": "Cada sessió", "en": "Each session"}, "Reserva": {"ca": "Reserva", "en": "Booking"}, "7 días": {"ca": "7 dies", "en": "7 days"}, "Andrea · estética y bienestar": {"ca": "Andrea · estètica i benestar", "en": "Andrea · beauty & wellbeing"}, "Viernes 17 · 21:00 · 2 personas": {"ca": "Divendres 17 · 21:00 · 2 persones", "en": "Friday 17 · 21:00 · 2 guests"}, "Web hecha por": {"ca": "Web feta per", "en": "Website by"}, "CARTA · RESERVAS · CONTACTO": {"ca": "CARTA · RESERVES · CONTACTE", "en": "MENU · BOOKINGS · CONTACT"}, ". Todos los derechos reservados. ·": {"ca": ". Tots els drets reservats. ·", "en": ". All rights reserved. ·"}, "MAR": {"ca": "DM", "en": "TUE"}, "MIÉ": {"ca": "DC", "en": "WED"}, "JUE": {"ca": "DJ", "en": "THU"}, "VIE": {"ca": "DV", "en": "FRI"}, "SÁB": {"ca": "DS", "en": "SAT"}, "tunegocio.com": {"ca": "tunegoci.com", "en": "yourbusiness.com"}}, K={"es": {"dark": "Modo oscuro", "light": "Modo claro", "top": "Volver arriba", "cta": "Boceto gratis", "ig": "Instagram", "cf_t": "Pide tu boceto gratis", "cf_s": "Cuéntanos tu negocio y te enseñamos cómo quedaría tu web antes de pagar nada.", "f_name": "Nombre", "f_biz": "Nombre de tu negocio", "f_contact": "Teléfono o correo", "f_msg": "¿Qué necesitas? (opcional)", "f_priv": "He leído la política de privacidad y acepto que usen mis datos para responderme.", "f_send": "Enviar", "e_req": "Este campo es obligatorio.", "e_min": "Escribe al menos 2 letras.", "e_contact": "Escribe un teléfono válido o un correo.", "e_priv": "Tienes que aceptar la política de privacidad.", "ok": "Gracias. Se abre WhatsApp con tu mensaje; si no se abre, escríbenos a thesqvare@gmail.com.", "close": "Cerrar", "wa_msg": "Hola, quiero mi boceto gratis.", "wa_sub": "Nombre: {n}\nNegocio: {b}\nContacto: {c}\n{m}"}, "ca": {"dark": "Mode fosc", "light": "Mode clar", "top": "Tornar amunt", "cta": "Esbós gratis", "ig": "Instagram", "cf_t": "Demana el teu esbós gratis", "cf_s": "Explica'ns el teu negoci i et mostrarem com quedaria la teva web abans de pagar res.", "f_name": "Nom", "f_biz": "Nom del teu negoci", "f_contact": "Telèfon o correu", "f_msg": "Què necessites? (opcional)", "f_priv": "He llegit la política de privacitat i accepto que usin les meves dades per respondre'm.", "f_send": "Enviar", "e_req": "Aquest camp és obligatori.", "e_min": "Escriu almenys 2 lletres.", "e_contact": "Escriu un telèfon vàlid o un correu.", "e_priv": "Has d'acceptar la política de privacitat.", "ok": "Gràcies. S'obre WhatsApp amb el teu missatge; si no s'obre, escriu-nos a thesqvare@gmail.com.", "close": "Tancar", "wa_msg": "Hola, vull el meu esbós gratis.", "wa_sub": "Nom: {n}\nNegoci: {b}\nContacte: {c}\n{m}"}, "en": {"dark": "Dark mode", "light": "Light mode", "top": "Back to top", "cta": "Free mockup", "ig": "Instagram", "cf_t": "Get your free mockup", "cf_s": "Tell us about your business and we'll show you how your website would look before you pay anything.", "f_name": "Name", "f_biz": "Business name", "f_contact": "Phone or email", "f_msg": "What do you need? (optional)", "f_priv": "I have read the privacy policy and agree that my data can be used to reply to me.", "f_send": "Send", "e_req": "This field is required.", "e_min": "Please write at least 2 letters.", "e_contact": "Enter a valid phone number or email.", "e_priv": "You must accept the privacy policy.", "ok": "Thanks. WhatsApp will open with your message; if it doesn't, email us at thesqvare@gmail.com.", "close": "Close", "wa_msg": "Hi, I'd like my free mockup.", "wa_sub": "Name: {n}\nBusiness: {b}\nContact: {c}\n{m}"}}, DEF='es';
+ function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+ function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+ var lang=get('sq-lang')||DEF, cfg={"dark": false, "reveal": true, "hero": true, "body_fade": true, "cta": "reserva", "ig": false, "fab": 96};
+ var norm=function(s){return s.replace(/\s+/g,' ').trim()};
+ function tr(s,l){var n=norm(s); if(!n||l==='es')return null; var e=D[n]; return e&&e[l]?e[l]:null}
+ var ATTR=['placeholder','alt','aria-label','title'];
+ function walk(root,fn){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);var n;while((n=w.nextNode())){var p=n.parentNode;if(!p||/^(SCRIPT|STYLE|NOSCRIPT)$/.test(p.nodeName)||(p.closest&&p.closest('.sq-dock,.sq-modal')))continue;fn(n)}}
+ function applyLang(l){
+   walk(document.body,function(n){
+     if(n.__sqEs===undefined)n.__sqEs=n.nodeValue;
+     var src=n.__sqEs, lead=src.match(/^\s*/)[0], trail=src.match(/\s*$/)[0];
+     var t=tr(src,l); n.nodeValue=t?lead+t+trail:src;
+   });
+   document.querySelectorAll('[placeholder],[alt],[aria-label],[title]').forEach(function(el){
+     if(el.closest('.sq-dock,.sq-modal'))return;
+     ATTR.forEach(function(a){var v=el.getAttribute(a); if(!v)return; var k='__sq_'+a; if(!el[k])el[k]=v; var t=tr(el[k],l); el.setAttribute(a,t||el[k]);});
+   });
+   document.documentElement.lang=l;
+   var s=document.getElementById('sq-lang'); if(s)s.value=l;
+   document.querySelectorAll('[data-kt]').forEach(function(el){el.textContent=K[l][el.getAttribute('data-kt')]||el.textContent});
+   lang=l; set('sq-lang',l); refreshLabels();
+ }
+ var alt=document.getElementById('sq-alt');
+ var dark=!!cfg.dark; // tema base de la página
+ function isAltOn(){return alt&&!alt.disabled}
+ function setTheme(){ var saved=get('sq-theme'); if(saved) { alt.disabled = (saved==='base')?true:false; }
+   // 'base' = tema original de la web; 'alt' = el contrario
+   if(!saved) alt.disabled=true;
+   document.documentElement.classList.toggle('sq-alt', isAltOn());
+ }
+ function toggleTheme(){ alt.disabled=!alt.disabled; set('sq-theme', alt.disabled?'base':'alt'); document.documentElement.classList.toggle('sq-alt', isAltOn()); refreshLabels(); }
+ function refreshLabels(){
+   var b=document.getElementById('sq-theme'); if(b){ var nowDark=(dark&&!isAltOn())||(!dark&&isAltOn()); b.textContent = nowDark? K[lang].light : K[lang].dark; }
+   var t=document.getElementById('sq-top'); if(t)t.setAttribute('aria-label',K[lang].top);
+   var c=document.getElementById('sq-cta'); if(c)c.textContent=K[lang].cta;
+ }
+ // revelar secciones al hacer scroll + fundido de carga
+ document.documentElement.classList.add('sq-js');
+ if(cfg.body_fade)document.body.classList.add('sq-fade');
+ if(cfg.hero){var h=document.querySelector('h1');if(h)h.classList.add('sq-hero')}
+ if(cfg.reveal && 'IntersectionObserver' in window){
+   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('sq-in');io.unobserve(e.target)}})},{threshold:.12});
+   document.querySelectorAll('section,.card,.pack,.tarjeta').forEach(function(el){el.classList.add('sq-rv');io.observe(el)});
+ }
+ // imágenes: carga diferida
+ document.querySelectorAll('img:not([loading])').forEach(function(im,i){ if(i>0)im.setAttribute('loading','lazy'); im.setAttribute('decoding','async') });
+ // volver arriba
+ var top=document.getElementById('sq-top');
+ if(top) top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+ // validación de formularios (mensajes en el idioma elegido)
+ function msgFor(el){
+   if(el.validity.valueMissing)return K[lang][el.type==='checkbox'?'e_priv':'e_req'];
+   if(el.validity.tooShort||el.validity.patternMismatch&&el.name==='nombre')return K[lang].e_min;
+   if(el.type==='email'||el.name==='contacto')return K[lang].e_contact;
+   return el.validationMessage;
+ }
+ document.addEventListener('invalid',function(e){
+   var el=e.target; el.classList.add('sq-bad'); var box=el.closest('label'); var err=box&&box.querySelector('.sq-err');
+   var m=msgFor(el); if(err)err.textContent=m; else el.setCustomValidity(m);
+ },true);
+ document.addEventListener('input',function(e){var el=e.target; el.setCustomValidity(''); el.classList.remove('sq-bad'); var box=el.closest&&el.closest('label'); var err=box&&box.querySelector('.sq-err'); if(err)err.textContent='';},true);
+ // panel de ajustes: tema, idioma, volver arriba, CTA e Instagram
+ var dock=document.createElement('div'); dock.className='sq-dock'; dock.id='sq-dock';
+ dock.innerHTML='<button type="button" class="sq-fab" id="sq-fab" aria-expanded="false" aria-label="Ajustes">Aa</button><div class="sq-panel" id="sq-panel"><button type="button" id="sq-theme"></button><select id="sq-lang" aria-label="Idioma"><option value="es">Español</option><option value="ca">Català</option><option value="en">English</option></select>'+(cfg.cta==='index'?'<button type="button" id="sq-cta"></button>':'')+(cfg.ig?'<a href="https://www.instagram.com/the.sqvare/" target="_blank" rel="noopener">Instagram</a>':'')+'<button type="button" id="sq-top">↑</button></div>';
+ document.body.appendChild(dock);
+ var fab=document.getElementById('sq-fab'), panel=document.getElementById('sq-panel'); fab.style.bottom=cfg.fab+'px'; panel.style.bottom=(cfg.fab+58)+'px';
+ fab.addEventListener('click',function(){var on=panel.classList.toggle('on');fab.setAttribute('aria-expanded',on)});
+ document.getElementById('sq-theme').addEventListener('click',toggleTheme);
+ document.getElementById('sq-lang').addEventListener('change',function(e){applyLang(e.target.value)});
+ var cb=document.getElementById('sq-cta'); if(cb)cb.addEventListener('click',function(){openModal()});
+ // formulario de contacto (solo index)
+ var modal=document.getElementById('sq-modal');
+ function openModal(){ if(!modal)return; var pn=document.getElementById('sq-panel'); if(pn)pn.classList.remove('on'); modal.classList.add('on'); var f=modal.querySelector('input'); if(f)f.focus(); }
+ function closeModal(){ if(modal)modal.classList.remove('on'); }
+ if(modal){
+   modal.addEventListener('click',function(e){ if(e.target===modal||e.target.hasAttribute('data-close'))closeModal() });
+   document.addEventListener('keydown',function(e){ if(e.key==='Escape')closeModal() });
+   document.querySelectorAll('[data-open-contact]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();openModal()})});
+   var form=document.getElementById('sq-form');
+   form.addEventListener('submit',function(e){
+     e.preventDefault();
+     if(form.querySelector('.sq-hp').value){return}
+     var ok=form.checkValidity();
+     form.querySelectorAll('input,textarea').forEach(function(el){ if(!el.checkValidity()){ el.dispatchEvent(new Event('invalid')) } });
+     if(!ok)return;
+     var v=function(n){return (form.elements[n]||{}).value||''};
+     var msg=K[lang].wa_sub.replace('{n}',v('nombre')).replace('{b}',v('negocio')).replace('{c}',v('contacto')).replace('{m}',v('mensaje')?('Mensaje: '+v('mensaje')):'');
+     var url='https://wa.me/34648515835?text='+encodeURIComponent(K[lang].wa_msg+'\n'+msg);
+     window.open(url,'_blank','noopener');
+     form.querySelector('.sq-ok').textContent=K[lang].ok; form.reset();
+   });
+ }
+ // idioma guardado o predeterminado
+ setTheme();
+ applyLang(lang);
+})();
 </script>
 </body>
 </html>
