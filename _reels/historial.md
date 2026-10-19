@@ -15,5 +15,13 @@
 | 2026-10-23 | web | Tu escaparate en internet. |
 | 2026-10-24 | antes barber | ¿La web de tu barbería es así? |
 | 2026-10-25 | bar | Que reserven mesa mientras duermes. |
+| 2026-10-26 | plataforma barber | ¿Pedir cita con una app ajena? |
+| 2026-10-27 | web | ¿Tu negocio sale en el móvil? |
+| 2026-10-28 | antes bar | Tu bar merece algo mejor. |
+| 2026-10-29 | barber | Tu agenda se llena sola. |
+| 2026-10-30 | plataforma bar | ¿Tu mesa, en una app de otros? |
+| 2026-10-31 | web | Una web que trabaja por ti. |
+| 2026-11-01 | antes barber | ¿Aún pides citas por teléfono? |
 
 Publicaciones de comparación (plataforma vs. web propia): carrusel 2026-10-22 "¿Tus clientes reservan en una app que no es tuya?"
+Carrusel 2026-10-28 "¿Tus reservas son tuyas o de una app?"

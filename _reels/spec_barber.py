@@ -1,3 +1,7 @@
+import datetime as _dt
+_D=_dt.date.today()+_dt.timedelta(days=14)
+while _D.weekday()!=4: _D+=_dt.timedelta(days=1)
+_ISO=_D.isoformat(); _TXT=['lun','mar','mié','jue','vie','sáb','dom'][_D.weekday()]+', '+_D.strftime('%d/%m/%Y')
 import os
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 URL = 'file://' + os.path.join(REPO, 'thesqvare-barber', 'index.html')
@@ -24,9 +28,9 @@ def typing(t, t0, sel, text, dur):
     return ''
 EVENTS = {
     round(5.75 * 30): "(()=>{const s=document.querySelector('#fSvc');const o=[...s.options].find(o=>/Corte \\+ barba/.test(o.textContent)&&!/cejas/.test(o.textContent));s.value=o.value;s.dispatchEvent(new Event('change'));})();",
-    round(6.5 * 30): "(()=>{const d=document.querySelector('#fDay');d.type='date';d.value='2026-10-16';d.dispatchEvent(new Event('change'));d.type='text';d.value='vie, 16/10/2026';})();",
+    round(6.5 * 30): "(()=>{const d=document.querySelector('#fDay');d.type='date';d.value='"+_ISO+"';d.dispatchEvent(new Event('change'));d.type='text';d.value='"+_TXT+"';})();",
     round(7.25 * 30): "document.querySelector('#slots button[data-h=\"17:30\"]').click();",
-    round(9.8 * 30): "document.activeElement&&document.activeElement.blur();const d=document.querySelector('#fDay');d.type='date';d.value='2026-10-16';document.querySelector('#form').requestSubmit();",
+    round(9.8 * 30): "document.activeElement&&document.activeElement.blur();const d=document.querySelector('#fDay');d.type='date';d.value='"+_ISO+"';document.querySelector('#form').requestSubmit();",
 }
 def step(t):
     f = round(t * 30)
