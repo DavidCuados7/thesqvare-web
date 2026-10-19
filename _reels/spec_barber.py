@@ -11,7 +11,7 @@ PRE_JS = """window.fetch=(orig=>async(u,o)=>{if(/mock\.local|script\.google\.com
  if(o&&o.method==='POST')return new Response(JSON.stringify({ok:true,hora:'17:30',fin:'18:00',precio:16,id:'SQ-4821',email:true}));
  return new Response(JSON.stringify({ok:true,huecos:['16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30']}));}
  return orig(u,o)})(window.fetch);"""
-INIT_JS = "(()=>{window.__c=sel=>{const e=document.querySelector(sel);if(!e)return window.__last||[195,500];const r=e.getBoundingClientRect();return window.__last=[r.left+r.width/2,r.top+r.height/2]};const d=document.querySelector('#fDay');d.type='text';d.placeholder='dd/mm/aaaa';})()"
+INIT_JS = "(()=>{document.querySelectorAll('[data-cfg=city]').forEach(e=>{const p=e.parentElement;e.remove();p.textContent=p.textContent.replace(/\s*·\s*$/,'');});document.querySelectorAll('[data-cfg=address]').forEach(e=>{e.textContent='';});})();(()=>{window.__c=sel=>{const e=document.querySelector(sel);if(!e)return window.__last||[195,500];const r=e.getBoundingClientRect();return window.__last=[r.left+r.width/2,r.top+r.height/2]};const d=document.querySelector('#fDay');d.type='text';d.placeholder='dd/mm/aaaa';})()"
 
 def ease(x):
     x = max(0, min(1, x)); return 4 * x * x * x if x < .5 else 1 - (-2 * x + 2) ** 3 / 2

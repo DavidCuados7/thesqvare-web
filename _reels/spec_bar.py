@@ -11,7 +11,7 @@ PRE_JS = """window.fetch=(orig=>async(u,o)=>{if(/mock\.local|script\.google\.com
  if(o&&o.method==='POST')return new Response(JSON.stringify({ok:true,hora:'21:00',id:'SQ-3907',email:true}));
  return new Response(JSON.stringify({ok:true,huecos:['20:00','20:30','21:00','21:30','22:00','22:30']}));}
  return orig(u,o)})(window.fetch);"""
-INIT_JS = "(()=>{window.__c=sel=>{const e=document.querySelector(sel);if(!e)return window.__last||[195,500];const r=e.getBoundingClientRect();return window.__last=[r.left+r.width/2,r.top+r.height/2]};const d=document.querySelector('#fDay');d.type='text';d.placeholder='dd/mm/aaaa';document.querySelectorAll('img[loading]').forEach(i=>i.loading='eager');})()"
+INIT_JS = "(()=>{document.querySelectorAll('[data-cfg=city]').forEach(e=>{const p=e.parentElement;e.remove();p.textContent=p.textContent.replace(/\s*·\s*$/,'');});document.querySelectorAll('[data-cfg=address]').forEach(e=>{e.textContent='';});})();(()=>{window.__c=sel=>{const e=document.querySelector(sel);if(!e)return window.__last||[195,500];const r=e.getBoundingClientRect();return window.__last=[r.left+r.width/2,r.top+r.height/2]};const d=document.querySelector('#fDay');d.type='text';d.placeholder='dd/mm/aaaa';document.querySelectorAll('img[loading]').forEach(i=>i.loading='eager');})()"
 
 def ease(x):
     x = max(0, min(1, x)); return 4 * x * x * x if x < .5 else 1 - (-2 * x + 2) ** 3 / 2
