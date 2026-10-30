@@ -131,7 +131,7 @@
     while(strands.length<46){var x2=rnd(150,450),y2=rnd(230,600);if(probe.isPointInPath(INNER,x2,y2))strands.push({x:x2,y:y2,a:rnd(-1,1),l:rnd(18,40)})}
     var bubbles=[],sizzle=0;
     var FRY_MS=1100; /* velocidad: ms por paso (sube = más lento) */
-    var STEPS=[0,.3,.62,1],step=0,prog=0,tw=null,lastGo=-1e9,lastWheel=-1e9;
+    var STEPS=[0,.3,.62,1],step=0,prog=0,tw=null,lastGo=-1e9,lastWheel=-1e9,lockUntil=0;
 
     function drawFry(p,t){
       var c=cx;c.setTransform(DPR,0,0,DPR,0,0);
@@ -212,6 +212,7 @@
       if(reduce){prog=to;drawFry(prog,0);return true}
       tw={from:prog,to:to,t0:performance.now(),dur:FRY_MS};
       lastGo=performance.now();
+      lockUntil=lastGo+FRY_MS+450;
       return true;
     }
     function inFry(){return window.scrollY<=8}
@@ -221,7 +222,9 @@
     window.addEventListener('wheel',function(e){
       if(!inFry())return;
       var dy=e.deltaY,now=performance.now();
-      if(Math.abs(dy)<4){if(tw)e.preventDefault();return}
+      /* mientras la animación no termine (y un poco después) no se baja la página */
+      if(tw||now<lockUntil){e.preventDefault();return}
+      if(Math.abs(dy)<4)return;
       var fwd=dy>0,gap=now-lastWheel;lastWheel=now;
       if((fwd&&step<3)||(!fwd&&step>0)){
         e.preventDefault();
@@ -234,7 +237,7 @@
     window.addEventListener('touchmove',function(e){
       if(touchY0==null)return;
       var dy=touchY0-e.touches[0].clientY;
-      if((dy>6&&step<3)||(dy<-6&&step>0)||tw)e.preventDefault();
+      if(tw||performance.now()<lockUntil||(dy>6&&step<3)||(dy<-6&&step>0))e.preventDefault();
     },{passive:false});
     window.addEventListener('touchend',function(e){
       if(touchY0==null)return;
