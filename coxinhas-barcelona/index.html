@@ -25,8 +25,14 @@
 </defs></svg>
 <header class="top on-dark">
   <div class="wrap">
-    <a class="mark" href="./"><svg viewBox="0 0 22 26" aria-hidden="true"><defs><clipPath id="mk"><rect id="mkFill" x="0" y="0" width="22" height="26"/></clipPath></defs><path d="M11 1c2 5 9.5 9.5 9.5 16.5 0 4.6-3.8 7.8-9.5 7.8S1.5 22.1 1.5 17.5C1.5 10.5 9 6 11 1Z" fill="none" stroke="#ffc013" stroke-width="2"/><path clip-path="url(#mk)" d="M11 1c2 5 9.5 9.5 9.5 16.5 0 4.6-3.8 7.8-9.5 7.8S1.5 22.1 1.5 17.5C1.5 10.5 9 6 11 1Z" fill="#ffc013"/></svg>Coxinhas BCN</a>
-    <nav aria-label="Principal"><a href="carta/" data-i18n="navMenu">navMenu</a><a href="encargos/" data-i18n="navParty">navParty</a><a href="horario/" data-i18n="navVisit">navVisit</a><a href="contacto/" data-i18n="navContact">navContact</a><a href="pedir/" data-i18n="navOrder">navOrder</a></nav>
+    <a class="mark" href="#inicio"><svg viewBox="0 0 22 26" aria-hidden="true"><defs><clipPath id="mk"><rect id="mkFill" x="0" y="0" width="22" height="26"/></clipPath></defs><path d="M11 1c2 5 9.5 9.5 9.5 16.5 0 4.6-3.8 7.8-9.5 7.8S1.5 22.1 1.5 17.5C1.5 10.5 9 6 11 1Z" fill="none" stroke="#ffc013" stroke-width="2"/><path clip-path="url(#mk)" d="M11 1c2 5 9.5 9.5 9.5 16.5 0 4.6-3.8 7.8-9.5 7.8S1.5 22.1 1.5 17.5C1.5 10.5 9 6 11 1Z" fill="#ffc013"/></svg>Coxinhas BCN</a>
+    <nav aria-label="Principal">
+      <a href="#carta" data-d="carta" data-i18n="navMenu">Carta</a>
+      <a href="#encargos" data-d="encargos" data-i18n="navParty">Encargos</a>
+      <a href="#horario" data-i18n="navVisit">Horario</a>
+      <a href="#contacto" data-i18n="navContact">Contacto</a>
+      <a href="#pedir" data-d="pedir" data-i18n="navOrder">Pedir</a>
+    </nav>
     <div class="right">
       <span class="pill hd"><button type="button" class="snd" aria-pressed="false" data-i18n="sound">Sonido</button></span>
       <span class="pill" role="group" aria-label="Idioma"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="pt" aria-pressed="false">PT</button></span>
@@ -36,12 +42,16 @@
 </header>
 <div class="overlay on-dark" id="overlay" hidden>
   <button type="button" class="menu-btn close" id="closeBtn" data-i18n="closeLbl">Cerrar</button>
-  <a href="./" data-i18n="navHome">Inicio</a>
-  <a href="carta/" data-i18n="navMenu">navMenu</a><a href="encargos/" data-i18n="navParty">navParty</a><a href="horario/" data-i18n="navVisit">navVisit</a><a href="contacto/" data-i18n="navContact">navContact</a><a href="pedir/" data-i18n="navOrder">navOrder</a>
+  <a href="#inicio" data-i18n="navHome">Inicio</a>
+  <a href="#carta" data-d="carta" data-i18n="navMenu">Carta</a>
+  <a href="#encargos" data-d="encargos" data-i18n="navParty">Encargos</a>
+  <a href="#horario" data-i18n="navVisit">Horario</a>
+  <a href="#contacto" data-i18n="navContact">Contacto</a>
+  <a href="#pedir" data-d="pedir" data-i18n="navOrder">Pedir</a>
   <div><button type="button" class="menu-btn snd" aria-pressed="false" data-i18n="sound">Sonido</button></div>
 </div>
 <main>
-<section class="fry" id="fry" aria-labelledby="h1">
+<section class="fry" id="inicio" aria-labelledby="h1">
   <div class="fry-stage">
     <canvas id="fryc" aria-hidden="true"></canvas>
     <div class="cap on" data-s="0">
@@ -53,25 +63,109 @@
     <div class="cap" data-s="2"><p class="big" data-i18n="cap3">Al aceite.</p><p class="sub" data-i18n="cap3b">Hasta que quede dorada.</p></div>
     <div class="cap" data-s="3">
       <p class="big" data-i18n="cap4">Así, recién abierta.</p>
-      <div class="cta"><a class="btn btn-gold" href="carta/" data-i18n="navMenu">Carta</a><a class="btn btn-line wa-plain" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-i18n="tOrder">Pedir</a></div>
+      <div class="cta"><a class="btn btn-gold" href="#carta" data-d="carta" data-i18n="navMenu">Carta</a><a class="btn btn-line wa-plain" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-i18n="tOrder">Pedir</a></div>
     </div>
     <div class="fry-ui">
       <div class="fry-left">
-        <div class="dots" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i></div>
+        <div class="dots" aria-hidden="true"><i class="cur"></i><i></i><i></i><i></i></div>
         <div class="temp"><span data-i18n="oil">Aceite</span><b id="temp">20 °C</b></div>
       </div>
       <button type="button" class="btn btn-gold next" id="next" data-i18n="next">Seguir</button>
     </div>
   </div>
 </section>
-<section class="sec tiles-sec">
-  <nav class="inner tiles" aria-label="Secciones">
-    <a class="tile t1" href="carta/"><span data-i18n="tCarta">La carta</span><small data-i18n="tCartaD">Salgados</small></a>
-    <a class="tile t2" href="encargos/"><span data-i18n="tParty">Encargos</span><small data-i18n="tPartyD">Para fiestas</small></a>
-    <a class="tile t3" href="horario/"><span data-i18n="tVisit">Horario</span><small data-i18n="tVisitD">Cuándo abrimos</small></a>
-    <a class="tile t4" href="contacto/"><span data-i18n="tContact">Contacto</span><small data-i18n="tContactD">Dirección y teléfono</small></a>
-    <a class="tile t5" href="pedir/"><span data-i18n="tOrder">Pedir</span><small data-i18n="tOrderD">Rellena el pedido</small></a>
-  </nav>
+
+<section class="sec sand" id="elige" aria-label="Carta, encargos y pedido">
+  <div class="inner">
+    <div class="actions" role="group" aria-label="Secciones">
+      <button type="button" class="act a1" data-d="carta" aria-expanded="false" aria-controls="drawer" data-i18n="navMenu">Carta</button>
+      <button type="button" class="act a2" data-d="encargos" aria-expanded="false" aria-controls="drawer" data-i18n="navParty">Encargos</button>
+      <button type="button" class="act a3" data-d="pedir" aria-expanded="false" aria-controls="drawer" data-i18n="navOrder">Pedir</button>
+    </div>
+    <div class="drawer" id="drawer" hidden data-open="">
+      <div class="dpanel" id="d-carta" hidden>
+        <h2 data-i18n="menuH">La carta</h2>
+        <p style="font-size:var(--s-lead);margin:-12px 0 24px" data-i18n="menuP">Desliza para ver cada vitrina.</p>
+        <div class="track" id="track"><div class="panel p-end"><h3 data-i18n="endH">¿Se te ha antojado algo?</h3><a class="btn btn-green wa-plain" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-i18n="tOrder">Pedir</a></div></div>
+        <div class="vnav">
+          <button type="button" id="vprev" aria-label="Anterior" data-i18n-aria="prevLbl">‹</button>
+          <span id="vcnt" aria-live="polite"></span>
+          <button type="button" id="vnext" aria-label="Siguiente" data-i18n-aria="nextLbl">›</button>
+        </div>
+      </div>
+      <div class="dpanel party-box" id="d-encargos" hidden>
+        <div class="party-grid">
+          <div class="plate"><div class="drops" id="drops" role="img"></div></div>
+          <div>
+            <h2 data-i18n="partyH">Encargos para fiestas</h2>
+            <p style="font-size:var(--s-lead);max-width:36ch" data-i18n="partyP">Dinos cuántas piezas quieres y lo concretamos por WhatsApp.</p>
+            <div class="sizes" role="group" aria-label="Piezas" data-i18n-aria="sizesLabel">
+              <button type="button" data-n="50" aria-pressed="false" data-i18n="s50">50</button>
+              <button type="button" data-n="100" aria-pressed="true" data-i18n="s100">100</button>
+              <button type="button" data-n="150" aria-pressed="false" data-i18n="s150">150</button>
+            </div>
+            <p class="count" aria-live="polite"><span id="count">100</span> <small data-i18n="pieces">piezas</small></p>
+            <a class="btn btn-ink" id="party-send" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-i18n="sendParty">Pedir este encargo por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="dpanel pbox" id="d-pedir" hidden>
+        <form class="coupon" id="coupon" novalidate>
+          <div class="c-left">
+            <h2 data-i18n="orderH">Pide y pasa a recoger</h2>
+            <p data-i18n="orderP">Rellena el pedido y te abrimos WhatsApp con el mensaje escrito.</p>
+          </div>
+          <div class="c-right">
+            <label for="f-name" data-i18n="fName">Nombre</label>
+            <input id="f-name" name="name" autocomplete="given-name">
+            <div class="two">
+              <div><label for="f-day" data-i18n="fDay">Día de recogida</label><input id="f-day" name="day" data-i18n-ph="fDayPh" placeholder="sábado"></div>
+              <div><label for="f-time" data-i18n="fTime">Hora</label><input id="f-time" name="time" placeholder="13:30"></div>
+            </div>
+            <label for="f-msg" data-i18n="fMsg">Tu pedido</label>
+            <textarea id="f-msg" name="msg"></textarea>
+            <a class="send" id="f-send" href="https://wa.me/34600000000" target="_blank" rel="noopener"></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec black" id="horario" aria-labelledby="visit-h">
+  <div class="inner visit-grid">
+    <div>
+      <h2 id="visit-h" data-i18n="visitH" style="margin-bottom:28px">Horario</h2>
+      <div class="sign" id="sign" data-state="closed">
+        <svg class="garland" id="garland" viewBox="0 0 1000 80" aria-hidden="true"></svg>
+        <div class="board"><span class="script">Coxinhas</span><span class="word" id="neon">CERRADO</span></div>
+      </div>
+      <p class="status" id="status"></p>
+    </div>
+    <table class="hours" id="hours">
+      <caption class="sr" data-i18n="hoursCap">Horario</caption>
+      <tbody>
+        <tr data-d="1"><td data-i18n="d1">Lunes</td><td class="off" data-i18n="closed">Cerrado</td></tr>
+        <tr data-d="2"><td data-i18n="d2">Martes</td><td>11:00–21:00</td></tr>
+        <tr data-d="3"><td data-i18n="d3">Miércoles</td><td>11:00–21:00</td></tr>
+        <tr data-d="4"><td data-i18n="d4">Jueves</td><td>11:00–21:00</td></tr>
+        <tr data-d="5"><td data-i18n="d5">Viernes</td><td>11:00–22:00</td></tr>
+        <tr data-d="6"><td data-i18n="d6">Sábado</td><td>11:00–22:00</td></tr>
+        <tr data-d="0"><td data-i18n="d0">Domingo</td><td>12:00–20:00</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec sand" id="contacto" aria-labelledby="contact-h">
+  <div class="inner">
+    <h2 id="contact-h" data-i18n="contactH" style="margin-bottom:32px">Contacto</h2>
+    <div class="contact-grid" style="max-width:640px">
+      <div class="cbox"><small data-i18n="addrL">Dirección</small><strong>Carrer d'Exemple, 00<br>08000 Barcelona</strong><a href="https://www.google.com/maps/search/?api=1&query=Coxinhas+Barcelona" target="_blank" rel="noopener" data-i18n="directions">Cómo llegar</a></div>
+      <div class="cbox"><small data-i18n="phoneL">Teléfono y WhatsApp</small><strong><a href="tel:+34600000000">600 00 00 00</a></strong></div>
+      <div class="cbox"><small data-i18n="igL">Instagram</small><strong><a href="https://www.instagram.com/coxinhasbarcelona/" target="_blank" rel="noopener">@coxinhasbarcelona</a></strong><span data-i18n="igNote">Escríbenos por mensaje directo</span></div>
+    </div>
+  </div>
 </section>
 </main>
 <footer class="foot">

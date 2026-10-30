@@ -92,6 +92,7 @@
   try{var sv=localStorage.getItem('cx-lang');if(sv==='pt'||sv==='es')lang=sv;else if((navigator.language||'').toLowerCase().indexOf('pt')===0)lang='pt'}catch(e){}
   var L=function(){return T[lang]};
   var hooks=[];
+  var animPlate=function(){};
 
   function apply(){
     var l=L();document.documentElement.lang=lang==='pt'?'pt-BR':'es';
@@ -112,7 +113,7 @@
   }
 
   /* ===== 1. PORTADA: la fritura, un gesto = un paso ===== */
-  var fryEl=document.getElementById('fry');
+  var fryEl=document.querySelector('.fry');
   var sndOn=false,gn=null,ac=null;
   if(fryEl){
     var cv=document.getElementById('fryc'),cx=cv.getContext('2d');
@@ -200,7 +201,7 @@
 
     function showStep(){
       caps.forEach(function(el){el.classList.toggle('on',+el.dataset.s===step)});
-      dotsEl.forEach(function(d,i){d.classList.toggle('act',i===step)});
+      dotsEl.forEach(function(d,i){d.classList.toggle('cur',i===step)});
       nextBtn.hidden=step===3;
     }
     function go(i){
@@ -208,12 +209,12 @@
       if(i===step||tw)return false;
       step=i;showStep();
       var to=STEPS[i];
-      if(reduce){prog=to;return true}
+      if(reduce){prog=to;drawFry(prog,0);return true}
       tw={from:prog,to:to,t0:performance.now(),dur:FRY_MS};
       lastGo=performance.now();
       return true;
     }
-    function inFry(){var r=fryEl.getBoundingClientRect();return r.top>-12&&r.top<12}
+    function inFry(){return window.scrollY<=8}
     nextBtn.addEventListener('click',function(){go(step+1)});
 
     /* rueda: un gesto = un paso; al terminar, la página sigue */
@@ -278,7 +279,7 @@
   /* ===== 2. CARTA: un gesto = una vitrina ===== */
   var track=document.getElementById('track');
   if(track){
-    var vit=document.getElementById('carta'),vprev=document.getElementById('vprev'),vnext=document.getElementById('vnext'),vcnt=document.getElementById('vcnt');
+    var vit=document.getElementById('d-carta'),vprev=document.getElementById('vprev'),vnext=document.getElementById('vnext'),vcnt=document.getElementById('vcnt');
     var endPanel=track.querySelector('.p-end'),cLastGo=-1e9,cLastW=-1e9;
     function icon(n){n=(n||'').toLowerCase();
       if(/coxinh/.test(n))return 'cox';if(/kib|quib/.test(n))return 'kib';if(/bolinh/.test(n))return 'bol';if(/p[aã]o de queijo/.test(n))return 'pao';
@@ -359,6 +360,7 @@
       sizeBtns.forEach(function(x){x.setAttribute('aria-pressed','false')});
       b.setAttribute('aria-pressed','true');target=+b.dataset.n;plate(true)}});
     hooks.push(function(){plate(false)});
+    animPlate=function(){plate(true)};
     drops.dataset.ready='1';
     window.__plateSeen=function(){if(!plateSeen){plateSeen=true;plate(true)}};
   }
@@ -401,6 +403,25 @@
       if(e.target.classList.contains('plate')&&window.__plateSeen)window.__plateSeen()}})},{rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
   }
+
+  /* ===== botones: el contenido se abre justo debajo, sin cambiar de página ===== */
+  var drawer=document.getElementById('drawer');
+  var acts=[].slice.call(document.querySelectorAll('.act'));
+  function openD(name){
+    var same=drawer.dataset.open===name;
+    drawer.querySelectorAll('.dpanel').forEach(function(p){p.hidden=true});
+    acts.forEach(function(a){a.setAttribute('aria-expanded','false')});
+    drawer.dataset.open='';drawer.hidden=true;
+    if(same)return;
+    var p=document.getElementById('d-'+name);if(!p)return;
+    p.hidden=false;drawer.hidden=false;drawer.dataset.open=name;
+    acts.forEach(function(a){if(a.dataset.d===name)a.setAttribute('aria-expanded','true')});
+    if(name==='encargos')animPlate();
+    if(name==='carta'){var t=document.getElementById('track');if(t)t.scrollLeft=0}
+    setTimeout(function(){drawer.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})},30);
+  }
+  document.querySelectorAll('[data-d]').forEach(function(a){a.addEventListener('click',function(e){
+    e.preventDefault();if(ov)ov.hidden=true;if(mb)mb.setAttribute('aria-expanded','false');openD(a.dataset.d)})});
 
   apply();
 })();

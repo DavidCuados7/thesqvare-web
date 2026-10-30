@@ -58,7 +58,8 @@ a{color:inherit}
 @media (min-width:901px){.menu-btn{display:none}.overlay{display:none!important}.snd.menu-btn{display:none}}
 
 /* secciones comunes */
-main{display:block;padding-top:var(--bar)}
+main{display:block;padding-top:0}
+[id]{scroll-margin-top:calc(var(--bar) + 8px)}
 .sec{padding:clamp(56px,8vw,110px) var(--gr) clamp(56px,8vw,110px) var(--gl)}
 .inner{max-width:1200px;margin:0 auto}
 .sand{background:var(--sand)}
@@ -87,7 +88,7 @@ main{display:block;padding-top:var(--bar)}
 .fry-left{display:flex;align-items:center;gap:22px;min-width:0}
 .dots{display:flex;gap:10px;align-items:center}
 .dots i{width:12px;height:12px;border-radius:var(--drop);transform:rotate(45deg);background:rgba(255,255,255,.35);transition:background-color .4s,transform .4s var(--ease)}
-.dots i.act{background:var(--gold);transform:rotate(45deg) scale(1.35)}
+.dots i.cur{background:var(--gold);transform:rotate(45deg) scale(1.35)}
 .temp{font-variant-numeric:tabular-nums;white-space:nowrap}
 .temp span{font-weight:600;margin-right:8px}
 .temp b{font-size:clamp(1.25rem,1rem + 1vw,1.75rem);letter-spacing:-.03em}
@@ -208,3 +209,24 @@ main{display:block;padding-top:var(--bar)}
   .drops i.pop{animation:none}
   *{transition-duration:.01ms!important}
 }
+
+/* ===== página única: botones que abren contenido debajo ===== */
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.act{min-height:68px;padding:0 30px;border:0;border-radius:var(--drop);font:inherit;font-weight:800;font-size:1.25rem;letter-spacing:-.02em;cursor:pointer;transition:transform .25s var(--ease),background-color .25s,color .25s}
+.act:hover{transform:translateY(-3px)}
+.a1{background:var(--gold);color:var(--ink)}
+.a2{background:var(--green);color:#fff;box-shadow:inset 0 0 0 2px var(--green-soft)}
+.a3{background:var(--sky);color:var(--ink)}
+.act[aria-expanded="true"]{background:var(--ink);color:#fff;box-shadow:none}
+.drawer{margin-top:36px;scroll-margin-top:80px}
+.drawer[hidden],.dpanel[hidden]{display:none}
+.dpanel{animation:rise .5s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.dpanel h2{font-size:var(--s-head);margin-bottom:24px}
+.party-box{background:var(--sky);padding:clamp(28px,4vw,56px);border-radius:0}
+.party-box .party-grid{grid-template-columns:1fr 1fr}
+.pbox{padding:0}
+.pbox .coupon{border-radius:0}
+@media (max-width:900px){.party-box .party-grid{grid-template-columns:1fr}.plate{max-width:320px}}
+.sec.sand .track{padding-left:0;padding-right:0}
+.visit-block{margin-top:0}
