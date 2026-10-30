@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Horario de Coxinhas Barcelona.">
+<title>Horario · Coxinhas Barcelona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Schibsted+Grotesk:wght@400;600;800&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="dark">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cox" viewBox="0 0 64 64"><path d="M32 4C36 14 52 28 52 42c0 11-9 18-20 18S12 53 12 42C12 28 28 14 32 4Z" fill="#e39a22"/><path d="M32 4c1 4 4 8 6 11-3 1-7 1-11 0 2-3 4-7 5-11Z" fill="#a85f10"/><circle cx="24" cy="40" r="1.6" fill="#a85f10"/><circle cx="38" cy="34" r="1.4" fill="#a85f10"/><circle cx="40" cy="48" r="1.6" fill="#a85f10"/><circle cx="29" cy="51" r="1.3" fill="#a85f10"/></symbol>
+<symbol id="i-kib" viewBox="0 0 64 64"><path d="M6 34C14 20 50 20 58 34 50 48 14 48 6 34Z" fill="#7a4a24"/><path d="M14 34c8-6 28-6 36 0" stroke="#5a3418" stroke-width="2" fill="none"/></symbol>
+<symbol id="i-bol" viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#f2b31c"/><circle cx="25" cy="28" r="2" fill="#b77b0e"/><circle cx="38" cy="40" r="2" fill="#b77b0e"/><circle cx="36" cy="26" r="1.6" fill="#b77b0e"/></symbol>
+<symbol id="i-ris" viewBox="0 0 64 64"><path d="M8 42a24 24 0 0 1 48 0Z" fill="#e0b860"/><path d="M8 42h48" stroke="#b98a2e" stroke-width="4" stroke-dasharray="3 3"/></symbol>
+<symbol id="i-pao" viewBox="0 0 64 64"><circle cx="22" cy="38" r="12" fill="#f3d58a"/><circle cx="42" cy="38" r="12" fill="#f0cd78"/><circle cx="32" cy="24" r="12" fill="#f6dc96"/></symbol>
+<symbol id="i-pas" viewBox="0 0 64 64"><rect x="6" y="18" width="52" height="30" fill="#ecc06a"/><path d="M6 18h52M6 48h52" stroke="#c4913a" stroke-width="5" stroke-dasharray="3 3"/></symbol>
+<symbol id="i-bri" viewBox="0 0 64 64"><rect x="12" y="38" width="40" height="12" fill="#c8a06a"/><circle cx="32" cy="32" r="16" fill="#3a2215"/><g fill="#8a5a3c"><rect x="26" y="24" width="4" height="2"/><rect x="34" y="28" width="4" height="2"/><rect x="28" y="36" width="4" height="2"/><rect x="36" y="38" width="4" height="2"/></g></symbol>
+<symbol id="i-bei" viewBox="0 0 64 64"><rect x="12" y="38" width="40" height="12" fill="#c8a06a"/><circle cx="32" cy="32" r="16" fill="#fbf4e3"/><rect x="31" y="20" width="3" height="7" fill="#3a2215"/></symbol>
+<symbol id="i-gua" viewBox="0 0 64 64"><rect x="20" y="8" width="24" height="50" fill="#0b8a3e"/><rect x="20" y="8" width="24" height="5" fill="#9aa"/><circle cx="32" cy="34" r="7" fill="#ffc013"/><circle cx="32" cy="34" r="3" fill="#7a1d1d"/></symbol>
+<symbol id="i-drop" viewBox="0 0 64 64"><path d="M32 4C36 14 52 28 52 42c0 11-9 18-20 18S12 53 12 42C12 28 28 14 32 4Z" fill="#e2cf9c"/></symbol>
+</defs></svg>
+<header class="top on-dark">
+  <div class="wrap">
+    <a class="mark" href="../"><svg viewBox="0 0 22 26" aria-hidden="true"><defs><clipPath id="mk"><rect id="mkFill" x="0" y="0" width="22" height="26"/></clipPath></defs><path d="M11 1c2 5 9.5 9.5 9.5 16.5 0 4.6-3.8 7.8-9.5 7.8S1.5 22.1 1.5 17.5C1.5 10.5 9 6 11 1Z" fill="none" stroke="#ffc013" stroke-width="2"/><path clip-path="url(#mk)" d="M11 1c2 5 9.5 9.5 9.5 16.5 0 4.6-3.8 7.8-9.5 7.8S1.5 22.1 1.5 17.5C1.5 10.5 9 6 11 1Z" fill="#ffc013"/></svg>Coxinhas BCN</a>
+    <nav aria-label="Principal"><a href="../carta/" data-i18n="navMenu">navMenu</a><a href="../encargos/" data-i18n="navParty">navParty</a><a href="../horario/" aria-current="page" data-i18n="navVisit">navVisit</a><a href="../contacto/" data-i18n="navContact">navContact</a><a href="../pedir/" data-i18n="navOrder">navOrder</a></nav>
+    <div class="right">
+      
+      <span class="pill" role="group" aria-label="Idioma"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="pt" aria-pressed="false">PT</button></span>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="overlay" data-i18n="menuBtn">Menú</button>
+    </div>
+  </div>
+</header>
+<div class="overlay on-dark" id="overlay" hidden>
+  <button type="button" class="menu-btn close" id="closeBtn" data-i18n="closeLbl">Cerrar</button>
+  <a href="../" data-i18n="navHome">Inicio</a>
+  <a href="../carta/" data-i18n="navMenu">navMenu</a><a href="../encargos/" data-i18n="navParty">navParty</a><a href="../horario/" data-i18n="navVisit">navVisit</a><a href="../contacto/" data-i18n="navContact">navContact</a><a href="../pedir/" data-i18n="navOrder">navOrder</a>
+  <div></div>
+</div>
+<main>
+<section class="sec black" aria-labelledby="visit-h">
+  <div class="inner visit-grid">
+    <div>
+      <a class="back" href="../" data-i18n="navHome">← Inicio</a>
+      <h1 id="visit-h" data-i18n="visitH" style="margin-bottom:28px">Horario</h1>
+      <div class="sign" id="sign" data-state="closed">
+        <svg class="garland" id="garland" viewBox="0 0 1000 80" aria-hidden="true"></svg>
+        <div class="board">
+          <span class="script">Coxinhas</span>
+          <span class="word" id="neon">CERRADO</span>
+        </div>
+      </div>
+      <p class="status" id="status"></p>
+      <div class="row" style="margin-top:28px">
+        <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=Coxinhas+Barcelona" target="_blank" rel="noopener" data-i18n="directions">Cómo llegar</a>
+        <a class="btn btn-line" href="../contacto/" data-i18n="navContact">Contacto</a>
+      </div>
+    </div>
+    <table class="hours" id="hours">
+      <caption class="sr" data-i18n="hoursCap">Horario</caption>
+      <tbody>
+        <tr data-d="1"><td data-i18n="d1">Lunes</td><td class="off" data-i18n="closed">Cerrado</td></tr>
+        <tr data-d="2"><td data-i18n="d2">Martes</td><td>11:00–21:00</td></tr>
+        <tr data-d="3"><td data-i18n="d3">Miércoles</td><td>11:00–21:00</td></tr>
+        <tr data-d="4"><td data-i18n="d4">Jueves</td><td>11:00–21:00</td></tr>
+        <tr data-d="5"><td data-i18n="d5">Viernes</td><td>11:00–22:00</td></tr>
+        <tr data-d="6"><td data-i18n="d6">Sábado</td><td>11:00–22:00</td></tr>
+        <tr data-d="0"><td data-i18n="d0">Domingo</td><td>12:00–20:00</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p>© 2026 Coxinhas Barcelona · <span data-i18n="webBy">Web de</span> <a href="https://thesqvare.com" target="_blank" rel="noopener">The Sqvare</a></p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
