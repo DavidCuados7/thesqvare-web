@@ -232,3 +232,25 @@ main{display:block;padding-top:0}
 .pbox .coupon{border-radius:0}
 @media (max-width:900px){.party-box .party-grid{grid-template-columns:1fr}.plate{max-width:320px}}
 .visit-block{margin-top:0}
+
+/* botones en forma de tarjeta (diseño de tarjetas) */
+.tiles3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:0}
+button.tile{width:100%;border:0;font:inherit;text-align:left;cursor:pointer;position:relative;color:inherit;min-height:200px;-webkit-tap-highlight-color:transparent}
+button.tile:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+button.tile::after{content:"";position:absolute;right:26px;top:26px;width:16px;height:16px;border-radius:var(--drop);background:currentColor;transform:rotate(-45deg);transition:transform .35s var(--ease)}
+button.tile[aria-expanded="true"]::after{transform:rotate(135deg)}
+button.tile[aria-expanded="true"]{box-shadow:inset 0 0 0 4px var(--ink)}
+.tile.t4{background:var(--sky);color:var(--ink)}
+.tile.t2{background:var(--sand);color:var(--ink)}
+.tile.t1{background:var(--gold);color:var(--ink)}
+.tiles3 .tile span{display:block;font-size:clamp(1.8rem,1.2rem + 1.8vw,2.6rem)}
+
+#elige{background:var(--green);color:#fff}
+#elige .track{align-items:stretch}
+#elige .dpanel{color:var(--ink)}
+#elige .dpanel.pbox{color:#fff}
+#elige .dpanel.pbox h2{color:#fff}
+#elige .dpanel:not(.party-box):not(.pbox){background:var(--sand);padding:clamp(24px,3vw,40px);margin:0}
+
+#elige .track{padding-left:0;padding-right:0;scroll-padding-inline:0}
+#elige .dpanel:not(.party-box):not(.pbox){padding-left:20px;padding-right:20px}

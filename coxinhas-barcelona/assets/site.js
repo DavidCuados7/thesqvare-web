@@ -408,7 +408,7 @@
 
   /* ===== botones: el contenido se abre justo debajo, sin cambiar de página ===== */
   var drawer=document.getElementById('drawer');
-  var acts=[].slice.call(document.querySelectorAll('.act'));
+  var acts=[].slice.call(document.querySelectorAll('.tile[data-d]'));
   function openD(name){
     var same=drawer.dataset.open===name;
     drawer.querySelectorAll('.dpanel').forEach(function(p){p.hidden=true});
