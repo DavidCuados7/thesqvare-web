@@ -218,20 +218,20 @@
       return true;
     }
     function inFry(){return window.scrollY<=8}
-    nextBtn.addEventListener('click',function(){go(step+1)});
+    /* siguiente paso pedido: el encolado si hay animación en curso */
+    function curBase(){return (tw&&pending!==null)?pending:step}
+    nextBtn.addEventListener('click',function(){go(curBase()+1)});
 
-    /* rueda: un gesto = un paso; al terminar, la página sigue */
+    /* rueda (portátil y trackpad): un gesto = un paso; mientras la animación
+       no acabe, o si quedan pasos, la página no se mueve */
     window.addEventListener('wheel',function(e){
       if(!inFry())return;
       var dy=e.deltaY,now=performance.now();
-      /* mientras la animación no termine (y un poco después) no se baja la página */
-      if(tw||now<lockUntil){e.preventDefault();return}
-      if(Math.abs(dy)<4)return;
       var fwd=dy>0,gap=now-lastWheel;lastWheel=now;
-      if((fwd&&step<3)||(!fwd&&step>0)){
-        e.preventDefault();
-        if(!tw&&gap>220&&now-lastGo>350)go(step+(fwd?1:-1));
-      }else if(tw)e.preventDefault();
+      var base=curBase(),canGo=(fwd&&base<3)||(!fwd&&base>0);
+      if(canGo||tw||now<lockUntil)e.preventDefault();
+      if(Math.abs(dy)<4)return;
+      if(canGo&&gap>220)go(base+(fwd?1:-1));
     },{passive:false});
     /* dedo: un deslizamiento = un paso */
     var touchY0=null;
@@ -244,12 +244,15 @@
     window.addEventListener('touchend',function(e){
       if(touchY0==null)return;
       var dy=touchY0-e.changedTouches[0].clientY;touchY0=null;
-      if(Math.abs(dy)>40){var base=(tw&&pending!==null)?pending:step;go(base+(dy>0?1:-1))}
+      if(Math.abs(dy)>40)go(curBase()+(dy>0?1:-1));
     },{passive:true});
     window.addEventListener('keydown',function(e){
       if(!inFry()||(e.target.closest&&e.target.closest('input,textarea')))return;
-      if(['ArrowDown','PageDown',' '].indexOf(e.key)>-1&&step<3){e.preventDefault();go(step+1)}
-      else if(['ArrowUp','PageUp'].indexOf(e.key)>-1&&step>0){e.preventDefault();go(step-1)}
+      var dn=['ArrowDown','PageDown',' '].indexOf(e.key)>-1,up=['ArrowUp','PageUp'].indexOf(e.key)>-1;
+      if(!dn&&!up)return;
+      var base=curBase();
+      if(dn){e.preventDefault();if(base<3)go(base+1)}
+      else{e.preventDefault();if(base>0)go(base-1)}
     });
 
     /* sonido de fritura (opcional) */
