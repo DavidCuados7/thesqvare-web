@@ -234,12 +234,16 @@
       if(canGo&&gap>220)go(base+(fwd?1:-1));
     },{passive:false});
     /* dedo: un deslizamiento = un paso */
-    var touchY0=null;
-    window.addEventListener('touchstart',function(e){touchY0=inFry()?e.touches[0].clientY:null},{passive:true});
+    var touchY0=null,touchBusy=false;
+    window.addEventListener('touchstart',function(e){
+      touchY0=inFry()?e.touches[0].clientY:null;
+      /* un dedo que empieza con la animación en curso no puede bajar la página aunque siga después */
+      touchBusy=!!tw||performance.now()<lockUntil;
+    },{passive:true});
     window.addEventListener('touchmove',function(e){
       if(touchY0==null)return;
       var dy=touchY0-e.touches[0].clientY;
-      if(tw||(dy>6&&step<3)||(dy<-6&&step>0))e.preventDefault();
+      if(tw||touchBusy||(dy>6&&step<3)||(dy<-6&&step>0))e.preventDefault();
     },{passive:false});
     window.addEventListener('touchend',function(e){
       if(touchY0==null)return;
