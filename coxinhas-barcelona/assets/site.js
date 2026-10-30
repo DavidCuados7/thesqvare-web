@@ -264,12 +264,14 @@
     }});
 
     function loop(t){
+      if(cv.clientWidth!==W||cv.clientHeight!==H)size();
       if(tw){var k=clamp((performance.now()-tw.t0)/tw.dur,0,1);prog=tw.from+(tw.to-tw.from)*easeIO(k);if(k>=1)tw=null}
       var r=fryEl.getBoundingClientRect();
       if(r.bottom>0&&r.top<innerHeight){drawFry(prog,reduce?0:t)}else sizzle=0;
       if(gn&&sndOn)gn.gain.setTargetAtTime(sizzle*.5,ac.currentTime,.12);
       if(!reduce)requestAnimationFrame(loop);
     }
+    addEventListener('load',function(){size();if(reduce)drawFry(prog,0)});
     if(reduce){prog=STEPS[step];drawFry(prog,0);addEventListener('resize',function(){size();drawFry(prog,0)})}
     else{requestAnimationFrame(loop);addEventListener('resize',size)}
     hooks.push(function(){tempEl.textContent=Math.round(20+160*ss(.3,.5,prog))+' °C'});
