@@ -131,7 +131,7 @@
     while(strands.length<46){var x2=rnd(150,450),y2=rnd(230,600);if(probe.isPointInPath(INNER,x2,y2))strands.push({x:x2,y:y2,a:rnd(-1,1),l:rnd(18,40)})}
     var bubbles=[],sizzle=0;
     var FRY_MS=1100; /* velocidad: ms por paso (sube = más lento) */
-    var STEPS=[0,.3,.62,1],step=0,prog=0,tw=null,lastGo=-1e9,lastWheel=-1e9,lockUntil=0;
+    var STEPS=[0,.3,.62,1],step=0,prog=0,tw=null,pending=null,lastGo=-1e9,lastWheel=-1e9,lockUntil=0;
 
     function drawFry(p,t){
       var c=cx;c.setTransform(DPR,0,0,DPR,0,0);
@@ -206,13 +206,15 @@
     }
     function go(i){
       i=clamp(i,0,3);
-      if(i===step||tw)return false;
+      /* si la animación sigue, el gesto se guarda y se aplica al terminar */
+      if(tw){pending=i;return false}
+      if(i===step)return false;
       step=i;showStep();
       var to=STEPS[i];
       if(reduce){prog=to;drawFry(prog,0);return true}
       tw={from:prog,to:to,t0:performance.now(),dur:FRY_MS};
       lastGo=performance.now();
-      lockUntil=lastGo+FRY_MS+450;
+      lockUntil=lastGo+FRY_MS+350;
       return true;
     }
     function inFry(){return window.scrollY<=8}
@@ -237,12 +239,12 @@
     window.addEventListener('touchmove',function(e){
       if(touchY0==null)return;
       var dy=touchY0-e.touches[0].clientY;
-      if(tw||performance.now()<lockUntil||(dy>6&&step<3)||(dy<-6&&step>0))e.preventDefault();
+      if(tw||(dy>6&&step<3)||(dy<-6&&step>0))e.preventDefault();
     },{passive:false});
     window.addEventListener('touchend',function(e){
       if(touchY0==null)return;
       var dy=touchY0-e.changedTouches[0].clientY;touchY0=null;
-      if(Math.abs(dy)>40)go(step+(dy>0?1:-1));
+      if(Math.abs(dy)>40){var base=(tw&&pending!==null)?pending:step;go(base+(dy>0?1:-1))}
     },{passive:true});
     window.addEventListener('keydown',function(e){
       if(!inFry()||(e.target.closest&&e.target.closest('input,textarea')))return;
@@ -268,7 +270,7 @@
 
     function loop(t){
       if(cv.clientWidth!==W||cv.clientHeight!==H)size();
-      if(tw){var k=clamp((performance.now()-tw.t0)/tw.dur,0,1);prog=tw.from+(tw.to-tw.from)*easeIO(k);if(k>=1)tw=null}
+      if(tw){var k=clamp((performance.now()-tw.t0)/tw.dur,0,1);prog=tw.from+(tw.to-tw.from)*easeIO(k);if(k>=1){tw=null;if(pending!==null){var p=pending;pending=null;if(p!==step)go(p)}}}
       var r=fryEl.getBoundingClientRect();
       if(r.bottom>0&&r.top<innerHeight){drawFry(prog,reduce?0:t)}else sizzle=0;
       if(gn&&sndOn)gn.gain.setTargetAtTime(sizzle*.5,ac.currentTime,.12);

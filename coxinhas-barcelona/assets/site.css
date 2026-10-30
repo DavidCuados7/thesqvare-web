@@ -178,7 +178,7 @@ main{display:block;padding-top:0}
 
 /* 5. contacto */
 .contact-grid{display:grid;gap:14px}
-.cbox{background:var(--paper);padding:26px 26px 24px;display:grid;gap:8px}
+.cbox{background:var(--paper);padding:18px 20px;display:grid;gap:6px;align-content:start}
 .cbox small{font-weight:800;color:var(--muted);font-size:.9375rem}
 .cbox strong{font-size:clamp(1.4rem,1rem + 1vw,2rem);letter-spacing:-.03em;line-height:1.15}
 .cbox a{font-weight:800}
@@ -255,5 +255,6 @@ button.tile[aria-expanded="true"]{box-shadow:inset 0 0 0 4px var(--ink)}
 #elige .track{padding-left:0;padding-right:0;scroll-padding-inline:0}
 #elige .dpanel:not(.party-box):not(.pbox){padding-left:20px;padding-right:20px}
 
-.map{margin-top:18px;max-width:640px}
-.map iframe{display:block;width:100%;height:340px;border:0}
+.map{margin-top:14px}
+.map iframe{display:block;width:100%;height:180px;border:0}
+@media (min-width:900px){.contact-grid{grid-template-columns:repeat(3,1fr);gap:12px}.map{grid-column:1/-1;margin-top:0}.map iframe{height:200px}}
