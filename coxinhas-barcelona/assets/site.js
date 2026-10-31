@@ -211,7 +211,6 @@
       if(i===step)return false;
       step=i;showStep();
       var to=STEPS[i];
-      if(reduce){prog=to;drawFry(prog,0);return true}
       tw={from:prog,to:to,t0:performance.now(),dur:FRY_MS};
       lastGo=performance.now();
       lockUntil=lastGo+FRY_MS+350;
@@ -281,11 +280,10 @@
       var r=fryEl.getBoundingClientRect();
       if(r.bottom>0&&r.top<innerHeight){drawFry(prog,reduce?0:t)}else sizzle=0;
       if(gn&&sndOn)gn.gain.setTargetAtTime(sizzle*.5,ac.currentTime,.12);
-      if(!reduce)requestAnimationFrame(loop);
+      requestAnimationFrame(loop);
     }
     addEventListener('load',function(){size();if(reduce)drawFry(prog,0)});
-    if(reduce){prog=STEPS[step];drawFry(prog,0);addEventListener('resize',function(){size();drawFry(prog,0)})}
-    else{requestAnimationFrame(loop);addEventListener('resize',size)}
+    requestAnimationFrame(loop);addEventListener('resize',size);
     hooks.push(function(){tempEl.textContent=Math.round(20+160*ss(.3,.5,prog))+' °C'});
     showStep();
   }
