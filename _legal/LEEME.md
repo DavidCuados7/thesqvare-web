@@ -9,3 +9,5 @@ The Sqvare es el nombre comercial de la empresa familiar que factura. Los datos 
   Webs de ejemplo → `/legal/#webs-de-ejemplo`. Webs de clientes → su propia `legal/`.
 - Contrato y anexo de datos: doc "Contrato de servicio · The Sqvare". Ficha de alta y autorización de firma: doc "Documentos legales · The Sqvare".
 - Las reservas de prueba de las webs de ejemplo se borran cada mes (la página legal promete 30 días).
+
+- Tiendas (venta a distancia): `embutidos-salamanca/legal/` es la plantilla de tienda: aviso legal, privacidad, cookies, condiciones de venta, desistimiento con formulario y alérgenos. Pendientes en `[corchetes]` resaltados; ficha en `clientes/embutidos-salamanca.json`.

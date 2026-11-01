@@ -22,9 +22,10 @@
 {"@context":"https://schema.org","@type":"Store","name":"Embutidos Salamanca","description":"Jamón, paleta, lomo y embutidos ibéricos. Pedidos por WhatsApp.","url":"https://thesqvare.com/embutidos-salamanca/","image":"https://thesqvare.com/embutidos-salamanca/assets/og.jpg","telephone":"+34648515835"}
 </script>
 <title>Embutidos Salamanca</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Cinzel';src:url('assets/fonts/cinzel.woff') format('woff');font-weight:500 900;font-display:swap}
+@font-face{font-family:'Archivo';src:url('assets/fonts/archivo.woff') format('woff');font-weight:400 700;font-display:swap}
+</style>
 <style>
 :root{
   --piedra:#D9BD86;      /* piedra de Villamayor */
@@ -242,6 +243,12 @@ footer small{opacity:.6}
 .seg button{flex:1;border:0;background:none;padding:9px;font-weight:600;font-size:15px}
 .seg button[aria-pressed=true]{background:var(--encina);color:var(--piedra-clara)}
 .err{color:var(--vitor);font-size:14px;font-weight:600}
+.form label.consent{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400;font-size:14px;line-height:1.4}
+.form label.consent input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--encina)}
+.op .ukg{font-size:11.5px;opacity:.7;margin-left:-2px}
+.legal-links{display:flex;flex-wrap:wrap;gap:6px 16px;width:100%;order:3;font-size:14px}
+.legal-links a{opacity:.8}
+.intro a{font-weight:600}
 .done{padding:30px 22px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
 .done svg{width:110px;height:110px}
 .done pre{white-space:pre-wrap;text-align:left;font-family:var(--body);font-size:14px;background:#fff8ea;border-radius:var(--r);padding:14px;width:100%;max-height:220px;overflow:auto;border:1px solid rgba(35,28,20,.15)}
@@ -272,7 +279,7 @@ footer small{opacity:.6}
   <div class="wrap">
     <div>
       <h1 class="vitor-title" aria-label="Embutidos Salamanca"><span class="l1">Embutidos</span><span class="l2">Salamanca</span></h1>
-      <p class="lead">Jamón, paleta, lomo y embutidos ibéricos curados en tierra charra. Elige la pieza, el formato y el peso, y te lo preparamos como en el mostrador.</p>
+      <p class="lead">Jamón, paleta, lomo y embutidos ibéricos. Elige la pieza, el formato y el peso, y te lo preparamos como en el mostrador.</p>
       <div class="ctas">
         <a class="btn" href="#tienda">Ver la tienda</a>
         <a class="btn ghost" href="#jamones">¿Qué jamón me llevo?</a>
@@ -283,7 +290,7 @@ footer small{opacity:.6}
       <svg class="sello" viewBox="0 0 200 200" aria-hidden="true">
         <defs><path id="circ" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
         <circle cx="100" cy="100" r="96" fill="#9A2A1E"/>
-        <text font-family="Cinzel" font-weight="700" font-size="17" fill="#E8D5AA" letter-spacing="3.2"><textPath href="#circ">Ibérico de Salamanca · Cortado a mano ·</textPath></text>
+        <text font-family="Cinzel" font-weight="700" font-size="17" fill="#E8D5AA" letter-spacing="3.2"><textPath href="#circ">Embutidos Salamanca · Ibéricos ·</textPath></text>
         <g transform="translate(62 62) scale(.76)" style="color:#E8D5AA"><use href="#vitor"/></g>
       </svg>
     </div>
@@ -310,7 +317,7 @@ footer small{opacity:.6}
 <section class="tienda" id="tienda">
   <div class="wrap">
     <div class="top">
-      <div><h2 class="h2">La tienda</h2><p class="intro">Toca un precio para añadirlo a la cesta; la cantidad la cambias allí. En cada categoría tienes las fotos.</p></div>
+      <div><h2 class="h2">La tienda</h2><p class="intro">Toca un precio para añadirlo a la cesta; la cantidad la cambias allí. En cada categoría tienes las fotos. Precios con IVA incluido. <a href="legal/#alergenos">Ingredientes y alérgenos</a>.</p></div>
     </div>
     <div class="tabs" role="tablist" aria-label="Categorías" id="tabs"></div>
     <div class="grid" id="grid"></div>
@@ -347,6 +354,7 @@ footer small{opacity:.6}
 <footer><div class="wrap">
   <div class="brand"><svg style="color:#D9BD86;width:40px;height:40px"><use href="#vitor"/></svg><b>Embutidos Salamanca</b></div>
   <div>Pedidos por WhatsApp<br><span id="telTxt"></span></div>
+  <nav class="legal-links" aria-label="Información legal"><a href="legal/#aviso-legal">Aviso legal</a><a href="legal/#privacidad">Privacidad</a><a href="legal/#cookies">Cookies</a><a href="legal/#condiciones">Condiciones de venta</a><a href="legal/#desistimiento">Devoluciones</a><a href="legal/#alergenos">Alérgenos</a></nav>
   <small>© 2026 Embutidos Salamanca · Web de <a href="https://thesqvare.com" target="_blank" rel="noopener">The Sqvare</a></small>
 </div></footer>
 
@@ -417,6 +425,7 @@ const LADDER=[
 
 /* ---------- utilidades ---------- */
 const $=s=>document.querySelector(s);
+const perKg=f=>f.ud/(+f.lbl.match(/(\d+) g/)[1]/1000);
 const eur=n=>n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
 const kgTxt=k=>(k<1?Math.round(k*1000)+' g':k.toLocaleString('es-ES',{maximumFractionDigits:2})+' kg');
 const byId=id=>P.find(p=>p.id===id);
@@ -452,7 +461,7 @@ function renderLadder(){
     <h3>Jamón de ${s.t.toLowerCase()}</h3>
     <div class="meter" aria-label="Nivel ${s.lv} de 4 en bellota y dehesa">${[1,2,3,4].map(n=>`<i class="${n<=s.lv?'on':''}"></i>`).join('')}<span>&nbsp;dehesa y bellota</span></div>
     <p class="dieta">${s.diet}</p>
-    <div class="precios"><div><b>${pieza.kg} €/kg</b>pieza entera</div>${sobre?`<div><b>${eur(sobre.ud)}</b>sobre 100 g a mano</div>`:''}</div>
+    <div class="precios"><div><b>${pieza.kg} €/kg</b>pieza entera</div>${sobre?`<div><b>${eur(sobre.ud)}</b>sobre 100 g a mano (${eur(perKg(sobre))}/kg)</div>`:''}</div>
     <div class="acc">${sobre?`<button class="btn" data-add="${p.id}|${p.f.indexOf(sobre)}">Probar un sobre</button>`:''}<button class="btn ghost" data-add="${p.id}|0">Añadir pieza entera</button></div>
   </div><div class="pic"><img src="${IMG.jamon}" alt=""><span class="tag">Ref. ${pieza.ref}</span></div>`;
 }
@@ -468,13 +477,13 @@ function cardHTML(p){
   const f=p.f[s.fi],k=fmtKind(f);
   const sliced=(p.cat==='jamon'||p.cat==='paleta')&&!f.pieza||/Deshuesada/.test(f.lbl);
   const ph=sliced?{...p,img:'deshuesado'}:p;
-  const unit=f.ud?eur(f.ud)+' / ud':f.kg+' €/kg';
+  const unit=f.ud?eur(f.ud)+' / ud · '+eur(perKg(f))+'/kg':f.kg+' €/kg';
   const qtxt=k==='peso'?kgTxt(s.q):(k==='pieza'?s.q+(s.q>1?' piezas':' pieza'):s.q+' ud');
   return `<article class="card" data-id="${p.id}">
     <div class="ph">${thumb(ph)}<span class="grade">${p.grade}</span></div>
     <div class="body">
       <h3>${p.name}</h3><p class="desc">${p.desc}</p>
-      ${p.f.length>1?`<div class="fmts" role="group" aria-label="Formato">${p.f.map((x,i)=>`<button class="fmt" aria-pressed="${i===s.fi}" data-fi="${i}">${x.lbl}<small>${x.ud?eur(x.ud):x.kg+' €/kg'}${x.sub?' · '+x.sub:''}</small></button>`).join('')}</div>`:`<div class="ref">${f.lbl} · ${unit}</div>`}
+      ${p.f.length>1?`<div class="fmts" role="group" aria-label="Formato">${p.f.map((x,i)=>`<button class="fmt" aria-pressed="${i===s.fi}" data-fi="${i}">${x.lbl}<small>${x.ud?eur(x.ud)+' ('+eur(perKg(x))+'/kg)':x.kg+' €/kg'}${x.sub?' · '+x.sub:''}</small></button>`).join('')}</div>`:`<div class="ref">${f.lbl} · ${unit}</div>`}
       <div class="qtyrow">
         <div class="stepper"><button data-q="-1" aria-label="Menos">−</button><output>${qtxt}</output><button data-q="1" aria-label="Más">+</button></div>
         <div class="price">${k==='pieza'?porPeso(f):eur(linePrice(f,s.q))}<small>${k==='pieza'?'pieza entera, según peso':unit}</small></div>
@@ -490,7 +499,7 @@ function cartaHTML(){
   return CATS.slice(1).map(([k,l])=>`<div class="grupo"><h3 class="cat">${l}<button data-goto="${k}">Ver fotos</button></h3>
     ${k==='embutido'||k==='lomo'||k==='queso'?'<p class="carta-nota">Al peso, desde 250 g.</p>':''}
     ${P.filter(p=>p.cat===k).map(p=>`<div class="fila" data-id="${p.id}"><div class="nom">${p.name} <small>${p.grade}</small></div>
-      <div class="ops">${p.f.map((f,i)=>`<button class="op" data-fi="${i}" aria-label="Añadir ${p.name}, ${opLabel(f)}, ${opPrice(f)}">${opLabel(f)} <b>${opPrice(f)}</b><i aria-hidden="true">+</i></button>`).join('')}</div></div>`).join('')}</div>`).join('');
+      <div class="ops">${p.f.map((f,i)=>`<button class="op" data-fi="${i}" aria-label="Añadir ${p.name}, ${opLabel(f)}, ${opPrice(f)}">${opLabel(f)} <b>${opPrice(f)}</b>${f.ud?`<small class="ukg">${eur(perKg(f))}/kg</small>`:''}<i aria-hidden="true">+</i></button>`).join('')}</div></div>`).join('')}</div>`).join('');
 }
 function renderGrid(){const g=$('#grid');g.classList.toggle('carta',cat==='todo');g.innerHTML=cat==='todo'?cartaHTML():P.filter(p=>p.cat===cat).map(cardHTML).join('')}
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;cat=b.dataset.c;renderTabs();renderGrid()});
@@ -561,10 +570,12 @@ function renderCart(){
       <label>Nombre<input name="nombre" autocomplete="name" required></label>
       <label>Teléfono<input name="tel" type="tel" autocomplete="tel" required></label>
       ${modo==='envio'?'<label>Dirección<input name="dir" autocomplete="street-address" required></label>':''}
-      <label>Notas (opcional)<textarea name="notas" rows="2" placeholder="Ej.: el jamón loncheado, es para un regalo…"></textarea></label>
+      <label>Notas (opcional)<textarea name="notas" rows="2" placeholder="Ej.: es para un regalo…"></textarea></label>
+      <label class="consent"><input type="checkbox" name="ok"> <span>He leído y acepto las <a href="legal/#condiciones" target="_blank" rel="noopener">condiciones de venta</a> y la <a href="legal/#privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+      <p class="fine">Al enviarla, tu solicitud se abre en WhatsApp. El pedido queda cerrado cuando te confirmemos el importe final, con gastos de envío si los hay, y lo aceptes.</p>
       <p class="err" id="err" hidden></p>
       <div class="tot"><span>${totLabel()}</span><b>${totVal()}</b></div>
-      <button class="btn" type="submit">Enviar pedido por WhatsApp</button>
+      <button class="btn" type="submit">Enviar solicitud de pedido</button>
       <button class="btn ghost" type="button" id="back">Volver a la cesta</button></form>`;
   }
 }
@@ -573,7 +584,7 @@ function totLabel(){return hasEstimate()&&hasOther()?'Total sin piezas enteras':
 function totVal(){return hasOther()?eur(cartTotal()):'Según peso'}
 function orderText(d){
   const lines=cart.map(l=>{const p=byId(l.pid),f=p.f[l.fi];return `• ${p.name} – ${f.lbl}${f.sub?' ('+f.sub+')':''}: ${lineQtyLabel(f,l.q)} → ${fmtKind(f)==='pieza'?porPeso(f)+', importe según peso':eur(linePrice(f,l.q))} [Ref. ${f.ref}]${l.tabla?' (tabla)':''}`});
-  return `Hola, quiero hacer este pedido en Embutidos Salamanca:\n\n${lines.join('\n')}\n\n${totLabel()}: ${totVal()}${hasEstimate()&&totVal()!=='Según peso'?' + piezas enteras según peso':''}\n\nNombre: ${d.nombre}\nTeléfono: ${d.tel}\nEntrega: ${modo==='envio'?'a domicilio – '+d.dir:'recogida'}${d.notas?'\nNotas: '+d.notas:''}`;
+  return `Hola, quiero solicitar este pedido en Embutidos Salamanca:\n\n${lines.join('\n')}\n\n${totLabel()}: ${totVal()}${hasEstimate()&&totVal()!=='Según peso'?' + piezas enteras según peso':''}\n\nNombre: ${d.nombre}\nTeléfono: ${d.tel}\nEntrega: ${modo==='envio'?'a domicilio – '+d.dir:'recogida'}${d.notas?'\nNotas: '+d.notas:''}`;
 }
 $('#items').addEventListener('click',e=>{
   const m=e.target.closest('[data-m]'),d=e.target.closest('[data-del]');
@@ -589,15 +600,15 @@ $('#foot').addEventListener('click',e=>{
 });
 $('#foot').addEventListener('submit',e=>{
   e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
-  const miss=[];if(!d.nombre?.trim())miss.push('tu nombre');if(!/\d{9}/.test((d.tel||'').replace(/\D/g,'')))miss.push('un teléfono de 9 cifras');if(modo==='envio'&&!d.dir?.trim())miss.push('la dirección');
+  const miss=[];if(!d.nombre?.trim())miss.push('tu nombre');if(!/\d{9}/.test((d.tel||'').replace(/\D/g,'')))miss.push('un teléfono de 9 cifras');if(modo==='envio'&&!d.dir?.trim())miss.push('la dirección');if(!d.ok)miss.push('aceptar las condiciones y la privacidad');
   const err=$('#err');if(miss.length){err.hidden=false;err.textContent='Falta '+miss.join(', ')+'.';return}
   const txt=orderText(d),url='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(txt);
-  stage='hecho';$('#dTitle').textContent='Pedido listo';
+  stage='hecho';$('#dTitle').textContent='Solicitud lista';
   $('#items').innerHTML=`<div class="done">
     <svg viewBox="0 0 100 100" style="color:#9A2A1E;filter:url(#pintado)"><use href="#vitor"/></svg>
-    <p><b>Tu pedido está preparado.</b><br>Ábrelo en WhatsApp y pulsa enviar. Si WhatsApp no se abre, copia el pedido y mándalo al ${TEL_VISIBLE}.</p>
+    <p><b>Tu solicitud está preparada.</b><br>Ábrela en WhatsApp y pulsa enviar; te responderemos con el importe final para que lo confirmes. Si WhatsApp no se abre, copia el pedido y mándalo al ${TEL_VISIBLE}.</p>
     <a class="btn" href="${url}" target="_blank" rel="noopener">Abrir WhatsApp</a>
-    <button class="btn ghost" id="copy">Copiar pedido</button>
+    <button class="btn ghost" id="copy">Copiar solicitud</button>
     <pre>${esc(txt)}</pre></div>`;
   $('#foot').innerHTML=`<button class="btn ghost" id="nuevo">Empezar otra cesta</button>`;
   $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(txt);toast('Pedido copiado')}catch(_){toast('No se pudo copiar: selecciona el texto del pedido')}};
