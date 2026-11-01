@@ -7,7 +7,7 @@
  *     1. El cliente envía la solicitud desde la web → "Por confirmar" (correo al cliente y aviso a la tienda).
  *     2. La tienda pesa las piezas y envía el importe final desde su correo o desde el menú → "Pendiente de aceptar".
  *     3. El cliente pulsa "Aceptar pedido" en su correo → "Aceptado" (aquí se cierra la compra).
- *     4. La tienda lo marca "Listo" (avisa al cliente) y después "Entregado".
+ *     4. La tienda lo marca "Listo" y después "Entregado" (los dos avisan al cliente; el último le envía el justificante).
  *   Cualquiera de los dos puede cancelar antes de la entrega; el otro recibe un correo.
  *
  * Puesta en marcha (una vez, con la cuenta thesqvare@gmail.com):
@@ -150,7 +150,7 @@ function montarResumen(ss) {
     ["B", "C", "Por confirmar", `=COUNTIF(${B},"${E.nuevo}")`, "0"],
     ["D", "D", "Esperando al cliente", `=COUNTIF(${B},"${E.pendiente}")`, "0"],
     ["E", "E", "Para preparar", `=COUNTIF(${B},"${E.aceptado}")`, "0"],
-    ["F", "F", "Vendido esta semana", `=SUMPRODUCT((${D}>=${ini})*(${D}<=${fin})*${vendido}*N(+Pedidos!J2:J))`, '#,##0.00 "€"'],
+    ["F", "F", "Vendido este mes", `=SUMPRODUCT(IFERROR((MONTH(${D})=MONTH(TODAY()))*(YEAR(${D})=YEAR(TODAY())),0)*${vendido}*N(+Pedidos!J2:J))`, '#,##0.00 "€"'],
     ["H", "K", "Hoy", `=SUMPRODUCT((${D}=TODAY())*((${B}="${E.aceptado}")+(${B}="${E.listo}")))&" pedidos para entregar o recoger"`, "@"]
   ];
   tarjetas.forEach(([a, b, titulo, f, fmt]) => {
@@ -208,14 +208,14 @@ function menuConfirmar() {
   } catch (e) { ui.alert(e.message); }
 }
 function menuListo() { menuEstado_(E.listo, "¿Marcar como listo? El cliente recibirá un correo."); }
-function menuEntregado() { menuEstado_(E.entregado, "¿Marcar como entregado?"); }
+function menuEntregado() { menuEstado_(E.entregado, "¿Marcar como entregado? El cliente recibirá el justificante por correo."); }
 function menuEstado_(nuevo, pregunta) {
   const ui = SpreadsheetApp.getUi();
   try {
     const o = seleccionado_();
     if (ui.alert(o.id, pregunta, ui.ButtonSet.YES_NO) !== ui.Button.YES) return;
     const r = nuevo === E.listo ? listo({ id: o.id, t: token(o.id, "n") }) : entregado({ id: o.id, t: token(o.id, "n") });
-    if (r.ok) SpreadsheetApp.getActive().toast("Hecho.", "🧾 Pedidos", 4);
+    if (r.ok) SpreadsheetApp.getActive().toast(nuevo === E.listo ? `Listo. Hemos avisado a ${o.nombre} por correo.` : `Entregado. ${o.nombre} ha recibido el justificante por correo.`, "🧾 Pedidos", 6);
   } catch (e) { ui.alert(e.message); }
 }
 function menuCancelar() {
@@ -243,8 +243,11 @@ function alEditar(e) {
     if (!id || nuevo === antes) return;
     const o = buscar(id);
     anotar(o, `Estado cambiado a mano: ${antes} → ${nuevo}`);
-    if (nuevo === E.listo) { correoCliente(o, "listo"); SpreadsheetApp.getActive().toast(`Se ha avisado a ${o.nombre}.`, "🧾 Pedidos", 5); }
-    if (nuevo === E.cancTie) { correoCliente(o, "cancelado-tienda"); SpreadsheetApp.getActive().toast(`Se ha avisado a ${o.nombre}.`, "🧾 Pedidos", 5); }
+    const aviso = m => SpreadsheetApp.getActive().toast(m, "🧾 Pedidos", 6);
+    if (nuevo === E.listo) { correoCliente(o, "listo"); aviso(`Listo. Hemos avisado a ${o.nombre} por correo.`); }
+    else if (nuevo === E.entregado) { correoCliente(o, "entregado"); aviso(`Entregado. ${o.nombre} ha recibido el justificante por correo.`); }
+    else if (nuevo === E.cancTie) { correoCliente(o, "cancelado-tienda"); aviso(`Cancelado. Hemos avisado a ${o.nombre} por correo.`); }
+    else aviso(`Estado cambiado a "${nuevo}". No se ha enviado ningún correo.`);
   } catch (err) { console.error(err); }
 }
 
@@ -372,7 +375,9 @@ function entregado(d) {
   if (![E.aceptado, E.listo].includes(o.estado)) throw new Error(`Este pedido está "${o.estado}".`);
   hoja().getRange(o.fila, C.estado).setValue(E.entregado);
   anotar(o, "Entregado");
-  return { ok: true, rol, pedido: publica(buscar(o.id), rol) };
+  const n = buscar(o.id);
+  correoCliente(n, "entregado");
+  return { ok: true, rol, pedido: publica(n, rol) };
 }
 
 /* =================== CÁLCULOS =================== */
@@ -481,6 +486,7 @@ function correoCliente(o, tipo) {
     "importe": ["Importe final", `${o.nombre}, tu pedido está listo para aceptar`, `Ya hemos pesado tus productos. Este es el importe final${o.envio ? " con el envío" : ""}. Si te parece bien, pulsa <b>Aceptar pedido</b>: con eso queda cerrada la compra.${o.nota ? `<br><br><i>${esc(o.nota)}</i>` : ""}`, [["Aceptar pedido", enlace(o.id, "c", "aceptar"), true], ["Ver o cancelar", url, false]], `Importe final de tu pedido · ${euro(o.importe)}`],
     "aceptado": ["Pedido aceptado", `¡Hecho, ${o.nombre}!`, "Has aceptado tu pedido. Este correo es tu justificante de compra; guárdalo. Te avisaremos cuando esté listo.", [["Ver mi pedido", url, true]], `✅ Pedido aceptado · ${o.id}`],
     "listo": ["Listo", `${o.nombre}, tu pedido está listo`, o.modo === "A domicilio" ? `Lo llevamos el ${fechaLarga(o.dia)} por la ${o.franja.toLowerCase()}.` : `Puedes recogerlo el ${fechaLarga(o.dia)} por la ${o.franja.toLowerCase()} en ${esc(CFG.recogida)}.`, [["Ver mi pedido", url, true]], `🔔 Tu pedido está listo · ${o.id}`],
+    "entregado": ["Entregado", `¡Que aproveche, ${o.nombre}!`, "Tu pedido está entregado. Aquí tienes el resumen como justificante de compra. Gracias por confiar en nosotros.", [["Volver a la tienda", CFG.web + "#tienda", true]], `Pedido entregado · ${o.id}`],
     "cancelado-cliente": ["Cancelado", `Hola, ${o.nombre}`, "Has cancelado tu pedido. Cuando quieras, haz otro desde la web.", [["Ir a la tienda", CFG.web + "#tienda", true]], `Pedido cancelado · ${o.id}`],
     "cancelado-tienda": ["Cancelado", `Hola, ${o.nombre}`, `Lo sentimos: hemos tenido que cancelar tu pedido${o.motivo ? " (" + esc(o.motivo) + ")" : ""}. Si ya habías pagado algo, te lo devolvemos. Escríbenos si quieres buscar una alternativa.`, [["Ir a la tienda", CFG.web + "#tienda", true]], `Tu pedido ${o.id} se ha cancelado`]
   }[tipo];
