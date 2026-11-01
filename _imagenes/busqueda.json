@@ -1,6 +1,8 @@
 {
- "longaniza": ["longaniza", "longaniza embutido curado", "llonganissa"],
- "sobrasada": ["sobrasada", "sobrassada"],
- "morcon": ["morcón embutido", "morcón ibérico", "morcon chorizo"],
- "queso": ["queso de oveja curado", "queso manchego", "Manchego cheese wedge"]
+ "jamon_plato": ["plato de jamón ibérico", "jamón ibérico loncheado", "jamón de bellota plato", "Jamón ibérico tapa"],
+ "jamon_corte": ["cortando jamón", "corte de jamón cuchillo", "jamonero jamón", "cortador de jamón"],
+ "jamon_entero": ["jamón ibérico pieza", "jamones colgados secadero", "pata negra jamón", "jamón serrano pieza"],
+ "paleta": ["paleta ibérica", "paleta de cerdo ibérico curada", "paletilla ibérica"],
+ "lomo": ["lomo embuchado", "lomo ibérico", "caña de lomo"],
+ "iberico_tabla": ["embutidos ibéricos tabla", "surtido ibérico", "tabla de ibéricos"]
 }
