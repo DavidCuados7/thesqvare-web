@@ -130,10 +130,26 @@ section{padding:84px 0}
 
 /* ---------- tienda ---------- */
 .tienda .top{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:32px 0 30px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:32px 0 30px;scroll-margin-top:80px}
 .tab{border:2px solid var(--encina);background:transparent;border-radius:999px;padding:8px 18px;font-weight:600;font-size:15px}
 .tab[aria-selected=true]{background:var(--encina);color:var(--piedra-clara)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.grid.carta{display:block;columns:2 440px;column-gap:48px;background:#F1E4C6;border:1px solid rgba(35,28,20,.12);border-radius:var(--r);padding:26px 30px 10px}
+.carta .grupo{break-inside:avoid;margin-bottom:22px}
+.carta h3.cat{font-family:var(--display);font-weight:900;color:var(--vitor);font-size:24px;display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--vitor);padding-bottom:4px;margin-bottom:4px}
+.carta h3.cat button{margin-left:auto;font-family:var(--body);font-weight:600;font-size:13.5px;color:var(--encina);background:none;border:0;text-decoration:underline;text-underline-offset:3px}
+.fila{padding:9px 0;border-bottom:1px dotted rgba(35,28,20,.3);break-inside:avoid}
+.fila:last-child{border-bottom:0}
+.fila .nom{font-weight:600;font-size:15.5px;line-height:1.25}
+.fila .nom small{font-weight:400;opacity:.65;font-size:13px}
+.fila .ops{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.op{display:inline-flex;align-items:center;gap:6px;border:1.5px solid rgba(31,43,34,.3);background:transparent;border-radius:999px;padding:3px 4px 3px 10px;font-size:13.5px;line-height:1.2}
+.op b{font-family:var(--display);font-weight:700;font-size:14px;color:var(--encina)}
+.op i{font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--encina);color:var(--piedra-clara);display:grid;place-items:center;font-size:15px;line-height:1}
+.op:hover{border-color:var(--encina)}
+.op.ok{background:var(--vitor);border-color:var(--vitor);color:#fff}.op.ok b{color:#fff}.op.ok i{background:#fff;color:var(--vitor)}
+.carta-nota{font-size:13.5px;opacity:.7;margin:-4px 0 14px;break-inside:avoid}
+@media(max-width:600px){.grid.carta{padding:18px 16px 4px}}
 .card{background:#F1E4C6;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(35,28,20,.12)}
 .card .ph{aspect-ratio:16/10;background:var(--piedra-clara);position:relative;overflow:hidden}
 .card .ph img{width:100%;height:100%;object-fit:cover}
@@ -229,7 +245,7 @@ footer small{opacity:.6}
 .done{padding:30px 22px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
 .done svg{width:110px;height:110px}
 .done pre{white-space:pre-wrap;text-align:left;font-family:var(--body);font-size:14px;background:#fff8ea;border-radius:var(--r);padding:14px;width:100%;max-height:220px;overflow:auto;border:1px solid rgba(35,28,20,.15)}
-.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);background:var(--encina);color:var(--piedra-clara);padding:12px 18px;border-radius:999px;z-index:50;transition:transform .3s;font-size:15px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,160%);width:max-content;max-width:calc(100vw - 32px);text-align:center;background:var(--encina);color:var(--piedra-clara);padding:12px 18px;border-radius:18px;z-index:50;transition:transform .3s;font-size:15px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
 .toast.on{transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
@@ -294,7 +310,7 @@ footer small{opacity:.6}
 <section class="tienda" id="tienda">
   <div class="wrap">
     <div class="top">
-      <div><h2 class="h2">La tienda</h2><p class="intro">Elige formato y cantidad. Los precios son los de la tarifa de venta al cliente.</p></div>
+      <div><h2 class="h2">La tienda</h2><p class="intro">Toca un precio para añadirlo a la cesta; la cantidad la cambias allí. En cada categoría tienes las fotos.</p></div>
     </div>
     <div class="tabs" role="tablist" aria-label="Categorías" id="tabs"></div>
     <div class="grid" id="grid"></div>
@@ -468,9 +484,19 @@ function cardHTML(p){
     </div></article>`;
 }
 function renderTabs(){$('#tabs').innerHTML=CATS.map(([k,l])=>`<button class="tab" role="tab" aria-selected="${k===cat}" data-c="${k}">${l}</button>`).join('')}
-function renderGrid(){$('#grid').innerHTML=P.filter(p=>cat==='todo'||p.cat===cat).map(cardHTML).join('')}
+function opLabel(f){return f.lbl+(f.sub==='cortado a máquina'?' (máquina)':'')}
+function opPrice(f){return f.ud?eur(f.ud):f.kg+' €/kg'}
+function cartaHTML(){
+  return CATS.slice(1).map(([k,l])=>`<div class="grupo"><h3 class="cat">${l}<button data-goto="${k}">Ver fotos</button></h3>
+    ${k==='embutido'||k==='lomo'||k==='queso'?'<p class="carta-nota">Al peso, desde 250 g.</p>':''}
+    ${P.filter(p=>p.cat===k).map(p=>`<div class="fila" data-id="${p.id}"><div class="nom">${p.name} <small>${p.grade}</small></div>
+      <div class="ops">${p.f.map((f,i)=>`<button class="op" data-fi="${i}" aria-label="Añadir ${p.name}, ${opLabel(f)}, ${opPrice(f)}">${opLabel(f)} <b>${opPrice(f)}</b><i aria-hidden="true">+</i></button>`).join('')}</div></div>`).join('')}</div>`).join('');
+}
+function renderGrid(){const g=$('#grid');g.classList.toggle('carta',cat==='todo');g.innerHTML=cat==='todo'?cartaHTML():P.filter(p=>p.cat===cat).map(cardHTML).join('')}
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;cat=b.dataset.c;renderTabs();renderGrid()});
 $('#grid').addEventListener('click',e=>{
+  const go=e.target.closest('[data-goto]');if(go){cat=go.dataset.goto;renderTabs();renderGrid();$('#tabs').scrollIntoView({behavior:'smooth',block:'start'});return}
+  const op=e.target.closest('.op');if(op){const p=byId(op.closest('.fila').dataset.id),f=p.f[+op.dataset.fi];addLine(p.id,+op.dataset.fi,qtyDefault(f));toast('Añadido: '+p.name+' · '+opLabel(f).toLowerCase()+(fmtKind(f)==='peso'?' ('+kgTxt(qtyDefault(f))+')':''));op.classList.add('ok');setTimeout(()=>op.classList.remove('ok'),1200);return}
   const card=e.target.closest('.card');if(!card)return;
   const p=byId(card.dataset.id),s=sel[p.id];
   const fb=e.target.closest('.fmt'),qb=e.target.closest('[data-q]'),ab=e.target.closest('.add');
