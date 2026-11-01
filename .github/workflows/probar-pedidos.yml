@@ -1,0 +1,37 @@
+name: Probar sistema de pedidos
+
+# Hace una llamada de prueba a la aplicación web de Apps Script de una tienda
+# (URL y pedido en _apps-script/prueba.json) y guarda la respuesta en
+# _apps-script/prueba-resultado.json.
+on:
+  push:
+    paths: ["_apps-script/prueba.json"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Llamar a la API
+        run: |
+          URL=$(jq -r .url _apps-script/prueba.json)
+          jq -c .pedido _apps-script/prueba.json > /tmp/pedido.json
+          INFO=$(curl -sL -m 60 "$URL")
+          DIAS=$(curl -sL -m 60 "$URL?accion=dias")
+          DIA=$(echo "$DIAS" | jq -r '.dias[0] // empty')
+          jq --arg d "$DIA" '.dia=$d' /tmp/pedido.json > /tmp/p2.json
+          PEDIDO=$(curl -sL -m 90 -H 'Content-Type: text/plain' --data-binary @/tmp/p2.json "$URL")
+          jq -n --arg fecha "$(date -u +%FT%TZ)" --arg info "$INFO" --arg dias "$DIAS" --arg pedido "$PEDIDO" \
+            '{fecha:$fecha, info:$info, dias:$dias, pedido:$pedido}' > _apps-script/prueba-resultado.json
+          cat _apps-script/prueba-resultado.json
+      - name: Guardar resultado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add _apps-script/prueba-resultado.json
+          git commit -m "Resultado de la prueba del sistema de pedidos" || exit 0
+          git pull --rebase origin main && git push

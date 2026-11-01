@@ -1,0 +1,3 @@
+{"url":"https://script.google.com/macros/s/AKfycbxb3rri21GS2n0qJo6SScZEzph0m07nofjRVp7QQo0NDg9aVLi1Wk7hVL1FkGrlki3TTA/exec",
+ "pedido":{"accion":"pedir","nombre":"Prueba The Sqvare","telefono":"648515835","email":"thesqvare@gmail.com","modo":"recoger","direccion":"","franja":"Mañana","notas":"Pedido de prueba: se puede cancelar","acepta":true,
+  "lineas":[{"ref":"0001","q":1},{"ref":"0002","q":2},{"ref":"0027","q":0.25}]}}
