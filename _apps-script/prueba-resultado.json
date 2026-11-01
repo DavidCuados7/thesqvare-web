@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-11-01T19:44:44Z",
+  "info": "{\"ok\":true,\"negocio\":\"Embutidos Salamanca\"}",
+  "dias": "{\"ok\":true,\"dias\":[\"2026-11-02\",\"2026-11-03\",\"2026-11-04\",\"2026-11-05\",\"2026-11-06\",\"2026-11-07\",\"2026-11-09\",\"2026-11-10\",\"2026-11-11\",\"2026-11-12\",\"2026-11-13\",\"2026-11-14\"],\"franjas\":[\"Mañana\",\"Tarde\"]}",
+  "pedido": "{\"ok\":true,\"id\":\"ES-261101-5A9D\",\"emailEnviado\":true,\"pedido\":{\"id\":\"ES-261101-5A9D\",\"estado\":\"Por confirmar\",\"dia\":\"2026-11-02\",\"diaTexto\":\"lunes 2 de noviembre\",\"franja\":\"Mañana\",\"modo\":\"Recoger\",\"nombre\":\"Prueba The Sqvare\",\"direccion\":\"\",\"recogida\":\"[Dirección de recogida]\",\"notas\":\"Pedido de prueba: se puede cancelar\",\"nota\":\"\",\"envio\":0,\"subtotal\":15,\"total\":15,\"faltan\":1,\"lineas\":[{\"producto\":\"Jamón de cebo ibérico\",\"formato\":\"Pieza entera\",\"tipo\":\"pieza\",\"precio\":19,\"q\":1,\"cantidad\":\"1 pieza\",\"peso\":null,\"importe\":null},{\"producto\":\"Jamón de cebo ibérico\",\"formato\":\"Sobre 100 g (cortado a mano)\",\"tipo\":\"ud\",\"precio\":5.5,\"q\":2,\"cantidad\":\"2 ud\",\"peso\":null,\"importe\":11},{\"producto\":\"Chorizo ibérico\",\"formato\":\"Al peso\",\"tipo\":\"kg\",\"precio\":16,\"q\":0.25,\"cantidad\":\"250 g\",\"peso\":null,\"importe\":4}]}}"
+}
