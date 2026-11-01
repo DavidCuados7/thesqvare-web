@@ -11,14 +11,14 @@
  *   Cualquiera de los dos puede cancelar antes de la entrega; el otro recibe un correo.
  *
  * Puesta en marcha (una vez, con la cuenta thesqvare@gmail.com):
- *  1. Crea una hoja de cálculo vacía, copia su ID en sheetId y pega este código en Extensiones → Apps Script.
+ *  1. La hoja "Pedidos Embutidos Salamanca" ya existe (sheetId) y este código ya está en el proyecto de Apps Script.
  *  2. Ejecuta la función "configurar" y acepta los permisos.
  *  3. Implementar → Nueva implementación → Aplicación web · Ejecutar como: Yo · Acceso: Cualquier usuario.
  *  4. Copia la URL que acaba en /exec y pégala en apiUrl (embutidos-salamanca-pedidos/index.html).
  */
 
 const CFG = {
-  sheetId: "PEGAR_AQUI_EL_ID_DE_LA_HOJA",
+  sheetId: "1O1v7FwT271GQa0B534jlDHFZhJEhYbDiBR7SWiiQejg",
   negocio: "Embutidos Salamanca",
   avisoA: "thesqvare@gmail.com",            // PRUEBAS: al entregar, poner el correo de la tienda
   whatsapp: "34648515835",                  // PRUEBAS: al entregar, poner el WhatsApp de la tienda
