@@ -1,0 +1,65 @@
+name: Buscar imágenes libres
+
+# Busca fotos con licencia libre en Wikimedia Commons para los términos de
+# _imagenes/busqueda.json, guarda las candidatas (con autor y licencia) en
+# _imagenes/candidatas/ y las sube al repositorio para revisarlas.
+on:
+  push:
+    paths: ["_imagenes/busqueda.json"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar y descargar
+        run: |
+          python3 - <<'PY'
+          import json, os, re, urllib.parse, urllib.request
+          UA = {"User-Agent": "TheSqvareBot/1.0 (https://thesqvare.com; thesqvare@gmail.com)"}
+          LIBRES = re.compile(r"^(cc0|public domain|pd|cc by(-sa)? ?[1-4]\.0|cc by(-sa)? ?2\.5)", re.I)
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+                  return r.read()
+          cfg = json.load(open("_imagenes/busqueda.json"))
+          base = "_imagenes/candidatas"
+          os.makedirs(base, exist_ok=True)
+          indice = {}
+          for clave, consultas in cfg.items():
+              os.makedirs(f"{base}/{clave}", exist_ok=True)
+              vistos, lista = set(), []
+              for q in consultas:
+                  params = {"action": "query", "format": "json", "generator": "search", "gsrnamespace": "6",
+                            "gsrsearch": q + " filetype:bitmap", "gsrlimit": "20", "prop": "imageinfo",
+                            "iiprop": "url|extmetadata|size", "iiurlwidth": "900"}
+                  data = json.loads(get("https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode(params)))
+                  for p in sorted(data.get("query", {}).get("pages", {}).values(), key=lambda p: p.get("index", 99)):
+                      ii = p.get("imageinfo", [{}])[0]; md = ii.get("extmetadata", {})
+                      lic = md.get("LicenseShortName", {}).get("value", "")
+                      if p["title"] in vistos or not LIBRES.match(lic) or ii.get("width", 0) < 600:
+                          continue
+                      vistos.add(p["title"])
+                      autor = re.sub("<[^>]+>", "", md.get("Artist", {}).get("value", "")).strip()
+                      lista.append({"titulo": p["title"], "licencia": lic, "licencia_url": md.get("LicenseUrl", {}).get("value", ""),
+                                    "autor": autor, "pagina": ii.get("descriptionurl"), "thumb": ii.get("thumburl")})
+              for i, it in enumerate(lista[:10]):
+                  nombre = f"{i:02d}.jpg"
+                  try:
+                      open(f"{base}/{clave}/{nombre}", "wb").write(get(it["thumb"]))
+                      it["archivo"] = f"{clave}/{nombre}"
+                  except Exception as e:
+                      it["error"] = str(e)
+              indice[clave] = lista[:10]
+          json.dump(indice, open(f"{base}/indice.json", "w"), ensure_ascii=False, indent=1)
+          PY
+      - name: Subir candidatas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add _imagenes/candidatas
+          git commit -m "Imágenes libres candidatas (Wikimedia Commons)" || exit 0
+          git pull --rebase origin main && git push
