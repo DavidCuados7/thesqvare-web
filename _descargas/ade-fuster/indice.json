@@ -1,0 +1,745 @@
+{
+ "paginas": [
+  {
+   "i": 0,
+   "url": "https://www.basquetcatala.cat/club/143",
+   "ok": true,
+   "bytes": 12487
+  },
+  {
+   "i": 1,
+   "url": "https://adefuster.com/",
+   "ok": true,
+   "bytes": 154339
+  },
+  {
+   "i": 2,
+   "url": "https://adefuster.com/qui-som/",
+   "ok": true,
+   "bytes": 119894
+  },
+  {
+   "i": 3,
+   "url": "https://adefuster.com/equips/",
+   "ok": false,
+   "error": "HTTP Error 404: Not Found"
+  },
+  {
+   "i": 4,
+   "url": "https://adefuster.com/wp-json/wp/v2/media?per_page=100",
+   "ok": true,
+   "bytes": 511431
+  },
+  {
+   "i": 5,
+   "url": "https://adefuster.com/wp-json/wp/v2/media?per_page=100&page=2",
+   "ok": true,
+   "bytes": 65984
+  },
+  {
+   "i": 6,
+   "url": "https://www.instagram.com/adefuster/",
+   "ok": true,
+   "bytes": 509240
+  },
+  {
+   "i": 7,
+   "url": "https://www.facebook.com/ade.fuster.1",
+   "ok": false,
+   "error": "HTTP Error 400: Bad Request"
+  },
+  {
+   "i": 8,
+   "url": "https://www.territoribc.com/ade-fuster",
+   "ok": true,
+   "bytes": 386740
+  }
+ ],
+ "imagenes": [
+  {
+   "archivo": "fb03feccbc.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/cafe-i-llusione.png",
+   "bytes": 108943
+  },
+  {
+   "archivo": "e25444c69f.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/castellers.png",
+   "bytes": 48980
+  },
+  {
+   "archivo": "b65f49e2c8.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/catgas.jpg",
+   "bytes": 34465
+  },
+  {
+   "archivo": "addfc2488a.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2.png",
+   "bytes": 4341
+  },
+  {
+   "archivo": "6841f4926e.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic1.jpg",
+   "bytes": 407689
+  },
+  {
+   "archivo": "1f5c131966.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic11.png",
+   "bytes": 12730
+  },
+  {
+   "archivo": "d9ebbc71cd.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic12.png",
+   "bytes": 11775
+  },
+  {
+   "archivo": "227b474713.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic13.png",
+   "bytes": 11721
+  },
+  {
+   "archivo": "c642690eac.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic14.png",
+   "bytes": 14965
+  },
+  {
+   "archivo": "035bd7d0ed.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic19.jpg",
+   "bytes": 124055
+  },
+  {
+   "archivo": "22c3d3e033.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic2.png",
+   "bytes": 351484
+  },
+  {
+   "archivo": "d3848e38af.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic20.jpg",
+   "bytes": 51448
+  },
+  {
+   "archivo": "c50e321c9f.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic22.jpg",
+   "bytes": 301806
+  },
+  {
+   "archivo": "dec7538530.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic23.png",
+   "bytes": 320185
+  },
+  {
+   "archivo": "f98a7f0272.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic24.jpg",
+   "bytes": 300007
+  },
+  {
+   "archivo": "f967aa64d7.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic26.jpg",
+   "bytes": 282773
+  },
+  {
+   "archivo": "819bddae44.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic27.jpg",
+   "bytes": 228431
+  },
+  {
+   "archivo": "7b08a5002a.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic28.jpg",
+   "bytes": 391493
+  },
+  {
+   "archivo": "e2bfbb97fe.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic3.png",
+   "bytes": 7076
+  },
+  {
+   "archivo": "34ee8b6095.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic31.jpg",
+   "bytes": 238769
+  },
+  {
+   "archivo": "152519c2a1.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic32.jpg",
+   "bytes": 265583
+  },
+  {
+   "archivo": "14b441f97c.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic33.jpg",
+   "bytes": 369299
+  },
+  {
+   "archivo": "c3ca967a23.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic34.jpg",
+   "bytes": 272357
+  },
+  {
+   "archivo": "90024c77ad.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic35.png",
+   "bytes": 4480
+  },
+  {
+   "archivo": "481d8cec5c.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic36.png",
+   "bytes": 4535
+  },
+  {
+   "archivo": "8e855af048.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic37.png",
+   "bytes": 4495
+  },
+  {
+   "archivo": "1885d68b29.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic38.jpg",
+   "bytes": 201862
+  },
+  {
+   "archivo": "6617730548.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic39.jpg",
+   "bytes": 104195
+  },
+  {
+   "archivo": "de0cb7cc3e.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic4.jpg",
+   "bytes": 229237
+  },
+  {
+   "archivo": "eefdbd4283.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic40.jpg",
+   "bytes": 101475
+  },
+  {
+   "archivo": "d5295dd48b.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic41.jpg",
+   "bytes": 140293
+  },
+  {
+   "archivo": "48fbf05a76.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic42.jpg",
+   "bytes": 85748
+  },
+  {
+   "archivo": "f8a42eaf9f.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic43.jpg",
+   "bytes": 116176
+  },
+  {
+   "archivo": "5290f4fbbb.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic44.jpg",
+   "bytes": 97145
+  },
+  {
+   "archivo": "3436499ca0.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic45.jpg",
+   "bytes": 341653
+  },
+  {
+   "archivo": "9c93b20508.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic5.jpg",
+   "bytes": 433260
+  },
+  {
+   "archivo": "19bfcdb1c0.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic6.jpg",
+   "bytes": 380507
+  },
+  {
+   "archivo": "bdd71f82c4.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic7.png",
+   "bytes": 4640
+  },
+  {
+   "archivo": "499b03b274.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic8.png",
+   "bytes": 3049
+  },
+  {
+   "archivo": "954de31f0c.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/football2_pic9.png",
+   "bytes": 3292
+  },
+  {
+   "archivo": "c9b67d3aea.png",
+   "url": "https://adefuster.com/wp-content/uploads/2019/05/retina-football2.png",
+   "bytes": 7448
+  },
+  {
+   "archivo": "957539de09.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2019/06/football2_pic48.jpg",
+   "bytes": 417725
+  },
+  {
+   "archivo": "9afdb47717.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/ADE-FUSTER-campeones.jpg",
+   "bytes": 33581
+  },
+  {
+   "archivo": "86251904cd.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Balon-de-Basquetbol.jpg",
+   "bytes": 188556
+  },
+  {
+   "archivo": "900209f624.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Cadete-A.jpg",
+   "bytes": 412964
+  },
+  {
+   "archivo": "5132e2de66.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Cadete-B.jpg",
+   "bytes": 363936
+  },
+  {
+   "archivo": "08e1752f9b.png",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Captura-de-pantalla-2023-03-27-122308.png",
+   "bytes": 44546
+  },
+  {
+   "archivo": "72618095e6.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/EQUIPO-1.jpg",
+   "bytes": 212272
+  },
+  {
+   "archivo": "d1ae248911.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/FONDO-HOME.jpg",
+   "bytes": 148522
+  },
+  {
+   "archivo": "358a56a37c.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Historia.jpg",
+   "bytes": 86720
+  },
+  {
+   "archivo": "054350ce18.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Infantil.jpg",
+   "bytes": 385699
+  },
+  {
+   "archivo": "de4b81dd63.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Junior.jpg",
+   "bytes": 385762
+  },
+  {
+   "archivo": "1543150cff.png",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Logo-final-ade-fuster2.png",
+   "bytes": 58522
+  },
+  {
+   "archivo": "051cbf3e43.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Madres.jpg",
+   "bytes": 366605
+  },
+  {
+   "archivo": "6a80329609.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Mini.jpg",
+   "bytes": 464304
+  },
+  {
+   "archivo": "570a288ed3.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Padres.jpg",
+   "bytes": 394158
+  },
+  {
+   "archivo": "21dda430b8.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos1-1.jpg",
+   "bytes": 200783
+  },
+  {
+   "archivo": "9cd8f7c4ab.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos1.jpg",
+   "bytes": 200783
+  },
+  {
+   "archivo": "47a117f2c6.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos2-1.jpg",
+   "bytes": 227483
+  },
+  {
+   "archivo": "fd3751d9a0.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos2.jpg",
+   "bytes": 227483
+  },
+  {
+   "archivo": "6536befe6d.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos3.jpg",
+   "bytes": 186676
+  },
+  {
+   "archivo": "9ef11e2a5c.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos4.jpg",
+   "bytes": 219154
+  },
+  {
+   "archivo": "859d970f3b.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Partidos5.jpg",
+   "bytes": 170589
+  },
+  {
+   "archivo": "47e993ebd7.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Pere-de-tera-1.jpg",
+   "bytes": 428209
+  },
+  {
+   "archivo": "7b79d4f734.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Premini.jpg",
+   "bytes": 399002
+  },
+  {
+   "archivo": "90a7b39011.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Primer-d_Escola-1.jpg",
+   "bytes": 410133
+  },
+  {
+   "archivo": "6e942b7c3d.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/Primer-d_Escola.jpg",
+   "bytes": 410133
+  },
+  {
+   "archivo": "3564fb824b.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/atleta-masculino-baloncesto-posando.jpg",
+   "bytes": 1305804
+  },
+  {
+   "archivo": "6e805031ed.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/cancha-baloncesto-gente-fan-sport-arena-render-3d-ilustracion.jpg",
+   "bytes": 982218
+  },
+  {
+   "archivo": "8dc52af7f2.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/footer.jpg",
+   "bytes": 149539
+  },
+  {
+   "archivo": "ca3aecc2e7.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/footer2.jpg",
+   "bytes": 70478
+  },
+  {
+   "archivo": "0858a4ca0c.png",
+   "url": "https://adefuster.com/wp-content/uploads/2023/03/logo-ade-fuster-blanco.png",
+   "bytes": 483289
+  },
+  {
+   "archivo": "842c9639af.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0002.jpg",
+   "bytes": 1087907
+  },
+  {
+   "archivo": "e3659d1fdc.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0003.jpg",
+   "bytes": 1092794
+  },
+  {
+   "archivo": "fecadbb7cf.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0004.jpg",
+   "bytes": 1097544
+  },
+  {
+   "archivo": "6ff5b629a2.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0005.jpg",
+   "bytes": 1172584
+  },
+  {
+   "archivo": "49a6b9cf6a.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0006.jpg",
+   "bytes": 1109226
+  },
+  {
+   "archivo": "d5db8d2a6b.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0007.jpg",
+   "bytes": 1127676
+  },
+  {
+   "archivo": "4cda0012b6.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0008.jpg",
+   "bytes": 1139808
+  },
+  {
+   "archivo": "e342a04762.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0009.jpg",
+   "bytes": 1204260
+  },
+  {
+   "archivo": "ac5e53e85b.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0010.jpg",
+   "bytes": 1149081
+  },
+  {
+   "archivo": "91d257b3ac.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0011.jpg",
+   "bytes": 1180849
+  },
+  {
+   "archivo": "76b913f7e8.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0013.jpg",
+   "bytes": 1112893
+  },
+  {
+   "archivo": "3e2f645ec6.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/08/DSC_0020.jpg",
+   "bytes": 453386
+  },
+  {
+   "archivo": "b4aadd1968.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/09/DSC_0008-scaled.jpg",
+   "bytes": 530738
+  },
+  {
+   "archivo": "ff8b59d0cd.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2023/09/DSC_0008.jpg",
+   "bytes": 15249402
+  },
+  {
+   "archivo": "db80167b01.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/BANNER-FUSTER-e1705670046426.jpg",
+   "bytes": 164898
+  },
+  {
+   "archivo": "225b3a8319.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/BANNER-FUSTER.jpg",
+   "bytes": 310797
+  },
+  {
+   "archivo": "e848f0f269.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic22.jpg",
+   "bytes": 301806
+  },
+  {
+   "archivo": "c2495c1be7.png",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic23.png",
+   "bytes": 320185
+  },
+  {
+   "archivo": "c68635144c.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic24.jpg",
+   "bytes": 300007
+  },
+  {
+   "archivo": "525a51105f.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic26.jpg",
+   "bytes": 282773
+  },
+  {
+   "archivo": "bbffa108f8.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic27.jpg",
+   "bytes": 228431
+  },
+  {
+   "archivo": "39c3875e96.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic28.jpg",
+   "bytes": 391493
+  },
+  {
+   "archivo": "aacb93b1d5.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic31.jpg",
+   "bytes": 238769
+  },
+  {
+   "archivo": "7a672921a5.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/01/football2_pic48.jpg",
+   "bytes": 417725
+  },
+  {
+   "archivo": "f9ad45a59d.png",
+   "url": "https://adefuster.com/wp-content/uploads/2024/03/Favi-adefuster.png",
+   "bytes": 4577
+  },
+  {
+   "archivo": "2abe4f1cde.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-17.39.38-1.jpeg",
+   "bytes": 714898
+  },
+  {
+   "archivo": "3f20033820.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-17.46.39.jpeg",
+   "bytes": 222926
+  },
+  {
+   "archivo": "9580344783.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-17.55.56.jpeg",
+   "bytes": 217838
+  },
+  {
+   "archivo": "455e89d49e.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.01.10.jpeg",
+   "bytes": 431051
+  },
+  {
+   "archivo": "635aa546dd.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.50-1.jpeg",
+   "bytes": 308628
+  },
+  {
+   "archivo": "ce2f3bdfaf.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.50-2.jpeg",
+   "bytes": 312975
+  },
+  {
+   "archivo": "5e68a8b7b0.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.50.jpeg",
+   "bytes": 330647
+  },
+  {
+   "archivo": "42a8e18fce.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.51-1.jpeg",
+   "bytes": 312961
+  },
+  {
+   "archivo": "c70f83e3d7.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.51-2.jpeg",
+   "bytes": 307452
+  },
+  {
+   "archivo": "d4a6d01254.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.51-3.jpeg",
+   "bytes": 316796
+  },
+  {
+   "archivo": "7432e42688.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.51.jpeg",
+   "bytes": 308132
+  },
+  {
+   "archivo": "260482b4f9.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.52-1.jpeg",
+   "bytes": 368188
+  },
+  {
+   "archivo": "fe985c8c12.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.07.52.jpeg",
+   "bytes": 322038
+  },
+  {
+   "archivo": "52d583aa26.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.09.26.jpeg",
+   "bytes": 698358
+  },
+  {
+   "archivo": "5d4d60c5a9.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.15.41-1.jpeg",
+   "bytes": 368918
+  },
+  {
+   "archivo": "2acd6acb41.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.15.41.jpeg",
+   "bytes": 191450
+  },
+  {
+   "archivo": "9de9f09dbb.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.15.42-1.jpeg",
+   "bytes": 390555
+  },
+  {
+   "archivo": "e0643568a2.jpeg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-18.15.42.jpeg",
+   "bytes": 642351
+  },
+  {
+   "archivo": "3d9c363d33.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/09/Codigo-de-conducta-2-pdf.jpg",
+   "bytes": 92853
+  },
+  {
+   "archivo": "4389e75e6e.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/09/Codigo-de-conducta-pdf.jpg",
+   "bytes": 92853
+  },
+  {
+   "archivo": "00928dac1f.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/09/Estandares-de-seleccion-y-contratacion-1-pdf.jpg",
+   "bytes": 94776
+  },
+  {
+   "archivo": "600f252159.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/09/Estandares-de-seleccion-y-contratacion-pdf.jpg",
+   "bytes": 94776
+  },
+  {
+   "archivo": "c11d69416d.jpg",
+   "url": "https://adefuster.com/wp-content/uploads/2024/09/Funciones-y-responsabilidades-protecccion-de-la-infancia-pdf.jpg",
+   "bytes": 76547
+  },
+  {
+   "archivo": "6beac326a4.jpg",
+   "url": "https://files.cdn-files-a.com/uploads/4576440/2000_6a7b64631dc44.jpg",
+   "bytes": 8879
+  },
+  {
+   "archivo": "577ab56724.png",
+   "url": "https://files.cdn-files-a.com/uploads/4576440/400_6a7b5b3372052.png",
+   "bytes": 132387
+  },
+  {
+   "archivo": "16e66cd1f3.png",
+   "url": "https://files.cdn-files-a.com/uploads/4576440/400_filter_nobg_66d6cb1a2019c.png",
+   "bytes": 72479
+  },
+  {
+   "archivo": "bf5c4d2296.png",
+   "url": "https://files.cdn-files-a.com/uploads/4576440/400_filter_nobg_6a7b5b4507702.png",
+   "bytes": 204363
+  },
+  {
+   "archivo": "429ba34765.png",
+   "url": "https://files.cdn-files-a.com/uploads/4576440/800_6a7b309425162.png",
+   "bytes": 494146
+  },
+  {
+   "archivo": "c684290250.png",
+   "url": "https://files.cdn-files-a.com/uploads/4576440/800_6a7b50918da05.png",
+   "bytes": 94723
+  },
+  {
+   "archivo": "7cce5ae58a.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/y9/r/MptwNl-B2pS.webp",
+   "bytes": 5098
+  },
+  {
+   "archivo": "3dfee69884.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yD/r/9TAuf3e3l84.webp",
+   "bytes": 7550
+  },
+  {
+   "archivo": "3d9ca36fa1.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yJ/r/5ZswOtuL4pq.webp",
+   "bytes": 3588
+  },
+  {
+   "archivo": "d47cb222ee.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yL/r/avQDnJ1wuet.webp",
+   "bytes": 3370
+  },
+  {
+   "archivo": "5d1db0e715.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yL/r/rULIXUVt8H2.webp",
+   "bytes": 5994
+  },
+  {
+   "archivo": "b12c15735c.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yY/r/5OCV_xUyQ5h.webp",
+   "bytes": 4380
+  },
+  {
+   "archivo": "5132485fdb.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yc/r/XBhi5J1ioEM.webp",
+   "bytes": 48002
+  },
+  {
+   "archivo": "f61972696b.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yg/r/q8RAqSPO1Kz.webp",
+   "bytes": 10746
+  },
+  {
+   "archivo": "17ccd065ed.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yr/r/QO8ZcV7ts3o.webp",
+   "bytes": 6294
+  },
+  {
+   "archivo": "a4d8eb3311.webp",
+   "url": "https://static.cdninstagram.com/rsrc.php/yw/r/icwX0xAk0pz.webp",
+   "bytes": 5038
+  },
+  {
+   "archivo": "ab974d0a29.png",
+   "url": "https://www.basquetcatala.cat/apps/web/continguts/css/plantilles/2017/img/logos/fcbq2024.png",
+   "bytes": 4476
+  }
+ ]
+}

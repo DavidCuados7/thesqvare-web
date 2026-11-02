@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verificació de seguretat · Bàsquet Català</title>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR799BM9VD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HR799BM9VD');
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* ══════════════════════════════════
+           PANELL ESQUERRE — marca
+        ══════════════════════════════════ */
+        .panel-brand {
+            width: 360px;
+            flex-shrink: 0;
+            background: #014c78;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 56px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-brand::before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.1);
+            top: -80px;
+            right: -120px;
+        }
+        .panel-brand::after {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.07);
+            bottom: -60px;
+            left: -80px;
+        }
+
+        .brand-logo {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 40px;
+        }
+        .brand-logo img {
+            width: auto;
+        }
+
+        .brand-divider {
+            width: 40px;
+            height: 3px;
+            background: rgba(255,255,255,.4);
+            border-radius: 2px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: rgba(255,255,255,.6);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .brand-text strong {
+            display: block;
+            color: #eee;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+
+
+        /* ══════════════════════════════════
+           PANELL DRET — contingut
+        ══════════════════════════════════ */
+        .panel-content {
+            flex: 1;
+            background: #f4f5f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 56px 48px;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Icona */
+        .icon-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #014c78;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 16px rgb(1 76 120 / 20%)
+        }
+        .icon-ring svg {
+            width: 32px;
+            height: 32px;
+            fill: #014c78;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #242D33;
+            letter-spacing: -.4px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #6a7e8a;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        /* Card estat */
+        .status-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px 28px;
+            box-shadow: 0 1px 4px rgba(36,45,51,.07), 0 6px 24px rgba(36,45,51,.06);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Spinner */
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid #e8ecef;
+            border-top-color: #014c78;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #242D33;
+            margin-bottom: 4px;
+        }
+        .status-sub {
+            font-size: 13px;
+            color: #9aabb5;
+        }
+
+        /* Error state */
+        .error-wrap {
+            display: none;
+            text-align: center;
+        }
+        .error-icon-ring {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff5f5;
+            border: 2px solid #fca5a5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .error-icon-ring svg {
+            width: 28px;
+            height: 28px;
+            fill: #ef4444;
+        }
+        .error-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #242D33;
+            margin-bottom: 8px;
+        }
+        .error-text {
+            font-size: 13px;
+            color: #6a7e8a;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .btn-retry {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #014c78;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background .15s;
+        }
+        .btn-retry:hover { background: #c45e00; color: #fff; }
+
+        /* Footer */
+        .page-footer {
+            font-size: 12px;
+            color: #9aabb5;
+        }
+        .page-footer a {
+            color: #9aabb5;
+            text-decoration: none;
+        }
+        .page-footer a:hover { color: #014c78; }
+
+        /* ══════════════════════════════════
+           RESPONSIVE — mòbil
+        ══════════════════════════════════ */
+        @media (max-width: 720px) {
+            body { flex-direction: column; }
+
+            .panel-brand {
+                width: 100%;
+                flex-direction: row;
+                gap: 16px;
+                padding: 18px 24px;
+                justify-content: flex-start;
+            }
+            .brand-logo { margin-bottom: 0; }
+            .brand-logo img { height: 36px; }
+            .brand-divider { width: 2px; height: 28px; margin: 0; }
+            .brand-text { text-align: left; }
+            .brand-text strong { font-size: 13px; margin-bottom: 2px; }
+
+            .panel-content { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Panell esquerre -->
+    <aside class="panel-brand">
+        <div class="brand-logo">
+            <a href="https://www.basquetcatala.cat">
+                <img src="https://www.basquetcatala.cat/apps/web/continguts/css/plantilles/2017/img/logos/fcbq2024.png" alt="Bàsquet Català">
+            </a>
+        </div>
+        <div class="brand-divider"></div>
+        <div class="brand-text">
+            <strong>Sistema de seguretat</strong>
+            Estem protegint l'accés al web oficial de la Federació Catalana de Bàsquet.
+        </div>
+
+
+    </aside>
+
+    <!-- Panell dret -->
+    <main class="panel-content">
+        <div class="content-box">
+
+            <div class="icon-ring">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/>
+                </svg>
+            </div>
+
+            <h1>Verificació de seguretat</h1>
+            <p class="subtitle">Comprovant que la teva connexió és segura. Espera un moment.</p>
+
+            <div class="status-card">
+                <div id="spinner-wrap">
+                    <div class="spinner"></div>
+                    <p class="status-text" id="status-text">Verificant connexió...</p>
+                    <p class="status-sub">Això trigarà un moment</p>
+                </div>
+
+                <div class="error-wrap" id="error-wrap">
+                    <div class="error-icon-ring">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                    </div>
+                    <p class="error-title">No hem pogut verificar</p>
+                    <p class="error-text" id="error-text">No hem pogut verificar automàticament. Fes clic per continuar la verificació manualment.</p>
+                    <a href="#" class="btn-retry" id="btn-retry">Verificar manualment</a>
+                </div>
+            </div>
+
+            <p class="page-footer">
+                Protegit per reCAPTCHA · Google
+                <a href="https://policies.google.com/privacy">Privadesa</a>
+            </p>
+
+        </div>
+    </main>
+
+<script>
+    window.recaptchaSiteKey = '6LesyoUsAAAAAOlplDdk9hsYi5ftP2kt6Iy45cWZ';
+    window.urlbase          = "https:\/\/www.basquetcatala.cat";
+    window.fcbqValidUntil   = 0;
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LesyoUsAAAAAOlplDdk9hsYi5ftP2kt6Iy45cWZ" async></script>
+<script src="https://www.basquetcatala.cat/apps/web/continguts/js/recaptcha.js?v0.3.93"></script>
+
+<script>
+(function () {
+    'use strict';
+
+    const redirectUrl  = "\/club\/143";
+    const urlBase      = "https:\/\/www.basquetcatala.cat";
+    const bloquejatUrl = urlBase + '/access-denied' + (redirectUrl ? '?redirect=' + encodeURIComponent(redirectUrl) : '');
+
+    const statusText = document.getElementById('status-text');
+
+    function onOk(serverRedirect) {
+        statusText.textContent = 'Verificació completada. Redirigint...';
+        window.location.href   = serverRedirect || redirectUrl || urlBase;
+    }
+
+    function onFail() {
+        window.location.href = bloquejatUrl;
+    }
+
+    function fetchWithTimeout(url, options, ms) {
+        const controller = new AbortController();
+        const tid = setTimeout(() => controller.abort(), ms);
+        return fetch(url, Object.assign({}, options, { signal: controller.signal }))
+            .finally(() => clearTimeout(tid));
+    }
+
+    // Timeout global de 15s: si grecaptcha no carrega o res no respon → access-denied (v2 manual)
+    const globalTimeout = setTimeout(onFail, 15000);
+
+    function done(ok, serverRedirect) {
+        clearTimeout(globalTimeout);
+        ok ? onOk(serverRedirect) : onFail();
+    }
+
+    (function waitAndVerify() {
+        if (window.fcbq && window.fcbq.recaptcha) {
+            window.fcbq.recaptcha.getToken('pageload')
+                .then(token => fetchWithTimeout(urlBase + '/recaptcha/verifica', {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+                    body:    'recaptcha_token=' + encodeURIComponent(token) + '&accio=pageload&redirect=' + encodeURIComponent(redirectUrl),
+                }, 15000))
+                .then(res => res.json())
+                .then(data => done(data.ok, data.redirect_to))
+                .catch(() => done(false));
+        } else {
+            setTimeout(waitAndVerify, 50);
+        }
+    }());
+
+}());
+</script>
+</body>
+</html>
