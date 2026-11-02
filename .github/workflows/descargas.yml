@@ -5,6 +5,7 @@ name: Descargar material de clientes
 on:
   push:
     paths: ["_descargas/*.json"]
+  # cada .json: {"paginas": [urls], "imagenes": {"nombre": url}}
   workflow_dispatch: {}
 
 permissions:
@@ -28,7 +29,7 @@ jobs:
               cli = os.path.splitext(os.path.basename(cfg))[0]
               out = f"_descargas/{cli}"; os.makedirs(f"{out}/paginas", exist_ok=True); os.makedirs(f"{out}/img", exist_ok=True)
               log, imgs = [], set()
-              for i, url in enumerate(json.load(open(cfg))["paginas"]):
+              for i, url in enumerate(json.load(open(cfg)).get("paginas", [])):
                   try:
                       body, ct = get(url)
                       ext = "json" if "json" in ct else "html"
@@ -42,6 +43,14 @@ jobs:
                   except Exception as e:
                       log.append({"i": i, "url": url, "ok": False, "error": str(e)})
               idx = []
+              for nom, u in json.load(open(cfg)).get("imagenes", {}).items():
+                  try:
+                      body, ct = get(u)
+                      ext = "png" if "png" in ct else ("webp" if "webp" in ct else "jpg")
+                      open(f"{out}/img/{nom}.{ext}", "wb").write(body)
+                      idx.append({"archivo": f"{nom}.{ext}", "bytes": len(body), "tipo": ct})
+                  except Exception as e:
+                      idx.append({"nombre": nom, "error": str(e)})
               for u in sorted(imgs):
                   if re.search(r"-\d+x\d+\.(jpe?g|png|webp)", u):  # miniaturas de WordPress
                       continue
