@@ -296,3 +296,32 @@ T.update({
 "MAR": ("DM", "TUE"), "MIÉ": ("DC", "WED"), "JUE": ("DJ", "THU"), "VIE": ("DV", "FRI"), "SÁB": ("DS", "SAT"),
 "tunegocio.com": ("tunegoci.com", "yourbusiness.com"),
 })
+
+# Webs de ejemplo TheSqvare Bar y TheSqvare Barber (versión noviembre 2026)
+T.update({
+"Web de ejemplo de The Sqvare.": ("Web d'exemple de The Sqvare.", "Sample website by The Sqvare."),
+"Todo lo que ves funciona, también las reservas.": ("Tot el que veus funciona, també les reserves.", "Everything works, bookings included."),
+"Todo lo que ves funciona, también las citas.": ("Tot el que veus funciona, també les cites.", "Everything works, appointments included."),
+"Quiero una así →": ("En vull una així →", "I want one like this →"),
+"Tapas · brasa · vermut": ("Tapes · brasa · vermut", "Tapas · grill · vermouth"),
+"La carta": ("La carta", "Menu"), "Menú del día": ("Menú del dia", "Set lunch menu"), "El local": ("El local", "The place"),
+"Dónde estamos": ("On som", "Find us"), "Reservar mesa": ("Reservar taula", "Book a table"), "Ver la carta": ("Veure la carta", "See the menu"),
+"Tapas de siempre,": ("Tapes de sempre,", "Classic tapas,"), "brasa": ("brasa", "real"), "de verdad.": ("de debò.", "charcoal grill."),
+"menú del día": ("menú del dia", "set lunch"), "plazas y terraza": ("places i terrassa", "seats and terrace"), "mediodía y noche": ("migdia i nit", "lunch and dinner"),
+"Para picar": ("Per picar", "To share"), "Brasa y principales": ("Brasa i principals", "Grill and mains"), "Postres": ("Postres", "Desserts"), "Para beber": ("Per beure", "Drinks"),
+"Reserva": ("Reserva", "Book"), "tu mesa": ("la teva taula", "your table"), "¿Cuántos sois?": ("Quants sou?", "How many are you?"),
+"Día": ("Dia", "Day"), "Hora": ("Hora", "Time"), "Tus datos": ("Les teves dades", "Your details"), "Nombre": ("Nom", "Name"), "Teléfono": ("Telèfon", "Phone"),
+"Tu reserva": ("La teva reserva", "Your booking"), "Mesa": ("Taula", "Table"), "Confirmar reserva": ("Confirmar reserva", "Confirm booking"),
+"Comida": ("Dinar", "Lunch"), "Cena": ("Sopar", "Dinner"), "Mañana": ("Matí", "Morning"), "Tarde": ("Tarda", "Afternoon"),
+"Lo que dicen": ("El que diuen", "What people say"), "de nosotros": ("de nosaltres", "about us"), "los clientes": ("els clients", "our clients"),
+"Opiniones de ejemplo · en tu web salen tus reseñas reales de Google": ("Opinions d'exemple · a la teva web surten les teves ressenyes reals de Google", "Sample reviews · your site shows your real Google reviews"),
+"Dónde": ("On", "Where"), "estamos": ("som", "we are"), "Dirección de ejemplo": ("Adreça d'exemple", "Sample address"), "Correo": ("Correu", "Email"),
+"Lunes": ("Dilluns", "Monday"), "Martes": ("Dimarts", "Tuesday"), "Miércoles": ("Dimecres", "Wednesday"), "Jueves": ("Dijous", "Thursday"), "Viernes": ("Divendres", "Friday"), "Sábado": ("Dissabte", "Saturday"), "Domingo": ("Diumenge", "Sunday"), "Cerrado": ("Tancat", "Closed"),
+"Créditos de las fotos": ("Crèdits de les fotos", "Photo credits"), "Aviso legal y privacidad": ("Avís legal i privacitat", "Legal notice and privacy"),
+"Barbería": ("Barberia", "Barbershop"), "Servicios": ("Serveis", "Services"), "El equipo": ("L'equip", "The team"), "Trabajos": ("Treballs", "Our work"), "Pedir cita": ("Demanar cita", "Book now"),
+"Tu corte,": ("El teu tall,", "Your cut,"), "sin esperas.": ("sense esperes.", "no waiting."), "Servicios y precios": ("Serveis i preus", "Services and prices"),
+"corte desde": ("tall des de", "cuts from"), "barberos": ("barbers", "barbers"), "abierto toda la semana": ("obert tota la setmana", "open all week"),
+"Cortes": ("Talls", "Cuts"), "Barba": ("Barba", "Beard"), "Cuidado facial": ("Cura facial", "Facial care"),
+"tu cita": ("la teva cita", "your appointment"), "Servicio": ("Servei", "Service"), "Tu cita": ("La teva cita", "Your appointment"), "Duración": ("Durada", "Duration"), "Precio": ("Preu", "Price"), "Confirmar cita": ("Confirmar cita", "Confirm appointment"),
+"Carta de servicios": ("Carta de serveis", "Service menu"), "La barbería": ("La barberia", "The barbershop"), "Trabajos recientes": ("Treballs recents", "Recent work"), "Cita online": ("Cita en línia", "Online booking"), "Opiniones": ("Opinions", "Reviews"), "Visítanos": ("Visita'ns", "Visit us")
+})

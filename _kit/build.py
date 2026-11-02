@@ -5,8 +5,8 @@ from i18n import T
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = {
   "index.html":                  dict(dark=True,  cta="index", reveal=False, hero=False, body_fade=False, anchor=None),
-  "thesqvare-bar/index.html":    dict(dark=True,  cta="reserva", reveal=True, hero=True, body_fade=True, anchor="#reserva"),
-  "thesqvare-barber/index.html": dict(dark=True,  cta="reserva", reveal=True, hero=True, body_fade=True, anchor="#reserva"),
+  "thesqvare-bar/index.html":    dict(dark=False, cta="reserva", reveal=True, hero=True, body_fade=True, anchor=None),
+  "thesqvare-barber/index.html": dict(dark=True,  cta="reserva", reveal=True, hero=True, body_fade=True, anchor=None),
   "raco-de-piscis/index.html":   dict(dark=False, cta="reserva", reveal=True, hero=True, body_fade=True, anchor="#reservar"),
   "raco-de-piscis-basica/index.html": dict(dark=False, cta="reserva", reveal=True, hero=True, body_fade=True, anchor="#reservar"),
   "barber-prince/index.html":    dict(dark=True,  cta="reserva", reveal=True, hero=True, body_fade=True, anchor="#reserva"),
