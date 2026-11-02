@@ -1,0 +1,65 @@
+name: Descargar material de clientes
+
+# Descarga páginas (HTML/JSON) y todas las imágenes que encuentra en ellas
+# a _descargas/<cliente>/ para preparar webs. Se lanza al subir un _descargas/*.json
+on:
+  push:
+    paths: ["_descargas/*.json"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  descargar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar
+        run: |
+          python3 - <<'PY'
+          import json, os, re, glob, hashlib, urllib.request, urllib.parse
+          UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
+                "Accept-Language": "ca,es;q=0.9"}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
+                  return r.read(), r.headers.get("Content-Type", "")
+          for cfg in glob.glob("_descargas/*.json"):
+              cli = os.path.splitext(os.path.basename(cfg))[0]
+              out = f"_descargas/{cli}"; os.makedirs(f"{out}/paginas", exist_ok=True); os.makedirs(f"{out}/img", exist_ok=True)
+              log, imgs = [], set()
+              for i, url in enumerate(json.load(open(cfg))["paginas"]):
+                  try:
+                      body, ct = get(url)
+                      ext = "json" if "json" in ct else "html"
+                      open(f"{out}/paginas/{i:02d}.{ext}", "wb").write(body)
+                      txt = body.decode("utf-8", "ignore").replace("\\/", "/")
+                      for m in re.findall(r'https?://[^"\'\s<>()]+?\.(?:jpe?g|png|webp)(?:\?[^"\'\s<>()]*)?', txt, re.I):
+                          imgs.add(m.replace("&amp;", "&"))
+                      for m in re.findall(r'(?:src|href|data-src)=["\'](/[^"\']+?\.(?:jpe?g|png|webp))', txt, re.I):
+                          imgs.add(urllib.parse.urljoin(url, m))
+                      log.append({"i": i, "url": url, "ok": True, "bytes": len(body)})
+                  except Exception as e:
+                      log.append({"i": i, "url": url, "ok": False, "error": str(e)})
+              idx = []
+              for u in sorted(imgs):
+                  if re.search(r"-\d+x\d+\.(jpe?g|png|webp)", u):  # miniaturas de WordPress
+                      continue
+                  try:
+                      body, ct = get(u)
+                      if len(body) < 3000: continue
+                      ext = re.search(r"\.(jpe?g|png|webp)", u, re.I).group(1).lower()
+                      name = hashlib.md5(u.encode()).hexdigest()[:10] + "." + ext
+                      open(f"{out}/img/{name}", "wb").write(body)
+                      idx.append({"archivo": name, "url": u, "bytes": len(body)})
+                  except Exception as e:
+                      idx.append({"url": u, "error": str(e)})
+              json.dump({"paginas": log, "imagenes": idx}, open(f"{out}/indice.json", "w"), ensure_ascii=False, indent=1)
+          PY
+      - name: Subir
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add _descargas
+          git commit -m "Material descargado para clientes" || exit 0
+          git pull --rebase origin main && git push

@@ -1,0 +1,14 @@
+{
+  "nota": "Lista de páginas e imágenes a descargar para la web del ADE Fuster",
+  "paginas": [
+    "https://www.basquetcatala.cat/club/143",
+    "https://adefuster.com/",
+    "https://adefuster.com/qui-som/",
+    "https://adefuster.com/equips/",
+    "https://adefuster.com/wp-json/wp/v2/media?per_page=100",
+    "https://adefuster.com/wp-json/wp/v2/media?per_page=100&page=2",
+    "https://www.instagram.com/adefuster/",
+    "https://www.facebook.com/ade.fuster.1",
+    "https://www.territoribc.com/ade-fuster"
+  ]
+}
