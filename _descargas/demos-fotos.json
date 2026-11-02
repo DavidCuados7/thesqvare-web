@@ -1,0 +1,33 @@
+{
+ "nota": "Búsqueda de fotos libres (Unsplash) para las webs de ejemplo TheSqvare Bar y TheSqvare Barber",
+ "paginas": [
+  "https://unsplash.com/napi/search/photos?query=barbershop&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=barber%20haircut&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=beard%20trim%20barber&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=barber%20chair&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=barbershop%20interior&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=tapas%20bar&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=tapas&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=restaurant%20interior%20warm&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=bar%20counter&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=vermouth&per_page=20",
+  "https://unsplash.com/napi/search/photos?query=spanish%20restaurant&per_page=20",
+  "https://unsplash.com/napi/photos/PDDvMlScofU",
+  "https://unsplash.com/napi/photos/codY8UmLlu0",
+  "https://unsplash.com/napi/photos/6gs0o1G6-XM",
+  "https://unsplash.com/napi/photos/eu5PNM_ULTg",
+  "https://unsplash.com/napi/photos/1u_vA8e9cmo",
+  "https://unsplash.com/napi/photos/ydd_DCROCTA",
+  "https://unsplash.com/napi/photos/BBGyxhtPpC0",
+  "https://unsplash.com/napi/photos/OOKPHqAICKA",
+  "https://unsplash.com/napi/photos/97p-gmep5kE",
+  "https://unsplash.com/napi/photos/EW_rqoSdDes",
+  "https://unsplash.com/napi/photos/dU6eE_j2My8",
+  "https://unsplash.com/napi/photos/-V-ENAd192g",
+  "https://unsplash.com/napi/photos/oVPUOmIwgEg",
+  "https://unsplash.com/napi/photos/mLPNw6L5t5o",
+  "https://unsplash.com/napi/photos/x337TitjvNE",
+  "https://unsplash.com/napi/photos/a5lRhApNb3w"
+ ],
+ "imagenes": {}
+}
