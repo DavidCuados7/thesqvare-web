@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADE Fuster · 50 anys de bàsquet a Santa Coloma</title>
+<meta name="description" content="ADE Fuster, el club de bàsquet del Col·legi Fuster de Santa Coloma de Gramenet. 50 anys, 5 equips federats i campions de lliga 2025/26. Vine a provar!">
+<link rel="canonical" href="https://thesqvare.com/ade-fuster/">
+<meta property="og:title" content="ADE Fuster · 50 anys de bàsquet a Santa Coloma">
+<meta property="og:description" content="Somos grandes, somos verdes. 5 equips federats i campions de lliga 2025/26. Vine a provar!">
+<meta property="og:image" content="https://thesqvare.com/ade-fuster/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0F5A30">
+<script>if(!location.hash)document.documentElement.classList.add("intro-on")</script>
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Colors del club */
+  --paper:#F1ECE0;      /* fons crema */
+  --paper2:#E6DECB;
+  --verd:#0F5A30;       /* verd fosc Fuster */
+  --verd2:#13853F;      /* verd samarreta */
+  --fosc:#16241B;       /* franges fosques */
+  --tinta:#1E231F;
+  --gris:#5F665F;
+  --linea:#D5CCB6;
+  --blanc:#FFFDF8;
+  --groc:#F2D21B;       /* groc Fuster */
+  --groc2:#C9A800;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Archivo",system-ui,sans-serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--paper) var(--grain);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--verd2);outline-offset:3px}
+.wrap{width:min(1140px,100% - 36px);margin-inline:auto}
+section{padding:96px 0}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;color:var(--verd);text-wrap:balance}
+h1 em,h2 em,h3 em{font-style:italic;font-weight:500}
+.hero h1 em{background:linear-gradient(transparent 68%,var(--groc) 68%,var(--groc) 92%,transparent 92%);padding:0 .08em}
+h2{font-size:clamp(2.4rem,4.6vw,3.5rem)}
+.intro{color:var(--gris);margin-top:.5rem;max-width:560px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:.75rem 1.6rem;border-radius:999px;border:1.5px solid transparent;font-weight:600;font-size:.98rem;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:19px;height:19px}
+.btn-verd{background:var(--verd);color:var(--paper)}
+.btn-linea{border-color:var(--verd);color:var(--verd);background:transparent}
+.btn-paper{background:var(--paper);color:var(--verd)}
+.btn-groc{background:var(--groc);color:var(--fosc)}
+
+/* Cinta de proposta */
+.proposta{background:var(--verd);color:#DCE8DF;font-size:.86rem}
+.proposta .wrap{display:flex;align-items:center;gap:.8rem;min-height:42px;flex-wrap:wrap;padding:.35rem 0}
+.proposta b{color:var(--groc);font-weight:600}
+.proposta button{background:none;border:0;text-decoration:underline;cursor:pointer;color:#fff}
+.proposta .x{margin-left:auto;text-decoration:none;font-size:1.3rem;line-height:1;opacity:.7}
+
+/* Capçalera */
+header.top{position:sticky;top:0;z-index:40;background:rgba(241,236,224,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+.marca{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.escut{width:48px;height:48px;border-radius:50%;background:var(--verd);border:2px solid var(--groc);display:grid;place-items:center;overflow:hidden;flex:none}
+.escut img{width:86%}
+.escut b{font-family:var(--serif);color:var(--paper);font-size:1rem}
+.marca span{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--verd);line-height:1}
+.marca small{display:block;font-family:var(--sans);font-size:.72rem;font-weight:500;color:var(--gris);letter-spacing:.04em;margin-top:.2rem}
+.nav ul{display:flex;list-style:none;gap:1.7rem;font-size:.95rem}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--verd2)}
+.nav .btn{min-height:44px;padding:.5rem 1.2rem;font-size:.92rem}
+.menu-btn{display:none;background:none;border:1.5px solid var(--verd);color:var(--verd);border-radius:999px;padding:.45rem .95rem;font-weight:600;cursor:pointer}
+@media(max-width:900px){.nav ul,.nav .btn{display:none}.nav{height:64px}.menu-btn{display:block}
+  .nav ul.obert{display:flex;position:absolute;top:100%;left:-18px;right:-18px;padding-left:36px!important;padding-right:36px!important;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--linea);padding:.4rem 18px 1rem;box-shadow:0 20px 30px -20px rgba(0,0,0,.25)}
+  .nav ul.obert a{display:block;padding:.75rem 0;border-bottom:1px solid var(--linea);font-size:1.05rem}}
+
+/* Portada */
+.hero{padding:70px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.etiqueta{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gris)}
+.etiqueta i{width:9px;height:9px;border-radius:50%;background:var(--groc);box-shadow:0 0 0 3px rgba(242,210,27,.3)}
+.hero h1{font-size:clamp(3.2rem,7.4vw,5.8rem);margin:1rem 0 1.3rem}
+.hero .sub{font-size:1.12rem;color:#3F463F;max-width:540px}
+.acciones{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.dades{display:flex;gap:2.2rem;margin-top:2.4rem;flex-wrap:wrap}
+.dades b{font-family:var(--serif);font-size:2.2rem;color:var(--verd);line-height:1;display:block;border-bottom:3px solid var(--groc);padding-bottom:.15rem;margin-bottom:.3rem;width:max-content}
+.dades span{font-size:.85rem;color:var(--gris)}
+.arc{position:relative;justify-self:end;width:100%;max-width:430px}
+.arc .foto{aspect-ratio:4/5;border-radius:999px 999px 18px 18px;overflow:hidden;background:var(--paper2);border:1px solid var(--linea)}
+.arc .foto img{width:100%;height:100%;object-fit:cover}
+.segell{position:absolute;left:-56px;top:26px;width:150px;height:150px;border-radius:50%;background:var(--verd);border:3px solid var(--groc);color:var(--paper);display:grid;place-items:center;box-shadow:0 12px 30px -12px rgba(0,0,0,.4)}
+.segell svg{position:absolute;inset:0;width:100%;height:100%;animation:gira 30s linear infinite}
+.segell img{width:58%;position:relative}
+@keyframes gira{to{transform:rotate(360deg)}}
+.nota-foto{position:absolute;right:12px;bottom:12px;background:rgba(22,36,27,.75);color:#fff;font-size:.72rem;padding:.25rem .6rem;border-radius:999px}
+@media(max-width:560px){.dades{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.dades b{font-size:1.8rem}.dades span{font-size:.78rem;line-height:1.3;display:block}}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.arc{justify-self:center;max-width:320px}.segell{left:-18px;width:112px;height:112px}}
+
+/* Franja fosca: qui som */
+.fosc{background:var(--fosc) var(--grain);color:#C9D3C8}
+.fosc h2,.fosc h3{color:#E7DFC8}
+.fosc h2 em,.fosc h3 em{color:var(--groc)}
+.qui-escut{width:120px;margin-bottom:1.2rem}
+.qui{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start}
+.qui p{margin-top:1rem}
+.xifres{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem 2rem}
+.xifres b{font-family:var(--serif);font-size:2.9rem;color:var(--groc);line-height:1;display:block}
+.xifres span{font-size:.9rem;color:#97A597}
+.fem{margin-top:4rem}
+.fem h3{font-size:1.7rem;margin-bottom:1.4rem}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(231,223,200,.14);border-top:3px solid var(--groc);border-radius:8px;overflow:hidden}
+.card .img{aspect-ratio:4/3;background:#22362A}
+.card .img img{width:100%;height:100%;object-fit:cover}
+.card div.t{padding:1.1rem 1.1rem 1.3rem}
+.card h4{font-family:var(--serif);font-size:1.35rem;color:#E7DFC8;font-weight:600}
+.card p{font-size:.9rem;margin-top:.3rem}
+@media(max-width:900px){.qui{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}}
+
+/* Pestanyes */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.8rem 0 1.4rem}
+.tabs button{border:1.5px solid var(--verd);background:transparent;color:var(--verd);border-radius:999px;padding:.4rem 1rem;font-size:.9rem;font-weight:600;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--verd);color:var(--paper)}
+
+/* Partits */
+.partits{background:var(--paper2) var(--grain)}
+.llista{background:var(--blanc);border:1px solid var(--linea);border-radius:10px}
+.fila{display:grid;grid-template-columns:120px 1fr auto auto;gap:1.2rem;align-items:center;padding:1.05rem 1.4rem;border-bottom:1px solid var(--linea)}
+.fila:last-child{border-bottom:0}
+.fila .dia{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--verd);line-height:1.05}
+.fila .dia small{display:block;font-family:var(--sans);font-size:.78rem;font-weight:500;color:var(--gris)}
+.fila .vs{font-weight:600}
+.fila .vs small{display:block;font-weight:400;color:var(--gris);font-size:.86rem}
+.xip{font-size:.75rem;font-weight:600;padding:.25rem .7rem;border-radius:999px;border:1px solid var(--linea);white-space:nowrap}
+.xip.local{background:var(--groc);color:var(--fosc);border-color:var(--groc2)}
+.grup{font-family:var(--serif);font-size:1.5rem;color:var(--verd);margin:2rem 0 .8rem}
+.grup:first-of-type{margin-top:1.6rem}
+.fila .res.perd{color:var(--gris)}
+.fila .res.guanya{color:var(--verd2)}
+.fila .res{font-family:var(--serif);font-size:1.4rem;font-weight:700;min-width:70px;text-align:right}
+.peu-llista{font-size:.85rem;color:var(--gris);margin-top:1rem}
+.peu-llista a{color:var(--verd);font-weight:600}
+@media(max-width:640px){.fila{grid-template-columns:72px 1fr auto;gap:.3rem .8rem;padding:.9rem 1rem}.fila .dia{font-size:1.1rem}.fila .vs{font-size:.95rem}.fila .xip{grid-column:2;grid-row:2;justify-self:start}.fila .res{grid-column:3;grid-row:1/3;min-width:0;font-size:1.25rem}}
+
+/* Equips */
+.equips-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem;align-items:start}
+.equips-grid .arc2{position:sticky;top:110px}
+.arc2 .foto{aspect-ratio:3/4;border-radius:999px 999px 14px 14px;overflow:hidden;background:var(--paper2);border:1px solid var(--linea)}
+.arc2 .foto img{width:100%;height:100%;object-fit:cover}
+.arc2 p{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--verd);margin-top:1rem}
+.equip{padding:1.5rem 0;border-bottom:1px solid var(--linea)}
+.equip:first-child{padding-top:0}
+.equip .cap{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.equip h3{font-size:1.8rem}
+.equip .nivell{font-size:.78rem;font-weight:700;color:var(--fosc);background:var(--groc);padding:.15rem .6rem;border-radius:999px;white-space:nowrap}
+.equip{cursor:pointer}
+.equip.actiu h3{color:var(--verd2)}
+.arc2 .foto img{transition:opacity .35s}
+.equip p{color:var(--gris);margin-top:.3rem;font-size:.97rem}
+.equip .peu{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:.7rem;font-size:.86rem;color:var(--gris)}
+.equip .peu a{border:1.5px solid var(--verd);color:var(--verd);border-radius:999px;padding:.3rem .9rem;text-decoration:none;font-weight:600;white-space:nowrap}
+.equip .peu a:hover{background:var(--verd);color:var(--paper)}
+@media(max-width:860px){.equips-grid{grid-template-columns:1fr}.equips-grid .arc2{position:static;max-width:300px}}
+
+/* Història */
+.historia{background:var(--blanc)}
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;margin-top:2.6rem}
+.pas{border-top:3px solid var(--groc);padding-top:1rem}
+.pas b{font-family:var(--serif);font-size:2.4rem;color:var(--verd);line-height:1}
+.pas h4{margin:.4rem 0 .3rem;font-size:1.02rem}
+.pas p{color:var(--gris);font-size:.93rem}
+.valors{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:3rem}
+.valors span{border:1px solid var(--linea);background:var(--paper);border-radius:999px;padding:.45rem 1.1rem;font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--verd)}
+.passos.cinc{grid-template-columns:repeat(5,1fr)}
+.noms{font-size:.85rem;color:var(--gris);margin-top:1rem;line-height:1.7}
+@media(max-width:860px){.passos,.passos.cinc{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.passos,.passos.cinc{grid-template-columns:1fr}}
+
+/* Galeria */
+.galeria{display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem;margin-top:2rem}
+.gi{position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:var(--paper2);border:1px solid var(--linea)}
+.gi img{width:100%;height:100%;object-fit:cover}
+.gi span{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .8rem .6rem;font-size:.82rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+@media(max-width:860px){.galeria{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.galeria{grid-template-columns:repeat(2,1fr)}}
+.sense-img{background:var(--paper2) repeating-linear-gradient(135deg,rgba(15,90,48,.08) 0 2px,transparent 2px 16px)!important}
+.sense-img img{display:none}
+
+/* Inscripció */
+.inscripcio{background:var(--paper2) var(--grain)}
+.ins-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:1.6rem;margin-top:2rem;align-items:start}
+form.caixa{background:var(--blanc);border:1px solid var(--linea);border-radius:14px;padding:2rem;display:grid;gap:1.1rem}
+.caixa h3{font-size:1.5rem;border-bottom:1px solid var(--linea);padding-bottom:.6rem}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{display:grid;gap:.35rem;font-size:.86rem;font-weight:600}
+input,select,textarea{background:var(--paper);border:1px solid var(--linea);border-radius:8px;padding:.75rem .9rem;font-size:1rem;font-weight:400}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--verd2);border-color:transparent}
+.check{display:flex;gap:.6rem;align-items:flex-start;font-weight:400;font-size:.84rem;color:var(--gris)}
+.check input{margin-top:.25rem}
+aside.resum{background:var(--fosc);color:#C9D3C8;border-radius:14px;padding:1.8rem;position:sticky;top:100px}
+.resum h3{color:#E7DFC8;font-size:1.5rem;margin-bottom:1rem}
+.resum dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1rem;font-size:.92rem}
+.resum dt{color:#97A597}
+.resum dd{text-align:right;color:#fff}
+.resum .btn{width:100%;margin-top:1.4rem}
+.resum{border-top:4px solid var(--groc)}
+.resum .avis{font-size:.82rem;margin-top:.8rem;color:#97A597}
+.ok{display:none;background:#E5F0E7;border:1px solid var(--verd2);border-radius:8px;padding:1rem;font-size:.95rem}
+.ok a{color:var(--verd);font-weight:700}
+@media(max-width:860px){.ins-grid{grid-template-columns:1fr}.dos{grid-template-columns:1fr}aside.resum{position:static}}
+
+/* Patrocinadors */
+.tira{margin-top:2rem;background:#fff;border:1px solid var(--linea);border-radius:12px;padding:1rem;overflow:hidden}
+.tira img{width:100%}
+@media(max-width:700px){.tira{overflow-x:auto;-webkit-overflow-scrolling:touch}.tira img{width:auto;max-width:none;height:46px}.tira::after{content:"Llisca per veure tots els logos →";display:block;font-size:.75rem;color:var(--gris);margin-top:.4rem}}
+.patro{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:1rem;margin-top:1rem}
+.patro div,.patro a{border:1px solid var(--linea);border-radius:10px;min-height:110px;display:grid;place-items:center;text-align:center;padding:1rem;text-decoration:none;color:var(--gris);font-size:.9rem;background:var(--blanc)}
+.patro .principal{background:var(--verd);color:var(--paper);border-color:var(--verd);border-bottom:4px solid var(--groc)}
+.patro .principal b{font-family:var(--serif);font-size:2rem;display:block;line-height:1}
+.patro .principal small{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.patro a{border-style:dashed}
+.patro a:hover{border-color:var(--verd);color:var(--verd)}
+@media(max-width:760px){.patro{grid-template-columns:1fr 1fr}.patro .principal{grid-column:span 2}}
+
+/* On som */
+.onsom{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;margin-top:2rem}
+.pistes{display:grid;gap:1rem}
+.pista{background:var(--blanc);border:1px solid var(--linea);border-left:4px solid var(--groc);border-radius:10px;padding:1.2rem 1.4rem}
+.pista h4{font-family:var(--serif);font-size:1.45rem;color:var(--verd)}
+.pista p{font-size:.92rem;color:var(--gris)}
+.pista a{font-size:.88rem;font-weight:600;color:var(--verd)}
+.contacte{display:grid;gap:.9rem;margin-top:1.6rem}
+.contacte a{display:flex;gap:.8rem;align-items:center;text-decoration:none}
+.contacte svg{width:22px;height:22px;color:var(--verd);flex:none}
+.contacte small{display:block;color:var(--gris);font-size:.85rem}
+.mapa{border-radius:14px;overflow:hidden;border:1px solid var(--linea);min-height:380px;background:var(--paper2)}
+.mapa iframe{width:100%;height:100%;min-height:380px;border:0}
+@media(max-width:860px){.onsom{grid-template-columns:1fr}}
+
+footer.pie{background:var(--tinta);color:#B9BDB6;padding:40px 0 110px;font-size:.9rem}
+footer.pie .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer.pie a{color:var(--groc)}
+footer.pie{border-top:5px solid var(--groc)}
+@media(min-width:861px){footer.pie{padding-bottom:40px}}
+
+/* Barra mòbil */
+.barra{position:fixed;inset:auto 0 0;z-index:45;display:none;grid-template-columns:1fr 1.3fr 1fr;gap:6px;background:var(--blanc);border-top:1px solid var(--linea);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.barra a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.75rem;font-weight:600;text-decoration:none;padding:.4rem;border-radius:10px;color:var(--verd)}
+.barra a svg{width:22px;height:22px}
+.barra a.principal{background:var(--verd);color:var(--groc)}
+@media(max-width:860px){.barra{display:grid}}
+
+/* Diàleg */
+dialog{border:0;border-radius:18px;padding:0;max-width:min(540px,calc(100% - 32px));width:100%;margin:auto;background:var(--blanc);color:var(--tinta);box-shadow:0 30px 80px -20px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(22,36,27,.55)}
+.dlg{padding:30px}
+.dlg h3{font-size:2rem}
+.dlg ul{list-style:none;display:grid;gap:.9rem;margin-top:1.2rem}
+.dlg li b{display:block}
+.dlg li span{color:var(--gris);font-size:.92rem}
+.dlg .f{display:flex;justify-content:flex-end;margin-top:1.6rem}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.segell svg{animation:none}}
+
+/* ===== Pantalla d'entrada (com thesqvare.com) ===== */
+html.intro-on,html.intro-on body{overflow:hidden;height:100%}
+#intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 50% 42%,#178a45 0%,var(--verd) 45%,#093d20 100%);color:var(--paper);
+  perspective:900px;cursor:pointer;-webkit-user-select:none;user-select:none}
+#intro .ratlles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#intro .centre{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(1.2rem,3.5vh,2.2rem);transform-style:preserve-3d}
+#intro .portal{position:relative;width:min(62vw,46vh,380px);aspect-ratio:1;display:grid;place-items:center;transform-style:preserve-3d;will-change:transform}
+#intro .anell{position:absolute;inset:0;animation:gira 26s linear infinite}
+#intro .anell2{position:absolute;inset:11%;border-radius:50%;border:2px solid rgba(242,210,27,.55)}
+#intro .escut-gran{width:66%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.35));will-change:transform}
+#intro .lema{font-family:var(--serif);font-weight:700;text-align:center;line-height:1;font-size:clamp(2rem,6.4vw,4.4rem);letter-spacing:.01em}
+#intro .lema em{display:block;font-style:italic;font-weight:600;color:var(--groc)}
+#intro .baixa{position:absolute;bottom:max(26px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(241,236,224,.8);background:none;border:0;cursor:pointer}
+#intro .ratoli{width:24px;height:38px;border:2px solid rgba(241,236,224,.75);border-radius:14px;position:relative}
+#intro .ratoli::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--groc);animation:baixa 1.6s ease-in-out infinite}
+@keyframes baixa{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+#intro .aparicio{opacity:0;transform:translateY(16px);animation:apareix .9s cubic-bezier(.2,.7,.2,1) forwards}
+#intro .lema.aparicio{animation-delay:.35s}#intro .baixa .aparicio{animation-delay:.8s}
+@keyframes apareix{to{opacity:1;transform:none}}
+#intro.surt{pointer-events:none}
+#intro.fora{display:none}
+#pagina{transform-origin:50% 30vh}
+@media(prefers-reduced-motion:reduce){#intro .anell,#intro .ratoli::after{animation:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-pilota" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c3 3 3 9.8 0 12.8M18.4 5.6c-3 3-3 9.8 0 12.8"/></g></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+</svg>
+
+<!-- PANTALLA D'ENTRADA: escut + lema. En desplaçar, s'entra a la web -->
+<div id="intro" role="dialog" aria-label="ADE Fuster, entrada" aria-modal="true">
+  <svg class="ratlles" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="#F2D21B"><polygon points="0,0 9,0 0,9"/><polygon points="12,0 17,0 0,17 0,12"/><polygon points="20,0 23,0 0,23 0,20"/></g>
+    <g fill="#F1ECE0" opacity=".9"><polygon points="100,83 100,87 87,100 83,100"/><polygon points="100,91 100,93 93,100 91,100"/></g>
+  </svg>
+  <div class="centre">
+    <div class="portal" id="portal">
+      <svg class="anell" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cercleIntro" d="M100 100 m-90 0 a90 90 0 1 1 180 0 a90 90 0 1 1 -180 0"/></defs><text font-family="Archivo,sans-serif" font-size="11.5" font-weight="700" letter-spacing="4.2" fill="#F2D21B"><textPath href="#cercleIntro">A.D.E. FUSTER · DES DE 1976 · 50 ANYS · SANTA COLOMA · </textPath></text></svg>
+      <div class="anell2"></div>
+      <img class="escut-gran aparicio" data-logo alt="Escut de l'ADE Fuster">
+    </div>
+    <p class="lema aparicio">Somos grandes,<em>somos verdes</em></p>
+  </div>
+  <button class="baixa" type="button" id="entrar" aria-label="Entrar a la web"><span class="aparicio" style="display:flex;flex-direction:column;align-items:center;gap:.5rem"><span class="ratoli"></span>Llisca per entrar</span></button>
+</div>
+<div id="pagina">
+<!-- CINTA DE PROPOSTA (treure-la en entregar) -->
+<div class="proposta" id="proposta">
+  <div class="wrap">
+    <span><b>Proposta de The Sqvare</b> per a l'ADE Fuster. Tot el que veus ja funciona.</span>
+    <button type="button" id="obrirInclou">Veure què inclou</button>
+    <button type="button" class="x" aria-label="Tancar avís" onclick="this.closest('.proposta').remove()">×</button>
+  </div>
+</div>
+
+<header class="top">
+  <nav class="wrap nav" aria-label="Principal" style="position:relative">
+    <a class="marca" href="#inici">
+      <span class="escut"><img data-logo alt="Escut ADE Fuster" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'ADE'}))"></span>
+      <span>ADE Fuster<small>Bàsquet · Santa Coloma</small></span>
+    </a>
+    <ul id="menuLlista">
+      <li><a href="#club">El club</a></li>
+      <li><a href="#partits">Partits</a></li>
+      <li><a href="#equips">Equips</a></li>
+      <li><a href="#historia">Història</a></li>
+      <li><a href="#onsom">On som</a></li>
+    </ul>
+    <a class="btn btn-verd" href="#apuntat"><svg><use href="#i-pilota"/></svg>Apunta't</a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="menuLlista">Menú</button>
+  </nav>
+</header>
+
+<main id="inici">
+  <!-- PANTALLA 1 · PORTADA -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="rv">
+        <span class="etiqueta"><i></i>50è aniversari · Temporada 2026/27</span>
+        <h1>Un club, una història, <em>una família</em></h1>
+        <p class="sub">L'Associació Deportiva Escolar Fuster fa bàsquet a Santa Coloma de Gramenet des de 1976. Aquest 2026 celebrem 50 anys, i ho fem com a campions: el Sènior i el Premini van guanyar la lliga la temporada passada.</p>
+        <div class="acciones">
+          <a class="btn btn-verd" href="#apuntat"><svg><use href="#i-pilota"/></svg>Vull jugar a l'ADE</a>
+          <a class="btn btn-linea" href="#partits">Propers partits</a>
+        </div>
+        <div class="dades">
+          <div><b>1976</b><span>any de fundació</span></div>
+          <div><b>5</b><span>equips federats</span></div>
+          <div><b>2</b><span>lligues guanyades el 2025/26</span></div>
+        </div>
+      </div>
+      <div class="arc rv">
+        <div class="foto" data-wrap><img data-src="hero" alt="Jugadors i entrenadors de l'ADE Fuster amb la samarreta del 50è aniversari"></div>
+        <div class="segell" aria-hidden="true">
+          <svg viewBox="0 0 128 128"><defs><path id="cercle" d="M64 64 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0"/></defs><text font-family="Archivo" font-size="10.5" font-weight="600" letter-spacing="3.2" fill="#F2D21B"><textPath href="#cercle">A.D.E. FUSTER · DES DE 1976 · </textPath></text></svg>
+          <img data-logo alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 2 · EL CLUB -->
+  <section class="fosc" id="club">
+    <div class="wrap">
+      <div class="qui">
+        <div class="rv">
+          <img class="qui-escut" data-logo alt="Escut de l'ADE Fuster">
+          <h2>El <em>club</em></h2>
+          <p>Som l'ADE Fuster, el club de bàsquet del Col·legi Fuster. Generacions de nens, nenes i joves de Santa Coloma han après a jugar a la nostra pista del carrer del Rosari.</p>
+          <p>Aquesta temporada els equips de base juguen al nostre pati i el Sots-25 i el Sènior estrenen casa al nou Pavelló del Raval. El projecte esportiu el coordina Óscar Pérez: alumne del col·legi, jugador, entrenador i ara coordinador del club.</p>
+        </div>
+        <div class="xifres rv">
+          <div><b>50</b><span>anys de bàsquet a Santa Coloma</span></div>
+          <div><b>5</b><span>equips, del Mini al Sènior</span></div>
+          <div><b>2</b><span>lligues 2025/26: Sènior i Premini</span></div>
+          <div><b>20</b><span>comerços patrocinadors</span></div>
+        </div>
+      </div>
+      <div class="fem">
+        <h3>Què <em>fem</em></h3>
+        <div class="cards">
+          <article class="card rv"><div class="img" data-wrap><img data-src="escola" alt="Premini de l'ADE Fuster als Premis Molt Bàsquet 2026"></div><div class="t"><h4>Escola de bàsquet</h4><p>Els més petits aprenen jugant. El Premini, campió de lliga 2025/26.</p></div></article>
+          <article class="card rv"><div class="img" data-wrap><img data-src="accio1" alt="Sènior de l'ADE Fuster campió de lliga"></div><div class="t"><h4>Competició federada</h4><p>Cinc equips a la FCBQ. El Sènior, campió de lliga 2025/26.</p></div></article>
+          <article class="card rv"><div class="img" data-wrap><img data-src="historia" alt="Antics jugadors de l'ADE Fuster"></div><div class="t"><h4>Fuster Legends</h4><p>Els que jugaven fa 30 anys es van retrobar al setembre. Aquí es fan amics per a tota la vida.</p></div></article>
+          <article class="card rv"><div class="img" data-wrap><img data-src="pares" alt="Presentació d'equips del 50è aniversari"></div><div class="t"><h4>Família verda</h4><p>Jugadors, famílies i afició, tots junts a la presentació d'equips del 50è.</p></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 3 · PARTITS (editar l'array PARTITS al final) -->
+  <section class="partits" id="partits">
+    <div class="wrap">
+      <h2>Partits i <em>resultats</em></h2>
+      <p class="intro">Els propers partits de l'ADE Fuster i els últims resultats.</p>
+      <h3 class="grup">Propers partits</h3>
+      <div class="llista rv" id="llistaPropers"></div>
+      <h3 class="grup">Últims resultats</h3>
+      <div class="llista rv" id="llistaResultats"></div>
+      <p class="peu-llista">Resta de categories, horaris i classificacions al <a href="https://www.basquetcatala.cat/club/143" target="_blank" rel="noopener">calendari de la FCBQ ↗</a></p>
+    </div>
+  </section>
+
+  <!-- PANTALLA 4 · EQUIPS -->
+  <section id="equips">
+    <div class="wrap">
+      <h2>Els nostres <em>equips</em></h2>
+      <p class="intro">Temporada 2026/27. Si vols provar, toca el botó de l'equip que et toca per edat.</p>
+      <div class="equips-grid" style="margin-top:2.4rem">
+        <div class="arc2 rv">
+          <div class="foto" data-wrap><img data-src="equip" alt="Equip de l'ADE Fuster amb la samarreta del 50è aniversari"></div>
+          <p>La samarreta del 50è aniversari.</p>
+        </div>
+        <div id="llistaEquips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 5 · HISTÒRIA I VALORS -->
+  <section class="historia" id="historia">
+    <div class="wrap">
+      <h2>Mig segle de <em>bàsquet</em></h2>
+      <div class="passos cinc">
+        <div class="pas rv"><b>1976</b><h4>Neix l'ADE Fuster</h4><p>El club es funda al Col·legi Fuster de Santa Coloma de Gramenet.</p></div>
+        <div class="pas rv"><b>2006·07</b><h4>Ascens a Primera Catalana</h4><p>El sènior masculí puja a Primera Catalana.</p></div>
+        <div class="pas rv"><b>2011·12</b><h4>Ascens a Tercera Catalana</h4><p>Nou ascens per al primer equip.</p></div>
+        <div class="pas rv"><b>2025·26</b><h4>Doble títol</h4><p>El Sènior i el Premini, campions de lliga el mateix dia.</p></div>
+        <div class="pas rv"><b>2026</b><h4>50è aniversari</h4><p>Presentació d'equips, samarreta commemorativa i nou Pavelló del Raval.</p></div>
+      </div>
+      <div class="valors rv">
+        <span>Esforç</span><span>Disciplina</span><span>Sacrifici</span><span>Amistat</span><span>Treball en equip</span><span>Esportivitat</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 6 · GALERIA -->
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <h2>Vida de <em>club</em></h2>
+      <p class="intro">Més fotos i la prèvia de cada partit a <a href="https://www.instagram.com/adefuster/" target="_blank" rel="noopener" style="color:var(--verd);font-weight:600">@adefuster</a>.</p>
+      <div class="galeria">
+        <div class="gi rv" data-wrap><img data-src="g_campions" alt=""><span>Campions 2025/26</span></div>
+        <div class="gi rv" data-wrap><img data-src="g_premis" alt=""><span>Premis Molt Bàsquet</span></div>
+        <div class="gi rv" data-wrap><img data-src="g_presentacio" alt=""><span>Presentació del 50è</span></div>
+        <div class="gi rv" data-wrap><img data-src="g_premini" alt=""><span>Samarreta del 50è</span></div>
+        <div class="gi rv" data-wrap><img data-src="g_fira" alt=""><span>Fira d'Entitats 2026</span></div>
+        <div class="gi rv" data-wrap><img data-src="g_oscar" alt=""><span>Óscar Pérez, coordinador</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 7 · APUNTA'T -->
+  <section class="inscripcio" id="apuntat">
+    <div class="wrap">
+      <h2>Vine a <em>provar</em></h2>
+      <p class="intro">Omple les dades i t'enviem tota la informació per WhatsApp. El primer entrenament és de prova.</p>
+      <div class="ins-grid">
+        <form class="caixa" id="form">
+          <h3>Jugador o jugadora</h3>
+          <div class="dos">
+            <label>Nom i cognoms<input name="nom" required autocomplete="name"></label>
+            <label>Any de naixement<input name="any" type="number" min="1960" max="2024" required></label>
+          </div>
+          <label>Equip<select name="equip" id="selEquip"><option value="">Aconsella'm segons l'edat</option></select></label>
+          <h3>Contacte</h3>
+          <div class="dos">
+            <label>Nom de la família o tutor<input name="tutor" placeholder="Si és menor"></label>
+            <label>Telèfon<input name="tel" type="tel" required autocomplete="tel"></label>
+          </div>
+          <label>Alguna cosa que hàgim de saber? <span style="font-weight:400;color:var(--gris)">(opcional)</span><textarea name="com" rows="3" placeholder="Ha jugat abans, dubtes d'horaris…"></textarea></label>
+          <label class="check"><input type="checkbox" required> Accepto que l'ADE Fuster faci servir aquestes dades només per contactar-me per WhatsApp sobre la prova.</label>
+          <div class="ok" id="ok"></div>
+        </form>
+        <aside class="resum">
+          <h3>La teva prova</h3>
+          <dl>
+            <dt>Jugador/a</dt><dd id="rNom">—</dd>
+            <dt>Any</dt><dd id="rAny">—</dd>
+            <dt>Equip</dt><dd id="rEquip">—</dd>
+            <dt>On</dt><dd id="rOn">—</dd>
+          </dl>
+          <button class="btn btn-paper" form="form" type="submit"><svg><use href="#i-wa"/></svg>Enviar per WhatsApp</button>
+          <p class="avis">El club et respon per confirmar dia i hora.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 8 · PATROCINADORS -->
+  <section style="padding-bottom:40px">
+    <div class="wrap">
+      <h2>Fan gran <em>el club</em></h2>
+      <p class="intro">Temporada 2026/27. Gràcies als comerços i empreses que vesteixen l'ADE Fuster cada setmana.</p>
+      <div class="tira rv"><img data-src="patro_a" alt="Times Square, Papereria Palmecoy, Torribera Complex Esportiu, Carnisseria Moltó, Carrillo Pintores, Garcos i Nanos"><img data-src="patro_b" alt="Tito Fresh Fruit, La Ximena, Running Salut, Don Martín Santa Coloma, Florens, A. Manigua Motor, Bar-Restaurant Can Martí, CEMFIS, Music Bar Yesterday, El Nou Montferri, Taxi Line i Glass Pastisseria" style="margin-top:.6rem"></div>
+      <p class="noms rv">Times Square Escola d'Idiomes · Papereria Palmecoy · Torribera Complex Esportiu · Carnisseria Moltó · Carrillo Pintores · Garcos · Nanos · Tito Fresh Fruit · La Ximena · Running Salut · Don Martín Santa Coloma · Florens · A. Manigua Motor · Bar-Restaurant Can Martí · CEMFIS · Music Bar Yesterday · El Nou Montferri · Taxi Line · Glass Pastisseria</p>
+      <div class="patro">
+        <div class="principal rv"><span><small>Samarreta del 50è aniversari</small><b>Fuster School</b></span></div>
+        <div class="rv"><span>Amb el suport de l'<b>Ajuntament de Santa Coloma de Gramenet</b></span></div>
+        <div class="rv"><span>36 pilotes Wilson oficials de la <b>Federació Catalana de Bàsquet</b></span></div>
+        <a class="rv" href="#onsom">+ Vols ser patrocinador?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 9 · ON SOM -->
+  <section id="onsom">
+    <div class="wrap">
+      <h2>On <em>juguem</em></h2>
+      <div class="onsom">
+        <div>
+          <div class="pistes">
+            <div class="pista rv"><h4>Pista Col·legi Fuster</h4><p>Carrer del Rosari, 8 · Santa Coloma de Gramenet</p><p>Mini, Preinfantil i Cadet · dissabtes al matí</p><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Carrer+del+Rosari+8+08921+Santa+Coloma+de+Gramenet">Com arribar ↗</a></div>
+            <div class="pista rv"><h4>Pavelló del Raval</h4><p>Carrer d'En Ginesta, s/n · 08923 Santa Coloma de Gramenet</p><p>Sots-25 i Sènior · diumenges al matí</p><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Poliesportiu+del+Raval+Santa+Coloma+de+Gramenet">Com arribar ↗</a></div>
+          </div>
+          <div class="contacte">
+            <a href="https://wa.me/34642635890" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>Escriu-nos per WhatsApp<small>642 63 58 90</small></span></a>
+            <a href="tel:+34933917954"><svg><use href="#i-tel"/></svg><span>Telèfon<small>933 91 79 54</small></span></a>
+            <a href="mailto:basketfuster@gmail.com"><svg><use href="#i-mail"/></svg><span>Correu<small>basketfuster@gmail.com</small></span></a>
+            <a href="https://www.instagram.com/adefuster/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span>Instagram<small>@adefuster</small></span></a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Carrer+Sant+Jeroni+38+Santa+Coloma+de+Gramenet" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span>Seu del club<small>C/ Sant Jeroni, 38 · 08921 Santa Coloma de Gramenet</small></span></a>
+          </div>
+        </div>
+        <div class="mapa"><iframe title="Mapa Col·legi Fuster" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Carrer%20del%20Rosari%208%2C%2008921%20Santa%20Coloma%20de%20Gramenet&z=16&output=embed"></iframe></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <span>© <span id="any"></span> Associació Deportiva Escolar Fuster · Santa Coloma de Gramenet</span>
+    <span>Web feta per <a href="https://thesqvare.com" target="_blank" rel="noopener">The Sqvare</a></span>
+  </div>
+</footer>
+
+</div><!-- /pagina -->
+<nav class="barra" aria-label="Accions ràpides">
+  <a href="https://wa.me/34642635890" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="principal" href="#apuntat"><svg><use href="#i-pilota"/></svg>Apunta't</a>
+  <a href="#onsom"><svg><use href="#i-pin"/></svg>On som</a>
+</nav>
+
+<dialog id="dlgInclou">
+  <div class="dlg">
+    <h3>La web del <em>Fuster</em></h3>
+    <ul>
+      <li><b>Partits i resultats</b><span>Els propers partits i els últims resultats de cada equip, actualitzats cada setmana.</span></li>
+      <li><b>Inscripcions per WhatsApp</b><span>Les famílies demanen una prova i el missatge arriba ja escrit al WhatsApp del club.</span></li>
+      <li><b>Equips i pistes</b><span>Cada equip amb el seu nivell, dia i pavelló, i el botó per arribar-hi amb Google Maps.</span></li>
+      <li><b>Espai per als patrocinadors</b><span>Els 20 comerços de la temporada ben visibles, i un lloc per als que vulguin sumar-se.</span></li>
+      <li><b>Neta i segura</b><span>Sense enllaços estranys ni publicitat d'altres: només el club.</span></li>
+      <li><b>Un enllaç per a la bio d'Instagram</b><span>Es veu perfecta al mòbil, amb accés directe a WhatsApp i a la inscripció.</span></li>
+    </ul>
+    <div class="f"><button class="btn btn-verd" onclick="this.closest('dialog').close()">Veure la web</button></div>
+  </div>
+</dialog>
+
+<script>
+/* ================== EDITA AQUÍ LES DADES DEL CLUB ================== */
+const WHATSAPP = "34642635890";
+const FOTOS = {"logo": "img/logo.png", "hero": "img/hero.jpg", "escola": "img/escola.jpg", "accio1": "img/accio1.jpg", "historia": "img/historia.jpg", "pares": "img/pares.jpg", "equip": "img/equip.jpg", "g_campions": "img/g_campions.jpg", "g_premis": "img/g_premis.jpg", "g_presentacio": "img/g_presentacio.jpg", "g_premini": "img/g_premini.jpg", "g_fira": "img/g_fira.jpg", "g_oscar": "img/g_oscar.jpg", "patro_a": "img/patro_a.jpg", "patro_b": "img/patro_b.jpg"};
+const EQUIPS = [
+  {nom:"Sènior",      nivell:"2a Territorial · Grup 3", text:"Vigent campió de lliga. Veterania, garra i compromís. Entrenador: Lluís Lirola.", on:"Pavelló del Raval", dia:"Diumenge · 12:00"},
+  {nom:"Sots-25",     nivell:"Nivell A",          text:"El pont entre la formació i el sènior. Entrenador: Gerard Raventós.", on:"Pavelló del Raval", dia:"Diumenge · 10:30"},
+  {nom:"Cadet",       nivell:"Promoció",          text:"Creixement tècnic i físic, partit a partit. Entrenador: Iker Cabello.", on:"Pista Col·legi Fuster", dia:"Dissabte · 12:00"},
+  {nom:"Preinfantil", nivell:"U13",               text:"Primera competició federada: aprendre a jugar en equip. Entrenador: Samuel Fernández.", on:"Pista Col·legi Fuster", dia:"Dissabte · 10:30"},
+  {nom:"Mini",        nivell:"1r any · Nivell B", text:"On comença tot. Fonaments del bàsquet a través del joc. Entrenador: Ferran Pérez.", on:"Pista Col·legi Fuster", dia:"Dissabte · 9:00"}
+];
+/* PARTITS: actualitzar cada setmana (fonts: Instagram del club i FCBQ).
+   res: "" si encara no s'ha jugat; "66-55" un cop acabat (primer el local).
+   data: "AAAA-MM-DD" als propers partits; si passa la data sense resultat, el partit s'amaga sol. */
+const PARTITS = [
+  {cat:"Sots-25",     j:"Jornada 6", data:"2026-11-08", dia:"Dg 8 nov",   hora:"18:30", local:"Bàsquet Neus",           visitant:"ADE Fuster",        on:"Pavelló La Bastida",     res:""},
+  {cat:"Mini",        j:"Jornada 7", data:"2026-11-21", dia:"Ds 21 nov",  hora:"09:00", local:"ADE Fuster",             visitant:"CB Santa Coloma B", on:"Pista Col·legi Fuster",  res:""},
+  {cat:"Sènior",      j:"Jornada 2 (ajornat)", dia:"Ds 31 oct",  hora:"",      local:"CB Pedagogium",          visitant:"ADE Fuster",        on:"Barcelona",              res:"66-55"},
+  {cat:"Mini",        j:"Jornada 3",           dia:"17-18 oct",  hora:"",      local:"Bàsquet Mamuts",         visitant:"ADE Fuster",        on:"Fora de casa",           res:"49-82"},
+  {cat:"Cadet",       j:"Jornada 3",           dia:"17-18 oct",  hora:"",      local:"Vedruna Gràcia",         visitant:"ADE Fuster",        on:"Fora de casa",           res:"56-67"},
+  {cat:"Preinfantil", j:"Jornada 3",           dia:"17-18 oct",  hora:"",      local:"Jesuïtes Casp",          visitant:"ADE Fuster",        on:"Fora de casa",           res:"48-45"},
+  {cat:"Sots-25",     j:"Jornada 3",           dia:"17-18 oct",  hora:"",      local:"AEB Dimonis",            visitant:"ADE Fuster",        on:"Fora de casa",           res:"64-55"},
+  {cat:"Sènior",      j:"Jornada 3",           dia:"17-18 oct",  hora:"",      local:"CB Joventut Castelldefels", visitant:"ADE Fuster",     on:"Castelldefels",          res:"72-66"}
+];
+/* ================================================================== */
+
+const $=s=>document.querySelector(s);
+document.querySelectorAll("[data-logo]").forEach(i=>i.src=FOTOS.logo);
+document.querySelectorAll("img[data-src]").forEach(i=>{
+  const w=i.closest("[data-wrap]");
+  i.onerror=()=>w&&w.classList.add("sense-img");
+  i.src=FOTOS[i.dataset.src];
+});
+
+// partits
+const fila=p=>{
+  const casa=p.local==="ADE Fuster", [l,v]=(p.res||"").split("-").map(Number);
+  const guanya=p.res&&((casa&&l>v)||(!casa&&v>l));
+  return `<div class="fila"><div class="dia">${p.dia}<small>${p.hora?p.hora+" h":p.j}</small></div>
+    <div class="vs">${p.local} – ${p.visitant}<small>${p.cat} · ${p.j} · ${p.on}</small></div>
+    <span class="xip ${casa?"local":""}">${casa?"Local":"Visitant"}</span>
+    <span class="res ${p.res?(guanya?"guanya":"perd"):""}">${p.res||""}</span></div>`};
+const avui=new Date().toISOString().slice(0,10); /* un partit sense resultat que ja ha passat s'amaga sol */
+$("#llistaPropers").innerHTML=PARTITS.filter(p=>!p.res&&(!p.data||p.data>=avui)).map(fila).join("")||'<div class="fila"><div class="vs">Calendari pendent de publicar</div></div>';
+$("#llistaResultats").innerHTML=PARTITS.filter(p=>p.res).map(fila).join("");
+
+// equips
+$("#llistaEquips").innerHTML=EQUIPS.map((e,i)=>`
+  <article class="equip rv ${i?"":"actiu"}" data-nom="${e.nom}"><div class="cap"><h3>${e.nom}</h3><span class="nivell">${e.nivell}</span></div>
+  <p>${e.text}</p><div class="peu"><span>${e.dia} · ${e.on}</span><a href="#apuntat" data-equip="${e.nom}">Vull provar</a></div></article>`).join("");
+$("#selEquip").innerHTML+=EQUIPS.map(e=>`<option>${e.nom}</option>`).join("");
+document.querySelectorAll("[data-equip]").forEach(a=>a.onclick=ev=>{ev.stopPropagation();$("#selEquip").value=a.dataset.equip;resum()});
+document.querySelectorAll(".equip").forEach(el=>el.onclick=()=>{
+  document.querySelectorAll(".equip").forEach(x=>x.classList.toggle("actiu",x===el));
+});
+
+// formulari
+const f=$("#form");
+function resum(){
+  const d=new FormData(f), eq=EQUIPS.find(e=>e.nom===d.get("equip"));
+  $("#rNom").textContent=d.get("nom")||"—";
+  $("#rAny").textContent=d.get("any")||"—";
+  $("#rEquip").textContent=d.get("equip")||"Segons l'edat";
+  $("#rOn").textContent=eq?eq.on.replace("Pavelló ","").replace("Pista ",""):"—";
+}
+f.addEventListener("input",resum);
+f.addEventListener("submit",e=>{
+  e.preventDefault();
+  const d=new FormData(f);
+  const txt=`Hola ADE Fuster! Voldria fer una prova.\n• Jugador/a: ${d.get("nom")}\n• Any de naixement: ${d.get("any")}\n• Equip: ${d.get("equip")||"Aconselleu-me"}\n• Contacte: ${d.get("tutor")||d.get("nom")} · ${d.get("tel")}${d.get("com")?"\n• "+d.get("com"):""}`;
+  const url=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
+  $("#ok").style.display="block";
+  $("#ok").innerHTML=`Gràcies, ${d.get("nom").split(" ")[0]}. <a href="${url}" target="_blank" rel="noopener">Obre WhatsApp per enviar-ho ↗</a><br><small>Si no s'obre, escriu al 642 63 58 90 o a basketfuster@gmail.com.</small>`;
+  try{window.open(url,"_blank")}catch(_){}
+});
+
+// diàleg
+$("#obrirInclou").onclick=()=>$("#dlgInclou").showModal();
+$("#dlgInclou").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
+// menú mòbil
+$("#menuBtn").onclick=()=>{const u=$("#menuLlista"),o=u.classList.toggle("obert");$("#menuBtn").setAttribute("aria-expanded",o);$("#menuBtn").textContent=o?"Tancar":"Menú"};
+document.querySelectorAll("#menuLlista a").forEach(a=>a.addEventListener("click",()=>{$("#menuLlista").classList.remove("obert");$("#menuBtn").textContent="Menú";$("#menuBtn").setAttribute("aria-expanded",false)}));
+
+
+// ===== Pantalla d'entrada =====
+(function(){
+  const intro=$("#intro"), portal=$("#portal"), pag=$("#pagina"), escut=intro.querySelector(".escut-gran");
+  const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(location.hash){intro.classList.add("fora");return;}
+  scrollTo(0,0);
+  let fet=false, ty=null;
+  function entra(){
+    if(fet)return; fet=true; intro.classList.add("surt");
+    const dur=RM?350:1150, t0=performance.now();
+    const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    (function pas(t){
+      const k=Math.min(1,(t-t0)/dur), e=ease(k);
+      if(!RM){
+        // el portal gira i creix fins a travessar-lo, com a thesqvare.com
+        portal.style.transform=`rotateZ(${e*120}deg) rotateY(${e*35}deg) scale(${1+e*7})`;
+        escut.style.transform=`rotateZ(${-e*120}deg) scale(${1+e*.6})`;
+        intro.querySelector(".lema").style.opacity=1-Math.min(1,k*3);
+        intro.querySelector(".baixa").style.opacity=1-Math.min(1,k*4);
+        pag.style.transform=`scale(${.94+.06*e})`;
+      }
+      intro.style.opacity=k<.45?1:1-(k-.45)/.55;
+      if(k<1)requestAnimationFrame(pas);
+      else{intro.classList.add("fora");pag.style.transform="";document.documentElement.classList.remove("intro-on");
+        removeEventListener("wheel",roda,{passive:false});removeEventListener("keydown",tecla);}
+    })(t0);
+  }
+  const roda=e=>{if(fet)return;e.preventDefault();if(e.deltaY>3)entra();};
+  const tecla=e=>{if(!fet&&["ArrowDown","PageDown"," ","Enter"].includes(e.key)){e.preventDefault();entra();}};
+  addEventListener("wheel",roda,{passive:false});
+  addEventListener("keydown",tecla);
+  intro.addEventListener("touchstart",e=>{ty=e.touches[0].clientY},{passive:true});
+  intro.addEventListener("touchmove",e=>{e.preventDefault()},{passive:false});
+  intro.addEventListener("touchend",e=>{if(ty===null)return;const dy=ty-e.changedTouches[0].clientY;ty=null;if(dy>25)entra();},{passive:true});
+  intro.addEventListener("click",entra);
+})();
+
+// aparició suau
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+$("#any").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
