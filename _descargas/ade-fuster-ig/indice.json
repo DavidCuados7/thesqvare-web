@@ -1,0 +1,85 @@
+{
+ "paginas": [],
+ "imagenes": [
+  {
+   "archivo": "resultats_portada.jpg",
+   "bytes": 112500,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "res_mini.jpg",
+   "bytes": 206323,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "res_3.jpg",
+   "bytes": 216219,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "res_4.jpg",
+   "bytes": 228802,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "res_5.jpg",
+   "bytes": 244860,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "res_6.jpg",
+   "bytes": 207645,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "campions_2026.jpg",
+   "bytes": 179219,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "premini_campions.jpg",
+   "bytes": 229594,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "premini_samarreta50.jpg",
+   "bytes": 282153,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "equip_samarreta50.jpg",
+   "bytes": 160672,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "presentacio_2026.webp",
+   "bytes": 178124,
+   "tipo": "image/webp"
+  },
+  {
+   "archivo": "fira_entitats.jpg",
+   "bytes": 424900,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "juny_2026.jpg",
+   "bytes": 263120,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "oscar.jpg",
+   "bytes": 66361,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "legends.jpg",
+   "bytes": 27719,
+   "tipo": "image/jpeg"
+  },
+  {
+   "archivo": "arranca.jpg",
+   "bytes": 33235,
+   "tipo": "image/jpeg"
+  }
+ ]
+}
