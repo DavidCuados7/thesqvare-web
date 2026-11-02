@@ -1,0 +1,16 @@
+name: Descargar fotos (temporal)
+on:
+  push:
+    branches: [fotos-tmp]
+    paths: [queries.txt, extra.txt, get.py]
+permissions:
+  contents: write
+jobs:
+  get:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 get.py
+      - run: |
+          git config user.name "fotos-bot"; git config user.email "bot@users.noreply.github.com"
+          git add fotos && git commit -m "fotos" && git push

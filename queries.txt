@@ -1,0 +1,11 @@
+barber barbershop
+barber barber-haircut
+barber beard-trim
+barber barber-chair
+barber barbershop-interior
+bar tapas-bar
+bar restaurant-interior-warm
+bar bar-counter
+bar spanish-tapas
+bar vermouth
+bar paella
