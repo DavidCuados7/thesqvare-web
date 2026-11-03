@@ -114,7 +114,7 @@ img{display:block;max-width:100%}
 
 /* ---------- cinta ---------- */
 .cinta{background:var(--amarillo);color:var(--tinta);overflow:hidden;transform:rotate(-2deg);margin:-26px -20px -10px;position:relative;z-index:3;border-block:4px solid var(--tinta)}
-.cinta .track{display:flex;width:max-content;animation:marquee 24s linear infinite}
+.cinta .track{display:flex;width:max-content;will-change:transform}
 .cinta span{font-family:var(--display);font-size:clamp(34px,5vw,64px);text-transform:uppercase;padding:10px 0;white-space:nowrap;display:flex;align-items:center;line-height:1.1}
 .cinta svg{width:.7em;height:.7em;margin:0 .5em}
 .cinta svg:nth-of-type(4n+1){color:var(--magenta)}.cinta svg:nth-of-type(4n+2){color:var(--morado)}.cinta svg:nth-of-type(4n+3){color:var(--lima)}
@@ -281,7 +281,7 @@ footer.pie{background:var(--morado);color:#fff;padding:110px 0 40px;overflow:hid
 .more-btn{display:none}
 @media(max-width:860px){
   html{scroll-padding-top:70px}
-  body{padding-bottom:84px}
+  footer.pie{padding-bottom:120px}
   .nav{right:auto;padding:6px 16px;top:10px;left:10px;box-shadow:3px 3px 0 var(--tinta)}
   .nav .cart-btn{display:none}
   .logo{font-size:20px;margin:0}
@@ -295,7 +295,7 @@ footer.pie{background:var(--morado);color:#fff;padding:110px 0 40px;overflow:hid
   .toast{bottom:96px}
 
   /* portada: todo en una pantalla */
-  .hero{min-height:100svh;padding:70px 0 104px;align-items:end}
+  .hero{min-height:100svh;padding:70px 0 56px;align-items:end}
   .hero .wrap{grid-template-columns:1fr;position:static}
   .hero .wrap>div:first-child{position:relative;z-index:2}
   .glass-wrap{position:absolute;right:-2vw;top:max(64px,7svh);width:min(50vw,300px);margin:0;order:0;z-index:1}
@@ -306,7 +306,15 @@ footer.pie{background:var(--morado);color:#fff;padding:110px 0 40px;overflow:hid
   .hero .lead{font-size:16px;margin:26px 0 16px;max-width:22em}
   .hero .ctas{gap:10px;flex-wrap:nowrap}
   .hero .ctas .btn{padding:13px 16px;font-size:15px;white-space:nowrap}
-  .watermark{font-size:70vw}
+  .watermark,.hero .tag,.glass-wrap .stamp,.lead-x{display:none}
+  .hero h1{margin-top:0}
+  .hero .lead{font-size:18px;margin:30px 0 22px}
+  .hero .ctas{flex-direction:column;align-items:flex-start;gap:14px}
+  .hero .ctas .btn-2{border:0;box-shadow:none;background:none;color:#fff;padding:4px 2px;text-decoration:underline;text-underline-offset:5px}
+  .glass-wrap{top:max(90px,11svh);width:min(54vw,300px)}
+  .tabbar{transition:transform .45s var(--ease),opacity .3s}
+  body.at-top .tabbar{transform:translateY(140%);opacity:0;pointer-events:none}
+  .foot-big{font-size:calc((100vw - 44px)/4.9)}
 
   /* secciones más compactas */
   .manifiesto{padding:96px 0 84px}
@@ -426,10 +434,10 @@ footer.pie{background:var(--morado);color:#fff;padding:110px 0 40px;overflow:hid
         <span class="row" data-split>SE</span>
         <span class="row" data-split>BEBE</span>
       </h1>
-      <p class="lead">El vino no está para complicarlo. Cuatro botellas, cuatro colores, cuatro momentos. <b>Cero normas.</b></p>
+      <p class="lead">El vino no está para complicarlo.<span class="lead-x"> Cuatro botellas, cuatro colores, cuatro momentos.</span> <b>Cero normas.</b></p>
       <div class="ctas">
         <a href="#vinos" class="btn am">Elige tu momento ↓</a>
-        <a href="#pack" class="btn">Déjame elegir</a>
+        <a href="#pack" class="btn btn-2">Déjame elegir</a>
       </div>
     </div>
     <div class="glass-wrap" aria-hidden="true">
@@ -683,6 +691,17 @@ requestAnimationFrame(heroFrame);
 const star='<svg viewBox="0 0 20 20"><path d="M10 0 L12.5 7.5 L20 10 L12.5 12.5 L10 20 L7.5 12.5 L0 10 L7.5 7.5Z" fill="currentColor"/></svg>';
 $('#track').innerHTML=`<span>Menos normas${star}Más momentos${star}Más vida${star}Sin postureo${star}</span>`.repeat(4);
 
+/* cinta en movimiento: se acelera al hacer scroll */
+const track=$('#track'); let mx=0, lastY=scrollY, boost=0;
+function marquee(){
+  const half=track.scrollWidth/2, dy=Math.abs(scrollY-lastY); lastY=scrollY;
+  boost=Math.min(14,boost*.9+dy*.12);
+  mx-= (reduce?.35:.9)+boost; if(-mx>=half) mx+=half;
+  track.style.transform=`translate3d(${mx.toFixed(1)}px,0,0)`;
+  requestAnimationFrame(marquee);
+}
+requestAnimationFrame(marquee);
+
 /* ---------- manifiesto ---------- */
 $$('[data-reveal]').forEach(p=>{
   const out=[];
@@ -892,9 +911,9 @@ $('#news').addEventListener('submit',e=>{
 function banda(){const bi=$('#banda-img'), br=bi.parentElement.getBoundingClientRect();
   if(!reduce&&br.top<innerHeight&&br.bottom>0) bi.style.transform=`translateY(${((br.top/innerHeight)*-5).toFixed(2)}%)`}
 let ticking=false;
-function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(()=>{revealFrame();storyFrame();banda();ticking=false})}
+function onScroll(){document.body.classList.toggle('at-top',scrollY<innerHeight*.55);if(ticking)return;ticking=true;requestAnimationFrame(()=>{revealFrame();storyFrame();banda();ticking=false})}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
-setWine(0);onScroll();
+setWine(0);document.body.classList.toggle('at-top',scrollY<innerHeight*.55);onScroll();
 })();
 </script>
 </body>
