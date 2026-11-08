@@ -874,6 +874,141 @@
    "semana": "2026-11-02",
    "estado": "Pendiente",
    "nota": "Viernes · Pocas reseñas: una web le ayuda a salir en Google · Solo Instagram"
+  },
+  {
+   "instagram": "coralmardetapas",
+   "negocio": "Coral Mar de Tapas",
+   "sector": "Bar de tapas",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Lunes · 1.234 reseñas Google, sin web"
+  },
+  {
+   "instagram": "liniaestetica_sandreu",
+   "negocio": "Línia Estètica Sant Andreu",
+   "sector": "Estética",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Lunes · 772 reseñas Treatwell, solo apps"
+  },
+  {
+   "instagram": "novellabarberia",
+   "negocio": "Novella Barberia",
+   "sector": "Barbería",
+   "zona": "Sarrià-Sant Gervasi (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Lunes · 229 reseñas Booksy, solo Booksy"
+  },
+  {
+   "instagram": "elcomensalrestaurant",
+   "negocio": "El Comensal",
+   "sector": "Restaurante",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Martes · 817 reseñas Google, sin web"
+  },
+  {
+   "instagram": "salvajes_barbershop",
+   "negocio": "Salvajes Barber Shop",
+   "sector": "Barbería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Martes · 492 reseñas Booksy, solo Booksy"
+  },
+  {
+   "instagram": "kellanails_navas",
+   "negocio": "Kella Nails",
+   "sector": "Uñas",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Martes · 464 reseñas Treatwell, solo Treatwell"
+  },
+  {
+   "instagram": "la.vicicleta",
+   "negocio": "La Vicicleta",
+   "sector": "Vermutería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Miércoles · 602 reseñas Google, solo Instagram"
+  },
+  {
+   "instagram": "calma_terapias_de_peluqueria",
+   "negocio": "Calma Terapias de Peluquería",
+   "sector": "Peluquería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Miércoles · 414 reseñas Treatwell, solo apps"
+  },
+  {
+   "instagram": "sende.studio",
+   "negocio": "Sendé Studio",
+   "sector": "Barbería",
+   "zona": "Sarrià-Sant Gervasi (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Miércoles · 196 reseñas Booksy, solo Booksy"
+  },
+  {
+   "instagram": "llevatapes",
+   "negocio": "Llevatapes",
+   "sector": "Bar de vinos",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Jueves · 245 reseñas Google, dominio sin web activa"
+  },
+  {
+   "instagram": "lossantos_barberstudio",
+   "negocio": "Los Santos BarberStudio",
+   "sector": "Barbería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Jueves · 236 reseñas Booksy, solo apps"
+  },
+  {
+   "instagram": "coccolebarcelona",
+   "negocio": "Coccole Barcelona",
+   "sector": "Peluquería",
+   "zona": "Sarrià-Sant Gervasi (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Jueves · ~100 reseñas Treatwell, sin web"
+  },
+  {
+   "instagram": "pizzeriamaragall",
+   "negocio": "Pizzeria Maragall",
+   "sector": "Pizzería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Viernes · 4,9 Tripadvisor, web de plantilla eatbu"
+  },
+  {
+   "instagram": "sheilaportelahairsalon",
+   "negocio": "Sheila Portela Hair Salon",
+   "sector": "Peluquería",
+   "zona": "Sarrià-Sant Gervasi (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Viernes · 82 reseñas Booksy, sin web"
+  },
+  {
+   "instagram": "_beautynatura.fli",
+   "negocio": "Beauty Natura Estética",
+   "sector": "Estética y uñas",
+   "zona": "Sarrià-Sant Gervasi (Barcelona)",
+   "semana": "2026-11-09",
+   "estado": "Pendiente",
+   "nota": "Viernes · Booksy + Treatwell, sin web"
   }
  ]
 }
