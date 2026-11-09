@@ -36,8 +36,16 @@
 | 2026-11-13 | bar | Hora punta y el teléfono sonando. |
 | 2026-11-14 | plataforma barber | ¿Y si reservan con el de al lado? |
 | 2026-11-15 | web | Antes de pagar, míralo. |
+| 2026-11-16 | bar | Tu carta de bar, sin PDF borroso. (programado el 5/11) |
+| 2026-11-17 | plataforma barber | Tu cliente busca cita y ve a tu rival. |
+| 2026-11-18 | web | Que te encuentren a la primera. |
+| 2026-11-19 | barber | ¿Cuántos WhatsApp de «¿tienes hueco?»? |
+| 2026-11-20 | antes bar | Así estaba la web de tu bar. (programado el 5/11) |
+| 2026-11-21 | plataforma bar | ¿Buscan tu bar y salen otros diez? |
+| 2026-11-22 | antes barber | ¿Tu web parece de otra época? |
 
 Publicaciones de comparación (plataforma vs. web propia): carrusel 2026-10-22 "¿Tus clientes reservan en una app que no es tuya?"
 Carrusel 2026-10-28 "¿Tus reservas son tuyas o de una app?"
 Carrusel 2026-11-04 "¿Dónde reservan tus clientes?" (app de reservas vs. tu web, Pack Completo)
 Carrusel 2026-11-11 "Tu cliente quiere reservar, no crearse una cuenta" (app de reservas vs. tu web, Pack Completo)
+Carrusel 2026-11-17 "¿Quién se queda con tus reservas?" (app de reservas vs. tu web, Pack Completo)

@@ -17,11 +17,13 @@ Hace falta Python con `playwright`, `Pillow` y `numpy`, Chromium (ya instalado e
 
 | Formato | Spec | Qué se ve | Ventanas de texto (s) |
 | --- | --- | --- | --- |
-| web | `spec_web.py` | thesqvare.com pantalla a pantalla, desliza ejemplos y packs, toca "Escríbeme por Instagram" | 0,15–2,3 · 2,3–4,9 · 4,9–7,8 · 7,8–10,2 · 10,2–12,5 |
+| web | `spec_web_home.py` | portada nueva de thesqvare.com en 5 capítulos (intro, «Primero en Google», reservas, reseñas, packs y precios). `spec_web.py` es de la portada antigua y ya no funciona | 0,15–2,3 · 2,3–4,9 · 4,9–7,8 · 7,8–10,2 · 10,2–12,5 |
 | barber | `spec_barber.py` | TheSqvare Barber: portada, servicios, reserva completa y notificación de correo | 0,15–2,3 · 2,3–4,6 · 4,6–7,5 · 7,5–9,9 · 9,9–12,5 |
 | bar | `spec_bar.py` | TheSqvare Bar: portada, carta con fotos, reserva de mesa y notificación | 0,15–2,3 · 2,3–4,9 · 4,9–7,5 · 7,5–9,9 · 9,9–12,5 |
 | antes (barber o bar) | `spec_antes_barber.py` / `spec_antes_bar.py` | Versión antigua y fea de la misma web → glitch → la web real con la reserva | 0,15–1,6 · 1,6–2,6 · 2,6–5,1 · 5,1–8,0 · 8,0–10,4 · 10,4–12,5 |
 | plataforma (barber o bar) | `spec_plataforma_barber.py` / `spec_plataforma_bar.py` | App de reservas genérica de terceros (lista con la competencia, anuncio, "crea una cuenta") → glitch → la reserva en la web propia | 0,15–1,6 · 1,6–3,0 · 3,0–5,4 · 5,4–8,3 · 8,3–10,7 · 10,7–12,5 |
+
+`spec_bar.py` y `spec_barber.py` se rehicieron el 9/11/2026 para las webs nuevas: usan `webspec.py` (posiciones por selector, reloj de la página fijado al lunes 16/11/2026 10:00, reserva el viernes 20 a las 17:30 en la barbería y el sábado 21 a las 21:00 en el bar, sin la ciudad ni el mapa). Las notificaciones del lote tienen que llevar esas fechas.
 
 Ejemplos de configuración en `ejemplos/` (`web.json`, `barber.json`, `bar.json`) y los sonidos de cada formato en `ejemplos/sonidos.json`.
 `ejemplos/lote_ejemplo.py` hace una semana entera de reels de golpe (todos los formatos, con sus sonidos, desfases y notificaciones): es la forma más fácil. Cópialo, cambia las fechas y los textos, graba antes los `frames` que falten con `capture.py` y ejecútalo desde `_reels/`.
