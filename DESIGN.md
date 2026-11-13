@@ -1,7 +1,7 @@
 ---
 published: false
 name: The Sqvare
-description: Webs para negocios locales: bloques de color firmes, tipografía contundente y sombras duras.
+description: "Webs para negocios locales: bloques de color firmes, tipografía contundente y sombras duras."
 colors:
   ultramar-cuadrado: "#2A35F0"
   sol-acento: "#FFC83D"
