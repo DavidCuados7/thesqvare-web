@@ -34,9 +34,11 @@ const mini=(k,cls='',bg=false)=>`<img src="${IMG[k+'_mini']}" alt="${W[k].n}" cl
 
 /* ---------- puerta +18 ---------- */
 const gate=$('#gate');
-function openGate(){gate.classList.add('out');document.body.classList.remove('locked');store.set('ase18','1');setTimeout(()=>gate.remove(),1100)}
+const behindGate=[...document.body.children].filter(el=>el!==gate&&el.tagName!=='SCRIPT'&&!el.inert&&el.id!=='drawer');
+function openGate(){gate.classList.add('out');document.body.classList.remove('locked');behindGate.forEach(el=>el.inert=false);store.set('ase18','1');setTimeout(()=>gate.remove(),1100)}
 if(store.get('ase18')==='1'){gate.remove();document.body.classList.remove('locked')}
 else{
+  behindGate.forEach(el=>el.inert=true); $('#gate-yes').focus();
   $('#gate-yes').onclick=openGate;
   $('#gate-no').onclick=()=>{$('#gate-msg').textContent='Pues te esperamos. Aquí seguiremos, sin prisa. 🥤'};
 }
@@ -197,7 +199,7 @@ function renderCart(){
     <div class="qty"><button data-rp="${i}" aria-label="Quitar pack">✕</button></div></div>`));
   $('#lines').innerHTML=rows.length?rows.join(''):`<div class="empty-c"><p>Aquí todavía<br>no se bebe nada</p>Añade una botella o monta tu pack.</div>`;
   $('#tot').textContent=eur(total());
-  const wa=$('#wa'); wa.setAttribute('aria-disabled',count()?'false':'true'); wa.href=waLink();
+  const wa=$('#wa'); if(count()){wa.href=waLink();wa.setAttribute('aria-disabled','false')}else{wa.removeAttribute('href');wa.setAttribute('aria-disabled','true')}
 }
 function waLink(){
   const name=$('#c-name').value.trim();
@@ -212,9 +214,16 @@ document.addEventListener('click',e=>{
   const q=e.target.closest('[data-q]'); if(q){const k=q.dataset.q;cart[k]=Math.max(0,(cart[k]||0)+(+q.dataset.d));if(!cart[k])delete cart[k];save();renderCart();return}
   const rp=e.target.closest('[data-rp]'); if(rp){packs.splice(+rp.dataset.rp,1);save();renderCart()}
 });
-$('#c-name').addEventListener('input',()=>$('#wa').href=waLink());
+$('#c-name').addEventListener('input',()=>{if(count())$('#wa').href=waLink()});
 const drawer=$('#drawer'),veil=$('#veil');
-function openCart(o){drawer.classList.toggle('on',o);veil.classList.toggle('on',o);drawer.setAttribute('aria-hidden',!o);if(o)$('#cart-close').focus()}
+let cartOpener=null;
+drawer.inert=true;
+function openCart(o){
+  if(o===drawer.classList.contains('on')) return;
+  drawer.classList.toggle('on',o);veil.classList.toggle('on',o);drawer.setAttribute('aria-hidden',!o);drawer.inert=!o;
+  if(o){cartOpener=document.activeElement;$('#cart-close').focus()}
+  else if(cartOpener&&cartOpener.isConnected&&!cartOpener.closest('[inert]')){cartOpener.focus();cartOpener=null}
+}
 $('#cart-open').onclick=()=>openCart(true);$('#cart-open-2').onclick=()=>openCart(true);$('#cart-close').onclick=()=>openCart(false);veil.onclick=()=>openCart(false);
 addEventListener('keydown',e=>{if(e.key==='Escape')openCart(false)});
 renderCart();
@@ -299,7 +308,9 @@ $('#news').addEventListener('submit',e=>{
 function banda(){const bi=$('#banda-img'), br=bi.parentElement.getBoundingClientRect();
   if(!reduce&&br.top<innerHeight&&br.bottom>0) bi.style.transform=`translateY(${((br.top/innerHeight)*-5).toFixed(2)}%)`}
 let ticking=false;
-function onScroll(){document.body.classList.toggle('at-top',scrollY<innerHeight*.55);if(ticking)return;ticking=true;requestAnimationFrame(()=>{revealFrame();storyFrame();banda();ticking=false})}
+const tabbar=$('.tabbar');
+function atTop(){const t=scrollY<innerHeight*.55;document.body.classList.toggle('at-top',t);if(tabbar)tabbar.inert=t&&matchMedia('(max-width:860px)').matches}
+function onScroll(){atTop();if(ticking)return;ticking=true;requestAnimationFrame(()=>{revealFrame();storyFrame();banda();ticking=false})}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
-setWine(0);document.body.classList.toggle('at-top',scrollY<innerHeight*.55);onScroll();
+setWine(0);atTop();onScroll();
 })();
