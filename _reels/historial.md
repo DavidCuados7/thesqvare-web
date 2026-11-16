@@ -43,9 +43,17 @@
 | 2026-11-20 | antes bar | Así estaba la web de tu bar. (programado el 5/11) |
 | 2026-11-21 | plataforma bar | ¿Buscan tu bar y salen otros diez? |
 | 2026-11-22 | antes barber | ¿Tu web parece de otra época? |
+| 2026-11-23 | web | ¿Tu negocio aún no tiene web? |
+| 2026-11-24 | antes bar | ¿Tu bar en internet da esta imagen? |
+| 2026-11-25 | barber | Tu barbería, siempre abierta. (programado el 5/11) |
+| 2026-11-26 | bar | Tu bar, abierto también en el móvil. |
+| 2026-11-27 | plataforma barber | En una app, eres uno más. (programado el 5/11) |
+| 2026-11-28 | antes barber | Así no te piden cita por internet. |
+| 2026-11-29 | web | Domingo, y tu web sigue trabajando. |
 
 Publicaciones de comparación (plataforma vs. web propia): carrusel 2026-10-22 "¿Tus clientes reservan en una app que no es tuya?"
 Carrusel 2026-10-28 "¿Tus reservas son tuyas o de una app?"
 Carrusel 2026-11-04 "¿Dónde reservan tus clientes?" (app de reservas vs. tu web, Pack Completo)
 Carrusel 2026-11-11 "Tu cliente quiere reservar, no crearse una cuenta" (app de reservas vs. tu web, Pack Completo)
 Carrusel 2026-11-17 "¿Quién se queda con tus reservas?" (app de reservas vs. tu web, Pack Completo)
+Carrusel 2026-11-24 "Tu cliente quiere reservar contigo, no con una app" (app de reservas vs. tu web, Pack Completo)
