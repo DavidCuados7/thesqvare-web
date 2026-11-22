@@ -1144,6 +1144,141 @@
    "semana": "2026-11-16",
    "estado": "Pendiente",
    "nota": "14 reseñas Tripadvisor sin reclamar; solo Instagram + Facebook"
+  },
+  {
+   "instagram": "cafeseveral",
+   "negocio": "Several Cafè",
+   "sector": "Cafetería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "2.000 reseñas; comprobar si severalcafe.com funciona"
+  },
+  {
+   "instagram": "peluqueriaiestetica_mariamb",
+   "negocio": "Mariam B. Peluquería y Estética",
+   "sector": "Peluquería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "861 reseñas Treatwell, sin web"
+  },
+  {
+   "instagram": "mel_bellesa",
+   "negocio": "Mel Bellesa",
+   "sector": "Estética",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "510 reseñas 5★ Treatwell, sin web"
+  },
+  {
+   "instagram": "barolivacafeteria",
+   "negocio": "Bar Oliva",
+   "sector": "Bar",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "1.461 reseñas Google, solo IG/TikTok"
+  },
+  {
+   "instagram": "unyozisalon",
+   "negocio": "Unyozi Salon",
+   "sector": "Peluquería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "Congrés-Indians; 341 reseñas Treatwell"
+  },
+  {
+   "instagram": "happynailsbdn",
+   "negocio": "Happy Nails BDN",
+   "sector": "Uñas",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "269 reseñas Treatwell, sin web"
+  },
+  {
+   "instagram": "lafontdelasagrera",
+   "negocio": "La Font de la Sagrera",
+   "sector": "Restaurante",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "La Sagrera; web rota con datos de un camping"
+  },
+  {
+   "instagram": "embarcaderobdn",
+   "negocio": "Bar Cafetería Embarcadero",
+   "sector": "Bar-cafetería",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "636 reseñas; carta en plantilla eatbu"
+  },
+  {
+   "instagram": "hairsalonbyjc_oficial",
+   "negocio": "Hair Salon by JC",
+   "sector": "Peluquería",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "La Sagrera; 288 reseñas Treatwell"
+  },
+  {
+   "instagram": "empanadasalmacen",
+   "negocio": "Almacén de Empanadas",
+   "sector": "Restaurante",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "~400 reseñas Google, solo IG"
+  },
+  {
+   "instagram": "pastisserialavila",
+   "negocio": "Pastisseria La Vila",
+   "sector": "Pastelería",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "Solo Facebook + IG"
+  },
+  {
+   "instagram": "om.tao.badalona",
+   "negocio": "OM·TAO Badalona",
+   "sector": "Yoga",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "Solo Momoyoga"
+  },
+  {
+   "instagram": "ukiyo.ramen_",
+   "negocio": "Ukiyo Ramen",
+   "sector": "Restaurante",
+   "zona": "Sant Andreu (Barcelona)",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "Solo IG + Just Eat"
+  },
+  {
+   "instagram": "barberia_gilbert_bdn",
+   "negocio": "Barberia Gilbert BDN",
+   "sector": "Barbería",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "46 reseñas, solo IG"
+  },
+  {
+   "instagram": "labonicafloristeria",
+   "negocio": "Floristeria La Bonica",
+   "sector": "Floristería",
+   "zona": "Badalona",
+   "semana": "2026-11-23",
+   "estado": "Pendiente",
+   "nota": "Pocas reseñas; solo Facebook + IG"
   }
  ]
 }
